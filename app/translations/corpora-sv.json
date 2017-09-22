@@ -1,5 +1,7 @@
 {
     "modern_texts": "Moderna",
     "swedish_texts": "Svenska",
-    "parallel_texts": "Parallella"
+    "parallel_texts": "Parallella",
+    "lemma": "Lemma",
+    "pos": "Ordflok"
 }

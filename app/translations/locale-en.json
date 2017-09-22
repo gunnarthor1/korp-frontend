@@ -19,10 +19,12 @@
     "lang_SV": "Swedish",
     "lang_SK": "Slovak",
     "lang_ET": "Estonian",
+    "lang_IS": "Icelandic",
 
     "docs": "Manual (Swedish only)",
     "swedish": "Svenska",
     "english": "English",
+    "icelandic": "Icelandic",
     "more": "More",
     "korp": "Korp",
     "korp_lab": "Korp Labs",
@@ -332,15 +334,15 @@
 
     "no_geo_info": "No location data available",
     "map_cluster": "Cluster",
-    
+
     "global_filter": "Filter:",
     "add_filter": "Add filter",
     "add_filter_value": "Add",
-    
+
     "repeat_error": "Error: Not possible to repeat from 0 for all tokens.",
-    
+
     "choose_lemgram": "Choose lemgram",
     "login_needed_for_corpora": "Login needed for access to",
-    
+
     "stats_warn": "Statistics is disabled"
 }

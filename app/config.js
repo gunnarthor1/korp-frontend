@@ -11,8 +11,8 @@ settings.hitsPerPageDefault = 25
 settings.enableBackendKwicDownload = false
 settings.enableFrontendKwicDownload = true
 
-settings.languages = ["sv", "en"];
-settings.defaultLanguage = "sv";
+settings.languages = ["sv", "en", "is-is"];
+settings.defaultLanguage = "is-is";
 
 settings.downloadFormats = [
     "csv",
@@ -147,7 +147,7 @@ settings.defaultOptions = {
     "matches_not": "!*=",
 }
 
-settings.cgiScript = "https://ws.spraakbanken.gu.se/ws/korp";
+settings.cgiScript = "http://localhost/cgi-bin/korp.cgi";
 settings.downloadCgiScript = "https://ws.spraakbanken.gu.se/ws/korp/download";
 
 settings.mapCenter = {

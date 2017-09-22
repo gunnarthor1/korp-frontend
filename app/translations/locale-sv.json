@@ -19,11 +19,13 @@
     "lang_SV": "svenska",
     "lang_SK": "slovakiska",
     "lang_ET": "estniska",
+    "lang_IS": "isländska",
 
 
     "docs": "Användarhandledning",
     "swedish": "Svenska",
     "english": "English",
+    "icelandic": "Isländska",
     "more": "Fler",
     "korp": "Korp",
     "korp_lab": "Korplabbet",
@@ -327,18 +329,18 @@
     "formatdescr_annot": "Annoterad text som ett Excel-kalkylblad (XLS), ett token per rad. Varje rad har ett token med attribut och potentiellt en markör för sökträffen. Varje träffad mening föregås av en rad med korpus-ID, träffens korpusposition och textattribut för meningen.",
     "formatdescr_nooj": "XML-importformat för NooJ",
     "formatdescr_ref": "Källhänvisningar som ett Excel-kalkylblad (XLS) med varje sökträffmening på sin egen rad, efterträdd av meningens textattribut på sina egna rader",
-    
+
     "no_geo_info": "Platsinformation ej tillgänglig",
     "map_cluster": "Sammanställ",
-    
+
     "global_filter": "Filter",
     "add_filter": "Lägg till filter",
     "add_filter_value": "Lägg till",
-    
+
     "repeat_error": "Fel: Det går inte att upprepa från 0 på alla token.",
-    
+
     "choose_lemgram": "Välj lemgram",
     "login_needed_for_corpora": "Inloggning behövs för åtkomst till",
-    
+
     "stats_warn": "Statistiken är avaktiverad"
 }
