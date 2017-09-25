@@ -57,7 +57,7 @@ korpApp.directive "tabHash", (utils, $location, $timeout) ->
                     s.maxTab = tab.index
             s.setSelected(initTab)
             watchHash()), 0
-            
+
         s.newDynamicTab = () ->
             $timeout (() -> s.setSelected(s.maxTab + 1, true)), 0
 
@@ -142,7 +142,7 @@ korpApp.directive "tokenValue", ($compile, $controller, extendedComponents) ->
                         tmplObj = {maybe_placeholder : ""}
 
                     template = extendedComponents.defaultTemplate tmplObj
-                    
+
             $controller controller, locals
             tmplElem = $compile(template) childScope
             elem.html(tmplElem).addClass "arg_value"
@@ -378,14 +378,20 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
             return and_array
 
         s.addToken = ->
-            token = {and_block : [[]]}
-            s.data.push token
-            s.addOr token.and_block[0]
+            token1 = {and_block : [[]]}
+            s.data.push token1
+            s.addOr token1.and_block[0]
+            token1.repeat = [0,0]
+            s.repeatError = false
+            console.log token1
+            token2 = {and_block : [[]]}
+            s.data.push token2
+            s.addOr token2.and_block[0]
             s.repeatError = false
 
         s.removeToken = (i) ->
             unless s.data.length > 1 then return
-            s.data.splice(i, 1)
+            s.data.splice(Math.max(i-1,0), 2)
             repeatError = true
             for token in s.data
                 if not token.repeat or token.repeat[0] > 0
@@ -403,7 +409,7 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
 
         s.repeatChange = (repeat_idx, token_idx) ->
             token = s.data[token_idx]
-            
+
             if token.repeat[repeat_idx] is null
                 return
 
@@ -419,10 +425,10 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
 
             if token.repeat[1] < token.repeat[0] and repeat_idx is 1
                 token.repeat[0] = token.repeat[1]
-            
+
             if token.repeat[1] < 1
                 token.repeat[1] = 1
-            
+
             if token.repeat[0] > 0
                 s.repeatError = false
 
@@ -431,7 +437,38 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
 
             if token.repeat[repeat_idx] is null
                 token.repeat[repeat_idx] = token.repeat[if repeat_idx is 0 then 1 else 0]
-            
+
+            repeatError = true
+            for token in s.data
+                if not token.repeat or token.repeat[0] > 0
+                    repeatError = false
+                    break
+
+            s.repeatError = repeatError
+
+        s.betweenChange = (between_idx, token_idx) ->
+            token = s.data[token_idx]
+
+            if token.repeat[between_idx] is null
+                return
+
+            if token.repeat[between_idx] < 0
+                token.repeat[between_idx] = 0
+            else if token.repeat[between_idx] > 100
+                token.repeat[between_idx] = 100
+
+            if token.repeat[1] < token.repeat[0] and between_idx is 0
+                token.repeat[1] = token.repeat[0]
+
+            if token.repeat[1] < token.repeat[0] and between_idx is 1
+                token.repeat[0] = token.repeat[1]
+
+        s.betweenBlur = (between_idx, token_idx) ->
+            token = s.data[token_idx]
+
+            if token.repeat[between_idx] is null
+                token.repeat[between_idx] = token.repeat[if between_idx is 0 then 1 else 0]
+
             repeatError = true
             for token in s.data
                 if not token.repeat or token.repeat[0] > 0
@@ -463,7 +500,7 @@ korpApp.directive "clickCover", () ->
 
     link : (scope, elem, attr) ->
         cover = $("<div class='click-cover'>").on "click", () -> return false
-            
+
         pos = elem.css("position") or "static"
         scope.$watch () ->
             scope.$eval attr.clickCover

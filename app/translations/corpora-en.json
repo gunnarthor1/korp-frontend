@@ -3,5 +3,6 @@
     "swedish_texts": "Swedish",
     "parallel_texts": "Parallel",
     "lemma": "Lemma",
-    "pos": "Part of speech"
+    "pos": "Part of speech",
+    "words_between": "Words between: "
 }

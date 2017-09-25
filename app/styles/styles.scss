@@ -595,139 +595,156 @@ table {
   margin-left: 10px;
 }
 
-.query_token {
-  background-color: #e1e1e1;
+.token_container {
   display: inline-block;
   vertical-align: top;
-  padding: 5px;
-  border: 1px solid #999;
-  margin-left: 0;
-  margin-right: 10px;
-  margin-bottom: 5px;
-  box-shadow: 2px 2px 3px grey;
 
-  .close_btn {
-    cursor : pointer;
-    float: right;
-    opacity: 1;
-    transition: opacity 200ms ease;
-    font-size : 15px;
-  }
-  &:only-of-type .close_btn {
+  &:only-of-type .query_token .close_btn {
     opacity: 0;
     cursor: default;
     transition: opacity 200ms ease;
   }
-
-  .remove_arg {
-    position: relative;
-    top: 15px;
-    opacity: 1;
-    transition: opacity 200ms ease;
-  }
-
-  .insert_arg {
-    margin-top: 4px;
+  .words_between {
+    background-color: #e1e1e1;
+    margin: 0 1em;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
     float: left;
-  }
-
-  .arg_selects.date_interval .arg_opts {
-    display: none;
-
-  }
-
-  .arg_type {
-    display: inline-block;
-    vertical-align: middle;
-    width : 160px;
-  }
-
-  .arg_opts {
-    margin-left: 5px;
-  }
-
-  input.arg_value {
-    width: 95%;
-  }
-
-  .arg_value {
-    max-width: 300px;
-  }
-
-  select.arg_value option {
-    padding-top: 1px;
-    padding-bottom: 1px;
-  }
-
-  .btn-icon {
     vertical-align: top;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    position: relative;
-    right: -4px;
-    top: -5px;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 3px grey;
   }
 
-  .left_col {
+    .query_token {
+    background-color: #e1e1e1;
     display: inline-block;
     vertical-align: top;
-    min-width : 16px;
-  }
-  .repeat {
-    float: right;
-    margin-right: 25px;
-    input {
-      max-width: 30px;
-      -moz-appearance: textfield;
-    }
-  }
+    padding: 5px;
+    border: 1px solid #999;
+    margin-left: 0;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    box-shadow: 2px 2px 3px grey;
 
-  .token_header {
-    padding-bottom : 3px;
-    cursor: move;
-  }
-  .token_footer {
-    font-size: .8em;
-    button {
-      width: 20px;
-      height: 20px;
+    .close_btn {
+      cursor : pointer;
       float: right;
-      i {
-        position: relative;
-        top: 0px;
-        left: -2px;
-        font-size: 14px;
+      opacity: 1;
+      transition: opacity 200ms ease;
+      font-size : 15px;
+    }
+
+    .remove_arg {
+      position: relative;
+      top: 15px;
+      opacity: 1;
+      transition: opacity 200ms ease;
+    }
+
+    .insert_arg {
+      margin-top: 4px;
+      float: left;
+    }
+
+    .arg_selects.date_interval .arg_opts {
+      display: none;
+
+    }
+
+    .arg_type {
+      display: inline-block;
+      vertical-align: middle;
+      width : 160px;
+    }
+
+    .arg_opts {
+      margin-left: 5px;
+    }
+
+    input.arg_value {
+      width: 95%;
+    }
+
+    .arg_value {
+      max-width: 300px;
+    }
+
+    select.arg_value option {
+      padding-top: 1px;
+      padding-bottom: 1px;
+    }
+
+    .btn-icon {
+      vertical-align: top;
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      position: relative;
+      right: -4px;
+      top: -5px;
+    }
+
+    .left_col {
+      display: inline-block;
+      vertical-align: top;
+      min-width : 16px;
+    }
+    .repeat {
+      float: right;
+      margin-right: 25px;
+      input {
+        max-width: 30px;
+        -moz-appearance: textfield;
       }
     }
-  }
 
-  .close_token {
-    border-radius: 20px;
-    color: black;
-    background-color: rgb(242, 247, 255);
-    border: thin lightgrey solid;
-    padding-left: 5px;
-    padding-right: 2px;
-    cursor: default;
-    i {
-      cursor : pointer;
+    .token_header {
+      padding-bottom : 3px;
+      cursor: move;
     }
+    .token_footer {
+      font-size: .8em;
+      button {
+        width: 20px;
+        height: 20px;
+        float: right;
+        i {
+          position: relative;
+          top: 0px;
+          left: -2px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .close_token {
+      border-radius: 20px;
+      color: black;
+      background-color: rgb(242, 247, 255);
+      border: thin lightgrey solid;
+      padding-left: 5px;
+      padding-right: 2px;
+      cursor: default;
+      i {
+        cursor : pointer;
+      }
+    }
+
+    .lower_footer {
+      text-align: right;
+      margin-top: 2px;
+    }
+
+    #opt_menu {
+      display: none;
+      font-size: .8em;
+      cursor: pointer;
+      width: 100px;
+    }
+
+
   }
-
-  .lower_footer {
-    text-align: right;
-    margin-top: 2px;
-  }
-
-  #opt_menu {
-    display: none;
-    font-size: .8em;
-    cursor: pointer;
-    width: 100px;
-  }
-
-
 }
 
 .cqp_toggle {
@@ -1240,7 +1257,7 @@ a {
 .login-modal-header {
   padding-top: 3px;
   padding-bottom: 3px;
-  
+
   .login-header {
     font-weight: bold;
   }
@@ -2758,7 +2775,7 @@ li.active a span .num-to-find {
             margin-right: 5px;
         }
         div.cluster-info {
-            background-color: rgba(136, 220, 168, 0.6); 
+            background-color: rgba(136, 220, 168, 0.6);
             border-radius: 5px;
         }
         margin-right: 20px;
@@ -2794,7 +2811,7 @@ li.active a span .num-to-find {
     .attribute:hover {
         background-color: #e6e6e6;
     }
-    
+
     ul {
         padding: 0;
         margin: 0;
@@ -2804,12 +2821,12 @@ li.active a span .num-to-find {
 
 .global-filter-toggle {
     margin-left: 5px;
-    
+
     .selected-attr-value {
         font-weight: bold;
         padding-left: 4px;
     }
-    
+
 }
 
 .input-error {

@@ -3,5 +3,6 @@
     "swedish_texts": "Sænska",
     "parallel_texts": "Samhliða",
     "lemma": "Lemma",
-    "pos": "Orðflokkur"
+    "pos": "Orðflokkur",
+    "words_between": "Orð á milli: "
 }
