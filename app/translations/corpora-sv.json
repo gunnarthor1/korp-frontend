@@ -3,6 +3,6 @@
     "swedish_texts": "Svenska",
     "parallel_texts": "Parallella",
     "lemma": "Lemma",
-    "pos": "Ordflok",
+    "pos": "Ordklass",
     "words_between": "Ord imellem: "
 }
