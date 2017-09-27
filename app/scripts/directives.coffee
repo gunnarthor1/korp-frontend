@@ -420,11 +420,8 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
             else if token.repeat[repeat_idx] > 100
                 token.repeat[repeat_idx] = 100
 
-            if token.repeat[1] < token.repeat[0] and repeat_idx is 0
-                token.repeat[1] = token.repeat[0]
-
-            if token.repeat[1] < token.repeat[0] and repeat_idx is 1
-                token.repeat[0] = token.repeat[1]
+            if token.repeat[1] < token.repeat[0]
+                token.repeat[(repeat_idx+1)%2] = token.repeat[repeat_idx]
 
             if token.repeat[1] < 1
                 token.repeat[1] = 1
@@ -457,11 +454,9 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
             else if token.repeat[between_idx] > 100
                 token.repeat[between_idx] = 100
 
-            if token.repeat[1] < token.repeat[0] and between_idx is 0
-                token.repeat[1] = token.repeat[0]
+            if token.repeat[1] < token.repeat[0]
+                token.repeat[(between_idx+1)%2] = token.repeat[between_idx]
 
-            if token.repeat[1] < token.repeat[0] and between_idx is 1
-                token.repeat[0] = token.repeat[1]
 
         s.betweenBlur = (between_idx, token_idx) ->
             token = s.data[token_idx]
