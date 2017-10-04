@@ -62,7 +62,7 @@ settings.corpora["mbl_kvikmyndir"] = {
  * PRESELECTED CORPORA
  * Folders will be expanded to all corpora. Optionally prefix folders with __ , which will be ignored.
  */
-settings.preselectedCorpora = ["lemmadtest"];
+settings.preselectedCorpora = ["mbl_kvikmyndir"];
 
 //
 // settings.corpora["magmakolumner"] = {
