@@ -107,7 +107,7 @@ Sidebar =
         return [posItems, structItems]
 
     renderItem: (key, value, attrs, wordData, sentenceData, tokens) ->
-        if attrs.label
+        if attrs.label and value
             output = $("<p><span rel='localize[#{attrs.label}]'></span>: </p>")
         else
             output = $("<p></p>")
@@ -115,8 +115,8 @@ Sidebar =
             return output.append(attrs.renderItem key, value, attrs, wordData, sentenceData, tokens)
 
         output.data("attrs", attrs)
-        if value == "|" or value == ""
-            output.append "<i rel='localize[empty]' style='color : grey'>${util.getLocaleString('empty')}</i>"
+        if !value or value == "|" or value == ""
+            # output.append "<i rel='localize[empty]' style='color : grey'>${util.getLocaleString('empty')}</i>"
             return output
 
         if attrs.type == "set" and attrs.display?.expandList
