@@ -45,6 +45,19 @@ settings.corpora["lemmadtest"] = {
     structAttributes: {
     }
 }
+settings.corpora["mbl_kvikmyndir"] = {
+    id: "mbl_kvikmyndir",
+    title: "Dómar fyrir kvikmyndir frá Mbl",
+    description: "Prufa.",
+    context: defaultContext,
+    within: {
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: icelandicAttrs,
+    structAttributes: {
+    }
+}
 /*
  * PRESELECTED CORPORA
  * Folders will be expanded to all corpora. Optionally prefix folders with __ , which will be ignored.

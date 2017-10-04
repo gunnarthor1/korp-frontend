@@ -409,6 +409,63 @@ var modernAttrsOld = {
 };
 
 
+var icelandicAttrs = {
+    lemma: {
+        label: "lemma"
+    },
+    pos: {
+        label: "pos"
+    },
+    stf: {
+        label:"stf"
+    },
+    hattur: {
+        label:"hattur"
+    },
+    mynd: {
+        label:"mynd"
+    },
+    pers: {
+        label:"pers"
+    },
+    tof: {
+        label:"tof"
+    },
+    fnf: {
+        label:"fnf"
+    },
+    kyn: {
+        label:"kyn"
+    },
+    tala: {
+        label:"tala"
+    },
+    fall: {
+        label:"fall"
+    },
+    greinir: {
+        label:"greinir"
+    },
+    sernafn: {
+        label:"sernafn"
+    },
+    tid: {
+        label:"tid"
+    },
+    lob: {
+        label:"lob"
+    },
+    lostig: {
+        label:"lostig"
+    },
+    fsfall: {
+        label:"fsfall"
+    },
+    tob: {
+        label:"tob"
+    }
+}
+
 var modernAttrs = {
     pos: attrs.pos,
     msd: attrs.msd,
