@@ -409,63 +409,6 @@ var modernAttrsOld = {
 };
 
 
-var icelandicAttrs = {
-    lemma: {
-        label: "lemma"
-    },
-    pos: {
-        label: "pos"
-    },
-    stf: {
-        label:"stf"
-    },
-    hattur: {
-        label:"hattur"
-    },
-    mynd: {
-        label:"mynd"
-    },
-    pers: {
-        label:"pers"
-    },
-    tof: {
-        label:"tof"
-    },
-    fnf: {
-        label:"fnf"
-    },
-    kyn: {
-        label:"kyn"
-    },
-    tala: {
-        label:"tala"
-    },
-    fall: {
-        label:"fall"
-    },
-    greinir: {
-        label:"greinir"
-    },
-    sernafn: {
-        label:"sernafn"
-    },
-    tid: {
-        label:"tid"
-    },
-    lob: {
-        label:"lob"
-    },
-    lostig: {
-        label:"lostig"
-    },
-    fsfall: {
-        label:"fsfall"
-    },
-    tob: {
-        label:"tob"
-    }
-}
-
 var modernAttrs = {
     pos: attrs.pos,
     msd: attrs.msd,
@@ -585,5 +528,243 @@ settings.commonStructTypes = {
                 });
             }
         ]
+    }
+};
+
+
+var icelandicAttrs = {
+    pos: {
+        label: "pos",
+        translationKey: "pos_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 1,
+        dataset: {
+            "lýsingarorð": "lo",
+            "nafnorð": "no",
+            "samtenging": "st",
+            "sagnorð": "so",
+            "forsetning": "fs",
+            "skammstöfun": "ss",
+            "töluorð": "to",
+            "erlentorð": "eo",
+            "atviksorð": "ao",
+            "fornafn": "fn",
+            "greinir": "gr",
+            "greinamerki": "grm",
+            "upphrópun": "uh",
+            "ógreint": "xx"
+        }
+    },
+    lemma: {
+        label: "lemma",
+        order: 2
+    },
+    pers: {
+        label:"pers",
+        translationKey: "pers_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 3,
+        dataset: {
+            "1.persóna": "1pers",
+            "2.persóna": "2pers",
+            "3.persóna": "3pers"
+        }
+    },
+    kyn: {
+        label:"kyn",
+        translationKey: "kyn_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 4,
+        dataset: {
+            "karlkyn": "kk",
+            "kvenkyn": "kvk",
+            "hvorugkyn": "hvk"
+        }
+    },
+    tala: {
+        label:"tala",
+        translationKey: "tala_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 5,
+        dataset: {
+            "eintala": "et",
+            "fleirtala": "ft"
+        }
+    },
+    fall: {
+        label:"fall",
+        translationKey: "fall_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 6,
+        dataset: {
+            "nefnifall": "nf",
+            "þolfall": "þf",
+            "þágufall": "þgf",
+            "eignarfall": "ef"
+        }
+    },
+    lostig: {
+        label:"lostig",
+        translationKey: "lostig_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 7,
+        dataset: {
+            "frumstig": "fs",
+            "miðstig": "ms",
+            "efsta-stig": "es"
+        }
+    },
+    mynd: {
+        label:"mynd",
+        translationKey: "mynd_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 8,
+        dataset: {
+            "germynd": "gm",
+            "þolmynd": "þm",
+            "miðmynd": "mm"
+        }
+    },
+    hattur: {
+        label:"hattur",
+        translationKey: "hattur_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 9,
+        dataset: {
+            "nafnháttur": "nh",
+            "viðtengingarháttur": "vh",
+            "sagnbót": "sb",
+            "framsöguháttur": "fh",
+            "lýsingarháttur-þátíðar": "lhþ",
+            "lýsingarháttur-nútíðar": "lhn"
+        }
+    },
+    tid: {
+        label:"tid",
+        translationKey: "tid_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 10,
+        dataset: {
+            "nútíð": "nt",
+            "þátíð": "þt"
+        }
+    },
+    lob: {
+        label:"lob",
+        translationKey: "lob_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 11,
+        dataset: {
+            "sterk-beyging": "sb",
+            "veik-beyging": "vb",
+            "óbeygt": "ob"
+        }
+    },
+    fsfall: {
+        label:"fsfall",
+        translationKey: "fsfall_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 12,
+        dataset: {
+            "stýrir-þolfalli": "þf",
+            "stýrir-þágufalli": "þgf",
+            "stýrir-eignarfalli": "ef"
+        }
+    },
+    tob: {
+        label:"tob",
+        translationKey: "tob_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 13,
+        dataset: {
+            "beygjanlegt-töluorð": "bt",
+            "óbeygjanlegt-töluorð": "ót"
+        }
+    },
+    fnf: {
+        label:"fnf",
+        translationKey: "fnf_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 15,
+        dataset: {
+            "eignarfornafn": "efn",
+            "ábendingarfornafn": "áfn",
+            "óákveðið-ábendingarfornafn": "óáfn",
+            "óákveðið-fornafn": "ófn",
+            "persónufornafn": "pfn",
+            "spurnarfornafn": "sfn",
+            "tilvísunarfornafn": "tfn"
+        }
+    },
+    tof: {
+        label:"ft",
+        translationKey: "ft_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 16,
+        dataset: {
+            "frumtala": "ft"
+        }
+    },
+    stf: {
+        label:"stf",
+        translationKey: "stf_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 17,
+        dataset: {
+            "tilvísunartenging": "tt",
+            "nafnháttarmerki": "nhm"
+        }
+    },
+    sernafn: {
+        label:"sernafn",
+        translationKey: "sernafn_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 18,
+        dataset: {
+            "sérnafn": "sn"
+        }
+    },
+    greinir: {
+        label:"greinir",
+        translationKey: "greinir_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 19,
+        dataset: {
+            "með-greini": "mg"
+        }
     }
 };
