@@ -636,8 +636,7 @@ table {
     }
 
     .remove_arg {
-      position: relative;
-      top: 15px;
+      margin-top: 15px;
       opacity: 1;
       transition: opacity 200ms ease;
     }
@@ -663,7 +662,7 @@ table {
     }
 
     input.arg_value {
-      width: 95%;
+      width: 90%;
     }
 
     .arg_value {
@@ -684,11 +683,25 @@ table {
       right: -4px;
       top: -5px;
     }
-
+    .pos_regex_builder_link  {
+      font-size: 0.7em;
+      font-weight: bold;
+      padding: 0;
+      background-color: rgba(0,0,0, 0.2);
+    }
     .left_col {
-      display: inline-block;
+      float:left;
+      display: flex;
       vertical-align: top;
       min-width : 16px;
+      width: 5%;
+      justify-content: space-between;
+      flex-direction: column;
+      * {
+        margin-top: 10px;
+        align-self: center;
+        display: block;
+      }
     }
     .repeat {
       float: right;
@@ -1871,7 +1884,11 @@ slider {
     }
   }
 }
-
+.opt_container {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 .val_mod {
   &.insensitive {
@@ -2004,6 +2021,9 @@ warning ~ * {
   }
 }
 
+.arg_input {
+  max-width: 90%
+}
 
 .arg_value {
   .from, .to {
@@ -2020,6 +2040,7 @@ warning ~ * {
 
 
 .arg_val_container {
+  display: flex;
   margin-top : 2px;
   select {
     max-width : 100%;
