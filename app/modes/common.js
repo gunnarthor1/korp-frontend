@@ -47,7 +47,7 @@ var probabilitySetOptions = {
 };
 
 var defaultContext = {
-    "1 sentence": "1 sentence"
+    "7 words": "7 words"
 };
 
 var spContext = {
