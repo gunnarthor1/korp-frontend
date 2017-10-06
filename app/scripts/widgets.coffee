@@ -181,7 +181,7 @@ Sidebar =
                         showAll.css "display", "none"
                         showOne.css "display", "inline"
                         _.map lis, (li) ->
-                            
+
                             li.css "display", "list-item"
 
                     showOne.click () ->
@@ -255,8 +255,8 @@ Sidebar =
 
         else
             if attrs.translationKey
-                if loc_data["en"][attrs.translationKey + value]
-                    return output.append "<span rel='localize[#{attrs.translationKey}#{value}]'></span>"
+                if loc_data["is-is"][attrs.translationKey + attrs.dataset[value]]
+                    return output.append "<span rel='localize[#{attrs.translationKey}#{attrs.dataset[value]}]'></span>"
                 else
                     return output.append "<span>#{value}</span>"
             else
