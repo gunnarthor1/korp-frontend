@@ -45,24 +45,35 @@ settings.corpora["lemmadtest"] = {
     structAttributes: {
     }
 }
-settings.corpora["mbl_kvikmyndir"] = {
-    id: "mbl_kvikmyndir",
-    title: "Dómar fyrir kvikmyndir frá Mbl",
-    description: "Prufa.",
+settings.corpora["kjarninn"] = {
+    id: "kjarninn",
+    title: "Kjarninn.is",
+    description: "Greinar frá fréttamiðlinum Kjarninn.is.",
     context: defaultContext,
     within: {
-        "sentence": "sentence",
+        "paragraph": "paragraph",
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: {
-    }
+    structAttributes: icelandicSattrs
+}
+settings.corpora["jonas"] = {
+    id: "jonas",
+    title: "Jónas.is",
+    description: "Pistlar af vefsíðu bloggarans Jónasar Kristjánssonar.",
+    context: defaultContext,
+    within: {
+        "paragraph": "paragraph",
+        "text": "text"
+    },
+    attributes: icelandicAttrs,
+    structAttributes: icelandicSattrs
 }
 /*
  * PRESELECTED CORPORA
  * Folders will be expanded to all corpora. Optionally prefix folders with __ , which will be ignored.
  */
-settings.preselectedCorpora = ["mbl_kvikmyndir"];
+settings.preselectedCorpora = ["kjarninn","jonas"];
 
 //
 // settings.corpora["magmakolumner"] = {

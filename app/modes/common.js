@@ -475,7 +475,7 @@ settings.commonStructTypes = {
         hideCompare: "true",
         hideStatistics: "true",
         opts: false,
-        extendedTemplate: '<div class="date_interval_arg_type"> <div class="section"> <button class="btn btn-default btn-sm" popper no-close-on-click my="left top" at="right top"> <i class="fa fa-calendar"></i> Från </button> {{combined.format("YYYY-MM-DD HH:mm")}} <time-interval ng-click="from_click($event)" class="date_interval popper_menu dropdown-menu" date-model="from_date" time-model="from_time" model="combined" min-date="minDate" max-date="maxDate"> </time-interval> </div> <div class="section"> <button class="btn btn-default btn-sm" popper no-close-on-click my="left top" at="right top"> <i class="fa fa-calendar"></i> Till </button> {{combined2.format("YYYY-MM-DD HH:mm")}} <time-interval ng-click="from_click($event)" class="date_interval popper_menu dropdown-menu" date-model="to_date" time-model="to_time" model="combined2" my="left top" at="right top" min-date="minDate" max-date="maxDate"> </time-interval> </div> </div>',
+        extendedTemplate: '<div class="date_interval_arg_type"> <div class="section"> <button class="btn btn-default btn-sm" popper no-close-on-click my="left top" at="right top"> <i class="fa fa-calendar"></i> Frá </button> {{combined.format("YYYY-MM-DD HH:mm")}} <time-interval ng-click="from_click($event)" class="date_interval popper_menu dropdown-menu" date-model="from_date" time-model="from_time" model="combined" min-date="minDate" max-date="maxDate"> </time-interval> </div> <div class="section"> <button class="btn btn-default btn-sm" popper no-close-on-click my="left top" at="right top"> <i class="fa fa-calendar"></i> Til </button> {{combined2.format("YYYY-MM-DD HH:mm")}} <time-interval ng-click="from_click($event)" class="date_interval popper_menu dropdown-menu" date-model="to_date" time-model="to_time" model="combined2" my="left top" at="right top" min-date="minDate" max-date="maxDate"> </time-interval> </div> </div>',
         extendedController: [
             "$scope", "searches", "$timeout", function($scope, searches, $timeout) {
                 var cl, getTime, getYear, ref, ref1, ref2, s, updateIntervals;
@@ -530,7 +530,43 @@ settings.commonStructTypes = {
         ]
     }
 };
-
+var icelandicSattrs = {
+    text_author: {
+        label: "text_author"
+    },
+    // text_datefrom: {
+    //     label: "text_date_from",
+    //     hideSidebar: "true"
+    // },
+    // text_dateto: {
+    //     label: "text_date_to",
+    //     hideSidebar: "true"
+    // },
+    // text_timefrom: {
+    //     label: "text_time_from",
+    //     hideSidebar: "true"
+    // },
+    // text_timeto: {
+    //     label: "text_time_to",
+    //     hideSidebar: "true"
+    // },
+    text_date: {
+        label: "text_date"
+    },
+    text_midill: {
+        label: "text_midill"
+    },
+    text_wordcount: {
+        label: "text_wordcount"
+    },
+    text_title: {
+        label: "text_title"
+    },
+    text_id_midill: {
+        label: "text_id_midill",
+        displayType: "hidden"
+    }
+}
 
 var icelandicAttrs = {
     pos: {
@@ -652,7 +688,8 @@ var icelandicAttrs = {
             "sagnbót": "sb",
             "framsöguháttur": "fh",
             "lýsingarháttur-þátíðar": "lhþ",
-            "lýsingarháttur-nútíðar": "lhn"
+            "lýsingarháttur-nútíðar": "lhn",
+            "boðháttur": "bh"
         }
     },
     tid: {
@@ -766,5 +803,6 @@ var icelandicAttrs = {
         dataset: {
             "með-greini": "mg"
         }
-    }
+    },
+    date_interval: settings.commonStructTypes.date_interval
 };
