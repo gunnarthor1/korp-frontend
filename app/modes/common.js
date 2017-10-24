@@ -565,6 +565,10 @@ var icelandicSattrs = {
     text_id_midill: {
         label: "text_id_midill",
         displayType: "hidden"
+    },
+    text_url: {
+        label: "text_url",
+        type: "url"
     }
 }
 
