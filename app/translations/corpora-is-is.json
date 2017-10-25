@@ -105,13 +105,14 @@
     "text_midill": "Miðill",
     "text_author": "Höfundur",
     "text_wordcount": "Fjöldi orða í texta",
-    "text_title": "Titill",
+    "text_title": "Grein",
     "text_date": "Dagsetning",
     "text_date_from": "Frá degi",
     "text_date_to": "Til dags",
     "text_time_from": "Frá tíma",
     "text_time_to": "Til tíma",
     "text_url": "URL",
+    "text_speaker": "Þingmaður",
     "date_interval": "Á tímabili",
 
     "author": "Höfundur"

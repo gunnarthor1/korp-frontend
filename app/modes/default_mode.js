@@ -24,7 +24,10 @@ settings.corpora["kjarninn"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["visir"] = {
     id: "visir",
@@ -36,7 +39,10 @@ settings.corpora["visir"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["ruv"] = {
     id: "ruv",
@@ -48,7 +54,10 @@ settings.corpora["ruv"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 
 settings.corpora["bbl"] = {
@@ -61,7 +70,10 @@ settings.corpora["bbl"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["stundin"] = {
     id: "stundin",
@@ -73,7 +85,10 @@ settings.corpora["stundin"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 
 ////////////////////////////////////////
@@ -93,7 +108,10 @@ settings.corpora["vf"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["bb"] = {
     id: "bb",
@@ -105,7 +123,10 @@ settings.corpora["bb"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["fjardarpostur"] = {
     id: "fjardarpostur",
@@ -117,7 +138,10 @@ settings.corpora["fjardarpostur"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 
 ////////////////////////////////////////
@@ -137,7 +161,10 @@ settings.corpora["fjorirthrirthrir"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["eidfaxi"] = {
     id: "eidfaxi",
@@ -149,7 +176,10 @@ settings.corpora["eidfaxi"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 
 ////////////////////////////////////////
@@ -170,7 +200,10 @@ settings.corpora["jonas"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["andriki"] = {
     id: "andriki",
@@ -182,7 +215,10 @@ settings.corpora["andriki"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["deiglan"] = {
     id: "deiglan",
@@ -194,7 +230,10 @@ settings.corpora["deiglan"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 
 ////////////////////////////////////////
@@ -214,7 +253,10 @@ settings.corpora["bleikt"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["bondi"] = {
     id: "bondi",
@@ -226,7 +268,10 @@ settings.corpora["bondi"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["domstolar"] = {
     id: "domstolar",
@@ -238,7 +283,10 @@ settings.corpora["domstolar"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["haestirettur"] = {
     id: "haestirettur",
@@ -250,7 +298,10 @@ settings.corpora["haestirettur"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["althingislog"] = {
     id: "althingislog",
@@ -262,7 +313,10 @@ settings.corpora["althingislog"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["althingi"] = {
     id: "althingi",
@@ -274,7 +328,11 @@ settings.corpora["althingi"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicAlthingiSAttrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article,
+        thingmadur: icelandicCustomAttrs.thingmadur
+    }
 }
 settings.corpora["eyjan"] = {
     id: "eyjan",
@@ -286,7 +344,10 @@ settings.corpora["eyjan"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["wikipedia"] = {
     id: "wikipedia",
@@ -298,7 +359,10 @@ settings.corpora["wikipedia"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["visindavefur"] = {
     id: "visindavefur",
@@ -310,7 +374,10 @@ settings.corpora["visindavefur"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["heimur"] = {
     id: "heimur",
@@ -322,7 +389,10 @@ settings.corpora["heimur"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["vikudagur"] = {
     id: "vikudagur",
@@ -334,7 +404,10 @@ settings.corpora["vikudagur"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["vb"] = {
     id: "vb",
@@ -346,7 +419,10 @@ settings.corpora["vb"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["sunnlenska"] = {
     id: "sunnlenska",
@@ -358,7 +434,10 @@ settings.corpora["sunnlenska"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 settings.corpora["silfuregils"] = {
     id: "silfuregils",
@@ -370,7 +449,10 @@ settings.corpora["silfuregils"] = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
 }
 /*
  * PRESELECTED CORPORA

@@ -559,16 +559,53 @@ var icelandicSattrs = {
     text_wordcount: {
         label: "text_wordcount"
     },
-    text_title: {
-        label: "text_title"
-    },
     text_id_midill: {
         label: "text_id_midill",
         displayType: "hidden"
     },
+    text_title: {
+        label: "text_title",
+        displayType: "hidden"
+    },
     text_url: {
         label: "text_url",
-        type: "url"
+        type: "url",
+        displayType: "hidden"
+    }
+}
+
+var icelandicCustomAttrs = {
+    thingmadur: {
+        label: 'thingmadur',
+        customType: 'struct',
+        pattern: "<p><span rel='localize[text_speaker]'></span>: <a href='<%=struct_attrs.text_speakerurl%>'><%=struct_attrs.text_speaker%></a></p>"
+        // pattern: "<p>works!</p>"
+    },
+    article: {
+        label: 'article',
+        customType: 'struct',
+        // pattern: "<p>HELLO WORLD</p>"
+        pattern: "<p><span rel='localize[text_title]'></span>: <a href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>"
+    }
+}
+
+var icelandicAlthingiSAttrs = {
+    text_author: icelandicSattrs.text_author,
+    text_date: icelandicSattrs.text_date,
+    text_midill: icelandicSattrs.text_midill,
+    text_wordcount: icelandicSattrs.text_wordcount,
+    text_id_midill: icelandicSattrs.text_id_midill,
+    text_title: icelandicSattrs.text_title,
+    text_url: icelandicSattrs.text_url,
+    text_speakerurl: icelandicSattrs.text_speakerurl,
+    text_speaker: icelandicSattrs.text_speaker,
+    text_speakerurl: {
+        label: "text_speakerurl",
+        displayType: "hidden"
+    },
+    text_speaker: {
+        label: "text_speaker",
+        hideSidebar: "true"
     }
 }
 
