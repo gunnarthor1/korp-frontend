@@ -112,22 +112,24 @@ html
                           button.btn.btn-sm.btn-default {{'statstable_gen_export' | loc:lang}}
                         a#exportButton.btn.btn-sm.btn-default
                           | {{'statstable_export' | loc:lang}}
-                uib-tab(ng-if="_settings.wordpicture != false",
-                    wordpic-ctrl,
-                    select="instance.onentry()",
-                    deselect="instance.onexit()",
-                    index=3)
-                  uib-tab-heading(ng-class="{not_loading: progress > 99, loading : loading}")
-                    | {{'word_picture' | loc:lang}}
-                    tab-preloader(ng-if="loading", value="progress", spinner="instance.countCorpora() < 2")
-                  div()
-                    include includes/word_picture
-                uib-tab(ng-if="_settings.enableMap != false" map-ctrl, index=1)
-                  uib-tab-heading(ng-class="{not_loading: progress > 99, loading : loading}")
-                    | {{'map' | loc:lang }}
-                    tab-preloader(ng-if="loading", value="progress", spinner="countCorpora() < 2")
-                  div()
-                    include includes/mapresult
+                //- TODO LAGA ORÐAMYND OG KORT ??
+                //-   ORÐAMYND OG KORT FALIN Í BILI
+                //- uib-tab(ng-if="_settings.wordpicture != false",
+                //-     wordpic-ctrl,
+                //-     select="instance.onentry()",
+                //-     deselect="instance.onexit()",
+                //-     index=3)
+                //-   uib-tab-heading(ng-class="{not_loading: progress > 99, loading : loading}")
+                //-     | {{'word_picture' | loc:lang}}
+                //-     tab-preloader(ng-if="loading", value="progress", spinner="instance.countCorpora() < 2")
+                //-   div()
+                //-     include includes/word_picture
+                //- uib-tab(ng-if="_settings.enableMap != false" map-ctrl, index=1)
+                //-   uib-tab-heading(ng-class="{not_loading: progress > 99, loading : loading}")
+                //-     | {{'map' | loc:lang }}
+                //-     tab-preloader(ng-if="loading", value="progress", spinner="countCorpora() < 2")
+                //-   div()
+                //-     include includes/mapresult
 
                 include includes/dynamic_result_tabs
 

@@ -534,24 +534,25 @@ var icelandicSattrs = {
     text_author: {
         label: "text_author"
     },
-    // text_datefrom: {
-    //     label: "text_date_from",
-    //     hideSidebar: "true"
-    // },
-    // text_dateto: {
-    //     label: "text_date_to",
-    //     hideSidebar: "true"
-    // },
-    // text_timefrom: {
-    //     label: "text_time_from",
-    //     hideSidebar: "true"
-    // },
-    // text_timeto: {
-    //     label: "text_time_to",
-    //     hideSidebar: "true"
-    // },
+    text_datefrom: {
+        label: "text_date_from",
+        displayType: "hidden"
+    },
+    text_dateto: {
+        label: "text_date_to",
+        displayType: "hidden"
+    },
+    text_timefrom: {
+        label: "text_time_from",
+        displayType: "hidden"
+    },
+    text_timeto: {
+        label: "text_time_to",
+        displayType: "hidden"
+    },
     text_date: {
-        label: "text_date"
+        label: "text_date",
+        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
     },
     text_midill: {
         label: "text_midill"
@@ -578,14 +579,14 @@ var icelandicCustomAttrs = {
     thingmadur: {
         label: 'thingmadur',
         customType: 'struct',
-        pattern: "<p><span rel='localize[text_speaker]'></span>: <a href='<%=struct_attrs.text_speakerurl%>'><%=struct_attrs.text_speaker%></a></p>"
+        pattern: "<p><span rel='localize[text_speaker]'></span>: <a target='_blank' href='<%=struct_attrs.text_speakerurl%>'><%=struct_attrs.text_speaker%></a></p>"
         // pattern: "<p>works!</p>"
     },
     article: {
         label: 'article',
         customType: 'struct',
         // pattern: "<p>HELLO WORLD</p>"
-        pattern: "<p><span rel='localize[text_title]'></span>: <a href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>"
+        pattern: "<p><span rel='localize[text_title]'></span>: <a target='_blank' href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>"
     }
 }
 

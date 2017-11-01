@@ -135,7 +135,7 @@ class model.KWICProxy extends BaseProxy
         if data.cqp
             data.cqp = @expandCQP data.cqp
         @prevCQP = data.cqp
-        data.show = (_.uniq ["sentence"].concat(data.show)).join(",")
+        data.show = (_.uniq [].concat(data.show)).join(",")
         c.log "data.show", data.show
         data.show_struct = (_.uniq data.show_struct).join(",")
         @prevRequest = data

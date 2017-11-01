@@ -177,7 +177,7 @@
     "statistics": "Tölfræði",
     "word_picture": "Orðamynd",
     "map": "Kort",
-    "sort_default": "flokka innan málheilda",
+    "sort_default": "röðun innan málheilda",
     "within": "innan",
     "context": "samhengi",
     "only_support": "Aðeins fyrir studdar málheildir.",
@@ -189,9 +189,9 @@
     "within_warn": "valdar málheildir styðja ekki allar útvíkkað samhengi",
     "asterix": "*",
     "appearance_context": "ekki flokkað",
-    "word_context": "passandi orð",
-    "left_context": "vinstra samhengi",
-    "right_context": "hægra samhengi",
+    "word_context": "miðast við leitarorð",
+    "left_context": "eftir undanfarandi umhverfi",
+    "right_context": "eftir eftirfarandi umhverfi",
     "random_context": "af handahófi",
     "loading": "Leitar...",
     "autocomplete_header": "er orðmynd í",
@@ -339,5 +339,7 @@
     "choose_lemgram": "Velja ??lemgram??",
     "login_needed_for_corpora": "Nauðsynlegt að skrá sig inn til að fá aðgang að",
 
-    "stats_warn": "Tölfræðiúrvinnsla er ekki virk"
+    "stats_warn": "Tölfræðiúrvinnsla er ekki virk",
+    "prefix": "upphaf",
+    "suffix": "endir"
 }
