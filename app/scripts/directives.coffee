@@ -546,7 +546,7 @@ korpApp.directive "kwicPager", () ->
          ng-model="pageObj.pager"
          ng-click="pageChange($event, pageObj.pager)"
          max-size="15"
-         items-per-page="::hitsPerPage"
+         items-per-page="pagerHitsPerPage"
          previous-text="‹" next-text="›" first-text="«" last-text="»"
          boundary-links="true"
          rotate="false"
@@ -578,7 +578,7 @@ korpApp.directive "autoc", ($q, $http, $timeout, lexicons) ->
             <script type="text/ng-template" id="lemgramautocomplete.html">
                 <a style="cursor:pointer">
                     <span ng-class="{'autocomplete-item-disabled' : match.model.count == 0, 'none-to-find' : (match.model.variant != 'dalin' && match.model.count == 0)}">
-                        <span ng-if="match.model.parts.namespace" class="label">{{match.model.parts.namespace | loc}}</span>
+                        <span ng-if="match.model.parts.namespace" class="label lemgram-namespace">{{match.model.parts.namespace | loc}}</span>
                         <span>{{match.model.parts.main}}</span>
                         <sup ng-if="match.model.parts.index != 1">{{match.model.parts.index}}</sup>
                         <span ng-if="match.model.parts.pos">({{match.model.parts.pos}})</span>
@@ -622,7 +622,7 @@ korpApp.directive "autoc", ($q, $http, $timeout, lexicons) ->
                 })
 
         scope.lemgramify = (lemgram) ->
-            lemgramRegExp = /([^_\.-]*--)?([^-]*)\.\.(\w+)\.(\d\d?)/
+            lemgramRegExp = /([^_\.-]*--)?(.*)\.\.(\w+)\.(\d\d?)/
             match = lemgram.match lemgramRegExp
             unless match then return false
             return {

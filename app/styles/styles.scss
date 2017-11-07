@@ -2756,8 +2756,14 @@ li.active a span .num-to-find {
             padding: 2px 1px;
             white-space: nowrap;
         }
+        .checked {
+            color: white;
+        }
         .selected {
             background: #f2f7ff;
+            .checked {
+                color: black;
+            }
         }
     }
     .empty-attribute-list {
@@ -2861,4 +2867,12 @@ li.active a span .num-to-find {
 
 .show-graph-btn.disabled {
   pointer-events: auto;
+}
+
+.strix-link {
+    margin-top: 20px;
+}
+
+.lemgram-namespace {
+    color: #777777;
 }

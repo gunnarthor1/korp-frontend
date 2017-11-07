@@ -169,7 +169,7 @@ class model.LemgramProxy extends BaseProxy
             command: "relations"
             word: word
             corpus: settings.corpusListing.stringifySelected()
-            incremental: $.support.ajaxProgress
+            incremental: true
             type: type
             max : 1000
         @prevParams = params
@@ -244,11 +244,13 @@ class model.StatsProxy extends BaseProxy
                 minWidth : minWidth
 
         groups = _.groupBy _.keys(data.total.absolute), (item) ->
+            item.replace(/(:.+?)(\/|$| )/g, "$2")
             fields = item.split("/")
             newFields = []
             for [reduceVal, field] in _.zip reduceVals, fields
-                if reduceVal in ["saldo", "prefix", "suffix", "lex", "lemma"]
+                if reduceVal in ["saldo", "prefix", "suffix", "lex", "lemma", "sense", "text_swefn", "text_blingbring"]
                     newFields.push field.replace(/(:.+?)($| )/g, "$2")
+                    
                 else
                     newFields.push field
             newFields.join("/")
@@ -288,7 +290,7 @@ class model.StatsProxy extends BaseProxy
             groupby: reduceVals.join ','
             cqp: @expandCQP cqp
             corpus: settings.corpusListing.stringifySelected(true)
-            incremental: $.support.ajaxProgress
+            incremental: true
         _.extend parameters, settings.corpusListing.getWithinParameters()
         if ignoreCase
             _.extend parameters, {ignore_case: "word"}
@@ -312,8 +314,10 @@ class model.StatsProxy extends BaseProxy
 
         data = @makeParameters(reduceVals, cqp, ignoreCase)
 
+        wordAttrs = settings.corpusListing.getCurrentAttributes(settings.corpusListing.getReduceLang())
+        structAttrs = settings.corpusListing.getStructAttrs(settings.corpusListing.getReduceLang())
         data.split = _.filter(reduceVals, (reduceVal) ->
-            settings.corpusListing.getCurrentAttributes(settings.corpusListing.getReduceLang())[reduceVal]?.type == "set").join(',')
+            return wordAttrs[reduceVal]?.type == "set" or structAttrs[reduceVal]?.type == "set").join(',')
 
         rankedReduceVals = _.filter reduceVals, (reduceVal) ->
             settings.corpusListing.getCurrentAttributes(settings.corpusListing.getReduceLang())[reduceVal]?.ranked
@@ -501,7 +505,7 @@ class model.GraphProxy extends BaseProxy
             cqp : @expandCQP cqp
             corpus : corpora
             granularity : @granularity
-            incremental: $.support.ajaxProgress
+            incremental: true
 
         if from
             params.from = from
