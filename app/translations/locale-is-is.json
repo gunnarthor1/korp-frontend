@@ -72,7 +72,7 @@
     "log_out": "Skrá út",
     "strict": "strangt",
     "import_chain": "Sparv",
-    "show_deptree": "??Show Dependency Tree??",
+    "show_deptree": "Show ??Dependency Tree??",
     "dep_tree": "??Dependency Tree??",
     "download": "Hala niður sem",
 
@@ -142,7 +142,7 @@
 
     "simple": "Einföld",
     "detailed": "Útvíkkuð",
-    "advanced": "Ítarleg",
+    "advanced": "CQP-fyrirspurn",
     "parallel": "Samhliða",
     "compare": "Bera saman",
     "swe": "sænska",
@@ -204,7 +204,7 @@
     "line": "Lína",
     "bar": "Súla",
     "table": "Tafla",
-    "smoothing": "??Smoothing??",
+    "smoothing": "Jöfnun",
     "show_diagram": "??Show Trend Diagram??",
     "non_time_before": "Upplýsingar um tíma vantar fyrir ",
     "non_time_after": "af völdum gögnum.",
@@ -249,9 +249,9 @@
     "compare_name": "Nafn",
     "compare_save": "Vista",
 
-    "compare_distinctive": "??Prominent in??",
+    "compare_distinctive": "Kemur fyrir í",
 
-    "msd_long": "??Morphosyntactic description??",
+    "msd_long": "??Morphosyntactic?? lýsing",
 
     "corpselector_allselected": " valdar málheildir (allar)",
     "corpselector_noneselected": "Engin málheild valin",
@@ -259,13 +259,14 @@
     "corpselector_selectedmultiple": " málheildir valdar",
     "corpselector_buttonselectall": "Velja allar",
     "corpselector_buttonselectnone": "Velja enga",
-    "corpselector_numberoftokens": "Fjöldi ??tokens??",
+    "corpselector_numberoftokens": "Fjöldi tóka",
     "corpselector_numberofsentences": "Fjöldi setninga",
-    "corpselector_tokens": "??tokens??",
+    "corpselector_tokens": "tókum",
+    "corpselector_tokens_accusative": "tóka",
     "corpselector_sentences": "setningar",
     "corpselector_sentences_long": "setningar í völdum málheildum",
-    "corpselector_corporawith_sing": "málheild með",
-    "corpselector_corporawith_plur": "málheildir með",
+    "corpselector_corporawith_sing": "málheild sem innihalda",
+    "corpselector_corporawith_plur": "málheildir sem innihalda",
     "corpselector_lastupdate": "Síðast uppfært",
     "corpselector_supports": "Styður útviḱkað samhengi.",
     "corpselector_limited": "Málheildin er varin.",
@@ -286,8 +287,8 @@
     "statstable_hitsheader_lemgram": "Niðurstöður",
     "statstable_exp_csv": "CSV (gildi afmörkuð með semikommu)",
     "statstable_exp_tsv": "TSV (gildi afmörkuð með 'tab')",
-    "statstable_export": "??Export??",
-    "statstable_gen_export": "??Generate export??",
+    "statstable_export": "Útflutningur",
+    "statstable_gen_export": "Flytja út",
     "statstable_download": "Hala niður",
 
     "util_decimalseparator": ".",
@@ -296,7 +297,7 @@
     "hitspicture_hits": "niðurstöður",
     "hitspicture_gotocorpushits": "Smellið til að fara á fyrstu síðuna með niðurstöðum úr þessarri málheild.",
 
-    "hits_per_mil": "Niðurstöður á hverja milljón ??tokens??",
+    "hits_per_mil": "Fjöldi niðurstaðna á hverja milljón tóka",
 
     "chapter": "kafli",
     "verse": "vers",
@@ -319,12 +320,12 @@
 
     "download_kwic": "Hala síðu niður sem…",
     "formatdescr_json": "JavaScript Object Notation (hrá framsetning)",
-    "formatdescr_csv": "Kommuaðskilin gildi(CSV), ein setning á röð, t.d. til að færa inn í töflureikni. Hver röð inniheldur auðkenni málheildar, pörunarstaðsetningu, vinstra samhengi, passandi ??tokens??, hægra samhengi og textaeiginleika. pörunin og samhengin innihalda ??tokens?? án eiginleika.",
-    "formatdescr_csvp": "Kommuaðskilin gildi(CSV), einn ??token?? á röð, t.d. til að færa inn í töflureikni. Hver röð inniheldur einn texta??token?? með eiginleikum og mögulegan ??search hit indicator??. Á undan hverri fundinni setningu er lína með auðkenni málheildar, staðsetningu í málheild og textaeiginleikum setningar.",
-    "formatdescr_tsv": "??Tab-??aðskilin gildi(TSV), ein setning á línu, t.d. fyrir úrvinnslu í Unix textaúrvinnslutólum. Hver setning er á eigin línu með svæði sem innihalda auðkenni málheildar, pörunarstaðsetningu, vinstra samhengi, passandi ??tokens??, hægra samhengi og textaeiginleika. pörunin og samhengin innihalda ??tokens?? án eiginleika.",
-    "formatdescr_vrt": "VeRticalized Text: Inntakssnið fyrir Corpus Workbench: hver röð inniheldur einn ??token?? með eiginleikum, og skipan er afmörkuð með XML-legum einingum.",
-    "formatdescr_text": "Óbreyttur texti með paranir merktar: ein setning á línu, ??tokens??Plain text with matches marked: sentence per line, ??tokens?? án eiginleika, textaeiginleikar sýndir",
-    "formatdescr_annot": "Markaður texti sem Excel skjal (XLS), einn ??token?? á röð. Hver röð inniheldur einn ??token?? með eiginleikum og mögulegan ??search hit indicator??. Á undan hverri fundinni setningu er lína með auðkenni málheildar, staðsetningu í málheild og textaeiginleikum setningar.",
+    "formatdescr_csv": "Kommuaðskilin gildi(CSV), ein setning á röð, t.d. til að færa inn í töflureikni. Hver röð inniheldur auðkenni málheildar, pörunarstaðsetningu, vinstra samhengi, passandi tóka, hægra samhengi og textaeiginleika. pörunin og samhengin innihalda tóka án eiginleika.",
+    "formatdescr_csvp": "Kommuaðskilin gildi(CSV), einn tóki á röð, t.d. til að færa inn í töflureikni. Hver röð inniheldur einn textatóka með eiginleikum og mögulegan ??search hit indicator??. Á undan hverri fundinni setningu er lína með auðkenni málheildar, staðsetningu í málheild og textaeiginleikum setningar.",
+    "formatdescr_tsv": "Tab-aðskilin gildi(TSV), ein setning á línu, t.d. fyrir úrvinnslu í Unix textaúrvinnslutólum. Hver setning er á eigin línu með svæði sem innihalda auðkenni málheildar, pörunarstaðsetningu, vinstra samhengi, passandi tóka, hægra samhengi og textaeiginleika. pörunin og samhengin innihalda tóka án eiginleika.",
+    "formatdescr_vrt": "VeRticalized Text: Inntakssnið fyrir Corpus Workbench: hver röð inniheldur einn tóka með eiginleikum, og skipan er afmörkuð með XML-legum einingum.",
+    "formatdescr_text": "Óbreyttur texti með paranir merktar: ein setning á línu, tókar án eiginleika, textaeiginleikar sýndir",
+    "formatdescr_annot": "Markaður texti sem Excel skjal (XLS), einn tóki á röð. Hver röð inniheldur einn tóka með eiginleikum og mögulegan ??search hit indicator??. Á undan hverri fundinni setningu er lína með auðkenni málheildar, staðsetningu í málheild og textaeiginleikum setningar.",
     "formatdescr_nooj": "XML innflutningssnið fyrir NooJ hugbúnaðinn",
     "formatdescr_ref": "Tilvísanir í heimildaskrá sem Excel-skjal (XLS), þar sem hver setning er á eigin línu, og á eftir koma textaeiginleikar setninganna í næstu línum.",
 
@@ -334,7 +335,7 @@
     "global_filter": "Sía",
     "filter_add": "Bæta við",
 
-    "repeat_error": "Villa: Ekki hægt að endurtaka frá 0 fyrir alla ??tokens??.",
+    "repeat_error": "Villa: Ekki hægt að endurtaka frá 0 fyrir alla tókar.",
 
     "choose_lemgram": "Velja ??lemgram??",
     "login_needed_for_corpora": "Nauðsynlegt að skrá sig inn til að fá aðgang að",

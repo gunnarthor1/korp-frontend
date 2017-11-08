@@ -538,7 +538,7 @@ settings.corpora["visindavefur"] = {
 settings.corpora["heimur"] = {
     id: "heimur",
     title: "Heimur",
-    description: "TODO",
+    description: "Pistlar af vefsíðu útáfyrirtækisins Heims, heimur.is",
     context: defaultContext,
     within: {
         "paragraph": "paragraph",
@@ -598,7 +598,7 @@ settings.corpora["heimur"] = {
 settings.corpora["silfuregils"] = {
     id: "silfuregils",
     title: "Silfur Egils",
-    description: "TODO",
+    description: "Textar frá bloggi Egils Helgasonar",
     context: defaultContext,
     within: {
         "paragraph": "paragraph",
@@ -613,7 +613,7 @@ settings.corpora["silfuregils"] = {
 settings.corpora["pressan"] = {
     id: "pressan",
     title: "Pressan.is",
-    description: "TODO",
+    description: "Textar frá vefmiðlum Pressunnar, pressan.is",
     context: defaultContext,
     within: {
         "paragraph": "paragraph",
