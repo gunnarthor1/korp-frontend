@@ -109,7 +109,7 @@ class window.CorpusListing
 
     getDefaultFilters: () ->
         return @_getFilters "intersection", "defaultFilters"
-        
+
     getCurrentFilters: () ->
         return @_getFilters settings.filterSelection, "showFilters"
 
@@ -128,7 +128,7 @@ class window.CorpusListing
                             corpora: [corpus.id]
                     else
                         attrs[filter].corpora.push corpus.id
-        
+
 
         if selection is "intersection"
             attrNames2 = []
@@ -801,11 +801,13 @@ util.loadCorpora = ->
             #{maybeInfo}
             <br/><br/>#{baseLangTokenHTML}
             #{util.getLocaleString("corpselector_numberoftokens")}:
-            <b>#{util.prettyNumbers(numTokens)}</b>#{lang}
-            <br/>#{baseLangSentenceHTML}
-            #{util.getLocaleString("corpselector_numberofsentences")}:
-            <b>#{sentenceString}</b>#{lang}
-            <br/>
+            <b>#{util.prettyNumbers(numTokens)}</b>#{lang}"""
+            if (sentenceString != "-")
+                output += """
+                    <br/>#{baseLangSentenceHTML}
+                    #{util.getLocaleString("corpselector_numberofsentences")}:
+                    <b>#{sentenceString}</b>#{lang}"""
+            output += """<br/>
             #{util.getLocaleString("corpselector_lastupdate")}:
             <b>#{lastUpdate}</b>
             <br/><br/>"""
@@ -839,7 +841,7 @@ util.loadCorpora = ->
                 glueString = util.getLocaleString("corpselector_corporawith_sing")
             else
                 glueString = util.getLocaleString("corpselector_corporawith_plur")
-            "<b><img src=\"img/folder.png\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens") + "<br/><b>" + totalSentencesString + "</b> " + util.getLocaleString("corpselector_sentences")
+            "<b><img src=\"img/folder.png\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens_accusative") + "<br/><b>" + totalSentencesString + "</b> " + util.getLocaleString("corpselector_sentences")
     ).bind("corpuschooserchange", (evt, corpora) ->
         c.log "corpuschooserchange", corpora
 

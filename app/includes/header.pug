@@ -22,12 +22,13 @@
         a(href='https://spraakbanken.gu.se/swe/forskning/infrastruktur/korp/anvandarhandledning', target='_blank') {{'docs' | loc:lang}}
       li#korplink
         a(href='/korp') {{'korp' | loc:lang}}
-      li#korplablink
-        a(href='/korplabb') {{'korp_lab' | loc:lang}}
+      //- li#korplablink
+      //-   a(href='/korplabb') {{'korp_lab' | loc:lang}}
+      // TODO Bæta við hlekkjum á önnur tól árnastofnunar hér
       li
         a(href='https://spraakbanken.gu.se/sparv', target='_blank') {{'import_chain' | loc:lang}}
-    #news_area
-      div(news-desk="", header="'newsdesk-header'", storage="'korp_last_read_newsitem'")
+    //- #news_area
+    //-   div(news-desk="", header="'newsdesk-header'", storage="'korp_last_read_newsitem'")
     #log_out.link(ng-click="logout()", ng-if="loggedIn")
       span 
         | {{'log_out' | loc:lang}}   
