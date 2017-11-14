@@ -3,7 +3,7 @@ var settings = {};
 
 var isLab = window.isLab || false;
 
-settings.autocomplete = true;
+settings.autocomplete = false;
 settings.enableMap = !isLab;
 settings.mapPosTag = ["PM", "NNP", "NNPS"]
 settings.newMapEnabled = isLab;
@@ -115,23 +115,24 @@ settings.wordPictureConf = {
 settings.visibleModes = 6
 settings.modeConfig = [
     {
-        localekey: "modern_texts",
+        localekey: "risamalheild",
         mode: "default"
-    },
-    {
-        localekey: "parallel_texts",
-        mode: "parallel"
-    }
+    }//,
+    // {
+    //     localekey: "parallel_texts",
+    //     mode: "parallel"
+    // }
 ];
 
 settings.primaryColor = "rgb(221, 233, 255)";
 settings.primaryLight = "rgb(242, 247, 255)";
 
-settings.defaultOverviewContext = "1 sentence"
+settings.defaultOverviewContext = "7 words"
 settings.defaultReadingContext = "1 paragraph"
 
 settings.defaultWithin = {
-    "sentence": "sentence"
+    "paragraph": "paragraph",
+    "text": "text"
 };
 
 // for optimization purposes

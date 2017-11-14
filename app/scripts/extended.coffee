@@ -122,6 +122,7 @@ korpApp.factory "extendedComponents", () ->
             $scope.orObj.flags = flags
 
             $scope.case = "insensitive"
+        $scope.makeInsensitive() # Default is case insensitive
 
         $scope.updateValue = () ->
             $scope.orObj.op = '*='

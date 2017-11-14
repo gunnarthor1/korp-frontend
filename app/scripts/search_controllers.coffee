@@ -76,6 +76,10 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
             $location.search 'stats_reduce_insensitive', null
     ), true
 
+    # setupContext = () ->
+    #     $scope.getContextFormat = (val) ->
+    #         if val == $scope.context
+
     setupHitsPerPage = () ->
         $scope.getHppFormat = (val) ->
             if val == $scope.hitsPerPage
@@ -102,6 +106,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
             "left": "left_context"
             "right": "right_context"
             "random": "random_context"
+            "_.date": "date_context"
         $scope.kwicSortValues = _.keys kwicSortValueMap
 
         $scope.getSortFormat = (val) ->

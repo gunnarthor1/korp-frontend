@@ -53,10 +53,10 @@ div(ng-controller="SearchCtrl", click-cover="noCorporaSelected")
 
           //- reduce-select(reduce-items="currentAttrs", reduce-selected="selectedAttrs", reduce-lang="lang", style='width: 150px')
 
-          button.btn.btn-sm.btn-default.search(ng-click='sendCompare()') {{'compare_vb' | loc:lang}}
+          button.btn.btn-sm.btn-default.search(ng-click='sendCompare()') {{'compare_action' | loc:lang}}
   #search_options.ui-widget-content.ui-corner-bottom(click-cover="isCompareSelected", ng-style="{'background-color': settings.primaryLight}")
     div
-      span(style='font-size: .9em;') KWIC: 
+      span(style='font-size: .9em;') {{"KWIC" | loc:lang}}: 
       select(ng-model='hitsPerPage' ng-options='getHppFormat(val) for val in hitsPerPageValues track by val')
       select(ng-model='kwicSort' ng-options='getSortFormat(val) for val in kwicSortValues track by val')
 

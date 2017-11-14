@@ -25,8 +25,8 @@
       //- li#korplablink
       //-   a(href='/korplabb') {{'korp_lab' | loc:lang}}
       // TODO Bæta við hlekkjum á önnur tól árnastofnunar hér
-      li
-        a(href='https://spraakbanken.gu.se/sparv', target='_blank') {{'import_chain' | loc:lang}}
+      //- li
+      //-   a(href='https://spraakbanken.gu.se/sparv', target='_blank') {{'import_chain' | loc:lang}}
     //- #news_area
     //-   div(news-desk="", header="'newsdesk-header'", storage="'korp_last_read_newsitem'")
     #log_out.link(ng-click="logout()", ng-if="loggedIn")
@@ -35,10 +35,10 @@
       span {{username}}
     #languages
       a(data-mode='is-is', ng-click="lang = 'is-is'") {{'icelandic' | loc:lang}}
-      a(data-mode='sv', ng-click="lang = 'sv'") {{'swedish' | loc:lang}}
+      //- a(data-mode='sv', ng-click="lang = 'sv'") {{'swedish' | loc:lang}}
       a(data-mode='en', ng-click="lang = 'en'") {{'english' | loc:lang}}
-    #login
-      a(ng-click="showLogin()", ng-show="!loggedIn") {{'log_in' | loc:lang}}
+    //- #login
+    //-   a(ng-click="showLogin()", ng-show="!loggedIn") {{'log_in' | loc:lang}}
 
     .clearfix
   #header_left
@@ -59,9 +59,10 @@
         .clearfix
     .popupchecks.ui-corner-bottom
       .header
-        #time
-          #time_graph
-          #rest_time_graph
+        //- TODO fix time search in backend
+        //- #time
+        //-   #time_graph
+        //-   #rest_time_graph
         .buttons
           button.btn.btn-default.btn-sm.selectall
             span.fa.fa-check

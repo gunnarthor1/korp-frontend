@@ -5,6 +5,9 @@ settings.globalFilterCorpora = ["ivip"]
 
 settings.hitsPerPageDefault = 25
 settings.hitsPerPageValues = [10,25,50,75,100,500,1000]
+settings.contextValues = [5,7,10,15,20]
+
+settings.inputCaseInsensitiveDefault = true
 
 settings.corporafolders.frettir = {
     title: "Fréttamiðlar",
@@ -72,6 +75,21 @@ settings.corpora["ruv"] = {
     id: "ruv",
     title: "Rúv.is",
     description: "Fréttir af vefútgáfu fréttastofu Ríkisútvarpsins.",
+    context: defaultContext,
+    within: {
+        "paragraph": "paragraph",
+        "text": "text"
+    },
+    attributes: icelandicAttrs,
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
+}
+settings.corpora["dfs"] = {
+    id: "dfs",
+    title: "Fréttavefur suðurlands",
+    description: "Fréttir af fréttavef Suðurlands.",
     context: defaultContext,
     within: {
         "paragraph": "paragraph",
@@ -631,19 +649,5 @@ settings.corpora["pressan"] = {
  */
 settings.preselectedCorpora = ["kjarninn","jonas","visir"];
 
-//
-// settings.corpora["magmakolumner"] = {
-//     id: "magmakolumner",
-//     title: "Magma kolumner 2009–2012",
-//     description: "Material ur kolumner publicerade av <a target=\"_blank\" href=\"http://www.magma.fi\">Tankesmedjan Magma</a>",
-//     within: spWithin,
-//     context: spContext,
-//     attributes: modernAttrs,
-//     structAttributes: {
-//         text_author: {label: "author"},
-//         text_title: {label: "title"},
-//         text_date: {label: "date"}
-//     }
-// };
 
 settings.corpusListing = new CorpusListing(settings.corpora);

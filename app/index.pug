@@ -21,8 +21,9 @@ html
 
 
     link(rel='stylesheet', type='text/css', href='styles/styles.css')
+    //- TODO Breyta icon í rétt merki
     link(rel='shortcut icon', type='image/ico', href='img/korp_icon.ico')
-    title Korp
+    title Risamálheild
 
   body(style="opacity: 0;")
     noscript
@@ -43,7 +44,7 @@ html
                     index=0
                 )
                   uib-tab-heading(ng-class="{not_loading: progress > 99, loading : loading}")
-                    | KWIC
+                    | {{'KWIC' | loc:lang}}
                     tab-preloader(ng-if="loading", value="progress", spinner="instance.countCorpora() < 2")
                   .results-kwic(ng-class="{reading_mode : reading_mode, loading: loading}", constr='KWICResults', constr-name='kwicResults')
                     include includes/kwicresult
@@ -74,6 +75,7 @@ html
                     warning(ng-if="showStatistics && aborted && !loading")
                       | {{'search_aborted' | loc:lang}}
                     div(ng-show="showStatistics && hasResult")
+                      //- TODO Set up db for diagram or fix search method.
                       .stats_header
                         button#showGraph.btn.btn-sm.btn-default(ng-class="{disabled: !graphEnabled}", class="show-graph-btn"
                           uib-tooltip="{{'material_warn' | loc:lang}}", tooltip-placement="right" tooltip-enable="!graphEnabled"
