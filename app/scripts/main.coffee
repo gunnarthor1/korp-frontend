@@ -41,12 +41,6 @@ $(document).keyup (event) ->
         lemgramResults?.abort()
         statsResults?.abort()
 
-$(window).resize (event) ->
-    if $(window).width() > 1050
-        $(".logos").show()
-    else
-        $(".logos").hide()
-
 $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     c.log "preloading done, t = ", $.now() - t
 

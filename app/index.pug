@@ -59,16 +59,13 @@ html
                     tab-preloader(ng-if="loading", value="progress", spinner="instance.countCorpora() < 2")
                   div(constr='StatsResults', constr-name='statsResults')
 
-                    div(ng-if="!inOrder && !hasResult")
-                      | {{'stats_not_in_order_warn' | loc:lang}}
-
                     div(ng-if="!showStatistics")
                       | {{'stats_warn' | loc:lang}}
                       div
                         button.btn.btn-sm.btn-default.activate_word_pic(ng-click="activate()")
                           | {{'word_pic_warn_btn' | loc:lang}}
 
-                    div(ng-if="showStatistics && !hasResult && inOrder")
+                    div(ng-if="showStatistics && !hasResult")
                       div
                         button.btn.btn-sm.btn-default.activate_word_pic(ng-click="activate()")
                           | {{'update_btn' | loc:lang}}
@@ -239,7 +236,6 @@ html
     script(src='config.js')
     // build:js scripts/scripts.js
     script(src='config/statistics_config.js')
-    script(src='scripts/bin/statistics.js')
     script(src='scripts/cqp_parser/CQPParser.js')
     script(src='scripts/bin/cqp_parser/cqp.js')
     script(src='scripts/bin/util.js')

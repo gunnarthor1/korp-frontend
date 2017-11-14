@@ -593,15 +593,6 @@ table {
   position: relative;
   top: 54px;
   margin-left: 10px;
-  font-weight: bold;
-  color: #555;
-  &:hover {
-    color: #333;
-  }
-  .plus-btn {
-      position: relative;
-      top: 3px;
-  }
 }
 
 .token_container {
@@ -623,18 +614,6 @@ table {
     vertical-align: top;
     border: 1px solid #999;
     box-shadow: 2px 2px 3px grey;
-  }
-
-  .remove_arg {
-    position: relative;
-    top: 15px;
-    opacity: 1;
-    transition: opacity 200ms ease;
-  }
-
-  .insert_arg {
-    float: left;
-    height: 20px;
   }
 
     .query_token {
@@ -732,36 +711,25 @@ table {
         -moz-appearance: textfield;
       }
     }
-  .token_header {
-    padding-bottom : 3px;
-    cursor: move;
-  }
-  .token_footer {
-    font-size: .8em;
-    button {
-      width: 20px;
-      height: 20px;
-      float: right;
-      i {
-        position: relative;
-        top: 0px;
-        left: -2px;
-        font-size: 14px;
+
+    .token_header {
+      padding-bottom : 3px;
+      cursor: move;
+    }
+    .token_footer {
+      font-size: .8em;
+      button {
+        width: 20px;
+        height: 20px;
+        float: right;
+        i {
+          position: relative;
+          top: 0px;
+          left: -2px;
+          font-size: 14px;
+        }
       }
     }
-  }
-  .token-cog-btn {
-    width: 20px;
-    height: 20px;
-    float: right;
-    i {
-      position: relative;
-      top: 0px;
-      left: -2px;
-      font-size: 14px;
-    }
-  }
-
 
     .close_token {
       border-radius: 20px;
@@ -1185,10 +1153,11 @@ table {
   display: inline-block !important;
   vertical-align: middle;
   height: 12px;
-  width: 20px;
-  background-size: 20px;
+  width: 15px;
+  background-size: 15px;
   margin-left: 2em;
   position: relative;
+  top: 2px;
   cursor: pointer;
 }
 
@@ -2906,13 +2875,4 @@ li.active a span .num-to-find {
 
 .lemgram-namespace {
     color: #777777;
-}
-
-.logos {
-    position: absolute;
-    right: 160px;
-    img {
-        padding:5px;
-        height: 68px;
-    }
 }
