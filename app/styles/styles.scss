@@ -739,9 +739,6 @@ table {
   .token_footer {
     font-size: .8em;
     button {
-      width: 20px;
-      height: 20px;
-      float: right;
       i {
         position: relative;
         top: 0px;
@@ -751,6 +748,7 @@ table {
     }
   }
   .token-cog-btn {
+    margin-top: 4px;
     width: 20px;
     height: 20px;
     float: right;
