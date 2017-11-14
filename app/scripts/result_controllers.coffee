@@ -281,6 +281,12 @@ korpApp.directive "statsResultCtrl", () ->
         s.$watch (() -> $location.search().hide_stats), (val) ->
             s.showStatistics = not val?
 
+        s.$watch (() -> $location.search().in_order), (val) ->
+            s.inOrder = not val?
+
+        s.shouldSearch = () ->
+            return s.showStatistics and s.inOrder
+
         $scope.activate = () ->
             $location.search("hide_stats", null)
             cqp = searches.getCqpExpr()
@@ -326,9 +332,10 @@ korpApp.directive "statsResultCtrl", () ->
                     continue
                 row = s.instance.getDataAt(rowIx)
                 searchParams = s.instance.searchParams
-                cqp = statisticsFormatting.getCqp searchParams.reduceVals, row.hit_value, searchParams.ignoreCase
-                texts = statisticsFormatting.getTexts searchParams.reduceVals, row.hit_value, searchParams.corpora
-                cqpExprs[cqp] = texts.join ", "
+                cqp = statisticsFormatting.getCqp row.statsValues, searchParams.ignoreCase
+                parts = for reduceVal in searchParams.reduceVals
+                    row.formattedValue[reduceVal]
+                cqpExprs[cqp] = parts.join ", "
 
             selectedAttributes = _.filter(s.mapAttributes, "selected")
             if selectedAttributes.length > 1
@@ -569,7 +576,7 @@ korpApp.directive "compareCtrl", () ->
                         else
                             val = attrVal[0]
 
-                        if type == "set" and val == "|"
+                        if type == "set" and (val == "|" or val == "")
                             return "ambiguity(#{attrKey}) = 0"
                         else
                             return "#{attrKey} #{op} \"#{val}\""

@@ -345,5 +345,13 @@
 
     "stats_warn": "Tölfræðiúrvinnsla er ekki virk",
     "prefix": "upphaf",
-    "suffix": "endir"
+    "suffix": "endir",
+    "stats_not_in_order_warn": "Tölfræðiúrvinnsla er ekki virk þegar slökkt er á \"í réttri röð\".",
+
+    "read_in_strix": "Lesa þennan texta í Strix",
+    "add_token": "Bæta við tóka",
+
+    "in_order_chk": "í réttri röð",
+    "prefix_chk": "fyrsti hluti",
+    "suffix_chk": "síðasti hluti"
 }
