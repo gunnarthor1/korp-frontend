@@ -46,10 +46,19 @@
             </div>
 
             <div class="token_footer">
-                <div>
-                    <img src="img/plus.png" class="image_button insert_arg" ng-click="addAnd(token)">
-
-                    <button popper class="btn btn-xs btn-default"><i class="fa fa-cog"></i></button>
+                <div class="token_footer_buttons">
+                    <button class="insert_arg btn btn-xs btn-default" ng-click="addAnd(token)">
+                        <i class="fa fa-arrow-down"></i>
+                        <span style="margin-left: 1px;position: relative;top: -1px;">{{"and" | loc:lang}}</span>
+                    </button>
+                    <div class="repeat" ng-show="token.repeat">
+                        <span rel="localize[repeat]">{{'repeat' | loc:lang}}</span>
+                        <input type="number" ng-model="token.repeat[0]" ng-change="repeatChange(0, $index)" ng-blur="repeatBlur(0, $index)" ng-class="{'input-error': repeatError}">
+                        <span rel="localize[to]">{{'to' | loc:lang}}</span>
+                        <input type="number" ng-model="token.repeat[1]" ng-change="repeatChange(1, $index)" ng-blur="repeatBlur(1, $index)">
+                        <span rel="localize[times]">{{'times' | loc:lang}}</span>
+                    </div>
+                    <button popper class="btn btn-xs btn-default token-cog-btn"><i class="fa fa-cog"></i></button>
                     <ul class="popper_menu dropdown-menu">
                         <li>
                             <a ng-click="toggleRepeat(token)" rel="localize[repeat]">{{'repeat' | loc:lang}}</a>
@@ -58,14 +67,6 @@
                         <li><a ng-click="toggleEnd(token)" rel="localize[sent_end]">{{'sent_end' | loc:lang}}</a></li>
                     </ul>
 
-                    <div class="repeat" ng-show="token.repeat">
-                        <span rel="localize[repeat]">{{'repeat' | loc:lang}}</span>
-                        <input type="number" ng-model="token.repeat[0]" ng-change="repeatChange(0, $index)" ng-blur="repeatBlur(0, $index)" ng-class="{'input-error': repeatError}">
-                        <span rel="localize[to]">{{'to' | loc:lang}}</span>
-                        <input type="number" ng-model="token.repeat[1]" ng-change="repeatChange(1, $index)" ng-blur="repeatBlur(1, $index)">
-                        <span rel="localize[times]">{{'times' | loc:lang}}</span>
-                    </div>
-                    <div style="clear:both;"></div>
                 </div>
 
                 <div class="lower_footer">
