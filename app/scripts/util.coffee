@@ -821,19 +821,19 @@ util.loadCorpora = ->
             corporaID = indata.corporaID
             desc = indata.description
             totalTokens = 0
-            totalSentences = 0
-            missingSentenceData = false
+            totalParagraphs = 0
+            missingParagraphData = false
             $(corporaID).each (key, oneID) ->
                 totalTokens += parseInt(settings.corpora[oneID]["info"]["Size"])
-                oneCorpusSentences = settings.corpora[oneID]["info"]["Sentences"]
-                if oneCorpusSentences
-                    totalSentences += parseInt(oneCorpusSentences)
+                oneCorpusParagraphs = settings.corpora[oneID]["info"]["Paragraphs"]
+                if oneCorpusParagraphs
+                    totalParagraphs += parseInt(oneCorpusParagraphs)
                 else
-                    missingSentenceData = true
+                    missingParagraphData = true
                 return
 
-            totalSentencesString = util.prettyNumbers(totalSentences.toString())
-            totalSentencesString += "+" if missingSentenceData
+            totalParagraphsString = util.prettyNumbers(totalParagraphs.toString())
+            totalParagraphsString += "+" if missingParagraphData
             maybeInfo = ""
             maybeInfo = desc + "<br/><br/>" if desc and desc isnt ""
             glueString = ""
@@ -841,7 +841,7 @@ util.loadCorpora = ->
                 glueString = util.getLocaleString("corpselector_corporawith_sing")
             else
                 glueString = util.getLocaleString("corpselector_corporawith_plur")
-            "<b><img src=\"img/folder.png\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens_accusative") + "<br/><b>" + totalSentencesString + "</b> " + util.getLocaleString("corpselector_sentences")
+            "<b><img src=\"img/folder.png\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens_accusative") + "<br/><b>" + totalParagraphsString + "</b> " + util.getLocaleString("corpselector_paragraphs")
     ).bind("corpuschooserchange", (evt, corpora) ->
         c.log "corpuschooserchange", corpora
 

@@ -120,7 +120,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
             "left": "left_context"
             "right": "right_context"
             "random": "random_context"
-            "_.date": "date_context"
+            # "_.date": "date_context"
         $scope.kwicSortValues = _.keys kwicSortValueMap
 
         $scope.getSortFormat = (val) ->

@@ -10,7 +10,7 @@ var hp_corpusChooser = {
 		var self = this;
 
 		this.updateAllStates();
-		
+
 		// Make the popup disappear when the user clicks outside it
 		$(window).unbind('click.corpusselector');
 		$(window).bind('click.corpusselector', function(e) {
@@ -27,7 +27,7 @@ var hp_corpusChooser = {
 			function() { $(this).removeClass('ui-state-hover'); }
 		);
 
-		
+
 
 	},
 	isSelected: function(id) {
@@ -126,9 +126,9 @@ var hp_corpusChooser = {
 		var num_checked_checkboxes = checked_checkboxes.length;
 		var num_unchecked_checkboxes = $(".hplabel .unchecked").length;
 		var num_checkboxes = $(".hplabel .checkbox").length;
-		//if (num_unchecked_checkboxes == num_checkboxes) {
-		//	header_text_2 = 'corpselector_noneselected';
-		//} else 
+		if (num_unchecked_checkboxes == num_checkboxes) {
+			header_text_2 = 'corpselector_noneselected';
+		} else
 		if (num_checked_checkboxes == num_checkboxes && num_checkboxes > 1) {
 			header_text = num_checked_checkboxes;
 			header_text_2 = 'corpselector_allselected';
@@ -148,12 +148,12 @@ var hp_corpusChooser = {
 
 		// Number of tokens
 		var selectedNumberOfTokens = 0;
-        var selectedNumberOfSentences = 0;
+        var selectedNumberOfParagraphs = 0;
 		checked_checkboxes.each(function(key, corpItem) {
 			var corpusID = $(this).attr('id').slice(9);
 			selectedNumberOfTokens += parseInt(settings.corpora[corpusID]["info"]["Size"]);
-			var numSen = parseInt(settings.corpora[corpusID]["info"]["Sentences"]);
-			if(!isNaN(numSen)) selectedNumberOfSentences += numSen;
+			var numSen = parseInt(settings.corpora[corpusID]["info"]["Paragraphs"]);
+			if(!isNaN(numSen)) selectedNumberOfParagraphs += numSen;
 		});
 		var totalNumberOfTokens = this.totalTokenCount;
 
@@ -163,7 +163,8 @@ var hp_corpusChooser = {
 		$("#hp_corpora_title2").attr({"rel" : 'localize[' + header_text_2 + ']'});
 		$("#hp_corpora_title2").text(util.getLocaleString(header_text_2));
 		$("#hp_corpora_titleTokens").html(" — " + util.suffixedNumbers(selectedNumberOfTokens.toString()) + '<span rel="localize[corpselector_of]">' + util.getLocaleString("corpselector_of") + '</span>' + util.suffixedNumbers(totalNumberOfTokens.toString()) + " ").append($("<span>").localeKey("corpselector_tokens"));
-        $("#sentenceCounter").html(util.prettyNumbers(selectedNumberOfSentences.toString()) + " ").append($("<span>").localeKey("corpselector_sentences_long"));
+		$("#paragraphCounter").html(util.prettyNumbers(selectedNumberOfParagraphs.toString()) + " ").append($("<span>").localeKey("corpselector_paragraphs_long"));
+        // $("#sentenceCounter").html(util.prettyNumbers(selectedNumberOfSentences.toString()) + " ").append($("<span>").localeKey("corpselector_sentences_long"));
 	},
 	triggerChange : function() {
 		this._trigger("change", null, [this.selectedItems()]);
@@ -413,7 +414,7 @@ var hp_corpusChooser = {
 						outStr += recursive_transform(theHTML, levelindent + 1);
 						outStr += "</div>";
 					} else {
-						var disable = settings.corpora[$(this).attr('id')].limitedAccess === true && 
+						var disable = settings.corpora[$(this).attr('id')].limitedAccess === true &&
 							!authenticationProxy.hasCred($(this).attr('id'));
 
 						if(levelindent > 0) {
@@ -441,5 +442,3 @@ var hp_corpusChooser = {
 };
 
 $.widget("hp.corpusChooser", hp_corpusChooser); // create the widget
-
-

@@ -530,6 +530,21 @@ settings.corpora["eyjan"] = {
         article: icelandicCustomAttrs.article
     }
 }
+settings.corpora["eyjafrettir"] = {
+    id: "eyjafrettir",
+    title: "Eyjafréttir",
+    description: "Textar fengnir af vefútgáfu Eyjafrétta.",
+    context: defaultContext,
+    within: {
+        "paragraph": "paragraph",
+        "text": "text"
+    },
+    attributes: icelandicAttrs,
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
+}
 settings.corpora["wikipedia"] = {
     id: "wikipedia",
     title: "Wikipedia",
