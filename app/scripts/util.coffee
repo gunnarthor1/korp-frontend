@@ -787,11 +787,11 @@ util.loadCorpora = ->
                 baseLangTokenHTML = ""
                 baseLangSentenceHTML = ""
 
-            numSentences = corpusObj["info"]["Sentences"]
+            numParagraphs = corpusObj["info"]["Paragraphs"]
             lastUpdate = corpusObj["info"]["Updated"]
             lastUpdate = "?" unless lastUpdate
             sentenceString = "-"
-            sentenceString = util.prettyNumbers(numSentences.toString()) if numSentences
+            sentenceString = util.prettyNumbers(numParagraphs.toString()) if numParagraphs
 
             output = """
             <b>
@@ -805,7 +805,7 @@ util.loadCorpora = ->
             if (sentenceString != "-")
                 output += """
                     <br/>#{baseLangSentenceHTML}
-                    #{util.getLocaleString("corpselector_numberofsentences")}:
+                    #{util.getLocaleString("corpselector_numberofparagraphs")}:
                     <b>#{sentenceString}</b>#{lang}"""
             output += """<br/>
             #{util.getLocaleString("corpselector_lastupdate")}:
