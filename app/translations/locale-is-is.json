@@ -265,6 +265,7 @@
     "corpselector_buttonselectnone": "Velja enga",
     "corpselector_numberoftokens": "Fjöldi tóka",
     "corpselector_numberofsentences": "Fjöldi setninga",
+    "corpselector_numberofparagraphs": "Fjöldi efnisgreina",
     "corpselector_tokens": "tókum",
     "corpselector_tokens_accusative": "tóka",
     "corpselector_sentences": "setningar",

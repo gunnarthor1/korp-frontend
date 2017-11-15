@@ -546,7 +546,7 @@ util.getLocaleString = (key, lang) ->
 
 util.getLocaleStringUndefined = (key, lang) ->
     unless lang
-        lang = window.lang or settings.defaultLanguage or "sv"
+        lang = window.lang or settings.defaultLanguage or "is-is"
     try
         return loc_data[lang][key]
     catch e
@@ -782,16 +782,19 @@ util.loadCorpora = ->
                 baseLangSentenceHTML = """#{util.getLocaleString("corpselector_numberofsentences")}: <b>#{util.prettyNumbers(settings.corpora[baseLang].info.Sentences)}
                 </b> (#{util.getLocaleString(settings.corpora[baseLang].lang)})<br/>
                 """
+                baseLangParagraphHTML = """#{util.getLocaleString("corpselector_numberofparagraphs")}: <b>#{util.prettyNumbers(settings.corpora[baseLang].info.Paragraphs)}
+                </b> (#{util.getLocaleString(settings.corpora[baseLang].lang)})<br/>
+                """
             else
                 lang = ""
                 baseLangTokenHTML = ""
-                baseLangSentenceHTML = ""
+                baseLangParagraphHTML = ""
 
             numParagraphs = corpusObj["info"]["Paragraphs"]
             lastUpdate = corpusObj["info"]["Updated"]
             lastUpdate = "?" unless lastUpdate
-            sentenceString = "-"
-            sentenceString = util.prettyNumbers(numParagraphs.toString()) if numParagraphs
+            paragraphString = "-"
+            paragraphString = util.prettyNumbers(numParagraphs.toString()) if numParagraphs
 
             output = """
             <b>
@@ -802,11 +805,11 @@ util.loadCorpora = ->
             <br/><br/>#{baseLangTokenHTML}
             #{util.getLocaleString("corpselector_numberoftokens")}:
             <b>#{util.prettyNumbers(numTokens)}</b>#{lang}"""
-            if (sentenceString != "-")
+            if (paragraphString != "-")
                 output += """
-                    <br/>#{baseLangSentenceHTML}
+                    <br/>#{baseLangParagraphHTML}
                     #{util.getLocaleString("corpselector_numberofparagraphs")}:
-                    <b>#{sentenceString}</b>#{lang}"""
+                    <b>#{paragraphString}</b>#{lang}"""
             output += """<br/>
             #{util.getLocaleString("corpselector_lastupdate")}:
             <b>#{lastUpdate}</b>
