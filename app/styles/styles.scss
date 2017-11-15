@@ -275,9 +275,10 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, input:pla
 }
 
 #query_table {
-  overflow: auto;
   white-space: nowrap;
   margin-bottom: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .lang_row {
@@ -721,13 +722,18 @@ table {
       button {
         width: 20px;
         height: 20px;
-        float: right;
         i {
           position: relative;
           top: 0px;
           left: -2px;
           font-size: 14px;
         }
+      }
+      &_buttons {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
       }
     }
 
@@ -884,22 +890,12 @@ table {
 }
 
 .results_table.reading {
-  display: none;
+  margin-left: 10%;
   p {
     display: block;
     padding: 1em !important;
     width: 510px;
     margin : 0;
-  }
-}
-
-.reading_mode .results_table {
-  margin-left: 10%;
-  &.kwic {
-    display: none;
-  }
-  &.reading {
-    display: block;
   }
 }
 
@@ -1249,17 +1245,18 @@ a {
 
 #about_body {
   position: relative;
-  &:after {
-    content: "";
-    z-index: 0;
-    position: absolute;
-    top : 245px;
-    right : 0;
-    background : url("../img/feather.svg") no-repeat;
-    background-size: contain;
-    height: 430px;
-    width : 230px;
-  }
+  overflow-y: scroll;
+  // &:after {
+  //   content: "";
+  //   z-index: 0;
+  //   position: absolute;
+  //   top : 245px;
+  //   right : 0;
+  //   background : url("../img/feather.svg") no-repeat;
+  //   background-size: auto;
+  //   height: auto;
+  //   width : 230px;
+  // }
 }
 
 #about_content ul {
@@ -1702,15 +1699,15 @@ label[for=lemgram_select]:before {
 
 .modal-header h3, .modal-header h2 {
   font-weight : normal;
+  margin: 0 inherit;
 }
 
 
 .modal-header {
-  display : block;
-  & > * {
-    display: inline-block;
-    width : 49%;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 15px;
   .close-x {
     text-align: right;
     font-size : 2em;
@@ -1722,14 +1719,14 @@ label[for=lemgram_select]:before {
 }
 
 .modal.fade.in {
-  top : 90px;
+  top : 50px;
   margin-top : 0;
 }
 body.modal-open {
   overflow: hidden;
 }
 .modal-body {
-  max-height : 71vh;
+  max-height : calc(80vh - 75px);
   min-height : 300px;
 
 }
