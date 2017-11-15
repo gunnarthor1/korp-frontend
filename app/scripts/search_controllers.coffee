@@ -28,7 +28,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
 
     setupWatchStats = () ->
         $scope.showStatistics = true
-        
+
         $scope.$watch (() -> $location.search().hide_stats), (val) ->
             $scope.showStatistics = not val?
 
@@ -48,7 +48,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
 
     unless $location.search().stats_reduce
         $location.search 'stats_reduce', ("word")
-    
+
     if settings.statisticsCaseInsensitiveDefault
         $location.search 'stats_reduce_insensitive', 'word'
 
@@ -62,7 +62,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
         if insensitiveAttrs
             $scope.statInsensitiveAttrs = insensitiveAttrs.split ','
 
-        
+
 
     $scope.$watch 'statSelectedAttrs', ((selected) ->
         if selected and selected.length > 0
@@ -76,9 +76,23 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
             $location.search 'stats_reduce_insensitive', null
     ), true
 
-    # setupContext = () ->
-    #     $scope.getContextFormat = (val) ->
-    #         if val == $scope.context
+    setupContext = () ->
+        $scope.getContextFormat = (val) ->
+            if settings.contextValues[val] == $scope.context
+                return $filter("loc")("context", $scope.lang) + ": " + val + " " + $filter("loc")("words", $scope.lang)
+            else
+                return val
+        $scope.contextValues = settings.contextValues
+        $scope.context = $location.search().context or settings.contextDefault
+
+        $scope.$watch (() -> $location.search().context), (val) ->
+            $scope.context = val or settings.contextDefault
+
+        $scope.$watch "context", (val) ->
+            if val == settings.contextDefault
+                $location.search("context", null)
+            else
+                $location.search("context", val)
 
     setupHitsPerPage = () ->
         $scope.getHppFormat = (val) ->
@@ -86,10 +100,10 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
                 return $filter("loc")("hits_per_page", $scope.lang) + ": " + val
             else
                 return val
-        
+
         $scope.hitsPerPageValues = settings.hitsPerPageValues
         $scope.hitsPerPage = $location.search().hpp or settings.hitsPerPageDefault
-        
+
         $scope.$watch (() -> $location.search().hpp), (val) ->
             $scope.hitsPerPage = val or settings.hitsPerPageDefault
 
@@ -117,7 +131,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
                 return $filter("loc")(mappedVal, $scope.lang)
 
         $scope.kwicSort = $location.search().sort or ""
-        
+
         $scope.$watch (() -> $location.search().sort), (val) ->
             $scope.kwicSort = val or ""
 
@@ -128,6 +142,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
                 $location.search("sort", val)
 
     setupHitsPerPage()
+    setupContext()
     setupKwicSort()
 
 )]
@@ -139,7 +154,7 @@ korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope,
     s = $scope
 
     s.prefix = false
-    s.suffix = false 
+    s.suffix = false
     s.isCaseInsensitive = false
     if settings.inputCaseInsensitiveDefault
         s.isCaseInsensitive = true

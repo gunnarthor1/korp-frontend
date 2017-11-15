@@ -57,6 +57,7 @@ div(ng-controller="SearchCtrl", click-cover="noCorporaSelected")
   #search_options.ui-widget-content.ui-corner-bottom(click-cover="isCompareSelected", ng-style="{'background-color': settings.primaryLight}")
     div
       span(style='font-size: .9em;') {{"KWIC" | loc:lang}}: 
+      select(ng-model='context' ng-options='getContextFormat(key) for (key,value) in contextValues')
       select(ng-model='hitsPerPage' ng-options='getHppFormat(val) for val in hitsPerPageValues track by val')
       select(ng-model='kwicSort' ng-options='getSortFormat(val) for val in kwicSortValues track by val')
 

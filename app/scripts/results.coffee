@@ -328,9 +328,9 @@ class view.KWICResults extends BaseResults
         else
             preferredContext = settings.defaultOverviewContext
             avoidContext = settings.defaultReadingContext
+            preferredContext = locationSearch().context or preferredContext
 
         context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
-
         if not isPaging
             @proxy.queryData = null
 
@@ -509,6 +509,7 @@ class view.ExampleResults extends view.KWICResults
         else
             preferredContext = settings.defaultOverviewContext
             avoidContext = settings.defaultReadingContext
+            preferredContext = locationSearch().context or preferredContext
 
         context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
         _.extend opts.ajaxParams, {context: context, defaultcontext : preferredContext }
@@ -909,7 +910,7 @@ class view.StatsResults extends BaseResults
 
     renderResult: (columns, data) ->
         @showGenerateExport()
-      
+
         refreshHeaders = ->
             $(".localized-header .slick-column-name").not("[rel^=localize]").each ->
                 $(this).localeKey $(this).text()
@@ -937,9 +938,9 @@ class view.StatsResults extends BaseResults
         grid.registerPlugin(checkboxSelector)
         @grid = grid
         @grid.autosizeColumns()
-        
+
         @s.totalNumberOfRows = @grid.getDataLength()
-        
+
         sortCol = columns[2]
         log = _.debounce () ->
             c.log "grid sort"
@@ -1476,7 +1477,7 @@ class view.GraphResults extends BaseResults
             csvstr = csv.encode()
             blob = new Blob([csvstr], { type: "text/#{selType}"})
             csvUrl = URL.createObjectURL(blob)
-            
+
             a = document.createElement "a"
             a.href = csvUrl
             a.download = "export.#{selType}"

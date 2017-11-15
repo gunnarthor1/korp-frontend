@@ -5,7 +5,14 @@ settings.globalFilterCorpora = ["ivip"]
 
 settings.hitsPerPageDefault = 25
 settings.hitsPerPageValues = [10,25,50,75,100,500,1000]
-settings.contextValues = [5,7,10,15,20]
+settings.contextValues = {
+    5:"5 words",
+    7:"7 words",
+    10:"10 words",
+    15:"15 words",
+    20:"20 words"
+}
+settings.contextDefault = settings.contextValues[7]
 
 settings.inputCaseInsensitiveDefault = true
 

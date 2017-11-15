@@ -47,7 +47,11 @@ var probabilitySetOptions = {
 };
 
 var defaultContext = {
+    "5 words": "5 words",
     "7 words": "7 words",
+    "10 words": "10 words",
+    "15 words": "15 words",
+    "20 words": "20 words",
     "1 paragraph": "1 paragraph"
 };
 
@@ -580,8 +584,8 @@ var icelandicCustomAttrs = {
     thingmadur: {
         label: 'thingmadur',
         customType: 'struct',
-        pattern: "<p><span rel='localize[text_speaker]'></span>: <a target='_blank' href='<%=struct_attrs.text_speakerurl%>'><%=struct_attrs.text_speaker%></a></p>"
         // pattern: "<p>works!</p>"
+        pattern: "<p><span rel='localize[text_speaker]'></span>: <%=struct_attrs.text_speakerurl ? \"<a target='_blank' href='\"+struct_attrs.text_speakerurl+\"'>\"+struct_attrs.text_speaker+\"</a>\" : \"<span>\"+struct_attrs.text_speaker+\"</span>\"%></p>"
     },
     article: {
         label: 'article',
