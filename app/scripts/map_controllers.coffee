@@ -99,7 +99,7 @@ korpApp.directive "mapCtrl", () ->
             return (name) ->
                 return "[word='#{name}' & #{nameMatching}]"
         getCqp2 = createCqp2Fun()
-        
+
         s.newKWICSearch = (marker) ->
             point = marker.point
             cl = settings.corpusListing.subsetFactory(s.lastSearch.corpora.split(","))
@@ -113,7 +113,7 @@ korpApp.directive "mapCtrl", () ->
                     corpus : s.lastSearch.corpora
                     show_struct : _.keys cl.getStructAttrs()
                     expand_prequeries : true
-                    defaultwithin : 'sentence'
+                    defaultwithin : 'paragraph'
             }
             $rootScope.kwicTabs.push { queryParams: opts }
 
@@ -156,8 +156,8 @@ korpApp.directive "newMapCtrl", ($timeout, searches) ->
             palette = new Rickshaw.Color.Palette { scheme: 'colorwheel' } # spectrum2000
             groups = {}
             _.map result.data, (res, idx) ->
-                groups[res.label] = 
-                    selected: true 
+                groups[res.label] =
+                    selected: true
                     order: idx
                     color: palette.color()
                     markers: getMarkers result.attribute.label, result.cqp, result.corpora, result.within, res, idx
@@ -205,4 +205,3 @@ korpApp.directive "newMapCtrl", ($timeout, searches) ->
             $timeout(() ->
                 $rootScope.kwicTabs.push { readingMode: queryData.label == "paragraph__geocontext", queryParams: opts }
             , 0)
-            

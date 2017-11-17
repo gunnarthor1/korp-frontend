@@ -354,12 +354,13 @@ korpApp.controller "ExtendedSearch", ($scope, utils, $location, backend, $rootSc
             c.log "cqp parse error:", e
         $location.search("cqp", val)
 
-    s.withins = []
-
     s.getWithins = () ->
         union = settings.corpusListing.getWithinKeys()
         output = _.map union, (item) -> {value : item}
         return output
+
+    s.withins = s.getWithins()
+    s.within = s.withins[0]?.value
 
     s.$on "corpuschooserchange", () ->
         s.withins = s.getWithins()

@@ -1072,11 +1072,13 @@ class view.StatsResults extends BaseResults
         $("#dialog").remove()
 
         relHitsString = util.getLocaleString("statstable_relfigures_hits")
+        relFreqString = util.getLocaleString("statstable_relfigures")
+        absFreqString = util.getLocaleString("statstable_absfigures")
         $("<div id='dialog' />")
         .appendTo("body")
         .append("""<div id="pieDiv"><br/><div id="statistics_switch" style="text-align:center">
-                            <a href="javascript:" rel="localize[statstable_relfigures]" data-mode="relative">Relativa frekvenser</a>
-                            <a href="javascript:" rel="localize[statstable_absfigures]" data-mode="absolute">Absoluta frekvenser</a>
+                            <a href="javascript:" rel="localize[statstable_relfigures]" data-mode="relative">#{relFreqString}</a>
+                            <a href="javascript:" rel="localize[statstable_absfigures]" data-mode="absolute">#{absFreqString}</a>
                         </div>
                         <div id="chartFrame" style="height:380"></div>
                         <p id="hitsDescription" style="text-align:center" rel="localize[statstable_absfigures_hits]">#{relHitsString}</p></div>"""
