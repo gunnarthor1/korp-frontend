@@ -798,7 +798,7 @@ util.loadCorpora = ->
 
             output = """
             <b>
-                <img class="popup_icon" src="img/korp_icon.png" />
+                <img class="popup_icon" src="img/ohlogo_brunt_s.png" />
                 #{corpusObj.title}
             </b>
             #{maybeInfo}
