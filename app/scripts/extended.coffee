@@ -93,17 +93,12 @@ korpApp.factory "extendedComponents", () ->
                 <input ng-model='input' class='arg_value arg_input' escaper ng-model-options='{debounce : {default : 300, blur : 0}, updateOn: "default blur"}'
                 <%= maybe_placeholder %>>
                 <div class="opt_container">
-                    <button class="pos_regex_builder_link"
-                      ng-if="orObj.type=='pos'"
-                      ng-click="updateValue()">{.*}</button>
-                    <span class='val_mod' popper
+                    <span class='val_mod'
+                        title="{{ 'toggle_case_sensitive' | loc:lang}}"
+                        ng-click='toggleSensitive()'
                         ng-class='{sensitive : case == "sensitive", insensitive : case == "insensitive"}'>
                             Aa
                     </span>
-                    <ul class='mod_menu popper_menu dropdown-menu'>
-                        <li><a ng-click='makeSensitive()'>{{'case_sensitive' | loc:lang}}</a></li>
-                        <li><a ng-click='makeInsensitive()'>{{'case_insensitive' | loc:lang}}</a></li>
-                    </ul>
                 <div>
                 """
     defaultController: ["$scope", ($scope) ->
@@ -122,6 +117,11 @@ korpApp.factory "extendedComponents", () ->
             $scope.orObj.flags = flags
 
             $scope.case = "insensitive"
+        $scope.toggleSensitive = () ->
+            if $scope.case == "sensitive"
+                $scope.makeInsensitive()
+            else
+                $scope.makeSensitive()
         $scope.makeInsensitive() # Default is case insensitive
 
         $scope.updateValue = () ->
