@@ -84,6 +84,7 @@
     "any_word_placeholder": "<hvaða orð sem er>",
     "case_insensitive": "óháð há- og lágstöfum",
     "case_sensitive": "háð há- og lágstöfum",
+    "toggle_case_sensitive": "Háð/óháð há- og lágstöfum",
     "reduce_text": "draga saman byggt á",
     "show_stats": "Sýna tölfræði",
     "update_btn": "Uppfæra",

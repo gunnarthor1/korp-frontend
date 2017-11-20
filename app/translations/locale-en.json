@@ -84,6 +84,7 @@
     "any_word_placeholder": "<any word>",
     "case_insensitive": "case-insensitive",
     "case_sensitive": "case-sensitive",
+    "toggle_case_sensitive": "Toggle case sensitivity",
     "reduce_text": "compile based on",
     "KWIC": "KWIC",
     "show_stats": "Show statistics",
