@@ -18,6 +18,7 @@ $primaryColor: rgb(221, 233, 255);
 $primaryLight: rgb(242, 247, 255);
 
 $color_yellow: #FFF3D8;
+$color_crown_of_thorns: #772122;
 
 html {
   background-color: white;
@@ -200,8 +201,19 @@ img {
 
 #top_bar {
   width: 100%;
-  background-image: linear-gradient(to top, #fcfafc 0%, #d9d9d9 100%);
+  // background-image: linear-gradient(to top, #fcfafc 0%, #d9d9d9 100%);
   padding : 6px 5px 5px 8px;
+  & ul li {
+    //TODO why don't these have matching classes??
+    &.selected a {
+      color: #CCC;
+      cursor: default;
+    }
+    & a.radioList_selected {
+      color: #CCC;
+      cursor: default;
+    }
+  }
 }
 
 /*match placeholder/watermark padding to border+padding for input element*/
@@ -219,7 +231,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, input:pla
 }
 
 #search_options {
-  border-top: none;
+  border-top: 1px solid #aaa;
   padding: 8px;
   background-image: none;
   margin-bottom: 8px;
@@ -256,11 +268,12 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, input:pla
   width: 100%;
   margin: 0;
   position: relative;
+  background-color: $color_crown_of_thorns;
 }
 
-#content {
-  padding: 0 8px 8px 8px;
-}
+// #content {
+//   padding: 0 8px 8px 8px;
+// }
 
 .lang_selected {
   color: black;
@@ -1365,9 +1378,9 @@ label[for=lemgram_select]:before {
       display: inline-block;
       vertical-align: middle;
     }
-    &.selected a {
-      color : black;
-    }
+    // &.selected a {
+    //   color : black;
+    // }
     &.visible:after {
       content: "|";
       margin : 0 0.3em;
@@ -1391,10 +1404,10 @@ label[for=lemgram_select]:before {
   }
 }
 
-.radioList_selected {
-  color: black !important;
-  cursor: default;
-}
+// .radioList_selected {
+//   color: black !important;
+//   cursor: default;
+// }
 
 .custom_anchor {
   padding-right: 8px !important;
@@ -1436,7 +1449,7 @@ label[for=lemgram_select]:before {
 .query_arg {
   border-radius: 2px;
   padding: 5px;
-  background-color: #f7fceb;
+  background-color: #f0f0ee;
   border: solid 1px #999;
   margin-bottom: 5px;
   padding-right : 13px;
@@ -2299,9 +2312,9 @@ line.tick {
   background : #e6e6e6 url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
 }
 .nav.nav-tabs {
-  background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #CCCCCC;
-  border: 1px solid #AAAAAA;
-  border-radius: 2px 2px 0 0;
+  // background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #CCCCCC;
+  // border: 1px solid #AAAAAA;
+  // border-radius: 2px 2px 0 0;
   color: #222222;
 
   padding-top : 0.2em;
@@ -2318,10 +2331,10 @@ line.tick {
 
 
 .tabbable {
-  border : 1px solid #AAAAAA;
-  border-radius: 2px 2px 2px 2px;
+  // border : 1px solid #AAAAAA;
+  // border-radius: 2px 2px 2px 2px;
   color : #222222;
-  padding : 3px;
+  // padding : 3px;
   .tab-content {
     padding : 1em;
   }
@@ -2329,12 +2342,16 @@ line.tick {
     cursor: pointer;
     padding-left: 5px;
   }
+  &.result_tabs .nav.nav-tabs {
+    background-color: white;
+  }
   .nav.nav-tabs {
     margin : 0;
     padding-left : 0;
+    background-color: $color_crown_of_thorns;
     li {
       background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
-      border: 1px solid #D3D3D3;
+      // border: 1px solid $color_crown_of_thorns;
       color: #555555;
       font-weight: normal;
       margin-bottom : -1px;
