@@ -16,12 +16,13 @@
 
 $primaryColor: rgb(221, 233, 255);
 $primaryLight: rgb(242, 247, 255);
+$background_color: #edf3f3;
 
 $color_yellow: #FFF3D8;
 $color_crown_of_thorns: #772122;
 
 html {
-  background-color: white;
+  background-color: $background_color;
 }
 
 body {
@@ -29,7 +30,6 @@ body {
   font-size: 13px;
   margin: 0;
   overflow-x: hidden;
-  background-color: white;
 }
 
 ul, ol {
@@ -965,7 +965,7 @@ table {
   }
 }
 .corpus_info {
-  background-color : white !important;
+  background-color : $background_color !important;
 }
 
 .reading_mode .corpus_title {
@@ -2343,7 +2343,7 @@ line.tick {
     padding-left: 5px;
   }
   &.result_tabs .nav.nav-tabs {
-    background-color: white;
+    background-color: $background_color;
   }
   .nav.nav-tabs {
     margin : 0;
