@@ -181,7 +181,7 @@
     "map": "Map",
     "sort_default": "sort within corpora",
     "within": "within",
-    "context": "contex",
+    "context": "context",
     "only_support": "Only for supported corpora.",
     "no_context_support": "does not support extended context",
     "within_sentence": "sentence",

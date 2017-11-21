@@ -36,6 +36,8 @@
     "not_containing": "Inniheldur ekki",
     "negate_explanation": "Útilokar allar niðurstöður sem passa við leitarstrenginn.",
     "about": "Um Risamálheildina",
+    "about_gwc": "!!! Hér þarf að skrifa texta um risamálheildina. !!!",
+    "about_korp_header": "Um Korp",
     "about_body": "Korp er leitartól fyrir orðstöðulykla, framleitt af Språkbanken (Tungumálabanka Svíþjóðar). Fyrir nánari upplýsingar, athugasemdir eða tillögur, hafið samband við <a href='mailto:sb-info@svenska.gu.se'>Språkbanken</a>.",
     "about_cite_header": "Vísa til Korp",
     "about_cite": "Lars Borin, Markus Forsberg and Johan Roxendal. 2012. <a href='http://spraakbanken.gu.se/eng/publikationer/korp-–-corpus-infrastructure-språkbanken'>Korp – the corpus infrastructure of Språkbanken</a>Proceedings of LREC 2012. Istanbul: ELRA, pages 474–478.<br><a href='http://spraakbanken.gu.se/publikationer/bibtex/1822'><img src='http://spraakbanken.gu.se/sites/spraakbanken.gu.se/modules/custom/gup_publications/images/bibtex.png' alt='BibTeX'></a>",
@@ -295,7 +297,7 @@
     "statstable_hitsheader_lemgram": "Niðurstöður",
     "statstable_exp_csv": "CSV (gildi afmörkuð með semikommu)",
     "statstable_exp_tsv": "TSV (gildi afmörkuð með 'tab')",
-    "statstable_export": "Útkeyrsla",
+    "statstable_export": "Hala niður",
     "statstable_gen_export": "Keyra út",
     "statstable_download": "Hala niður",
 
