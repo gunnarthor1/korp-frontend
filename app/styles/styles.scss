@@ -16,11 +16,14 @@
 
 $primaryColor: rgb(221, 233, 255);
 $primaryLight: rgb(242, 247, 255);
+$background_color: #edf3f3;
 
 $color_yellow: #FFF3D8;
+$color_crown_of_thorns: #772122;
+$color_hover: indianred;
 
 html {
-  background-color: white;
+  background-color: $background_color;
 }
 
 body {
@@ -28,7 +31,6 @@ body {
   font-size: 13px;
   margin: 0;
   overflow-x: hidden;
-  background-color: white;
 }
 
 ul, ol {
@@ -47,7 +49,7 @@ a {
     color: purple;
   }
   &:hover {
-    color: indianred;
+    color: $color_hover;
   }
 }
 
@@ -95,7 +97,7 @@ img {
   color: navy !important;
   cursor: pointer;
   &:hover {
-    color: indianred !important;
+    color: $color_hover !important;
   }
 }
 
@@ -200,8 +202,27 @@ img {
 
 #top_bar {
   width: 100%;
-  background-image: linear-gradient(to top, #fcfafc 0%, #d9d9d9 100%);
+  // background-image: linear-gradient(to top, #fcfafc 0%, #d9d9d9 100%);
   padding : 6px 5px 5px 8px;
+  & ul li {
+    a {
+      color: #888;
+      &:hover {
+        color: $color_hover;
+      }
+    }
+    //TODO why don't these have matching classes??
+    &.selected a {
+      color: $background_color;
+      font-weight: bold;
+      cursor: default;
+    }
+    & a.radioList_selected {
+      color: $background_color;
+      font-weight: bold;
+      cursor: default;
+    }
+  }
 }
 
 /*match placeholder/watermark padding to border+padding for input element*/
@@ -219,7 +240,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, input:pla
 }
 
 #search_options {
-  border-top: none;
+  border-top: 1px solid #aaa;
   padding: 8px;
   background-image: none;
   margin-bottom: 8px;
@@ -256,11 +277,12 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder, input:pla
   width: 100%;
   margin: 0;
   position: relative;
+  background-color: $color_crown_of_thorns;
 }
 
-#content {
-  padding: 0 8px 8px 8px;
-}
+// #content {
+//   padding: 0 8px 8px 8px;
+// }
 
 .lang_selected {
   color: black;
@@ -952,7 +974,7 @@ table {
   }
 }
 .corpus_info {
-  background-color : white !important;
+  background-color : $background_color !important;
 }
 
 .reading_mode .corpus_title {
@@ -1022,7 +1044,7 @@ table {
     margin-left : -3px;
   }
   &:hover {
-    color: indianred;
+    color: $color_hover;
   }
 }
 
@@ -1043,7 +1065,7 @@ table {
   padding-left: 3px;
   margin-left: -3px;
   &:hover {
-    color: indianred;
+    color: $color_hover;
   }
 }
 
@@ -1145,9 +1167,9 @@ table {
 }
 
 #sidebar li:hover .external_link {
-  background-image: url("../img/fish_icon.png");
-  background-origin: content-box;
-  background-repeat: no-repeat;
+  // background-image: url("../img/fish_icon.png");
+  // background-origin: content-box;
+  // background-repeat: no-repeat;
   display: inline-block !important;
   vertical-align: middle;
   height: 12px;
@@ -1219,13 +1241,13 @@ a {
   &.absStat {
     color: #999999;
     &:hover {
-      color: indianred;
+      color: $color_hover;
     }
   }
   &.relStat {
     color: #000000;
     &:hover {
-      color: indianred;
+      color: $color_hover;
     }
   }
 }
@@ -1358,16 +1380,16 @@ label[for=lemgram_select]:before {
     color : navy;
   }
   a:hover {
-    color: indianred;
+    color: $color_hover;
   }
   li {
     &.visible {
       display: inline-block;
       vertical-align: middle;
     }
-    &.selected a {
-      color : black;
-    }
+    // &.selected a {
+    //   color : black;
+    // }
     &.visible:after {
       content: "|";
       margin : 0 0.3em;
@@ -1391,10 +1413,10 @@ label[for=lemgram_select]:before {
   }
 }
 
-.radioList_selected {
-  color: black !important;
-  cursor: default;
-}
+// .radioList_selected {
+//   color: black !important;
+//   cursor: default;
+// }
 
 .custom_anchor {
   padding-right: 8px !important;
@@ -1436,7 +1458,7 @@ label[for=lemgram_select]:before {
 .query_arg {
   border-radius: 2px;
   padding: 5px;
-  background-color: #f7fceb;
+  background-color: #f0f0ee;
   border: solid 1px #999;
   margin-bottom: 5px;
   padding-right : 13px;
@@ -2299,9 +2321,9 @@ line.tick {
   background : #e6e6e6 url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
 }
 .nav.nav-tabs {
-  background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #CCCCCC;
-  border: 1px solid #AAAAAA;
-  border-radius: 2px 2px 0 0;
+  // background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #CCCCCC;
+  // border: 1px solid #AAAAAA;
+  // border-radius: 2px 2px 0 0;
   color: #222222;
 
   padding-top : 0.2em;
@@ -2314,16 +2336,11 @@ line.tick {
     margin-left : 1em;
   }
 
-
-
 }
 
 
 .tabbable {
-  border : 1px solid #AAAAAA;
-  border-radius: 2px 2px 2px 2px;
   color : #222222;
-  padding : 3px;
   .tab-content {
     padding : 1em;
   }
@@ -2331,12 +2348,15 @@ line.tick {
     cursor: pointer;
     padding-left: 5px;
   }
+  &.result_tabs .nav.nav-tabs {
+    background-color: $background_color;
+  }
   .nav.nav-tabs {
     margin : 0;
     padding-left : 0;
+    background-color: $color_crown_of_thorns;
     li {
-      background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #E6E6E6;
-      border: 1px solid #D3D3D3;
+      background-color: darken($background_color, 8%);
       color: #555555;
       font-weight: normal;
       margin-bottom : -1px;
@@ -2352,6 +2372,10 @@ line.tick {
       }
       &.active {
         border-bottom-color : transparent;
+        & a {
+          background-color: $background_color;
+          outline: none;
+        }
       }
     }
   }

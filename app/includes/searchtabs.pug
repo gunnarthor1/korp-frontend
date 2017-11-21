@@ -54,7 +54,7 @@ div(ng-controller="SearchCtrl", click-cover="noCorporaSelected")
           //- reduce-select(reduce-items="currentAttrs", reduce-selected="selectedAttrs", reduce-lang="lang", style='width: 150px')
 
           button.btn.btn-sm.btn-default.search(ng-click='sendCompare()') {{'compare_action' | loc:lang}}
-  #search_options.ui-widget-content.ui-corner-bottom(click-cover="isCompareSelected", ng-style="{'background-color': settings.primaryLight}")
+  #search_options.ui-widget-content.ui-corner-bottom(click-cover="isCompareSelected")
     div
       span(style='font-size: .9em;') {{"KWIC" | loc:lang}}: 
       select(ng-model='context' ng-options='getContextFormat(key) for (key,value) in contextValues')
