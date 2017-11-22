@@ -260,10 +260,14 @@
 
     "msd_long": "??Morphosyntactic?? lýsing",
 
-    "corpselector_allselected": " valdar málheildir (allar)",
+    "corpselector_allselected": " málheildir valdar",
+    "corpselector_allselected_before": "Allar ",
     "corpselector_noneselected": "Engin málheild valin",
-    "corpselector_selectedone": " valið",
-    "corpselector_selectedmultiple": " málheildir valdar",
+    "corpselector_noneselected_before": "\u200A",
+    "corpselector_selectedone": " valin",
+    "corpselector_selectedone_before": "Málheildin ",
+    "corpselector_selectedmultiple": "\u200A",
+    "corpselector_selectedmultiple_before": "Valdar málheildir: ",
     "corpselector_buttonselectall": "Velja allar",
     "corpselector_buttonselectnone": "Velja enga",
     "corpselector_numberoftokens": "Fjöldi tóka",

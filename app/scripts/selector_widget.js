@@ -120,6 +120,7 @@ var hp_corpusChooser = {
 	countSelected: function () { /* Update header */
 		var header_text = "";
 		var header_text_2 = "";
+		var header_text_3 = "";
 		var header_total = "";
 		var header_of = false;
 		var checked_checkboxes = $(".hplabel .checked");
@@ -128,10 +129,12 @@ var hp_corpusChooser = {
 		var num_checkboxes = $(".hplabel .checkbox").length;
 		if (num_unchecked_checkboxes == num_checkboxes) {
 			header_text_2 = 'corpselector_noneselected';
+			header_text_3 = 'corpselector_noneselected_before';
 		} else
 		if (num_checked_checkboxes == num_checkboxes && num_checkboxes > 1) {
 			header_text = num_checked_checkboxes;
 			header_text_2 = 'corpselector_allselected';
+			header_text_3 = 'corpselector_allselected_before';
 		} else if (num_checked_checkboxes == 1) {
 			var currentCorpusName = checked_checkboxes.parent().parent().attr('data');
 			if (currentCorpusName.length > 37) { // Ellipsis
@@ -139,9 +142,11 @@ var hp_corpusChooser = {
 			}
 			header_text = currentCorpusName;
 			header_text_2 = "corpselector_selectedone";
+			header_text_3 = "corpselector_selectedone_before";
 		} else {
 			header_text = num_checked_checkboxes;
 			header_text_2 = "corpselector_selectedmultiple";
+			header_text_3 = "corpselector_selectedmultiple_before";
 			header_total = $(".popupchecks").find(".hplabel").length;
 			header_of = true;
 		}
@@ -156,12 +161,15 @@ var hp_corpusChooser = {
 			if(!isNaN(numSen)) selectedNumberOfParagraphs += numSen;
 		});
 		var totalNumberOfTokens = this.totalTokenCount;
-
+		console.log(header_text_3);
+		console.log(util.getLocaleString(header_text_3));
+		$("#hp_corpora_title3").attr({"rel" : 'localize[' + header_text_3 + ']'});
+		$("#hp_corpora_title3").html(util.getLocaleString(header_text_3));
 		$("#hp_corpora_title1").text(header_text);
 		$("#hp_corpora_titleOf").toggle(header_of);
 		$("#hp_corpora_titleTotal").text(header_total);
 		$("#hp_corpora_title2").attr({"rel" : 'localize[' + header_text_2 + ']'});
-		$("#hp_corpora_title2").text(util.getLocaleString(header_text_2));
+		$("#hp_corpora_title2").html(util.getLocaleString(header_text_2));
 		$("#hp_corpora_titleTokens").html(" — " + util.suffixedNumbers(selectedNumberOfTokens.toString()) + '<span rel="localize[corpselector_of]">' + util.getLocaleString("corpselector_of") + '</span>' + util.suffixedNumbers(totalNumberOfTokens.toString()) + " ").append($("<span>").localeKey("corpselector_tokens"));
 		$("#paragraphCounter").html(util.prettyNumbers(selectedNumberOfParagraphs.toString()) + " ").append($("<span>").localeKey("corpselector_paragraphs_long"));
         // $("#sentenceCounter").html(util.prettyNumbers(selectedNumberOfSentences.toString()) + " ").append($("<span>").localeKey("corpselector_sentences_long"));

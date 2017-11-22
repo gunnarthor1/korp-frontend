@@ -257,9 +257,13 @@
     "msd_long": "Morphosyntactic description",
 
     "corpselector_allselected": " corpora selected (all)",
+    "corpselector_allselected_before": "\u200A",
     "corpselector_noneselected": "No corpus selected",
+    "corpselector_noneselected_before": "\u200A",
     "corpselector_selectedone": " selected",
+    "corpselector_selectedone_before": "\u200A",
     "corpselector_selectedmultiple": " corpora selected",
+    "corpselector_selectedmultiple_before": "\u200A",
     "corpselector_buttonselectall": "Select all",
     "corpselector_buttonselectnone": "Select none",
     "corpselector_numberoftokens": "Number of tokens",
