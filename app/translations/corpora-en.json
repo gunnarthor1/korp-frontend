@@ -3,7 +3,118 @@
     "modern_texts": "Modern",
     "swedish_texts": "Swedish",
     "parallel_texts": "Parallel",
+
+    "words_between": "Words between: ",
+
     "lemma": "Lemma",
     "pos": "Part of speech",
-    "words_between": "Words between: "
+    "stf": "Rel. complementizer/inf. particle",
+    "hattur": "Verb mood",
+    "mynd": "Voice",
+    "pers": "Person",
+    "ft": "Cardinal number",
+    "fnf": "Pronoun class",
+    "kyn": "Gender",
+    "tala": "Number",
+    "fall": "Case",
+    "greinir": "With/without def. article",
+    "sernafn": "Proper noun",
+    "tid": "Tense",
+    "lob": "Strong/weak declension",
+    "lostig": "Adjective form",
+    "fsfall": "Prepositional case",
+    "tob": "Declinability of numeral",
+
+    "pos_lo": "Adjective",
+    "pos_no": "Noun",
+    "pos_st": "Conjunction",
+    "pos_so": "Verb",
+    "pos_fs": "Preposition",
+    "pos_ss": "Abbreviation",
+    "pos_to": "Numeral",
+    "pos_eo": "Non-Icelandic word",
+    "pos_ao": "Adverb",
+    "pos_fn": "Pronoun",
+    "pos_gr": "Article",
+    "pos_grm": "Punctuation",
+    "pos_uh": "Interjection",
+    "pos_xx": "Unclassified",
+
+
+    "hattur_nh": "Infinitive",
+    "hattur_vh": "Subjunctive",
+    "hattur_sb": "Supine",
+    "hattur_fh": "Indicative",
+    "hattur_lhþ": "Past participle",
+    "hattur_lhn": "Present participle",
+    "hattur_bh": "Imperative",
+
+    "pers_1pers": "1.person",
+    "pers_2pers": "2.person",
+    "pers_3pers": "3.person",
+
+    "kyn_kk": "Male",
+    "kyn_kvk": "Female",
+    "kyn_hvk": "Neuter",
+
+    "tala_et": "Singular",
+    "tala_ft": "Plural",
+
+    "fall_nf": "Nominative",
+    "fall_þf": "Accusative",
+    "fall_þgf": "Dative",
+    "fall_ef": "Genitive",
+
+    "lostig_fs": "Positive",
+    "lostig_ms": "Comparative",
+    "lostig_es": "Superlative",
+
+    "mynd_gm": "Active",
+    "mynd_þm": "Passive",
+    "mynd_mm": "Middle",
+
+    "tid_nt": "Present",
+    "tid_þt": "Past",
+
+    "lob_sb": "Strong declension",
+    "lob_vb": "Weak declension",
+    "lob_ob": "Indeclinable",
+
+    "fsfall_þf": "Accusative",
+    "fsfall_þgf": "Dative",
+    "fsfall_ef": "Genitive",
+
+    "tob_bt": "Declinable",
+    "tob_ót": "Indeclinable",
+
+    "fnf_efn": "Possessive",
+    "fnf_áfn": "Demonstrative",
+    "fnf_óáfn": "Indefinite demonstrative",
+    "fnf_ófn": "Indefinite",
+    "fnf_pfn": "Personal",
+    "fnf_sfn": "Interrogative",
+    "fnf_tfn": "Relative",
+
+    "stf_tt": "Relative complementizer",
+    "stf_nhm": "Indefinite article",
+
+    "greinir_mg": "Contains definite article",
+
+    "sernafn_sn": "Proper noun",
+
+    "ft_ft": "Cardinal number",
+    "text_midill": "Medium",
+    "text_author": "Author",
+    "text_wordcount": "Number of words in text",
+    "text_title": "Title",
+    "text_date": "Date",
+    "text_datefrom": "From date",
+    "text_dateto": "To date",
+    "text_timefrom": "From time",
+    "text_timeto": "To time",
+    "text_url": "URL",
+    "text_speaker": "Parliamentarian",
+    "date_interval": "In time interval",
+
+    "author": "Author"
 }
