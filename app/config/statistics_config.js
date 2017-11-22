@@ -49,7 +49,7 @@ statisticsFormatting.reduceCqp = function(type, tokens, ignoreCase) {
                 var res;
                 if(tokens.length > 1) {
                     var key = tokens[0].split(":")[0];
-                    
+
                     var variants = []
                     _.map(tokens, function(val) {
                         parts = val.split(":")
@@ -64,7 +64,7 @@ statisticsFormatting.reduceCqp = function(type, tokens, ignoreCase) {
                     variants = _.map(variants, function(variant) {
                         return ":(" + variant.join("|") + ")"
                     });
-                    
+
                     res = key + variants.join("")
                 }
                 else {
@@ -126,7 +126,7 @@ statisticsFormatting.getTexts = function(reduceVals, hitValue, corpora) {
     function htmlToPlaintext(text) {
         return text ? String(text).replace(/<[^>]+>/gm, '') : '';
     }
-    
+
     var tokenLists = statisticsFormatting.splitHitValue(hitValue);
     return _.map(reduceVals, function (reduceVal, typeIdx) {
         return htmlToPlaintext(statisticsFormatting.reduceStringify(reduceVal, tokenLists[0][typeIdx], corpora))
@@ -136,68 +136,14 @@ statisticsFormatting.getTexts = function(reduceVals, hitValue, corpora) {
 
 // Get the html (no linking) representation of the result for the statistics table
 statisticsFormatting.reduceStringify = function(type, values, corpora) {
-    switch(type) {
-        case "word":
-        case "msd":
-            return values.join(" ");
-        case "pos":
-            var output =  _.map(values, function(token) {
-                return $("<span>")
-                .localeKey("pos_" + token)
-                .outerHTML()
-            }).join(" ");
-            return output;
-        case "saldo":
-        case "prefix":
-        case "suffix":
-        case "lex":
-        case "lemma":
-        case "sense":
-        case "text_blingbring":
-        case "text_swefn":
-
-            if(type == "saldo" || type == "sense")
-                stringify = util.saldoToString
-            else if(type == "lemma")
-                stringify = function(lemma) {return lemma.replace(/_/g, " ")}
-            else if(type == "text_swefn" || type == "text_blingbring")
-                stringify = function(str) { return str };
-            else
-                stringify = util.lemgramToString
-
-            var html = _.map(values, function(token) {
-                if(token == "|")
-                    return "–";
-                return stringify(token.replace(/:.*/g, ""), true);
-            });
-
-            return html.join(" ")
-
-        case "deprel":
-            var output =  _.map(values, function(token) {
-                return $("<span>")
-                .localeKey("deprel_" + token)
-                .outerHTML()
-            }).join(" ");
-            return output;
-        default: // structural attributes
-            var cl = settings.corpusListing.subsetFactory(corpora)
-            var attrObj = cl.getStructAttrs()[type]
-            var prefix = ""
-            if(!_.isUndefined(attrObj) && attrObj.translationKey )
-                prefix = attrObj.translationKey
-            var mapped = _.map(values, function (value) {
-                if(value === "") {
-                    return "-";
-                } else if(loc_data["en"][prefix + value]) {
-                    return util.getLocaleString(prefix + value);
-                } else {
-                    return value;
-                }
-            });
-            return mapped.join(" ");
+    // Check whether the attribute is word or structural attribute
+    if (type == "word" || (~type.indexOf("_"))) {
+        return values.join(" ");
     }
-
+    var output =  _.map(values, function(token) {
+        return $("<span>")
+        .localeKey(type + "_" + icelandicAttrs[type].dataset[token])
+        .outerHTML()
+    }).join(" ");
+    return output;
 };
-
-
