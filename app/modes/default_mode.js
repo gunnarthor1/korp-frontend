@@ -27,14 +27,14 @@ settings.corporafolders.frettir.svaedarit = {
     contents: ["vf", "bb", "fjardarpostur"],
     description: "Blöð og tímarit bæjarfélaga"
 }
-settings.corporafolders.ithrottir = {
+settings.corporafolders.frettir.ithrottir = {
     title: "Íþróttafréttamiðlar",
     contents: ["fjorirthrirthrir", "fotbolti"],
     description: "Textar frá ýmsum íþróttafréttamiðlum"
 };
 settings.corporafolders.blogg = {
-    title: "Tímarit og blogg um stjórnmál",
-    contents: ["jonas", "andriki"],
+    title: "Tímarit og blogg",
+    contents: ["jonas", "andriki", "silfuregils"],
     description: "Textar frá tímaritum og bloggum sem fjalla um stjórnmál"
 }
 settings.corporafolders.stjornskipan = {
