@@ -222,8 +222,8 @@
 
 
     "word_insensitive": "orð (óháð há- og lágstöfum)",
-    "sentence_attr": "Eiginleikar texta",
-    "word_attr": "Eiginleikar orða",
+    "sentence_attr": "Eigindi texta",
+    "word_attr": "Eigindi orðs",
     "attr": "eiginleikar",
 
     "similar_header": "Tengd orð",

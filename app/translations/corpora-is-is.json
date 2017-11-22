@@ -75,8 +75,8 @@
     "tid_nt": "Nútíð",
     "tid_þt": "Þátíð",
 
-    "lob_sb": "Sterk-beyging",
-    "lob_vb": "Veik-beyging",
+    "lob_sb": "Sterk beyging",
+    "lob_vb": "Veik beyging",
     "lob_ob": "Óbeygt",
 
     "fsfall_þf": "Stýrir þolfalli",
@@ -88,8 +88,8 @@
 
     "fnf_efn": "Eignarfornafn",
     "fnf_áfn": "Ábendingarfornafn",
-    "fnf_óáfn": "Óákveðið-ábendingarfornafn",
-    "fnf_ófn": "Óákveðið-fornafn",
+    "fnf_óáfn": "Óákveðið ábendingarfornafn",
+    "fnf_ófn": "Óákveðið fornafn",
     "fnf_pfn": "Persónufornafn",
     "fnf_sfn": "Spurnarfornafn",
     "fnf_tfn": "Tilvísunarfornafn",
