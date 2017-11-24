@@ -1,54 +1,54 @@
- settings.corpora = {};
+settings.corpora = {};
 settings.corporafolders = {};
 
-settings.globalFilterCorpora = ["ivip"]
+settings.globalFilterCorpora = ["ivip"];
 
-settings.hitsPerPageDefault = 25
-settings.hitsPerPageValues = [10,25,50,75,100,500,1000]
+settings.hitsPerPageDefault = 25;
+settings.hitsPerPageValues = [10,25,50,75,100,500,1000];
 settings.contextValues = {
     5:"5 words",
     7:"7 words",
     10:"10 words",
     15:"15 words",
     20:"20 words"
-}
-settings.contextDefault = settings.contextValues[7]
+};
+settings.contextDefault = settings.contextValues[7];
 
-settings.inputCaseInsensitiveDefault = true
+settings.inputCaseInsensitiveDefault = true;
 
 settings.corporafolders.frettir = {
     title: "Fréttamiðlar",
-    contents: ["frettatiminn","morgunbladid","stod2","sjonvarpid","kjarninn", "visir", "bbl", "ruv", "stundin", "mbl", "dv_is"],
+    contents: ["frettatiminn", "morgunbladid", "stod2", "sjonvarpid", "kjarninn", "visir", "ruv", "stundin", "mbl", "dv_is", "eyjan"],
     description: "Textar frá ýmsum fréttamiðlum á landsvísu"
 };
 
 settings.corporafolders.frettir.svaedarit = {
-    title: "Blöð bæjarfélaga",
-    contents: ["vf", "bb", "fjardarpostur"],
-    description: "Blöð og tímarit bæjarfélaga"
-}
+    title: "Fréttamiðlar bæjarfélaga og landshluta",
+    contents: ["vf", "bb", "fjardarpostur", "dfs", "eyjafrettir"],
+    description: "Dagblöð, vefmiðlar og tímarit bæjarfélaga og landshluta"
+};
 settings.corporafolders.frettir.ithrottir = {
     title: "Íþróttafréttamiðlar",
-    contents: ["fjorirthrirthrir", "fotbolti"],
-    description: "Textar frá ýmsum íþróttafréttamiðlum"
+    contents: ["fotbolti", "fjorirthrirthrir"],
+    description: "Textar frá íþróttafréttamiðlum"
 };
 settings.corporafolders.blogg = {
     title: "Tímarit og blogg",
-    contents: ["jonas", "andriki", "silfuregils"],
+    contents: ["jonas", "andriki", "silfuregils", "bondi", "bleikt", "bbl"],
     description: "Textar frá tímaritum og bloggum sem fjalla um stjórnmál"
-}
-settings.corporafolders.stjornskipan = {
-    title: "Stjórnskipan",
+};
+settings.corporafolders.stjornsysla = {
+    title: "Stjórnsýsla",
     contents: ["domstolar", "haestirettur","althingislog", "althingi"],
     description: "Textar gefnir út af stjórnvöldum Íslands"
-}
+};
 settings.corporafolders.utvarp = {
     title: "Útvarp",
-    contents: ["ras1", "ras1_og_2", "bylgjan"]
-}
+    contents: ["ras1_og_2", "bylgjan"]
+};
 ////////////////////////////////////////
 
-settings.corpora["kjarninn"] = {
+settings.corpora.kjarninn = {
     id: "kjarninn",
     title: "Kjarninn.is",
     description: "Greinar frá fréttamiðlinum Kjarninn.is.",
@@ -62,8 +62,8 @@ settings.corpora["kjarninn"] = {
     customAttributes: {
         article: icelandicCustomAttrs.article
     }
-}
-settings.corpora["visir"] = {
+};
+settings.corpora.visir = {
     id: "visir",
     title: "Vísir.is",
     description: "Greinar frá fréttamiðlinum Vísir.is.",
@@ -77,8 +77,8 @@ settings.corpora["visir"] = {
     customAttributes: {
         article: icelandicCustomAttrs.article
     }
-}
-settings.corpora["ruv"] = {
+};
+settings.corpora.ruv = {
     id: "ruv",
     title: "Rúv.is",
     description: "Fréttir af vefútgáfu fréttastofu Ríkisútvarpsins.",
@@ -92,8 +92,8 @@ settings.corpora["ruv"] = {
     customAttributes: {
         article: icelandicCustomAttrs.article
     }
-}
-settings.corpora["dfs"] = {
+};
+settings.corpora.dfs = {
     id: "dfs",
     title: "Fréttavefur suðurlands",
     description: "Fréttir af fréttavef Suðurlands.",
@@ -108,7 +108,7 @@ settings.corpora["dfs"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["sjonvarpid"] = {
+settings.corpora.sjonvarpid = {
     id: "sjonvarpid",
     title: "Sjónvarpsfréttir Rúv",
     description: "Fréttatextar úr sjónvarpsfréttum frá fréttastofu Ríkisútvarpsins.",
@@ -123,7 +123,7 @@ settings.corpora["sjonvarpid"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["stod2"] = {
+settings.corpora.stod2 = {
     id: "stod2",
     title: "Sjónvarpsfréttir Stöðvar 2",
     description: "Fréttatextar úr sjónvarpsfréttum frá fréttastofu Stöðvar 2.",
@@ -138,7 +138,7 @@ settings.corpora["stod2"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["mbl"] = {
+settings.corpora.mbl = {
     id: "mbl",
     title: "Mbl.is",
     description: "Fréttir af vefútgáfu Morgunblaðins.",
@@ -153,7 +153,7 @@ settings.corpora["mbl"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["dv_is"] = {
+settings.corpora.dv_is = {
     id: "dv_is",
     title: "DV.is",
     description: "Fréttir af vefútgáfu DV.",
@@ -168,7 +168,7 @@ settings.corpora["dv_is"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["morgunbladid"] = {
+settings.corpora.morgunbladid = {
     id: "morgunbladid",
     title: "Morgunblaðið",
     description: "Fréttir úr greinasafni Morgunblaðins.",
@@ -183,7 +183,7 @@ settings.corpora["morgunbladid"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["bylgjan"] = {
+settings.corpora.bylgjan = {
     id: "bylgjan",
     title: "Bylgjan",
     description: "Textar frá útvarpsstöðinni Bylgjunni.",
@@ -198,22 +198,22 @@ settings.corpora["bylgjan"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["ras1"] = {
-    id: "ras1",
-    title: "Rás 1",
-    description: "Textar frá útvarpsstöðinni Rás 1.",
-    context: defaultContext,
-    within: {
-        "paragraph": "paragraph",
-        "text": "text"
-    },
-    attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
-    customAttributes: {
-        article: icelandicCustomAttrs.article
-    }
-}
-settings.corpora["ras1_og_2"] = {
+// settings.corpora.ras1 = {
+//     id: "ras1",
+//     title: "Rás 1",
+//     description: "Textar frá útvarpsstöðinni Rás 1.",
+//     context: defaultContext,
+//     within: {
+//         "paragraph": "paragraph",
+//         "text": "text"
+//     },
+//     attributes: icelandicAttrs,
+//     structAttributes: icelandicSattrs,
+//     customAttributes: {
+//         article: icelandicCustomAttrs.article
+//     }
+// }
+settings.corpora.ras1_og_2 = {
     id: "ras1_og_2",
     title: "Rás 1 og 2",
     description: "Textar frá útvarpsstöðvunum Rás 1 og Rás 2.",
@@ -229,7 +229,7 @@ settings.corpora["ras1_og_2"] = {
     }
 }
 
-settings.corpora["bbl"] = {
+settings.corpora.bbl = {
     id: "bbl",
     title: "Bændablaðið",
     description: "Fréttir af vefsíðu Bændablaðsins.",
@@ -244,7 +244,7 @@ settings.corpora["bbl"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["stundin"] = {
+settings.corpora.stundin = {
     id: "stundin",
     title: "Stundin",
     description: "Fréttir af vefútgáfu Stundarinnar.",
@@ -259,7 +259,7 @@ settings.corpora["stundin"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["frettatiminn"] = {
+settings.corpora.frettatiminn = {
     id: "frettatiminn",
     title: "Fréttatíminn",
     description: "Fréttatextar frá Fréttatímanum.",
@@ -277,7 +277,7 @@ settings.corpora["frettatiminn"] = {
 
 ////////////////////////////////////////
 
-settings.corpora["vf"] = {
+settings.corpora.vf = {
     id: "vf",
     title: "Víkurfréttir",
     description: "Fréttir af vefsíðu Víkurfrétta.",
@@ -292,7 +292,7 @@ settings.corpora["vf"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["bb"] = {
+settings.corpora.bb = {
     id: "bb",
     title: "Bæjarins besta",
     description: "Textar fengnir af vefsíðu vikublaðsins Bæjarins besta.",
@@ -307,7 +307,7 @@ settings.corpora["bb"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["fjardarpostur"] = {
+settings.corpora.fjardarpostur = {
     id: "fjardarpostur",
     title: "Fjarðarpósturinn",
     description: "Textar fengnir af vefsíðu Fjarðarpóstsins, bæjarblaðs Hafnfirðinga.",
@@ -326,7 +326,7 @@ settings.corpora["fjardarpostur"] = {
 ////////////////////////////////////////
 
 
-settings.corpora["fjorirthrirthrir"] = {
+settings.corpora.fjorirthrirthrir = {
     id: "fjorirthrirthrir",
     title: "433.pressan.is",
     description: "Textar af fótboltafréttasíðunni 433.pressan.is.",
@@ -341,7 +341,7 @@ settings.corpora["fjorirthrirthrir"] = {
         article: icelandicCustomAttrs.article
     }
 }
-// settings.corpora["eidfaxi"] = {
+// settings.corpora.eidfaxi = {
 //     id: "eidfaxi",
 //     title: "Eiðfaxi",
 //     description: "Greinar af vefsíðunni eidfaxi.is.",
@@ -356,7 +356,7 @@ settings.corpora["fjorirthrirthrir"] = {
 //         article: icelandicCustomAttrs.article
 //     }
 // }
-settings.corpora["fotbolti"] = {
+settings.corpora.fotbolti = {
     id: "fotbolti",
     title: "Fótbolti.net",
     description: "Greinar af vefsíðunni fotbolti.net.",
@@ -375,7 +375,7 @@ settings.corpora["fotbolti"] = {
 ////////////////////////////////////////
 
 
-settings.corpora["jonas"] = {
+settings.corpora.jonas = {
     id: "jonas",
     title: "Jónas.is",
     description: "Pistlar af vefsíðu bloggarans Jónasar Kristjánssonar.",
@@ -390,7 +390,7 @@ settings.corpora["jonas"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["andriki"] = {
+settings.corpora.andriki = {
     id: "andriki",
     title: "Andriki.is",
     description: "Greinar af vefsíðunni Andriki.is.",
@@ -405,7 +405,7 @@ settings.corpora["andriki"] = {
         article: icelandicCustomAttrs.article
     }
 }
-// settings.corpora["deiglan"] = {
+// settings.corpora.deiglan = {
 //     id: "deiglan",
 //     title: "Deiglan.is",
 //     description: "Greinar af vefsíðunni Deiglan.is.",
@@ -424,7 +424,7 @@ settings.corpora["andriki"] = {
 ////////////////////////////////////////
 
 
-settings.corpora["bleikt"] = {
+settings.corpora.bleikt = {
     id: "bleikt",
     title: "Bleikt.is",
     description: "Greinar af vefsíðunni Bleikt.is.",
@@ -439,7 +439,7 @@ settings.corpora["bleikt"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["bondi"] = {
+settings.corpora.bondi = {
     id: "bondi",
     title: "Bóndi.is",
     description: "Greinar af vefsíðunni Bondi.is.",
@@ -454,7 +454,7 @@ settings.corpora["bondi"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["domstolar"] = {
+settings.corpora.domstolar = {
     id: "domstolar",
     title: "Dómstólar",
     description: "Dómar úr gagnagrunni dómstóla Íslands.",
@@ -469,7 +469,7 @@ settings.corpora["domstolar"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["haestirettur"] = {
+settings.corpora.haestirettur = {
     id: "haestirettur",
     title: "Hæstiréttur",
     description: "Textar af vefsíðu Hæstaréttar.",
@@ -484,7 +484,7 @@ settings.corpora["haestirettur"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["althingislog"] = {
+settings.corpora.althingislog = {
     id: "althingislog",
     title: "Lög",
     description: "Lög Íslands.",
@@ -499,7 +499,7 @@ settings.corpora["althingislog"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["althingi"] = {
+settings.corpora.althingi = {
     id: "althingi",
     title: "Alþingisræður",
     description: "Allar ræður sem fluttar hafa verið á Alþingi.",
@@ -515,7 +515,7 @@ settings.corpora["althingi"] = {
         thingmadur: icelandicCustomAttrs.thingmadur
     }
 }
-settings.corpora["eyjan"] = {
+settings.corpora.eyjan = {
     id: "eyjan",
     title: "Eyjan",
     description: "Textar fengnir af vefmiðlinum eyjan.is.",
@@ -530,7 +530,7 @@ settings.corpora["eyjan"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["eyjafrettir"] = {
+settings.corpora.eyjafrettir = {
     id: "eyjafrettir",
     title: "Eyjafréttir",
     description: "Textar fengnir af vefútgáfu Eyjafrétta.",
@@ -545,7 +545,7 @@ settings.corpora["eyjafrettir"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["wikipedia"] = {
+settings.corpora.wikipedia = {
     id: "wikipedia",
     title: "Wikipedia",
     description: "Greinar frá íslenskri útgáfu vefalfræðiorðabókarinnar Wikipedia.org.",
@@ -560,7 +560,7 @@ settings.corpora["wikipedia"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["visindavefur"] = {
+settings.corpora.visindavefur = {
     id: "visindavefur",
     title: "Vísindavefurinn",
     description: "Greinar af vísindavefnum.",
@@ -575,7 +575,7 @@ settings.corpora["visindavefur"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["heimur"] = {
+settings.corpora.heimur = {
     id: "heimur",
     title: "Heimur",
     description: "Pistlar af vefsíðu útáfyrirtækisins Heims, heimur.is",
@@ -590,7 +590,7 @@ settings.corpora["heimur"] = {
         article: icelandicCustomAttrs.article
     }
 }
-// settings.corpora["vikudagur"] = {
+// settings.corpora.vikudagur = {
 //     id: "vikudagur",
 //     title: "Vikudagur",
 //     description: "TODO",
@@ -605,7 +605,7 @@ settings.corpora["heimur"] = {
 //         article: icelandicCustomAttrs.article
 //     }
 // }
-// settings.corpora["vb"] = {
+// settings.corpora.vb = {
 //     id: "vb",
 //     title: "Viðskiptablaðið",
 //     description: "TODO",
@@ -620,7 +620,7 @@ settings.corpora["heimur"] = {
 //         article: icelandicCustomAttrs.article
 //     }
 // }
-// settings.corpora["sunnlenska"] = {
+// settings.corpora.sunnlenska = {
 //     id: "sunnlenska",
 //     title: "Sunnlenska",
 //     description: "TODO",
@@ -635,7 +635,7 @@ settings.corpora["heimur"] = {
 //         article: icelandicCustomAttrs.article
 //     }
 // }
-settings.corpora["silfuregils"] = {
+settings.corpora.silfuregils = {
     id: "silfuregils",
     title: "Silfur Egils",
     description: "Textar frá bloggi Egils Helgasonar",
@@ -650,10 +650,10 @@ settings.corpora["silfuregils"] = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora["pressan"] = {
+settings.corpora.pressan = {
     id: "pressan",
-    title: "Pressan.is",
-    description: "Textar frá vefmiðlum Pressunnar, pressan.is",
+    title: "Pressan",
+    description: "Textar frá miðlum Vefpressunnar, pressan.is",
     context: defaultContext,
     within: {
         "paragraph": "paragraph",
@@ -669,7 +669,7 @@ settings.corpora["pressan"] = {
  * PRESELECTED CORPORA
  * Folders will be expanded to all corpora. Optionally prefix folders with __ , which will be ignored.
  */
-settings.preselectedCorpora = ["kjarninn","jonas","visir"];
+settings.preselectedCorpora = ["althingi"];
 
 
 settings.corpusListing = new CorpusListing(settings.corpora);
