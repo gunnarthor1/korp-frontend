@@ -117,7 +117,7 @@ $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     $("body").css(
         opacity: 1
         padding: 20
-    ).html('<object class="korp_fail" type="image/svg+xml" data="img/korp_fail.svg">')
+    ).html('<object class="error_message" type="image/svg+xml" data="img/error_message.png">')
     .append "<p>The server failed to respond, please try again later.</p>"
 
 

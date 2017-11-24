@@ -44,8 +44,8 @@ class BaseResults
         c.error "json fetch error: ", data
         @hidePreloader()
         @resetView()
-        $('<object class="korp_fail" type="image/svg+xml" data="img/korp_fail.svg">')
-            .append("<img class='korp_fail' src='img/korp_fail.svg'>")
+        $('<object class="error_message" type="image/svg+xml" data="img/error_message.png">')
+            .append("<img class='error_message' src='img/error_message.png'>")
             .add($("<div class='fail_text' />")
             .localeKey("fail_text"))
             .addClass("inline_block")
