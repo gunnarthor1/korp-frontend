@@ -227,6 +227,7 @@ var icelandicAttrs = {
             "greinir": "gr",
             "greinamerki": "grm",
             "upphrópun": "uh",
+            "veffang": "vf",
             "ógreint": "xx"
         }
     },

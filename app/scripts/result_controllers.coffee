@@ -97,9 +97,9 @@ class KwicCtrl
                     mainCorpusId = hitContext.corpus.toLowerCase()
 
                 id = (linkCorpusId or mainCorpusId)
-                
+
                 [matchSentenceStart, matchSentenceEnd] = findMatchSentence hitContext
-                
+
                 if not (hitContext.match instanceof Array)
                     matches = [{start: hitContext.match.start, end: hitContext.match.end}]
                 else
@@ -230,7 +230,7 @@ class KwicCtrl
                 s.download.fileName = fileName
                 s.download.blobName = blobName
                 s.download.selected = ""
-                @timeout (() -> 
+                @timeout (() ->
                         angular.element("#kwicDownloadLink")[0].click()
                     ), 0
 
@@ -296,7 +296,7 @@ korpApp.directive "statsResultCtrl", () ->
 
         s.onGraphShow = (data) ->
             $rootScope.graphTabs.push data
-        
+
         s.newMapEnabled = settings.newMapEnabled
 
         s.getGeoAttributes = (corpora) ->
@@ -319,7 +319,7 @@ korpApp.directive "statsResultCtrl", () ->
 
         s.mapToggleSelected = (index, event) ->
             _.map s.mapAttributes, (attr) -> attr.selected = false
-            
+
             attr = s.mapAttributes[index]
             attr.selected = true
             event.stopPropagation()
@@ -341,7 +341,7 @@ korpApp.directive "statsResultCtrl", () ->
             if selectedAttributes.length > 1
                 c.log "Warning: more than one selected attribute, choosing first"
             selectedAttribute = selectedAttributes[0]
-            
+
             within = settings.corpusListing.subsetFactory(selectedAttribute.corpora).getWithinParameters()
             $rootScope.mapTabs.push backend.requestMapData(cqpExpr, cqpExprs, within, selectedAttribute)
 
