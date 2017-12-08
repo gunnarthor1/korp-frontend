@@ -24,7 +24,7 @@ settings.corporafolders.frettir = {
 
 settings.corporafolders.frettir.svaedarit = {
     title: "Fréttamiðlar bæjarfélaga og landshluta",
-    contents: ["vf", "bb", "fjardarpostur", "dfs", "eyjafrettir"],
+    contents: ["vf", "bb", "fjardarpostur", "dfs"],
     description: "Dagblöð, vefmiðlar og tímarit bæjarfélaga og landshluta"
 };
 settings.corporafolders.frettir.ithrottir = {
@@ -530,21 +530,21 @@ settings.corpora.eyjan = {
         article: icelandicCustomAttrs.article
     }
 }
-settings.corpora.eyjafrettir = {
-    id: "eyjafrettir",
-    title: "Eyjafréttir",
-    description: "Textar fengnir af vefútgáfu Eyjafrétta.",
-    context: defaultContext,
-    within: {
-        "paragraph": "paragraph",
-        "text": "text"
-    },
-    attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
-    customAttributes: {
-        article: icelandicCustomAttrs.article
-    }
-}
+// settings.corpora.eyjafrettir = {
+//     id: "eyjafrettir",
+//     title: "Eyjafréttir",
+//     description: "Textar fengnir af vefútgáfu Eyjafrétta.",
+//     context: defaultContext,
+//     within: {
+//         "paragraph": "paragraph",
+//         "text": "text"
+//     },
+//     attributes: icelandicAttrs,
+//     structAttributes: icelandicSattrs,
+//     customAttributes: {
+//         article: icelandicCustomAttrs.article
+//     }
+// }
 settings.corpora.wikipedia = {
     id: "wikipedia",
     title: "Wikipedia",
