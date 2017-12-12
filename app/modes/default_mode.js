@@ -39,7 +39,7 @@ settings.corporafolders.blogg = {
 };
 settings.corporafolders.stjornsysla = {
     title: "Stjórnsýsla",
-    contents: ["domstolar", "haestirettur","althingislog", "althingi"],
+    contents: ["domstolar", "haestirettur", "althingislog", "althingi"],
     description: "Textar gefnir út af stjórnvöldum Íslands"
 };
 settings.corporafolders.utvarp = {
@@ -669,7 +669,7 @@ settings.corpora.pressan = {
  * PRESELECTED CORPORA
  * Folders will be expanded to all corpora. Optionally prefix folders with __ , which will be ignored.
  */
-settings.preselectedCorpora = ["althingi"];
+settings.preselectedCorpora = [];
 
 
 settings.corpusListing = new CorpusListing(settings.corpora);

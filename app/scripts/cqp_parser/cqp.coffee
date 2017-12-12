@@ -13,7 +13,7 @@ parseDateInterval = (op, val, expanded_format) ->
     m_from = moment(fromdate, "YYYYMMDD")
     m_to = moment(todate, "YYYYMMDD")
 
-    fieldMapping = 
+    fieldMapping =
         text_datefrom : fromdate
         text_dateto : todate
         text_timefrom : fromtime
@@ -32,17 +32,17 @@ parseDateInterval = (op, val, expanded_format) ->
         #{op('text_timefrom', '>=')} &
         #{op('text_dateto', '=')} &
         #{op('text_timeto', '<=')}"
-        
+
     else if days_diff == -1 # one day apart
         out = "((#{op('text_datefrom', '=')} & #{op('text_timefrom', '>=')}) | #{op('text_datefrom', '=', 'text_dateto')}) &
         (#{op('text_dateto', '=', 'text_datefrom')} | (#{op('text_dateto', '=')} & #{op('text_timeto', '<=')}))"
-        
+
 
     else
-        out = "((#{op('text_datefrom', '=')} & #{op('text_timefrom', '>=')}) | 
+        out = "((#{op('text_datefrom', '=')} & #{op('text_timefrom', '>=')}) |
         (#{op('text_datefrom', '>')} & #{op('text_datefrom', '<=', 'text_dateto')})) &
         (#{op('text_dateto', '<')} | (#{op('text_dateto', '=')} & #{op('text_timeto', '<=')}))"
-        
+
 
     out = out.replace(/\s+/g, " ")
 
@@ -58,7 +58,7 @@ stringifyCqp = (cqp_obj, expanded_format = false) ->
         if typeof token == "string"
             output.push token
             continue
-        
+
         outer_and_array = []
         for and_array in token.and_block
             or_array = []
@@ -84,9 +84,9 @@ stringifyCqp = (cqp_obj, expanded_format = false) ->
                     out = ""
                 else if type == "date_interval"
                     out = parseDateInterval(op, val, expanded_format)
-                    
+
                 else
-                    out = "#{type} #{op} \"#{val}\"" 
+                    out = "#{type} #{op} \"#{val}\""
 
                 if out
                     or_array.push(out + flagstr)
@@ -98,20 +98,20 @@ stringifyCqp = (cqp_obj, expanded_format = false) ->
                 "(#{x.join(' | ')})"
             else
                 x.join(' | ')
-                
+
         if token.bound
             or_out = _.compact or_out
             for bound in _.keys (token.bound)
                 or_out.push "#{bound}(sentence)"
 
 
-        
+
         out_token = "[#{or_out.join(' & ')}]"
         if token.repeat
             out_token += "{#{token.repeat.join(',')}}"
 
 
-        
+
         output.push out_token
 
 
@@ -119,11 +119,11 @@ stringifyCqp = (cqp_obj, expanded_format = false) ->
     return output.join(" ")
 
 window.CQP =
-    
+
     parse : => CQPParser.parse arguments...
-    
+
     stringify : stringifyCqp
-    
+
     expandOperators : (cqpstr) ->
         CQP.stringify CQP.parse(cqpstr), true
 
