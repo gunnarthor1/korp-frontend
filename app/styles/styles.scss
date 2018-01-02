@@ -179,19 +179,21 @@ img {
 }
 
 #header_left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   float: left;
-  > a {
-    margin: auto 10px;
-  }
+  width: 100%;
+  padding: 0 10px;
 }
 
 #search_history {
-  margin-right: 8px;
-  margin-top: 45px;
+  align-self: flex-end;
   max-width: 150px;
-  position: absolute;
-  right: 0;
-  bottom : 3px;
+  margin-left: auto;
+  // TODO RMLOGO Bæta við þegar risamálheildarlogo er komið
+  // margin: 0 10px;
   > option:first-child {
     color: grey;
   }
@@ -1629,6 +1631,14 @@ label[for=lemgram_select]:before {
   vertical-align: bottom;
 }
 
+#main_logo {
+    max-width: 200px;
+}
+
+#as_logo {
+  margin-left: auto;
+}
+
 #korplink {
   display: none;
 }
@@ -2282,14 +2292,18 @@ line.tick {
   height : 500px;
 }
 .time_table, .time_table * {
-  box-sizing : content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 #myGrid {
   width : 100%;
   height : 500px;
 }
 #myGrid, #myGrid * {
-  box-sizing : content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 .loading .exportStatsSection {
   display : none;

@@ -271,6 +271,8 @@
     "corpselector_numberofsentences": "Number of sentences",
     "corpselector_numberofparagraphs": "Number of paragraphs",
     "corpselector_tokens": "tokens",
+    "corpselector_tokens_nominative": "tokens",
+    "corpselector_tokens_accusative": "tokens",
     "corpselector_sentences": "sentences",
     "corpselector_paragraphs": "paragraphs",
     "corpselector_sentences_long": "sentences in the selected corpora",
