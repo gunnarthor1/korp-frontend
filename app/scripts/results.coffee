@@ -1485,6 +1485,7 @@ class view.GraphResults extends BaseResults
             a.href = csvUrl
             a.download = "export.#{selType}"
             a.click()
+            console.log csvUrl
             window.URL.revokeObjectURL(csvUrl)
         )
 
@@ -1509,6 +1510,7 @@ class view.GraphResults extends BaseResults
                 time_table_columns_intermediate[timestamp] =
                     "name" : timestamp
                     "field" : timestamp
+                    "id" : timestamp
                     "formatter" : (row, cell, value, columnDef, dataContext) ->
                         loc = {
                             'sv' : "sv-SE"
@@ -1528,11 +1530,11 @@ class view.GraphResults extends BaseResults
         time_table_columns = [
                             "name" : "Hit"
                             "field" : "label"
+                            "id" : "label"
                             "formatter" : (row, cell, value, columnDef, dataContext) -> value
                             ]
         for key in _.keys(time_table_columns_intermediate).sort()
             time_table_columns.push(time_table_columns_intermediate[key])
-
         time_grid = new Slick.Grid $(".time_table", @$result), time_table_data, time_table_columns,
             enableCellNavigation: false
             enableColumnReorder: false

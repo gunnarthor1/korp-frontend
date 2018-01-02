@@ -177,7 +177,7 @@ window.initTimeGraph = (def) ->
         .fail (error) ->
             $("#time_graph").html("<i>Could not draw graph due to a backend error.</i>")
         .done ([dataByCorpus, all_timestruct, rest]) ->
-
+            console.log all_timestruct
             for corpus, struct of dataByCorpus
                 if corpus isnt "time"
                     cor = settings.corpora[corpus.toLowerCase()]
@@ -268,6 +268,8 @@ window.initTimeGraph = (def) ->
 
                     xaxis:
                         show: true
+                        # This limits the x axis to the 20th and 21st century
+                        min: 1900
                         tickDecimals: 0
 
                     hoverable: true
@@ -291,7 +293,7 @@ window.initTimeGraph = (def) ->
                         val = getValByDate(date, timestruct)
                         total = getValByDate(date, all_timestruct)
 
-                    pTmpl = _.template("<p><span rel='localize[<%= loc %>]'></span>: <%= num %> <span rel='localize[corpselector_tokens]' </p>")
+                    pTmpl = _.template("<p><span rel='localize[<%= loc %>]'></span>: <%= num %> <span rel='localize[corpselector_tokens_nominative]' </p>")
                     firstrow = pTmpl(
                         loc: "corpselector_time_chosen"
                         num: util.prettyNumbers(val or 0)
