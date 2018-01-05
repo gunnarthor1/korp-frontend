@@ -270,6 +270,7 @@ window.initTimeGraph = (def) ->
                         show: true
                         # This limits the x axis to the 20th and 21st century
                         min: 1900
+                        max: endyear + 1
                         tickDecimals: 0
 
                     hoverable: true

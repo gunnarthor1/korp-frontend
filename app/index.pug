@@ -4,6 +4,7 @@ html
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     meta(name='description', content='Med Korp kan den språkligt nyfikna göra avancerade sökningar i stora mängder av skriven text.')
+    meta(name='google', content='notranslate')
     // Global site tag (gtag.js) - Google Analytics
     script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-109855699-1')
     script.
@@ -148,6 +149,8 @@ html
             div(style='clear: both; float: none;')
 
             div(id='video-modal', ng-controller='VideoCtrl')
+    footer
+      p.korp-info(ng-bind-html="'footer_about_korp'|loc:lang | trust")
 
     #deptree_popup
 
