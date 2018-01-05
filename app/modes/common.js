@@ -225,7 +225,7 @@ var icelandicAttrs = {
             "atviksorð": "ao",
             "fornafn": "fn",
             "greinir": "gr",
-            "greinamerki": "grm",
+            "greinarmerki": "grm",
             "upphrópun": "uh",
             "veffang": "vf",
             "ógreint": "xx"
