@@ -14,7 +14,10 @@
       label(for='suffixChk')  {{'suffix' | loc:lang}} 
       span  {{'and' | loc:lang}} 
       input#caseChk(type='checkbox', ng-model="isCaseInsensitive") 
-      label(for='caseChk')  {{'case_insensitive' | loc:lang}}  
+      label(for='caseChk')  {{'case_insensitive' | loc:lang}}.
+      br
+      label(for='lemmaChk') {{'search_by_lemma' | loc:lang}}
+      input#lemmaChk(type='checkbox', ng-model="searchByLemma")
 
   #similar_wrapper(ng-show="relatedObj")
     button.btn.btn-sm.btn-default(ng-click="showAllRelated()" ng-if="relatedObj.length != 0")

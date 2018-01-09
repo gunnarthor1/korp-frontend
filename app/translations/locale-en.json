@@ -360,5 +360,7 @@
 
     "stats_warn": "Statistics is disabled",
 
-    "read_in_strix": "Read this text in Strix"
+    "read_in_strix": "Read this text in Strix",
+
+    "search_by_lemma": "Search by dictionary form: "
 }

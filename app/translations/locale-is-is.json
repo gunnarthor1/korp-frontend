@@ -231,7 +231,7 @@
     "show_wordclass": "Sýna orðflokk",
     "word_pic_number_of_hits": "Fjöldi niðurstaðna",
     "search": "Leita",
-    "and_include": "líka sem ",
+    "and_include": "Fá einnig niðurstöður sem ",
     "hits_per_page": "niðurstöður á síðu",
     "num_results": "Niðurstöður",
     "next": "Næsta á eftir",
@@ -362,5 +362,6 @@
 
     "stats_warn": "Tölfræðiúrvinnsla er ekki virk",
     "prefix": "upphaf",
-    "suffix": "endir"
+    "suffix": "endir",
+    "search_by_lemma": "Leita eftir uppflettimynd: "
 }

@@ -156,6 +156,7 @@ korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope,
     s.prefix = false
     s.suffix = false
     s.isCaseInsensitive = false
+    s.searchByLemma = false
     if settings.inputCaseInsensitiveDefault
         s.isCaseInsensitive = true
 
@@ -194,8 +195,12 @@ korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope,
                     orParts.push ".*" + token
                 if not (s.prefix or s.suffix)
                     orParts.push regescape token
-                res = _.map orParts, (orPart) ->
-                    return 'word = "' + orPart + '"' + suffix
+                if s.searchByLemma
+                    res = _.map orParts, (orPart) ->
+                        return 'lemma = "' + orPart + '"' + suffix
+                else
+                    res = _.map orParts, (orPart) ->
+                        return 'word = "' + orPart + '"' + suffix
                 return "[" + res.join(" | ") + "]"
             val = tokenArray.join(" ")
         else if s.placeholder or util.isLemgramId(currentText)
