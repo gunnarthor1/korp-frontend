@@ -637,9 +637,20 @@ table {
 }
 
 .insert_token {
-  position: relative;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
   top: 54px;
   margin-left: 10px;
+}
+
+.insert_token_image {
+
+}
+
+.token_row {
+  display:flex;
+  flex-direction: row;
 }
 
 .token_container {
@@ -661,6 +672,9 @@ table {
     vertical-align: top;
     border: 1px solid #999;
     box-shadow: 2px 2px 3px grey;
+    input {
+      width:100px;
+    }
   }
 
     .query_token {
@@ -1857,12 +1871,7 @@ option[value^='? string:sentence ?'] {display : none;}
   margin-left : 1em;
 }
 
-.val_mod {
-  letter-spacing: 1px;
-  font-size: .8em;
-  cursor: pointer;
-  margin-right: 1px;
-}
+
 
 .mod_menu {
   cursor: default;
@@ -1950,8 +1959,14 @@ slider {
 }
 
 .val_mod {
+  background-color: darken(#f0f0ee,10%);
+  border-radius: 2px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin: auto 5px;
+  padding: 2px;
   &.insensitive {
-    color: lightgrey;
+    color: #fff;
   }
   &.sensitive {
     color: black;
