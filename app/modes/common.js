@@ -168,7 +168,53 @@ var icelandicSattrs = {
         type: "url",
         displayType: "hidden"
     }
-}
+};
+var icelandicSattrsNoUrl = {
+    text_author: {
+        label: "text_author"
+    },
+    text_datefrom: {
+        label: "text_date_from",
+        displayType: "hidden"
+    },
+    text_dateto: {
+        label: "text_date_to",
+        displayType: "hidden"
+    },
+    text_timefrom: {
+        label: "text_time_from",
+        displayType: "hidden"
+    },
+    text_timeto: {
+        label: "text_time_to",
+        displayType: "hidden"
+    },
+    text_date: {
+        label: "text_date",
+        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
+    },
+    text_midill: {
+        label: "text_midill"
+    },
+    text_wordcount: {
+        label: "text_wordcount"
+    },
+    text_id_midill: {
+        label: "text_id_midill",
+        displayType: "hidden"
+    },
+    text_title: {
+        label: "text_title",
+        displayType: "hidden"
+    },
+    text_url: {
+        label: "text_url",
+        type: "url",
+        displayType: "hidden"
+    }
+};
+
+
 
 var icelandicCustomAttrs = {
     thingmadur: {
@@ -180,18 +226,33 @@ var icelandicCustomAttrs = {
     article: {
         label: 'article',
         customType: 'struct',
-        // pattern: "<p>HELLO WORLD</p>"
         pattern: "<p><span rel='localize[text_title]'></span>: <a target='_blank' href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>"
+    },
+    article_nourl: {
+        label: 'article',
+        customType: 'struct',
+        pattern: "<p><span rel='localize[text_title]'></span>: <%=struct_attrs.text_title%></p>"
+    },
+    article_althingi: {
+        label: 'article',
+        customType: 'struct',
+        pattern: "<p><span rel='localize[text_title_althingi]'></span>: <a target='_blank' href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>"
     }
-}
+};
 
 var icelandicAlthingiSAttrs = {
-    text_author: icelandicSattrs.text_author,
+    text_author: {
+        label: "text_author",
+        hideSidebar: "true"
+    },
     text_date: icelandicSattrs.text_date,
     text_midill: icelandicSattrs.text_midill,
     text_wordcount: icelandicSattrs.text_wordcount,
     text_id_midill: icelandicSattrs.text_id_midill,
-    text_title: icelandicSattrs.text_title,
+    text_title: {
+        label: "text_title_althingi",
+        displayType: "hidden"
+    },
     text_url: icelandicSattrs.text_url,
     text_speakerurl: icelandicSattrs.text_speakerurl,
     text_speaker: icelandicSattrs.text_speaker,
@@ -203,7 +264,7 @@ var icelandicAlthingiSAttrs = {
         label: "text_speaker",
         hideSidebar: "true"
     }
-}
+};
 
 var icelandicAttrs = {
     pos: {
@@ -441,6 +502,5 @@ var icelandicAttrs = {
         dataset: {
             "með-greini": "mg"
         }
-    },
-    date_interval: settings.commonStructTypes.date_interval
+    }
 };

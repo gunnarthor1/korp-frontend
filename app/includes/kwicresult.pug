@@ -4,18 +4,21 @@
   .controls_n
     span {{'num_results' | loc:lang}}: 
     span.num-result(ng-bind-html="hits_display | trust")
-  .hits_picture(ng-if='hitsPictureData.length > 1')
-    table.hits_picture_table
-      tbody
-        tr
-          td.hits_picture_corp(ng-repeat='corpus in hitsPictureData'
-              ng-style='{width : corpus.relative + "%"}'
-              ng-class='{odd : $index % 2 != 0, \
-                         even : $index % 2 == 0}'
-              ng-click='hitspictureClick(corpus.page, corpus)'
-              uib-tooltip='{{corpus.rtitle}}: {{corpus.abs}}'
-              uib-tooltip-placement='{{$last? "left":"top"}}'
-              append-to-body="false")
+  .hits_picture_container(ng-if='hitsPictureData.length > 1')
+    p
+      | {{'results_by_corpus' | loc:lang}}
+    .hits_picture
+      table.hits_picture_table
+        tbody
+          tr
+            td.hits_picture_corp(ng-repeat='corpus in hitsPictureData'
+                ng-style='{width : corpus.relative + "%"}'
+                ng-class='{odd : $index % 2 != 0, \
+                           even : $index % 2 == 0}'
+                ng-click='hitspictureClick(corpus.page, corpus)'
+                uib-tooltip='{{corpus.rtitle}}: {{corpus.abs}}'
+                uib-tooltip-placement='{{$last? "left":"top"}}'
+                append-to-body="false")
 kwic-pager
 
 span.reading_btn.show_reading.link(ng-hide="loading", ng-click="toggleReading()") {{'show_reading' | loc:lang}}

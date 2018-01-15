@@ -18,9 +18,13 @@ settings.inputCaseInsensitiveDefault = true;
 
 settings.corporafolders.frettir = {
     title: "Fréttamiðlar",
-    contents: ["frettatiminn", "morgunbladid", "stod2", "sjonvarpid", "kjarninn", "visir", "ruv", "stundin", "mbl", "dv_is", "eyjan"],
+    contents: ["frettatiminn", "morgunbladid", "ruv", "sjonvarpid", "kjarninn", "visir", "stundin", "mbl", "dv_is", "eyjan"],
     description: "Textar frá ýmsum fréttamiðlum á landsvísu"
 };
+settings.corporafolders.frettir.ljosvakamidlar = {
+    title: "Ljósvakamiðlar",
+    contents: ["stod2", "ras1_og_2", "bylgjan", "sjonvarpid", ],
+}
 
 settings.corporafolders.frettir.svaedarit = {
     title: "Fréttamiðlar bæjarfélaga og landshluta",
@@ -41,10 +45,6 @@ settings.corporafolders.stjornsysla = {
     title: "Stjórnsýsla",
     contents: ["domstolar", "haestirettur", "althingislog", "althingi"],
     description: "Textar gefnir út af stjórnvöldum Íslands"
-};
-settings.corporafolders.utvarp = {
-    title: "Útvarp",
-    contents: ["ras1_og_2", "bylgjan"]
 };
 ////////////////////////////////////////
 
@@ -118,9 +118,9 @@ settings.corpora.sjonvarpid = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 settings.corpora.stod2 = {
@@ -133,9 +133,9 @@ settings.corpora.stod2 = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 settings.corpora.mbl = {
@@ -195,24 +195,9 @@ settings.corpora.bylgjan = {
     attributes: icelandicAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
-// settings.corpora.ras1 = {
-//     id: "ras1",
-//     title: "Rás 1",
-//     description: "Textar frá útvarpsstöðinni Rás 1.",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
 settings.corpora.ras1_og_2 = {
     id: "ras1_og_2",
     title: "Rás 1 og 2",
@@ -223,9 +208,9 @@ settings.corpora.ras1_og_2 = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 
@@ -269,9 +254,9 @@ settings.corpora.frettatiminn = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 
@@ -341,21 +326,6 @@ settings.corpora.fjorirthrirthrir = {
         article: icelandicCustomAttrs.article
     }
 }
-// settings.corpora.eidfaxi = {
-//     id: "eidfaxi",
-//     title: "Eiðfaxi",
-//     description: "Greinar af vefsíðunni eidfaxi.is.",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
 settings.corpora.fotbolti = {
     id: "fotbolti",
     title: "Fótbolti.net",
@@ -405,21 +375,6 @@ settings.corpora.andriki = {
         article: icelandicCustomAttrs.article
     }
 }
-// settings.corpora.deiglan = {
-//     id: "deiglan",
-//     title: "Deiglan.is",
-//     description: "Greinar af vefsíðunni Deiglan.is.",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
 
 ////////////////////////////////////////
 
@@ -511,7 +466,7 @@ settings.corpora.althingi = {
     attributes: icelandicAttrs,
     structAttributes: icelandicAlthingiSAttrs,
     customAttributes: {
-        article: icelandicCustomAttrs.article,
+        article: icelandicCustomAttrs.article_althingi,
         thingmadur: icelandicCustomAttrs.thingmadur
     }
 }
@@ -530,21 +485,6 @@ settings.corpora.eyjan = {
         article: icelandicCustomAttrs.article
     }
 }
-// settings.corpora.eyjafrettir = {
-//     id: "eyjafrettir",
-//     title: "Eyjafréttir",
-//     description: "Textar fengnir af vefútgáfu Eyjafrétta.",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
 settings.corpora.wikipedia = {
     id: "wikipedia",
     title: "Wikipedia",
@@ -585,56 +525,11 @@ settings.corpora.heimur = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
-// settings.corpora.vikudagur = {
-//     id: "vikudagur",
-//     title: "Vikudagur",
-//     description: "TODO",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
-// settings.corpora.vb = {
-//     id: "vb",
-//     title: "Viðskiptablaðið",
-//     description: "TODO",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
-// settings.corpora.sunnlenska = {
-//     id: "sunnlenska",
-//     title: "Sunnlenska",
-//     description: "TODO",
-//     context: defaultContext,
-//     within: {
-//         "paragraph": "paragraph",
-//         "text": "text"
-//     },
-//     attributes: icelandicAttrs,
-//     structAttributes: icelandicSattrs,
-//     customAttributes: {
-//         article: icelandicCustomAttrs.article
-//     }
-// }
 settings.corpora.silfuregils = {
     id: "silfuregils",
     title: "Silfur Egils",

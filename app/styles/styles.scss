@@ -898,6 +898,20 @@ table {
     border: none;
   }
 }
+.hits_picture_container {
+  background-color: darken(#edf3f3, 8%);
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  position: inline_block;
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+  p {
+    text-align: center;
+    margin: 0
+  }
+}
 
 .hits_picture {
   tr {
@@ -1474,14 +1488,12 @@ label[for=lemgram_select]:before {
   border : 1px solid lightgrey;
   width: 100%;
   padding: 0px;
+  margin: 0;
 }
 
 .hits_picture {
   cursor: pointer;
-  position: absolute;
-  right: 10px;
-  left: 280px;
-  top: -1px;
+  width: 1200px;
   transition: left 400ms ease;
 }
 

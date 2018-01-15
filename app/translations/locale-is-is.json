@@ -23,7 +23,7 @@
 
     "docs": "Handbók (eingöngu til á sænsku)",
     "swedish": "Sænska",
-    "english": "Enska",
+    "english": "English",
     "icelandic": "Íslenska",
     "more": "More",
     "korp": "Korp",
@@ -36,7 +36,7 @@
     "not_containing": "Inniheldur ekki",
     "negate_explanation": "Útilokar allar niðurstöður sem passa við leitarstrenginn.",
     "about": "Um Risamálheildina",
-    "about_gwc": "Íslenska risamálheildin er safn um 1300 milljóna lesmálsorða af texta. Hluti textanna eru opinberir textar (Alþingisræður frá 1907, lagatexti, dómar). Einnig fengust stór textasöfn frá ýmsum fjölmiðlum. Risamálheildin er mörkuð málheild þannig að öllum lesmálsorðum í málheildinni fylgir greiningarstrengur, mark, þar sem fram kemur orðflokkur og beygingarleg atriði og nefnimynd og hverjum texta í málheildinni fylgja upplýsingar um uppruna textans. Málfræðigreiningin gefur færi á markvissri leit í textunum. Verkið var unnið á Stofnun Árna Magnússonar í íslenskum fræðum á árunum 2015 til 2017 að mestu fyrir styrki frá Innviðasjóði (styrknúmer 151110-0031, verkefnisstjóri Eiríkur Rögnvaldsson), Mótframlagasjóði Háskóla Íslands og mennta- og menningarmálaráðuneytinu. Textana má sækja á vefsetrið <a href='http://www.málföng.is'>málföng.is</a> til þess að nota þá í rannsóknum og í máltæknitólum.",
+    "about_gwc": "Íslenska risamálheildin er safn um 1300 milljóna lesmálsorða af texta. Hluti textanna eru opinberir textar (Alþingisræður allt frá 1907, lagatexti, dómar). Einnig fengust stór textasöfn frá ýmsum fjölmiðlum. Risamálheildin er mörkuð málheild þannig að öllum lesmálsorðum í málheildinni fylgir greiningarstrengur, mark, þar sem fram kemur orðflokkur og beygingarleg atriði og nefnimynd og hverjum texta í málheildinni fylgja upplýsingar um uppruna textans. Málfræðigreiningin gefur færi á markvissri leit í textunum. Verkið var unnið á Stofnun Árna Magnússonar í íslenskum fræðum á árunum 2015 til 2017 að mestu fyrir styrki frá Innviðasjóði (styrknúmer 151110-0031, verkefnisstjóri Eiríkur Rögnvaldsson), Mótframlagasjóði Háskóla Íslands og mennta- og menningarmálaráðuneytinu. Textana má sækja á vefsetrið <a href='http://www.málföng.is'>málföng.is</a> til þess að nota þá í rannsóknum og í máltæknitólum.",
     "about_korp_header": "Um leitarvélina",
     "about_body": "Málheildirnar nota Korp, sem er þróað hjá Språkbanken í Svíþjóð. Nánari upplýsingar hjá <a target='_blank' href='http://spraakbanken.gu.se'><img style='max-width: 100px; vertical-align: middle' src='img/sb_logo.jpg'></a> .",
     "about_cite_header": "Vísa til Korp",
@@ -355,6 +355,8 @@
     "global_filter": "Sía",
     "filter_add": "Bæta við",
 
+    "add_token": "Bæta við leitarorði",
+
     "repeat_error": "Villa: Ekki hægt að endurtaka frá 0 fyrir alla tóka.",
 
     "choose_lemgram": "Velja ??lemgram??",
@@ -363,5 +365,7 @@
     "stats_warn": "Tölfræðiúrvinnsla er ekki virk",
     "prefix": "upphaf",
     "suffix": "endir",
-    "search_by_lemma": "Leita eftir uppflettimynd: "
+    "search_by_lemma": "Leita eftir uppflettimynd: ",
+
+    "results_by_corpus": "Niðurstöður eftir málheildum"
 }
