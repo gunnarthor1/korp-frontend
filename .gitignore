@@ -3,7 +3,7 @@
 node_modules
 /dist
 /.tmp
-/app/components/angular-bootstrap/template
+/app/components/*
 *.map
 .vscode
 test/e2e/bin/
