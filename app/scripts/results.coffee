@@ -1485,7 +1485,6 @@ class view.GraphResults extends BaseResults
             a.href = csvUrl
             a.download = "export.#{selType}"
             a.click()
-            console.log csvUrl
             window.URL.revokeObjectURL(csvUrl)
         )
 
@@ -1513,6 +1512,7 @@ class view.GraphResults extends BaseResults
                     "id" : timestamp
                     "formatter" : (row, cell, value, columnDef, dataContext) ->
                         loc = {
+                            'is' : "is-IS"
                             'sv' : "sv-SE"
                             'en' : "gb-EN"
                         }[$("body").scope().lang]
@@ -1620,7 +1620,6 @@ class view.GraphResults extends BaseResults
 
 
     makeRequest : (cqp, subcqps, corpora, labelMapping, showTotal, from, to) ->
-        c.log "makeRequest", cqp, subcqps, corpora, labelMapping, showTotal
         @s.loading = true
         @showPreloader()
         currentZoom = @zoom
@@ -1633,9 +1632,6 @@ class view.GraphResults extends BaseResults
 
 
         ).done (data) =>
-            c.log "graph data", data
-            c.log "graph cqp", cqp
-
             done = () =>
                 @hidePreloader()
                 safeApply @s, () =>

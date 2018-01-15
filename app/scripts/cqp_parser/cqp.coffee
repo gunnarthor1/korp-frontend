@@ -77,7 +77,7 @@ stringifyCqp = (cqp_obj, expanded_format = false) ->
                     }[op] or [val, op]
 
                 flagstr = ""
-                if flags and _.keys(flags).length
+                if flags and _.keys(flags).length and type != "date_interval"
                     flagstr = " %" + _.keys(flags).join("")
 
                 if type == "word" and val == ""
