@@ -94,7 +94,7 @@ korpApp.factory "extendedComponents", () ->
                 <%= maybe_placeholder %>>
                 <div class="opt_container">
                     <span class='val_mod'
-                        title="{{ 'toggle_case_sensitive' | loc:lang}}"
+                        title="{{ title | loc:lang}}"
                         ng-click='toggleSensitive()'
                         ng-class='{sensitive : case == "sensitive", insensitive : case == "insensitive"}'>
                             Aa
@@ -104,11 +104,14 @@ korpApp.factory "extendedComponents", () ->
     defaultController: ["$scope", ($scope) ->
         if $scope.orObj.flags?.c
             $scope.case = "insensitive"
+            $scope.title = "case_insensitive"
         else
             $scope.case = "sensitive"
+            $scope.title = "case_sensitive"
 
         $scope.makeSensitive = () ->
             $scope.case = "sensitive"
+            $scope.title = "case_sensitive"
             delete $scope.orObj.flags?["c"]
 
         $scope.makeInsensitive = () ->
@@ -117,6 +120,7 @@ korpApp.factory "extendedComponents", () ->
             $scope.orObj.flags = flags
 
             $scope.case = "insensitive"
+            $scope.title = "case_insensitive"
         $scope.toggleSensitive = () ->
             if $scope.case == "sensitive"
                 $scope.makeInsensitive()
