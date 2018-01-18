@@ -24,7 +24,7 @@ div(ng-controller="SearchCtrl", click-cover="noCorporaSelected")
             i.fa.fa-file-o
             a(href='http://cwb.sourceforge.net/files/CQP_Tutorial.pdf', target='_blank') 
               | {{'cqp_docs' | loc:lang}}
-          textarea#cqp_string(ng-model="cqp")
+          textarea#cqp-string(ng-model="cqp")
         search-submit(pos='right')
 
     uib-tab(ng-if="visibleTabs[3]", compare-search-ctrl)
@@ -54,7 +54,7 @@ div(ng-controller="SearchCtrl", click-cover="noCorporaSelected")
           //- reduce-select(reduce-items="currentAttrs", reduce-selected="selectedAttrs", reduce-lang="lang", style='width: 150px')
 
           button.btn.btn-sm.btn-default.search(ng-click='sendCompare()') {{'compare_action' | loc:lang}}
-  #search_options.ui-widget-content.ui-corner-bottom(click-cover="isCompareSelected")
+  #search-options.ui-widget-content.ui-corner-bottom(click-cover="isCompareSelected")
     div
       span(style='font-size: .9em;') {{"KWIC" | loc:lang}}: 
       select(ng-model='context' ng-options='getContextFormat(key) for (key,value) in contextValues')

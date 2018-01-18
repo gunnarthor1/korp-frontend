@@ -1074,15 +1074,15 @@ var VisualizerUI = (function($, window, undefined) {
           $('#context_size_div').hide("highlight");
         }
       });
-      $('#search_options div.advancedOptions').hide("highlight");
+      $('#search-options div.advancedOptions').hide("highlight");
       // set up advanced search options; only visible is clicked
       var advancedSearchOptionsVisible = false;
       $('#advanced_search_option_toggle').click(function(evt) {
         if (advancedSearchOptionsVisible) {
-          $('#search_options div.advancedOptions').hide("highlight");
+          $('#search-options div.advancedOptions').hide("highlight");
           $('#advanced_search_option_toggle').text("Show advanced");
         } else {
-          $('#search_options div.advancedOptions').show("highlight");
+          $('#search-options div.advancedOptions').show("highlight");
           $('#advanced_search_option_toggle').text("Hide advanced");
         }
         advancedSearchOptionsVisible = !advancedSearchOptionsVisible;

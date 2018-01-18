@@ -20,7 +20,7 @@ div(constr='LemgramResults', constr-name='lemgramResults')
         option(ng-repeat="hitSetting in hitSettings", value="{{hitSetting}}") {{ localeString(lang, hitSetting) }}
         //- word_pic_number_of_hits
   .content_target(ng-show="word_pic")
-    div(ng-repeat="word in data", class="tableContainer radialBkg")
+    div(ng-repeat="word in data", class="tableContainer radial-bkg")
       div(class="header" ng-if="!isLemgram(word.token)")
         | {{word.token}} (
         span() {{word.wordClassShort | loc:lang}}

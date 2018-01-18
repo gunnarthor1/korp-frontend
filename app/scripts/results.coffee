@@ -48,7 +48,7 @@ class BaseResults
             .append("<img class='error_message' src='img/error_message.png'>")
             .add($("<div class='fail_text' />")
             .localeKey("fail_text"))
-            .addClass("inline_block")
+            .addClass("inline-block")
             .prependTo(@$result)
             .wrapAll "<div class='error_msg'>"
 

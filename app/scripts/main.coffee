@@ -60,7 +60,7 @@ $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     $("body").addClass "mode-" + currentMode
     util.browserWarn()
 
-    $("#search_history").change (event) ->
+    $("#search-history").change (event) ->
         c.log "select", $(this).find(":selected")
         target = $(this).find(":selected")
         if _.str.contains target.val(), "http://"

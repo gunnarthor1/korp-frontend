@@ -86,29 +86,29 @@ settings.wordpictureTagset = {
 
 settings.wordPictureConf = {
     verb: [[
-        {rel: "subject", css_class: "color_blue"},
+        {rel: "subject", css_class: "color-blue"},
         "_",
-        {rel: "object", css_class: "color_purple"},
-        {rel: "adverbial", css_class: "color_green"}
+        {rel: "object", css_class: "color-purple"},
+        {rel: "adverbial", css_class: "color-green"}
     ]],
     noun: [
-        [{rel: "preposition_rel", css_class: "color_yellow", field_reverse: true},
-         {rel: "pre_modifier", css_class: "color_azure"},
+        [{rel: "preposition_rel", css_class: "color-yellow", field_reverse: true},
+         {rel: "pre_modifier", css_class: "color-azure"},
          "_",
-         {rel: "post_modifier", css_class: "color_red"}],
+         {rel: "post_modifier", css_class: "color-red"}],
 
-        ["_", {rel: "subject", css_class: "color_blue", field_reverse: true, alt_label: "vb"}],
-        [{rel: "object", css_class: "color_purple", field_reverse: true, alt_label: "vb"}, "_"]
+        ["_", {rel: "subject", css_class: "color-blue", field_reverse: true, alt_label: "vb"}],
+        [{rel: "object", css_class: "color-purple", field_reverse: true, alt_label: "vb"}, "_"]
     ],
     adjective: [
-        ["_", {rel: "pre_modifier", css_class: "color_yellow", field_reverse: true}],
-        [{rel: "adverbial2", css_class: "color_purple"}, "_"]
+        ["_", {rel: "pre_modifier", css_class: "color-yellow", field_reverse: true}],
+        [{rel: "adverbial2", css_class: "color-purple"}, "_"]
     ],
     adverb: [
-        ["_", {rel: "adverbial", css_class: "color_yellow", field_reverse: true}],
-        ["_", {rel: "adverbial2", css_class: "color_purple", field_reverse: true}]
+        ["_", {rel: "adverbial", css_class: "color-yellow", field_reverse: true}],
+        ["_", {rel: "adverbial2", css_class: "color-purple", field_reverse: true}]
     ],
-    preposition: [["_", {rel: "preposition_rel", css_class: "color_green"}]]
+    preposition: [["_", {rel: "preposition_rel", css_class: "color-green"}]]
 
 }
 

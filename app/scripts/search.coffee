@@ -9,7 +9,7 @@ view.updateSearchHistory = (value, href) ->
         $.grep($.param.fragment(url).split("&"), (item) ->
             item.split("=")[0] is "search" or item.split("=")[0] is "corpus"
         ).join "&"
-    $("#search_history").empty()
+    $("#search-history").empty()
     searches = $.jStorage.get("searches") or []
     searchLocations = $.map(searches, (item) ->
         filterParam item.location
@@ -26,9 +26,9 @@ view.updateSearchHistory = (value, href) ->
         .text(item.label).get(0)
         output
     )
-    placeholder = $("<option>").localeKey("search_history").get(0)
-    clear = $("<option class='clear'>").localeKey("search_history_clear")
+    placeholder = $("<option>").localeKey("search-history").get(0)
+    clear = $("<option class='clear'>").localeKey("search-history-clear")
 
-    $("#search_history").html(opts)
+    $("#search-history").html(opts)
         .prepend(clear)
         .prepend(placeholder)

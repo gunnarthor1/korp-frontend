@@ -164,7 +164,7 @@ korpApp.directive "constr", ($window, searches) ->
 
 korpApp.directive "searchSubmit", ($window, $document, $rootElement) ->
     template : '''
-    <div class="search_submit">
+    <div class="search-submit">
         <div class="btn-group">
             <button class="btn btn-sm btn-default" id="sendBtn" ng-click="onSendClick()" ng-disabled="searchDisabled">{{'search' | loc:lang}}</button>
             <button class="btn btn-sm btn-default opener" ng-click="togglePopover($event)" ng-disabled="searchDisabled">
@@ -303,7 +303,7 @@ korpApp.directive "popper", ($rootElement) ->
                 return false
 
         elem.on "click", (event) ->
-            other = $(".popper_menu:visible").not(popup)
+            other = $(".popper-menu:visible").not(popup)
             if other.length
                 other.hide()
             if popup.is(":visible") then closePopup()
@@ -777,7 +777,7 @@ korpApp.directive 'reduceSelect', ($timeout) ->
     replace : true
     template: '''
                   <div uib-dropdown auto-close="outsideClick" class="reduce-attr-select" on-toggle="toggled(open)">
-                    <div uib-dropdown-toggle class="reduce-dropdown-button inline_block ui-state-default">
+                    <div uib-dropdown-toggle class="reduce-dropdown-button inline-block ui-state-default">
                       <div class="reduce-dropdown-button-text">
                         <span>{{ "reduce_text" | loc:lang }}:</span>
                         <span>

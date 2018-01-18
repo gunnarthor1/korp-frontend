@@ -24,7 +24,7 @@
                                 <div class="left_col">
                                     <img class="image_button remove_arg" src="img/minus.png" ng-click="removeOr(token, and, $index)">
                                 </div>
-                                <div class="right_col inline_block" style="margin-left: 5px;">
+                                <div class="right_col inline-block" style="margin-left: 5px;">
                                     <div class="arg_selects {{or.type}}">
                                         <select class="arg_type"
                                         ng-options="obj | mapper:valfilter as obj.label | loc:lang group by obj.group | loc:lang for obj in types"
@@ -62,7 +62,7 @@
                             <span rel="localize[times]">{{'times' | loc:lang}}</span>
                         </div>
                         <button popper class="btn btn-xs btn-default token-cog-btn"><i class="fa fa-cog"></i></button>
-                        <ul class="popper_menu dropdown-menu">
+                        <ul class="popper-menu dropdown-menu">
                             <li>
                                 <a ng-click="toggleRepeat(token)" rel="localize[repeat]">{{'repeat' | loc:lang}}</a>
                             </li>

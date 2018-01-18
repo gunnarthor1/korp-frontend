@@ -15,7 +15,7 @@ describe "compare", () ->
         lemgramSuggestion.click()
         
     saveSearch = (name) ->
-        element(By.css ".search_submit .opener").click()
+        element(By.css ".search-submit .opener").click()
         input = element By.css "#cmp_input"
         input.sendKeys name
         element(By.css ".popover.compare.bottom .btn").click()
