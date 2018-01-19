@@ -481,8 +481,8 @@ korpApp.directive "tabPreloader", () ->
     replace : true
     template : """
         <div class="tab_preloaders">
-            <div ng-if="!spinner" class="tab_progress" style="width:{{value || 0}}%"></div>
-                <span ng-if="spinner" class="preloader_spinner"
+            <div class="tab_progress" style="width:{{value || 0}}%"></div>
+                <span class="preloader_spinner"
                     us-spinner="{lines : 8 ,radius:4, width:1.5, length: 2.5, left : 7, top : -12}"></span>
         </div>
     """
