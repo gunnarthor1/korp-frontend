@@ -84,7 +84,10 @@
     //- TODO RMLOGO Sýna þegar það er komið annað logo fyrir risamálheildina
     //- a#as_logo(href="http://www.arnastofnun.is")
     //-   img(src='img/sam_logo.png')
-    select#search-history
+    .search-history-wrapper
+      label(for="search-history")
+          | {{ "search-history" | loc:lang }}: 
+      select#search-history
   div(style='clear: both;')
 
     

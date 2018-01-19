@@ -31,4 +31,3 @@ view.updateSearchHistory = (value, href) ->
 
     $("#search-history").html(opts)
         .prepend(clear)
-        .prepend(placeholder)
