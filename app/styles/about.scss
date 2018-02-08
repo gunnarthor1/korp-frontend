@@ -1,0 +1,63 @@
+$primary-color: #aac8ff;
+$primary-light: #d9e7ff;
+$background-color: #edf3f3;
+
+$color-yellow: #fff3d8;
+$color-crown-of-thorns: #772122;
+$color-hover: #cd5c5c;
+$color-navy: #000080;
+$color-purple: #800080;
+$color-red: #f00;
+$color-darkgray: #333;
+$color-gray: #888;
+$color-white: #fff;
+$color-black: #000;
+
+body {
+  background-color: $background-color;
+  margin: auto;
+  max-width: 1200px;
+}
+
+h1 {
+  background-color: $color-crown-of-thorns;
+  border-radius: 5px;
+  color: $color-white;
+}
+
+.section {
+  display: block;
+  padding: 10px;
+
+  .fig-right {
+    background-color: $primary-light;
+    border: 1px solid $color-black;
+    border-radius: 5px;
+    float: right;
+    min-width: 500px;
+    padding: 0 10px;
+    text-align: center;
+    width: 50%;
+
+    img {
+      max-width: 100%;
+    }
+
+    figcaption {
+      margin: auto;
+      padding-bottom: 10px;
+    }
+  }
+
+  p {
+    padding: 0 10px;
+    width: 50%;
+  }
+}
+
+
+.clearfix::after {
+  clear: both;
+  content: '';
+  display: table;
+}

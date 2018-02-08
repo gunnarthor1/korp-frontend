@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     },
     watch: {
       pug : {
-        files : ["<%= yeoman.app %>/index.pug", "<%= yeoman.app %>/{includes,views}/*.pug"],
+        files : ["<%= yeoman.app %>/index.pug", "<%= yeoman.app %>/user_guide.pug", "<%= yeoman.app %>/{includes,views}/*.pug"],
         tasks : ['pug:compile']
       },
       coffee: {
@@ -402,7 +402,9 @@ module.exports = function (grunt) {
 
         },
         files: [
-          {'<%= yeoman.app %>/index.html': ["<%= yeoman.app %>/index.pug"]},
+          {'<%= yeoman.app %>/index.html': ["<%= yeoman.app %>/index.pug"],
+           '<%= yeoman.app %>/user_guide.html': ["<%= yeoman.app %>/user_guide.pug"]
+          },
           {
             expand: true,
             cwd: 'app/views',

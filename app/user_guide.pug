@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='description', content='Notendaleiðbeiningar fyrir Risamálheildina')
+    meta(name='google', content='notranslate')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-109855699-1')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-109855699-1');
+
+    // build:css styles/korp.css
+    link(rel='stylesheet', type='text/css', href='styles/bootstrap.css')
+    link(type='text/css', href='styles/ui_mods.css', rel='stylesheet')
+    // endbuild
+    link(type='text/css', href='components/jquery-ui/themes/smoothness/jquery-ui.min.css', rel='stylesheet')
+    
+
+    link(rel='stylesheet', type='text/css', href='styles/about.css')
+    link(rel='shortcut icon', type='image/ico', href='favicon.ico')
+    title Risamálheild - leiðbeiningar
+  body
+    h1 Notkunarleiðbeiningar fyrir risamálheildina
+    .section.clearfix
+      h2 Einföld leit
+      figure.fig-right
+        figcaption Leitarvalmynd
+        img(src="/img/user_guide/simple_search.png")
+      p Einfaldasta leiðin til að nota Risamálheildina er að skrifa einfaldlega leitarorðið og smella á "Leita"
+      p Sjálfkrafa er hakað við "óháð há- og lágstöfum". Þetta er gert til að yfirsjást ekki orð sem koma fyrir í upphafi setninga.
+        | Einnig má haka við "upphaf" eða "endir" en þá fást orð sem annaðhvort byrja eða enda á textastrengnum sem leitað var eftir.
+      p Þar fyrir utan má velja hvort maður leitar eftir orðmynd eða uppflettimynd: 
+
+    .section.clearfix
+      h2 "Leita eftir"
+      figure.fig-right
+        figcaption Leitað eftir orði
+        img(src="/img/user_guide/word_search_results.png")
+      p Ef merkt er við "Leita eftir orðmynd" í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
+        | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
+      figure.fig-right
+        figcaption Leitað eftir uppflettimynd
+        img(src="/img/user_guide/lemma_search_results.png")
+      p Til þess að fá allar orðmyndir skal merkja við "Leita eftir uppflettimynd (fá allar orðmyndir)". 
+        | Ef það er gert fást öll tilfelli af því orði sem leitað er eftir í textanum, óháð því hvaða birtingarmynd þau hafa.
+      p Hafa ber þó í huga að ekki dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
+        | því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
+      

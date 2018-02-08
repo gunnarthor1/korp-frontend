@@ -10,9 +10,11 @@ test/e2e/bin/
 test/karma/bin
 release_bin
 app/index.html
+app/user_guide.html
 app/scripts/bin/
 app/styles/styles.css
 app/styles/bootstrap.css
+app/styles/about.css
 release
 run_config.json
 *~
