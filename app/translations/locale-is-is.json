@@ -60,9 +60,11 @@
     "active_cqp_simple": "Virk CQP-fyrirspurn í einfaldri leit",
     "active_cqp_extended": "Virk CQP-fyrirspurn í útvíkkaðri leit",
     "max": "allt að",
-    "min": "að minnsta kosti",
+    "min": "a.m.k.",
     "and": "og",
     "or": "eða",
+    "add_cond": "Bæta við skilyrði (og)",
+    "add_opt": "Bæta við möguleika (eða)",
     "show_reading": "Sýna samhengi",
     "show_kwic": "Sýna orðstöðulykla",
     "log_in": "Skrá inn",
@@ -234,6 +236,7 @@
     "and_include": "Fá einnig niðurstöður sem ",
     "hits_per_page": "niðurstöður á síðu",
     "num_results": "Niðurstöður",
+    "num_results_post": " talsins",
     "next": "Næsta á eftir",
     "prev": "Næsta á undan",
     "goto_page": "Fara á síðu",
@@ -247,6 +250,7 @@
     "word": "orð",
     "words": "orð",
 
+    "comparison": "Samanburður",
     "compare_vb": "Bera",
     "compare_action": "Bera saman",
     "compare_with": "saman við",
@@ -365,7 +369,12 @@
     "stats_warn": "Tölfræðiúrvinnsla er ekki virk",
     "prefix": "upphaf",
     "suffix": "endir",
-    "search_by_lemma": "Leita eftir uppflettimynd: ",
 
-    "results_by_corpus": "Niðurstöður eftir málheildum"
+    "search_by": "Leita eftir: ",
+    "dictform": "uppflettimynd (fá allar orðmyndir)",
+    "wordform": "orðmynd",
+
+    "results_by_corpus": "Niðurstöður eftir málheildum",
+
+    "get-user-guide": "Skoða notkunarleiðbeiningar"
 }

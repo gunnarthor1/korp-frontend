@@ -4,6 +4,7 @@
   .controls_n
     span {{'num_results' | loc:lang}}: 
     span.num-result(ng-bind-html="hits_display | trust")
+    span {{'num_results_post' | loc:lang}}
   .hits_picture_container(ng-if='hitsPictureData.length > 1')
     p
       | {{'results_by_corpus' | loc:lang}}

@@ -6,8 +6,14 @@
     autoc#simple_text(placeholder="placeholder", type='lemgram', model='model', disable-lemgram-autocomplete='! settings.autocomplete', text-in-field="textInField")
     search-submit
     .opts
-      label(for='lemmaChk') {{'search_by_lemma' | loc:lang}}
-      input#lemmaChk(type='checkbox', ng-model="searchByLemma")
+      span {{ 'search_by' | loc:lang}}
+      .radio-group
+        label 
+          input#word-chk(type='radio', name='search-by' ng-model="searchBy", value="word")
+          | {{'wordform' | loc:lang}}
+        label 
+          input#lemma-chk(type='radio', name='search-by' ng-model="searchBy", value="lemma")
+          | {{'dictform' | loc:lang}}
       br
       span 
         |  {{'and_include' | loc:lang}} 

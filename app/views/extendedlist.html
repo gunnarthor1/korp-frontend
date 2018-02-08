@@ -3,7 +3,8 @@
         <div class="token_container" ng-repeat="token in data track by $index" >
             <div class="words_between" ng-if="$odd">
                 <span style="padding-bottom: 1em;">{{'words_between' | loc:lang}}</span>
-                <span>{{'min' | loc:lang}}</span>
+                <span>{{'min' | loc:lang}}
+                </span>
                 <input type="number" ng-model="token.repeat[0]" ng-change="betweenChange(0, $index)" ng-blur="betweenBlur(0, $index)" ng-class="{'input-error': repeatError}">
                 <span>{{'max' | loc:lang}}</span>
                 <input type="number" ng-model="token.repeat[1]" ng-change="betweenChange(1, $index)" ng-blur="betweenBlur(1, $index)">
@@ -41,7 +42,7 @@
                         <div class="arg_footer">
                             <button class="btn btn-xs btn-default insert_arg" ng-click="addOr(and)">
                                 <i class="fa fa-arrow-down"></i>
-                                <span>{{"or" | loc:lang}}</span>
+                                <span>{{"add_opt" | loc:lang}}</span>
                             </button>
                             <div style="clear:both;"></div>
                         </div>
@@ -52,7 +53,7 @@
                     <div class="token_footer_buttons">
                         <button class="btn btn-xs btn-default insert_arg" ng-click="addAnd(token)">
                             <i class="fa fa-arrow-down"></i>
-                            <span>{{"and" | loc:lang}}</span>
+                            <span>{{"add_cond" | loc:lang}}</span>
                         </button>
                         <div class="repeat" ng-show="token.repeat">
                             <span rel="localize[repeat]">{{'repeat' | loc:lang}}</span>
