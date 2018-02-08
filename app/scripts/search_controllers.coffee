@@ -27,10 +27,11 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
         $scope.$watch "show_map", (val) -> $location.search("show_map", Boolean(val) or null)
 
     setupWatchStats = () ->
-        $scope.showStatistics = true
+        $location.search("hide_stats", true)
 
         $scope.$watch (() -> $location.search().hide_stats), (val) ->
             $scope.showStatistics = not val?
+            console.log $scope.showStatistics
 
         $scope.$watch "showStatistics", (val) ->
             if $scope.showStatistics
@@ -156,7 +157,7 @@ korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope,
     s.prefix = false
     s.suffix = false
     s.isCaseInsensitive = false
-    s.searchByLemma = false
+    s.searchBy = 'word'
     if settings.inputCaseInsensitiveDefault
         s.isCaseInsensitive = true
 
@@ -195,7 +196,7 @@ korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope,
                     orParts.push ".*" + token
                 if not (s.prefix or s.suffix)
                     orParts.push regescape token
-                if s.searchByLemma
+                if s.searchBy == 'lemma'
                     res = _.map orParts, (orPart) ->
                         return 'lemma = "' + orPart + '"' + suffix
                 else
