@@ -35,7 +35,7 @@
     "remove_lang": "Remove lang",
     "not_containing": "Does not contain",
     "negate_explanation": "Negates the search expression, giving only sentences that do not match.",
-    "about": "About Korp / Cite Korp",
+    "about": "About The Gigaword Corpus",
     "about_gwc": "The Icelandic Gigaword corpus consists of about 1300 million running words of text. Part of the corpus texts are official texts (parliamentary speeches since 1907, law text, adjudications) but it also contains text from news media. The Gigaword corpus is a tagged corpus which means that each running word is accompanied by a morphosyntactic tag and lemma and each text is accompanied by bibliographic information. The morphosyntatctic tags and lemma make it easier to search for special constructions in the corpus. The corpus was compiled during the years 2015 to 2017 at the Árni Magnússon Institute for Icelandic Studies and was funded mostly by the Infrastructure Fund (no. 151110-0031, project manager Eiríkur Rögnvaldsson), the Contribution grants fund (Mótframlagssjóður) at the University of Iceland and the Ministry of Education and Culture. The texts can be downloaded from the website <a href='http://www.málföng.is'>málföng.is</a> for use in research and language technology tools.",
     "about_body": "The Icelandic Gigaword corpus runs on Korp, which is the concordance search tool of Språkbanken (The Swedish Language Bank). For more information, visit <a href='http://spraakbanken.gu.se'><img style='max-width: 100px; vertical-align: middle' src='img/sb_logo.jpg'></a>.",
     "about_korp_header": "About the search tool",
