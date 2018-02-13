@@ -178,9 +178,9 @@ settings.corpora.morgunbladid = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 settings.corpora.bylgjan = {
@@ -193,7 +193,7 @@ settings.corpora.bylgjan = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
     }
