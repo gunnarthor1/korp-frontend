@@ -15,43 +15,91 @@ $color-black: #000;
 
 body {
   background-color: $background-color;
+  box-sizing: border-box;
   margin: auto;
   max-width: 1200px;
 }
 
-h1 {
-  background-color: $color-crown-of-thorns;
-  border-radius: 5px;
-  color: $color-white;
+* {
+  box-sizing: border-box;
 }
 
+// h1 {
+//   background-color: $color-crown-of-thorns;
+//   border-radius: 5px;
+//   color: $color-white;
+// }
+
 .section {
+  border-top: 1px solid $color-black;
+  // border-radius: 5px;
   display: block;
   padding: 10px;
 
-  .fig-right {
+  .fig {
     background-color: $primary-light;
     border: 1px solid $color-black;
     border-radius: 5px;
-    float: right;
-    min-width: 500px;
+    margin: 0 0 16px;
+    // min-width: 500px;
     padding: 0 10px;
     text-align: center;
     width: 50%;
 
+    &-right {
+      float: right;
+      margin-left: 10px;
+      width: calc(50% - 10px);
+    }
+
+    &-left {
+      float: left;
+      margin-right: 10px;
+      width: calc(50% - 10px);
+    }
+
+    &-big {
+      // margin: 0 auto 10px;
+      width: 100%;
+    }
+
+    &-small {
+      width: 100%;
+    }
+
     img {
-      max-width: 100%;
+      width: 100%;
     }
 
     figcaption {
+      font-weight: bold;
       margin: auto;
-      padding-bottom: 10px;
+      padding: 10px 0;
     }
   }
 
   p {
     padding: 0 10px;
-    width: 50%;
+
+    >img {
+      border: 1px solid $color-black;
+      border-radius: 5px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin: 10px -10px;
+}
+
+.col {
+
+  &-4 {
+    margin: 0 10px;
+    max-width: calc(100% / 3 - 20px);
   }
 }
 

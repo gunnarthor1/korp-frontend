@@ -72,7 +72,7 @@ class BaseProxy
         if not @total? and struct.progress_corpora?.length
             tmp = $.map struct["progress_corpora"], (corpus) ->
                 return if not corpus.length
-                
+
                 _(corpus.split("|")).map((corpus) ->
                     parseInt settings.corpora[corpus.toLowerCase()].info.Size
                 ).reduce((a, b) ->
@@ -250,7 +250,7 @@ class model.StatsProxy extends BaseProxy
             for [reduceVal, field] in _.zip reduceVals, fields
                 if reduceVal in ["saldo", "prefix", "suffix", "lex", "lemma", "sense", "text_swefn", "text_blingbring"]
                     newFields.push field.replace(/(:.+?)($| )/g, "$2")
-                    
+
                 else
                     newFields.push field
             newFields.join("/")
@@ -265,7 +265,7 @@ class model.StatsProxy extends BaseProxy
         statsWorker.onmessage = (e) ->
             c.log "Called back by the worker!\n"
             c.log e
-            searchParams = 
+            searchParams =
                 reduceVals: reduceVals
                 ignoreCase: ignoreCase
                 corpora: _.keys data.corpora
