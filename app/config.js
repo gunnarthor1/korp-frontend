@@ -117,6 +117,10 @@ settings.modeConfig = [
     {
         localekey: "risamalheild",
         mode: "default"
+    },
+    {
+        localekey: "fornrit",
+        mode: "fornrit"
     }//,
     // {
     //     localekey: "parallel_texts",

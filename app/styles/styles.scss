@@ -284,7 +284,7 @@ img {
   width: 100%;
 
   li {
-    a {
+    a, a:link, a:visited {
       color: $color-gray;
 
       &:hover {

@@ -24,6 +24,7 @@
     "lostig": "Adjective form",
     "fsfall": "Prepositional case",
     "tob": "Declinability of numeral",
+    "tt": "Relative complementizer",
 
     "pos_lo": "Adjective",
     "pos_no": "Noun",
@@ -40,6 +41,7 @@
     "pos_uh": "Interjection",
     "pos_vf": "Web URL",
     "pos_xx": "Unclassified",
+    "pos_nhm": "Infinitive particle",
 
 
     "hattur_nh": "Infinitive",
@@ -99,6 +101,8 @@
     "stf_tt": "Relative complementizer",
     "stf_nhm": "Indefinite article",
 
+    "tt_tt": "Relative complementizer",
+
     "greinir_mg": "Contains definite article",
 
     "sernafn_sn": "Proper noun",
@@ -119,6 +123,11 @@
     "text_title_althingi": "Speech title",
 
     "author": "Author",
+
+    "text_release_year": "Year of publication",
+    "text_editors": "Editor/s",
+    "text_publisher": "Publisher",
+    "text_rit": "Book title",
 
     "ljosvakamidlar": "Audiovisual Media",
     "frettamidlar": "News media",
@@ -158,5 +167,7 @@
     "visindavefur": "Vísindavefurinn",
     "heimur": "Heimur",
     "silfuregils": "Silfur Egils",
-    "pressan": "Pressan"
+    "pressan": "Pressan",
+
+    "fornrit": "Medieval texts"
 }

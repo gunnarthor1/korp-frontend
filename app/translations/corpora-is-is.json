@@ -23,6 +23,7 @@
     "lostig": "Stig lýsingarorðs",
     "fsfall": "Stýrir falli",
     "tob": "Beygjanleiki töluorðs",
+    "tt": "Tilvísunartenging",
 
     "pos_lo": "Lýsingarorð",
     "pos_no": "Nafnorð",
@@ -39,6 +40,8 @@
     "pos_uh": "Upphrópun",
     "pos_vf": "Veffang",
     "pos_xx": "Ógreint",
+    "pos_vf": "Veffang",
+    "pos_nhm": "Nafnháttarmerki",
 
 
     "hattur_nh": "Nafnháttur" ,
@@ -98,6 +101,8 @@
     "stf_tt": "Tilvísunartenging",
     "stf_nhm": "Nafnháttarmerki",
 
+    "tt_tt": "Tilvísunartenging",
+
     "greinir_mg": "Með greini",
 
     "sernafn_sn": "Sérnafn",
@@ -117,6 +122,11 @@
     "date_interval": "Á tímabili",
     "text_title_althingi": "Titill ræðu",
     "author": "Höfundur",
+
+    "text_release_year": "Útgáfuár",
+    "text_editors": "Ritstjórn",
+    "text_publisher": "Útgefandi",
+    "text_rit": "Titill bókar",
 
     "ljosvakamidlar": "Ljósvakamiðlar",
     "frettamidlar": "Fréttamiðlar",
@@ -156,5 +166,9 @@
     "visindavefur": "Vísindavefurinn",
     "heimur": "Heimur",
     "silfuregils": "Silfur Egils",
-    "pressan": "Pressan"
+    "pressan": "Pressan",
+
+    "fornrit": "Fornrit"
+
+
 }
