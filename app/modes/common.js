@@ -53,6 +53,16 @@ var defaultContext = {
     "1 paragraph": "1 paragraph"
 };
 
+var fornritContext = {
+    "5 words": "5 words",
+    "7 words": "7 words",
+    "10 words": "10 words",
+    "15 words": "15 words",
+    "20 words": "20 words",
+    "1 sentence": "1 sentence",
+    "1 paragraph": "1 paragraph"
+};
+
 var spContext = {
     "1 sentence": "1 sentence",
     "1 paragraph": "1 paragraph"
@@ -504,3 +514,262 @@ var icelandicAttrs = {
         }
     }
 };
+
+var fornritAttrs = {
+    pos: {
+        label: "pos",
+        translationKey: "pos_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 1,
+        dataset: {
+            "l": "lo",
+            "n": "no",
+            "c": "st",
+            "s": "so",
+            "r": "fs",
+            "t": "to",
+            "e": "eo",
+            "a": "ao",
+            "f": "fn",
+            "g": "gr",
+            "p": "grm",
+            "u": "uh",
+            "v": "vf",
+            "h": "nhm",
+            "x": "xx"
+        }
+    },
+    lemma: {
+        label: "lemma",
+        order: 2
+    },
+    pers: {
+        label:"pers",
+        translationKey: "pers_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 3,
+        dataset: {
+            "1": "1pers",
+            "2": "2pers",
+            "3": "3pers"
+        }
+    },
+    kyn: {
+        label:"kyn",
+        translationKey: "kyn_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 4,
+        dataset: {
+            "k": "kk",
+            "v": "kvk",
+            "h": "hvk"
+        }
+    },
+    tala: {
+        label:"tala",
+        translationKey: "tala_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 5,
+        dataset: {
+            "e": "et",
+            "f": "ft"
+        }
+    },
+    fall: {
+        label:"fall",
+        translationKey: "fall_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 6,
+        dataset: {
+            "n": "nf",
+            "o": "þf",
+            "þ": "þgf",
+            "e": "ef"
+        }
+    },
+    lostig: {
+        label:"lostig",
+        translationKey: "lostig_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 7,
+        dataset: {
+            "f": "fs",
+            "m": "ms",
+            "e": "es"
+        }
+    },
+    mynd: {
+        label:"mynd",
+        translationKey: "mynd_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 8,
+        dataset: {
+            "g": "gm",
+            "þ": "þm",
+            "m": "mm"
+        }
+    },
+    hattur: {
+        label:"hattur",
+        translationKey: "hattur_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 9,
+        dataset: {
+            "n": "nh",
+            "v": "vh",
+            "s": "sb",
+            "f": "fh",
+            "þ": "lhþ",
+            "l": "lhn",
+            "b": "bh"
+        }
+    },
+    tid: {
+        label:"tid",
+        translationKey: "tid_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 10,
+        dataset: {
+            "n": "nt",
+            "þ": "þt"
+        }
+    },
+    lob: {
+        label:"lob",
+        translationKey: "lob_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 11,
+        dataset: {
+            "s": "sb",
+            "v": "vb",
+            "o": "ob"
+        }
+    },
+    fsfall: {
+        label:"fsfall",
+        translationKey: "fsfall_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 12,
+        dataset: {
+            "o": "þf",
+            "þ": "þgf",
+            "e": "ef"
+        }
+    },
+    tob: {
+        label:"tob",
+        translationKey: "tob_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 13,
+        dataset: {
+            "b": "bt",
+            "ó": "ót"
+        }
+    },
+    fnf: {
+        label:"fnf",
+        translationKey: "fnf_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 15,
+        dataset: {
+            "e": "efn",
+            "a": "áfn",
+            "b": "óáfn",
+            "o": "ófn",
+            "p": "pfn",
+            "s": "sfn",
+            "t": "tfn"
+        }
+    },
+    tof: {
+        label:"ft",
+        translationKey: "ft_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 16,
+        dataset: {
+            "f": "ft"
+        }
+    },
+    tt: {
+        label:"tt",
+        translationKey: "tt_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 17,
+        dataset: {
+            "t": "tt"
+        }
+    },
+    sernafn: {
+        label:"sernafn",
+        translationKey: "sernafn_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 18,
+        dataset: {
+            "sérnafn": "sn"
+        }
+    },
+    greinir: {
+        label:"greinir",
+        translationKey: "greinir_",
+        extendedTemplate: selectType.extendedTemplate,
+        extendedController: selectType.extendedController,
+        opts: liteOptions,
+        order: 19,
+        dataset: {
+            "með-greini": "mg"
+        }
+    }
+};
+
+
+var fornritSattrs = {
+    text_utgafuar: {
+        label: "text_release_year",
+        order: 10
+    },
+    text_ritstjorar: {
+        label: "text_editors",
+        type: "set",
+        order: 40
+    },
+    text_utgefandi: {
+        label: "text_publisher",
+        order: 30
+    },
+    text_rit: {
+        label: "text_rit",
+        order: 20
+    }
+}
