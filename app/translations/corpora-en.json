@@ -111,7 +111,10 @@
     "text_midill": "Medium",
     "text_author": "Author",
     "text_wordcount": "Number of words in text",
+    "text_sentencecount": "Number of sentences in text",
+    "text_paragraphcount": "Number of paragraphs in text",
     "text_title": "Title",
+    "text_titill": "Title",
     "text_date": "Date",
     "text_datefrom": "From date",
     "text_dateto": "To date",
@@ -128,6 +131,9 @@
     "text_editors": "Editor/s",
     "text_publisher": "Publisher",
     "text_rit": "Book title",
+    "text_translator": "Translation",
+
+    "part_title": "Book part",
 
     "ljosvakamidlar": "Audiovisual Media",
     "frettamidlar": "News media",

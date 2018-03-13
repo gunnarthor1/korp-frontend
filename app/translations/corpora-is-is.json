@@ -111,7 +111,10 @@
     "text_midill": "Miðill",
     "text_author": "Höfundur",
     "text_wordcount": "Fjöldi orða í texta",
+    "text_sentencecount": "Fjöldi málsgreina í texta",
+    "text_paragraphcount": "Fjöldi efnisgreina í texta",
     "text_title": "Titill",
+    "text_titill": "Titill",
     "text_date": "Dagsetning",
     "text_datefrom": "Frá degi",
     "text_dateto": "Til dags",
@@ -126,7 +129,10 @@
     "text_release_year": "Útgáfuár",
     "text_editors": "Ritstjórn",
     "text_publisher": "Útgefandi",
-    "text_rit": "Titill bókar",
+    "text_rit": "Titill rits",
+    "text_translator": "Þýðing",
+
+    "part_title": "Hluti bókar",
 
     "ljosvakamidlar": "Ljósvakamiðlar",
     "frettamidlar": "Fréttamiðlar",

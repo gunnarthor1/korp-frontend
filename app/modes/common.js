@@ -619,7 +619,6 @@ var fornritAttrs = {
         order: 8,
         dataset: {
             "g": "gm",
-            "þ": "þm",
             "m": "mm"
         }
     },
@@ -753,8 +752,7 @@ var fornritAttrs = {
     }
 };
 
-
-var fornritSattrs = {
+var textasafnSattrs = {
     text_utgafuar: {
         label: "text_release_year",
         order: 10
@@ -771,5 +769,90 @@ var fornritSattrs = {
     text_rit: {
         label: "text_rit",
         order: 20
+    },
+    text_author: {
+        label: "text_author",
+        order: 25
+    },
+    text_datefrom: {
+        label: "text_date_from",
+        displayType: "hidden"
+    },
+    text_dateto: {
+        label: "text_date_to",
+        displayType: "hidden"
+    },
+    text_timefrom: {
+        label: "text_time_from",
+        displayType: "hidden"
+    },
+    text_timeto: {
+        label: "text_time_to",
+        displayType: "hidden"
+    },
+    text_date: {
+        label: "text_date",
+        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
+    },
+    text_title: {
+        label: "text_title",
+        displayType: "hidden"
+    },
+    text_sentencecount: {
+        label: "text_sentencecount",
+        order: 110
+    },
+    text_wordcount: {
+        label: "text_wordcount",
+        order: 100
+    },
+    text_paragraphcount: {
+        label: "text_paragraphcount",
+        order: 120
+    },
+    text_translator : {
+        label: "text_translator",
+        type: "set",
+        order: 26
+    }
+}
+
+var fornritSattrs = {
+    text_utgafuar: {
+        label: "text_release_year",
+        order: 20
+    },
+    text_ritstjorar: {
+        label: "text_editors",
+        type: "set",
+        order: 40
+    },
+    text_utgefandi: {
+        label: "text_publisher",
+        order: 30
+    },
+    text_rit: {
+        label: "text_rit",
+        order: 10
+    },
+    text_titill: {
+        label: "text_titill",
+        order: 0
+    },
+    text_sentencecount: {
+        label: "text_sentencecount",
+        order: 110
+    },
+    text_wordcount: {
+        label: "text_wordcount",
+        order: 100
+    },
+    text_paragraphcount: {
+        label: "text_paragraphcount",
+        order: 120
+    },
+    part_title: {
+        label: "part_title",
+        order: 5
     }
 }

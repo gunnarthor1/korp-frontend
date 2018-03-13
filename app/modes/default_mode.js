@@ -57,7 +57,7 @@ settings.corpora.kjarninn = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -72,7 +72,7 @@ settings.corpora.visir = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -87,7 +87,7 @@ settings.corpora.ruv = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -102,7 +102,7 @@ settings.corpora.dfs = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -117,7 +117,7 @@ settings.corpora.sjonvarpid = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -132,7 +132,7 @@ settings.corpora.stod2 = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -147,7 +147,7 @@ settings.corpora.mbl = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -162,7 +162,7 @@ settings.corpora.dv_is = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -177,7 +177,7 @@ settings.corpora.morgunbladid = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -192,7 +192,7 @@ settings.corpora.bylgjan = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -207,7 +207,7 @@ settings.corpora.ras1_og_2 = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -223,7 +223,7 @@ settings.corpora.bbl = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -238,7 +238,7 @@ settings.corpora.stundin = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -253,7 +253,7 @@ settings.corpora.frettatiminn = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -271,7 +271,7 @@ settings.corpora.vf = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -286,7 +286,7 @@ settings.corpora.bb = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -301,7 +301,7 @@ settings.corpora.fjardarpostur = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -320,7 +320,7 @@ settings.corpora.fjorirthrirthrir = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -335,7 +335,7 @@ settings.corpora.fotbolti = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -354,7 +354,7 @@ settings.corpora.jonas = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -369,7 +369,7 @@ settings.corpora.andriki = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -388,7 +388,7 @@ settings.corpora.bleikt = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -403,7 +403,7 @@ settings.corpora.bondi = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -418,7 +418,7 @@ settings.corpora.domstolar = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -433,7 +433,7 @@ settings.corpora.haestirettur = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -448,7 +448,7 @@ settings.corpora.althingislog = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -463,7 +463,7 @@ settings.corpora.althingi = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicAlthingiSAttrs,
     customAttributes: {
         article: icelandicCustomAttrs.article_althingi,
@@ -479,7 +479,7 @@ settings.corpora.eyjan = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -494,7 +494,7 @@ settings.corpora.wikipedia = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -509,7 +509,7 @@ settings.corpora.visindavefur = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -524,7 +524,7 @@ settings.corpora.heimur = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
         article: icelandicCustomAttrs.article_nourl
@@ -539,7 +539,7 @@ settings.corpora.silfuregils = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
@@ -554,10 +554,27 @@ settings.corpora.pressan = {
         "paragraph": "paragraph",
         "text": "text"
     },
-    attributes: icelandicAttrs,
+    attributes: fornritAttrs,
     structAttributes: icelandicSattrs,
     customAttributes: {
         article: icelandicCustomAttrs.article
+    }
+}
+
+settings.corpora.textasafn = {
+    id: "textasafn",
+    title: "Textasafn Árnastofnunar",
+    description: "Samansafn texta eftir ýmsa höfunda.",
+    context: defaultContext,
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: textasafnSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 /*
