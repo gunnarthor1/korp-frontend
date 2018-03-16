@@ -854,5 +854,9 @@ var fornritSattrs = {
     part_title: {
         label: "part_title",
         order: 5
+    },
+    chapter_n: {
+        label: "chapter_no",
+        order: 1
     }
 }
