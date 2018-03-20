@@ -137,6 +137,7 @@ module.exports = function (grunt) {
           '.tmp',
           "app/scripts/bin",
           "app/index.html",
+          "app/user_guide.html",
           "app/styles/styles.css",
           "app/styles/bootstrap.css"
           ]
@@ -302,7 +303,9 @@ module.exports = function (grunt) {
       },
       dist: {
         files: [
-        {'<%= yeoman.dist %>/index.html': "<%= yeoman.app %>/index.html" },
+        {'<%= yeoman.dist %>/index.html': "<%= yeoman.app %>/index.html",
+         '<%= yeoman.dist %>/user_guide.html': "<%= yeoman.app %>/user_guide.html"
+       },
         {
           expand: true,
           cwd: '<%= yeoman.app %>',
@@ -331,9 +334,11 @@ module.exports = function (grunt) {
             'translations/*',
             'img/*',
             'img/browsers/*',
+            'img/user_guide/*',
             'lib/**/*',
             'styles/**/*.{png,otf,gif}',
             'styles/styles.css',
+            'styles/about.css',
             "components/font-awesome/fonts/*",
             'components/rickshaw/rickshaw.min.js',
             'lib/jquery.tooltip.pack.js',
@@ -472,8 +477,8 @@ module.exports = function (grunt) {
         'newer:coffee:test',
         'karma'
       ]);
-    } 
-      
+    }
+
     grunt.task.run([
         'clean:server',
         "newer:pug",
@@ -484,19 +489,19 @@ module.exports = function (grunt) {
         'newer:sass:server',
         'autoprefixer'
     ]);
-    
+
     if(target !== 'e2e') {
       grunt.task.run([
         'karma'
       ]);
-    } 
-    
+    }
+
     grunt.task.run([
       'connect:e2e',
       'protractor',
       'clean:e2e'
     ]);
-    
+
   });
 
   grunt.registerTask('build', [
