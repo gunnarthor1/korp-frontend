@@ -32,11 +32,14 @@ var selectType = {
 var liteOptions = {
     "is": "=",
     "is_not": "!="
-}
+};
+
+
 var setOptions = {
     "is": "contains",
     "is_not": "not contains"
 };
+
 var probabilitySetOptions = {
     "is": "highest_rank",
     "is_not": "not_highest_rank",
@@ -179,6 +182,8 @@ var icelandicSattrs = {
         displayType: "hidden"
     }
 };
+
+
 var icelandicSattrsNoUrl = {
     text_author: {
         label: "text_author"
@@ -223,7 +228,6 @@ var icelandicSattrsNoUrl = {
         displayType: "hidden"
     }
 };
-
 
 
 var icelandicCustomAttrs = {
@@ -858,5 +862,17 @@ var fornritSattrs = {
     chapter_n: {
         label: "chapter_no",
         order: 1
+    },
+    part_ismain: {
+        label: "handle_appendix",
+        hideSidebar: "true",
+        opts: {
+            "skip": "=",
+            "search_in": "!="
+        },
+        extendedTemplate: "<br>",
+        extendedController: function($scope) {
+            $scope.model = $scope.model || "t"
+        },
     }
 }

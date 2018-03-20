@@ -85,6 +85,8 @@
     "is_not": "er ekki",
     "starts_with": "byrjar á",
     "ends_with": "endar á",
+    "skip": "sleppa",
+    "search_in": "leita í",
 
     "any_word_placeholder": "<hvaða orð sem er>",
     "case_insensitive": "óháð há- og lágstöfum",

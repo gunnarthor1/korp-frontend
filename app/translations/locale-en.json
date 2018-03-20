@@ -84,6 +84,8 @@
     "is_not": "is not",
     "starts_with": "begins with",
     "ends_with": "ends with",
+    "skip": "skip",
+    "search_in": "search in",
 
     "any_word_placeholder": "<any word>",
     "case_insensitive": "case-insensitive",

@@ -29,7 +29,7 @@ settings.corporafolders.islendingasogur = {
         "droplaugarsona_saga",
         "egils_saga_skalla_grimssonar",
         "eiriks_saga_rauda",
-        "eyrbyggjasaga",
+        "eyrbyggja_saga",
         "finnboga_saga_ramma",
         "fljotsdaela_saga",
         "floamanna_saga",
@@ -42,6 +42,11 @@ settings.corporafolders.islendingasogur = {
         "gull_thoris_saga",
         "gunnars_saga_keldugnupsfifls",
         "gunnlaugs_saga_ormstungu",
+        "hallfredar_saga_eftir_modruvallabok",
+        "hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
+        "hardar_saga_og_holmverja",
+        "havardar_saga_isfirdings",
+        "heidarviga_saga",
         "haensna_thoris_saga",
         "hrafnkels_saga_freysgoda",
         "islendinga_thaettir",
@@ -57,6 +62,7 @@ settings.corporafolders.islendingasogur = {
         "svarfdaela_saga",
         "thordar_saga_hredu",
         "thorsteins_saga_hvita",
+        "thorsteins_saga_sidu_hallssonar",
         "valla_ljots_saga",
         "vatnsdaela_saga",
         "viga_glums_saga",
@@ -155,9 +161,9 @@ settings.corpora.eiriks_saga_rauda = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.eyrbyggjasaga = {
-    id: "eyrbyggjasaga",
-    title: "Eyrbyggjasaga",
+settings.corpora.eyrbyggja_saga = {
+    id: "eyrbyggja_saga",
+    title: "Eyrbyggja saga",
     context: defaultContext,
     description: "",
     within: {
@@ -314,6 +320,71 @@ settings.corpora.gunnars_saga_keldugnupsfifls = {
 settings.corpora.gunnlaugs_saga_ormstungu = {
     id: "gunnlaugs_saga_ormstungu",
     title: "Gunnlaugs saga ormstungu",
+    context: defaultContext,
+    description: "",
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: fornritSattrs
+};
+settings.corpora.hallfredar_saga_eftir_modruvallabok = {
+    id: "hallfredar_saga_eftir_modruvallabok",
+    title: "Hallfreðar saga (eftir Möðruvallabók)",
+    context: defaultContext,
+    description: "",
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: fornritSattrs
+};
+settings.corpora.hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu = {
+    id: "hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
+    title: "Hallfreðar saga (úr Ólafs sögu Tryggvasonar hinni mestu)",
+    context: defaultContext,
+    description: "",
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: fornritSattrs
+};
+settings.corpora.hardar_saga_og_holmverja = {
+    id: "hardar_saga_og_holmverja",
+    title: "Harðar saga og Hólmverja",
+    context: defaultContext,
+    description: "",
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: fornritSattrs
+};
+settings.corpora.havardar_saga_isfirdings = {
+    id: "havardar_saga_isfirdings",
+    title: "Hávarðar saga Ísfirðings",
+    context: defaultContext,
+    description: "",
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: fornritSattrs
+};
+settings.corpora.heidarviga_saga = {
+    id: "heidarviga_saga",
+    title: "Heiðarvíga saga",
     context: defaultContext,
     description: "",
     within: {
@@ -548,6 +619,19 @@ settings.corpora.thordar_saga_hredu = {
 settings.corpora.thorsteins_saga_hvita = {
     id: "thorsteins_saga_hvita",
     title: "Þorsteins saga hvíta",
+    context: defaultContext,
+    description: "",
+    within: {
+        "paragraph": "paragraph",
+        "sentence": "sentence",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: fornritSattrs
+};
+settings.corpora.thorsteins_saga_sidu_hallssonar = {
+    id: "thorsteins_saga_sidu_hallssonar",
+    title: "Þorsteins saga Síðu-Hallssonar",
     context: defaultContext,
     description: "",
     within: {
