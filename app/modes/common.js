@@ -239,7 +239,7 @@ var icelandicCustomAttrs = {
         label: 'thingmadur',
         customType: 'struct',
         // pattern: "<p>works!</p>"
-        pattern: "<p><span rel='localize[text_speaker]'></span>: <%=struct_attrs.text_speakerurl ? \"<a target='_blank' href='\"+struct_attrs.text_speakerurl+\"'>\"+struct_attrs.text_speaker+\"</a>\" : \"<span>\"+struct_attrs.text_speaker+\"</span>\"%></p>"
+        pattern: "<p><span rel='localize[text_speaker]'></span>: <%=struct_attrs.text_speakerurl ? \"<a target='_blank' href='http://althingi.is\"+struct_attrs.text_speakerurl+\"'>\"+struct_attrs.text_speaker+\"</a>\" : \"<span>\"+struct_attrs.text_speaker+\"</span>\"%></p>"
     },
     article: {
         label: 'article',
