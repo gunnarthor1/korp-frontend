@@ -160,10 +160,12 @@ var icelandicSattrs = {
     },
     text_date: {
         label: "text_date",
+        hideExtended: "true",
         pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
     },
     text_midill: {
-        label: "text_midill"
+        label: "text_midill",
+        hideExtended: "true"
     },
     text_wordcount: {
         label: "text_wordcount"
@@ -206,10 +208,12 @@ var icelandicSattrsNoUrl = {
     },
     text_date: {
         label: "text_date",
+        hideExtended: "true",
         pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
     },
     text_midill: {
-        label: "text_midill"
+        label: "text_midill",
+        hideExtended: "true"
     },
     text_wordcount: {
         label: "text_wordcount"

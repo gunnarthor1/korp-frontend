@@ -727,7 +727,7 @@ korpApp.directive "typeaheadClickOpen", ($parse, $timeout)->
 
 
 
-korpApp.directive "timeInterval", () ->
+korpApp.directive "timeInterval", (uibDateParser) ->
     scope :
         dateModel : "="
         timeModel : "="
@@ -738,6 +738,7 @@ korpApp.directive "timeInterval", () ->
     restrict : "E"
     template : """
         <div>
+            <label> Slá inn dagsetningu: <input type="text" uib-datepicker-popup="yyyy-MM-dd" placeholder="yyyy-mm-dd" ng-model="dateModel"></label>
             <div uib-datepicker class="well well-sm" ng-model="dateModel"
                 min-date="minDate" max-date="maxDate" init-date="minDate"
                 show-weeks="true" starting-day="1"></div>
