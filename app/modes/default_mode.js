@@ -18,13 +18,21 @@ settings.inputCaseInsensitiveDefault = true;
 
 settings.corporafolders.frettir = {
     title: "Fréttamiðlar",
-    contents: ["frettatiminn", "morgunbladid", "ruv", "sjonvarpid", "kjarninn", "visir", "stundin", "mbl", "dv_is", "eyjan"],
+    contents: ["frettatiminn", "stundin", "eyjan"],
     description: "Textar frá ýmsum fréttamiðlum á landsvísu"
 };
 settings.corporafolders.frettir.ljosvakamidlar = {
     title: "Ljósvakamiðlar",
     contents: ["stod2", "ras1_og_2", "bylgjan", "sjonvarpid", ],
-}
+};
+settings.corporafolders.frettir.prentmidlar = {
+    title: "Prentmiðlar",
+    contents: ["morgunbladid"]
+};
+settings.corporafolders.frettir.vefmidlar = {
+    title: "Vefmiðlar",
+    contents: ["ruv", "visir", "mbl", "dv_is", "kjarninn"]
+};
 
 settings.corporafolders.frettir.svaedarit = {
     title: "Fréttamiðlar bæjarfélaga og landshluta",
@@ -38,7 +46,7 @@ settings.corporafolders.frettir.ithrottir = {
 };
 settings.corporafolders.blogg = {
     title: "Tímarit og blogg",
-    contents: ["jonas", "andriki", "silfuregils", "bondi", "bleikt", "bbl"],
+    contents: ["jonas", "andriki", "silfuregils", "bondi", "bleikt", "bbl", "heimur"],
     description: "Textar frá tímaritum og bloggum sem fjalla um stjórnmál"
 };
 settings.corporafolders.stjornsysla = {
@@ -163,9 +171,9 @@ settings.corpora.dv_is = {
         "text": "text"
     },
     attributes: fornritAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSattrsNoUrl,
     customAttributes: {
-        article: icelandicCustomAttrs.article
+        article: icelandicCustomAttrs.article_nourl
     }
 }
 settings.corpora.morgunbladid = {
