@@ -21,6 +21,10 @@ settings.inputCaseInsensitiveDefault = true;
 
 settings.corporafolders.islendingasogur = {
     title: "Íslendingasögur",
+    contents: []
+};
+settings.corporafolders.islendingasogur.a_g = {
+    title: "A-G",
     contents: [
         "bandamanna_saga_konungsbok",
         "bardar_saga_snaefellsass",
@@ -36,19 +40,24 @@ settings.corporafolders.islendingasogur = {
         "fostbraedra_saga",
         "gisla_saga_surssonar_lengri_gerd",
         "gisla_saga_surssonar_styttri_gerd",
+        "grettis_saga_asmundarsonar",
         "graenlendinga_saga",
         "graenlendinga_thattur",
-        "grettis_saga_asmundarsonar",
         "gull_thoris_saga",
         "gunnars_saga_keldugnupsfifls",
         "gunnlaugs_saga_ormstungu",
+    ]
+};
+settings.corporafolders.islendingasogur.h_oe = {
+    title: "H-Ö",
+    contents: [
         "hallfredar_saga_eftir_modruvallabok",
         "hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
         "hardar_saga_og_holmverja",
         "havardar_saga_isfirdings",
         "heidarviga_saga",
-        "haensna_thoris_saga",
         "hrafnkels_saga_freysgoda",
+        "haensna_thoris_saga",
         "islendinga_thaettir",
         "jokuls_thattur_buasonar",
         "kjalnesinga_saga",
@@ -57,17 +66,18 @@ settings.corporafolders.islendingasogur = {
         "laxdaela_saga",
         "ljosvetninga_saga_a_gerd",
         "ljosvetninga_saga_c_gerd",
-        "olkofra_saga",
         "reykdaela_saga",
         "svarfdaela_saga",
-        "thordar_saga_hredu",
-        "thorsteins_saga_hvita",
-        "thorsteins_saga_sidu_hallssonar",
         "valla_ljots_saga",
         "vatnsdaela_saga",
         "viga_glums_saga",
         "viglundar_saga",
-        "vopnfirdinga_saga"]
+        "vopnfirdinga_saga",
+        "thorsteins_saga_hvita",
+        "thorsteins_saga_sidu_hallssonar",
+        "thordar_saga_hredu",
+        "olkofra_saga"
+    ]
 };
 
 settings.corpora.bandamanna_saga_konungsbok = {

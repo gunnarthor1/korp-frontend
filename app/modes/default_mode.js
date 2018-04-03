@@ -18,7 +18,7 @@ settings.inputCaseInsensitiveDefault = true;
 
 settings.corporafolders.frettir = {
     title: "Fréttamiðlar",
-    contents: ["frettatiminn", "stundin", "eyjan"],
+    contents: ["frettatiminn", "eyjan"],
     description: "Textar frá ýmsum fréttamiðlum á landsvísu"
 };
 settings.corporafolders.frettir.ljosvakamidlar = {
@@ -31,28 +31,42 @@ settings.corporafolders.frettir.prentmidlar = {
 };
 settings.corporafolders.frettir.vefmidlar = {
     title: "Vefmiðlar",
-    contents: ["ruv", "visir", "mbl", "dv_is", "kjarninn"]
-};
-
-settings.corporafolders.frettir.svaedarit = {
-    title: "Fréttamiðlar bæjarfélaga og landshluta",
-    contents: ["vf", "bb", "fjardarpostur", "dfs"],
-    description: "Dagblöð, vefmiðlar og tímarit bæjarfélaga og landshluta"
-};
-settings.corporafolders.frettir.ithrottir = {
-    title: "Íþróttafréttamiðlar",
-    contents: ["fotbolti", "fjorirthrirthrir"],
-    description: "Textar frá íþróttafréttamiðlum"
-};
-settings.corporafolders.blogg = {
-    title: "Tímarit og blogg",
-    contents: ["jonas", "andriki", "silfuregils", "bondi", "bleikt", "bbl", "heimur"],
-    description: "Textar frá tímaritum og bloggum sem fjalla um stjórnmál"
+    contents: ["ruv", "visir", "mbl", "dv_is", "kjarninn", "stundin"]
 };
 settings.corporafolders.stjornsysla = {
     title: "Stjórnsýsla",
     contents: ["domstolar", "haestirettur", "althingislog", "althingi"],
     description: "Textar gefnir út af stjórnvöldum Íslands"
+};
+settings.corporafolders.fraedslumidlar = {
+    title: "Fræðslumiðlar",
+    contents: ["wikipedia", "visindavefur"],
+    description: "Textar af fræðslumiðlum og úr kennsluefni"
+};
+settings.corporafolders.skodanir = {
+    title: "Skoðanir",
+    contents: ["silfuregils", "andriki", "jonas"],
+    description: "Blogg, pistlar og þess háttar"
+};
+settings.corporafolders.serefni = {
+    title: "Sérefni",
+    contents: ["bondi", "bleikt", "bbl", "pressan"],
+    description: "Ýmsir miðlar um afmörkuð málefni"
+};
+settings.corporafolders.serefni.timarit = {
+    title: "Tímarit",
+    contents: ["heimur"],
+    description: ""
+};
+settings.corporafolders.serefni.stadbundid = {
+    title: "Bæjarblöð og staðbundnir miðlar",
+    contents: ["vf", "fjardarpostur", "dfs", "skessuhorn", "bb"],
+    description: "Dagblöð, vefmiðlar og tímarit bæjarfélaga og landshluta"
+};
+settings.corporafolders.serefni.ithrottir = {
+    title: "Íþróttafréttamiðlar",
+    contents: ["fotbolti", "fjorirthrirthrir"],
+    description: "Textar frá íþróttafréttamiðlum"
 };
 ////////////////////////////////////////
 
@@ -304,6 +318,21 @@ settings.corpora.fjardarpostur = {
     id: "fjardarpostur",
     title: "Fjarðarpósturinn",
     description: "Textar fengnir af vefsíðu Fjarðarpóstsins, bæjarblaðs Hafnfirðinga.",
+    context: defaultContext,
+    within: {
+        "paragraph": "paragraph",
+        "text": "text"
+    },
+    attributes: fornritAttrs,
+    structAttributes: icelandicSattrs,
+    customAttributes: {
+        article: icelandicCustomAttrs.article
+    }
+}
+settings.corpora.skessuhorn = {
+    id: "skessuhorn",
+    title: "Skessuhorn",
+    description: "Textar fengnir af vefsíðunni skessuhorn.is.",
     context: defaultContext,
     within: {
         "paragraph": "paragraph",
@@ -571,7 +600,7 @@ settings.corpora.pressan = {
 
 settings.corpora.textasafn = {
     id: "textasafn",
-    title: "Textasafn Árnastofnunar",
+    title: "Útgefnar bækur",
     description: "Samansafn texta eftir ýmsa höfunda.",
     context: defaultContext,
     within: {
