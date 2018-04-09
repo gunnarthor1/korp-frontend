@@ -26,7 +26,7 @@ html
   body
     h1 Notkunarleiðbeiningar fyrir risamálheildina 
     h2 (verk í vinnslu)
-    .section.clearfix
+    section.mainsection.clearfix
       h2 Val á undirmálheildum
       figure.fig.fig-right
         figcaption Undirmálheildavalmynd
@@ -36,7 +36,7 @@ html
       p Tímalínan sem sjá má hér til hægri lýsir tímadreifingu textans. Í dæminu sem er tekið eru aðeins Alþingisræður valdar svo gögnin eru nokkuð jafndreifð. 
         | Gráu stöplarnir sýna svo dreifingu þeirra textasafna sem ekki eru valin en eru þó í málheildinni. Þar sést greinilega að stærstur hluti gagnanna er frá því eftir aldamót.
       p Ef músarbendlinum er haldið yfir nafni textasafns birtast nánari upplýsingar um það.  
-    .section.clearfix
+    section.mainsection.clearfix
       h2 Einföld leit
       figure.fig.fig-right
         figcaption Leitarvalmynd
@@ -46,28 +46,29 @@ html
         | Einnig má haka við "upphaf" eða "endir" en þá fást orð sem annaðhvort byrja eða enda á textastrengnum sem leitað var eftir.
       p Þar fyrir utan má velja hvort maður leitar eftir orðmynd eða uppflettimynd: 
 
-      h3 Upphaf eða endir
-      p Ef hakað er við <i>upphaf</i> eða <i>endir</i> fást niðurstöður sem annað hvort byrja eða enda á leitarstrengnum, en gætu innihaldið fleiri stafi.
-
-      h3 Óháð há- og lágstöfum
-      p Valmöguleikinn <i>óháð há- og lágstöfum</i> stýrir því hvort tekið er tillit til hvort fyrsti stafur í leitarstreng sé há- eða lágstafur.
-
-      h3 Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
-      p Ef merkt er við <i>orðmynd</i> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
-        | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
-      p Til þess að fá allar orðmyndir skal merkja við <i>uppflettimynd</i>: 
-        img(src="/img/user_guide/simple_search_searchby.png")
-      p Ef það er gert fást öll tilfelli af því orði sem leitað er eftir í textanum, óháð því hvaða birtingarmynd þau hafa.
-      figure.fig.fig-left
-        figcaption Leitað eftir orði
-        img(src="/img/user_guide/word_search_results.png")
-      figure.fig.fig-right
-        figcaption Leitað eftir uppflettimynd
-        img(src="/img/user_guide/lemma_search_results.png")
-      p Hafa ber þó í huga að <b>ekki</b> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
-        |  því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
-      p Fyrir flóknari fyrirspurnir verður að grípa til útvíkkaðrar leitar.
-    .section.clearfix
+      section
+        h3 Upphaf eða endir
+        p Ef hakað er við <i>upphaf</i> eða <i>endir</i> fást niðurstöður sem annað hvort byrja eða enda á leitarstrengnum, en gætu innihaldið fleiri stafi.
+      section
+        h3 Óháð há- og lágstöfum
+        p Valmöguleikinn <i>óháð há- og lágstöfum</i> stýrir því hvort tekið er tillit til hvort fyrsti stafur í leitarstreng sé há- eða lágstafur.
+      section
+        h3 Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
+        p Ef merkt er við <i>orðmynd</i> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
+          | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
+        p Til þess að fá allar orðmyndir skal merkja við <i>uppflettimynd</i>: 
+          img(src="/img/user_guide/simple_search_searchby.png")
+        p Ef það er gert fást öll tilfelli af því orði sem leitað er eftir í textanum, óháð því hvaða birtingarmynd þau hafa.
+        figure.fig.fig-left
+          figcaption Leitað eftir orði
+          img(src="/img/user_guide/word_search_results.png")
+        figure.fig.fig-right
+          figcaption Leitað eftir uppflettimynd
+          img(src="/img/user_guide/lemma_search_results.png")
+        p Hafa ber þó í huga að <b>ekki</b> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
+          |  því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
+        p Fyrir flóknari fyrirspurnir verður að grípa til útvíkkaðrar leitar.
+    section.mainsection.clearfix
       h2 Útvíkkuð leit
       figure.fig.fig-big
         figcaption Útvíkkuð leit
@@ -91,5 +92,5 @@ html
           img.fig-right(src="/img/user_guide/extended_search_card3.png")
           p Spjaldið hægra megin segir að orðið sem svarar til þess megi ekki vera "því", verði að vera í þágufalli og verði að vera persónufornafn.
       p 
-    .section.clearfix
+    section.mainsection.clearfix
       h2 Meira á leiðinni...
