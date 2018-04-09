@@ -744,7 +744,7 @@ var fornritAttrs = {
         opts: liteOptions,
         order: 18,
         dataset: {
-            "sérnafn": "sn"
+            "s": "sn"
         }
     },
     greinir: {
@@ -755,7 +755,7 @@ var fornritAttrs = {
         opts: liteOptions,
         order: 19,
         dataset: {
-            "með-greini": "mg"
+            "g": "mg"
         }
     }
 };
