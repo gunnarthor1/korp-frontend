@@ -140,7 +140,28 @@ settings.defaultWithin = {
 };
 
 // for optimization purposes
-settings.cqpPrio = ['deprel', 'pos', 'msd', 'suffix', 'prefix', 'grundform', 'lemgram', 'saldo', 'word'];
+settings.cqpPrio = [
+    'pos',
+    "fall",
+    "stf",
+    "pers",
+    "kyn",
+    "tala",
+    "lostig",
+    "mynd",
+    "hattur",
+    "tid",
+    "fsfall",
+    "tob",
+    "fnf",
+    "lob",
+    "ft",
+    "lemma",
+    'word',
+    "sernafn",
+    "tt",
+    "greinir",
+];
 
 settings.defaultOptions = {
     "is": "=",
@@ -152,7 +173,7 @@ settings.defaultOptions = {
     "matches_not": "!*=",
 }
 
-settings.cgiScript = "http://130.208.178.108/cgi-bin/korp.cgi";
+settings.cgiScript = "http://localhost/cgi-bin/korp.cgi";
 settings.downloadCgiScript = "https://ws.spraakbanken.gu.se/ws/korp/download";
 
 settings.mapCenter = {
