@@ -115,7 +115,7 @@ settings.wordPictureConf = {
 settings.visibleModes = 6
 settings.modeConfig = [
     {
-        localekey: "risamalheild",
+        localekey: "risamalheild2017",
         mode: "default"
     },
     {
