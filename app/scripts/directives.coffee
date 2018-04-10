@@ -800,7 +800,7 @@ korpApp.directive 'reduceSelect', ($timeout) ->
                                 ng-click="toggleWordInsensitive($event)"><b>Aa</b></span>
                         </li>
                         <b ng-if="hasWordAttrs">{{'word_attr' | loc:lang}}</b>
-                        <li ng-repeat="item in items | filter:{ group: 'word_attr' }"
+                        <li ng-repeat="item in items | filter:{ group: 'word_attr', label: '!word' }"
                             ng-click="toggleSelected(item.value, $event)"
                             ng-class="item.selected ? 'selected':''" class="attribute">
                           <input type="checkbox" class="reduce-check" ng-checked="item.selected">

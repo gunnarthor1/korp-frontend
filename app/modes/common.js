@@ -285,6 +285,10 @@ var icelandicAlthingiSAttrs = {
 };
 
 var icelandicAttrs = {
+    word: {
+        label: "word",
+        order: 0
+    },
     pos: {
         label: "pos",
         translationKey: "pos_",
@@ -293,21 +297,21 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 1,
         dataset: {
-            "lýsingarorð": "lo",
-            "nafnorð": "no",
-            "samtenging": "st",
-            "sagnorð": "so",
-            "forsetning": "fs",
-            "skammstöfun": "ss",
-            "töluorð": "to",
-            "erlentorð": "eo",
-            "atviksorð": "ao",
-            "fornafn": "fn",
-            "greinir": "gr",
-            "greinarmerki": "grm",
-            "upphrópun": "uh",
-            "veffang": "vf",
-            "ógreint": "xx"
+            "l": "lo",
+            "n": "no",
+            "c": "st",
+            "s": "so",
+            "r": "fs",
+            "t": "to",
+            "e": "eo",
+            "a": "ao",
+            "f": "fn",
+            "g": "gr",
+            "p": "grm",
+            "u": "uh",
+            "v": "vf",
+            "h": "nhm",
+            "x": "xx"
         }
     },
     lemma: {
@@ -322,9 +326,9 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 3,
         dataset: {
-            "1.persóna": "1pers",
-            "2.persóna": "2pers",
-            "3.persóna": "3pers"
+            "1": "1pers",
+            "2": "2pers",
+            "3": "3pers"
         }
     },
     kyn: {
@@ -335,9 +339,9 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 4,
         dataset: {
-            "karlkyn": "kk",
-            "kvenkyn": "kvk",
-            "hvorugkyn": "hvk"
+            "k": "kk",
+            "v": "kvk",
+            "h": "hvk"
         }
     },
     tala: {
@@ -348,8 +352,8 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 5,
         dataset: {
-            "eintala": "et",
-            "fleirtala": "ft"
+            "e": "et",
+            "f": "ft"
         }
     },
     fall: {
@@ -360,10 +364,10 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 6,
         dataset: {
-            "nefnifall": "nf",
-            "þolfall": "þf",
-            "þágufall": "þgf",
-            "eignarfall": "ef"
+            "n": "nf",
+            "o": "þf",
+            "þ": "þgf",
+            "e": "ef"
         }
     },
     lostig: {
@@ -374,9 +378,9 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 7,
         dataset: {
-            "frumstig": "fs",
-            "miðstig": "ms",
-            "efsta-stig": "es"
+            "f": "fs",
+            "m": "ms",
+            "e": "es"
         }
     },
     mynd: {
@@ -387,9 +391,8 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 8,
         dataset: {
-            "germynd": "gm",
-            "þolmynd": "þm",
-            "miðmynd": "mm"
+            "g": "gm",
+            "m": "mm"
         }
     },
     hattur: {
@@ -400,13 +403,13 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 9,
         dataset: {
-            "nafnháttur": "nh",
-            "viðtengingarháttur": "vh",
-            "sagnbót": "sb",
-            "framsöguháttur": "fh",
-            "lýsingarháttur-þátíðar": "lhþ",
-            "lýsingarháttur-nútíðar": "lhn",
-            "boðháttur": "bh"
+            "n": "nh",
+            "v": "vh",
+            "s": "sb",
+            "f": "fh",
+            "þ": "lhþ",
+            "l": "lhn",
+            "b": "bh"
         }
     },
     tid: {
@@ -417,8 +420,8 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 10,
         dataset: {
-            "nútíð": "nt",
-            "þátíð": "þt"
+            "n": "nt",
+            "þ": "þt"
         }
     },
     lob: {
@@ -429,9 +432,9 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 11,
         dataset: {
-            "sterk-beyging": "sb",
-            "veik-beyging": "vb",
-            "óbeygt": "ob"
+            "s": "sb",
+            "v": "vb",
+            "o": "ob"
         }
     },
     fsfall: {
@@ -442,9 +445,9 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 12,
         dataset: {
-            "stýrir-þolfalli": "þf",
-            "stýrir-þágufalli": "þgf",
-            "stýrir-eignarfalli": "ef"
+            "o": "þf",
+            "þ": "þgf",
+            "e": "ef"
         }
     },
     tob: {
@@ -455,8 +458,8 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 13,
         dataset: {
-            "beygjanlegt-töluorð": "bt",
-            "óbeygjanlegt-töluorð": "ót"
+            "b": "bt",
+            "ó": "ót"
         }
     },
     fnf: {
@@ -467,13 +470,13 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 15,
         dataset: {
-            "eignarfornafn": "efn",
-            "ábendingarfornafn": "áfn",
-            "óákveðið-ábendingarfornafn": "óáfn",
-            "óákveðið-fornafn": "ófn",
-            "persónufornafn": "pfn",
-            "spurnarfornafn": "sfn",
-            "tilvísunarfornafn": "tfn"
+            "e": "efn",
+            "a": "áfn",
+            "b": "óáfn",
+            "o": "ófn",
+            "p": "pfn",
+            "s": "sfn",
+            "t": "tfn"
         }
     },
     tof: {
@@ -484,19 +487,18 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 16,
         dataset: {
-            "frumtala": "ft"
+            "f": "ft"
         }
     },
-    stf: {
-        label:"stf",
-        translationKey: "stf_",
+    tt: {
+        label:"tt",
+        translationKey: "tt_",
         extendedTemplate: selectType.extendedTemplate,
         extendedController: selectType.extendedController,
         opts: liteOptions,
         order: 17,
         dataset: {
-            "tilvísunartenging": "tt",
-            "nafnháttarmerki": "nhm"
+            "t": "tt"
         }
     },
     sernafn: {
@@ -507,7 +509,7 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 18,
         dataset: {
-            "sérnafn": "sn"
+            "s": "sn"
         }
     },
     greinir: {
@@ -518,7 +520,7 @@ var icelandicAttrs = {
         opts: liteOptions,
         order: 19,
         dataset: {
-            "með-greini": "mg"
+            "g": "mg"
         }
     }
 };
@@ -808,14 +810,17 @@ var textasafnSattrs = {
     },
     text_sentencecount: {
         label: "text_sentencecount",
+        hideExtended: true,
         order: 110
     },
     text_wordcount: {
         label: "text_wordcount",
+        hideExtended: true,
         order: 100
     },
     text_paragraphcount: {
         label: "text_paragraphcount",
+        hideExtended: true,
         order: 120
     },
     text_translator : {

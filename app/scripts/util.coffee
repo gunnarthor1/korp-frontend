@@ -288,13 +288,13 @@ class window.CorpusListing
         return sentAttrs
 
     getAttributeGroups : (lang) ->
-        words = @getWordGroup false
+        # words = @getWordGroup false
         attrs = @getWordAttributeGroups lang, 'union'
         sentAttrs = @getStructAttributeGroups lang, 'union'
-        return words.concat attrs, sentAttrs
+        return attrs.concat sentAttrs
 
     getStatsAttributeGroups : (lang) ->
-        words = @getWordGroup true
+        # words = @getWordGroup true
 
         wordOp = settings.reduceWordAttributeSelector or "union"
         attrs = @getWordAttributeGroups lang, wordOp
@@ -302,7 +302,7 @@ class window.CorpusListing
         structOp = settings.reduceStructAttributeSelector or "union"
         sentAttrs = @getStructAttributeGroups lang, structOp
 
-        return words.concat attrs, sentAttrs
+        return attrs.concat sentAttrs
 
 
 class window.ParallelCorpusListing extends CorpusListing
