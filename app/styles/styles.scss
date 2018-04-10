@@ -17,10 +17,6 @@
   box-sizing: border-box;
 }
 
-$primary-color: #aac8ff;
-$primary-light: #d9e7ff;
-$background-color: #edf3f3;
-
 $color-yellow: #fff3d8;
 $color-crown-of-thorns: #772122;
 $color-hover: #cd5c5c;
@@ -31,6 +27,59 @@ $color-darkgray: #333;
 $color-gray: #888;
 $color-white: #fff;
 $color-black: #000;
+
+
+$primary-color: #aac8ff;
+$primary-light: #d9e7ff;
+$background-color: #edf3f3;
+$fornrit-header-color: #9e8555;
+$mim-header-color: $color-navy;
+
+
+// Mode-specific styles:
+.mode-fornrit {
+  #header {
+    background-color: $fornrit-header-color;
+
+    #top-bar * {
+      color: $color-darkgray;
+
+      &::after {
+        color: $color-darkgray;
+      }
+      a:hover {
+        color: $color-navy;
+      }
+    }
+  }
+
+  .tabbable .nav.nav-tabs {
+    background-color: $fornrit-header-color;
+  }
+}
+
+.mode-mim {
+  #header {
+    background-color: $mim-header-color;
+
+    #top-bar * {
+      color: $color-gray;
+
+      &::after {
+        color: $color-gray;
+      }
+      a:hover {
+        color: $color-white;
+      }
+    }
+  }
+
+  .tabbable .nav.nav-tabs {
+    background-color: $mim-header-color;
+  }
+}
+// End mode-specific styles
+
 
 html {
   background-color: $background-color;
@@ -283,9 +332,21 @@ img {
   padding: 6px 5px 5px 8px;
   width: 100%;
 
+  * {
+    color: $color-gray;
+  }
+
+  a:visited,
+  a:link,
+  a:active {
+    color: $color-gray;
+  }
+
   li {
-    a, a:link, a:visited {
-      color: $color-gray;
+    a,
+    a:link,
+    a:visited {
+      // color: $color-gray;
 
       &:hover {
         color: $color-hover;
@@ -1552,14 +1613,6 @@ label[for=lemgram_select]::before {
   margin: 0;
   margin-right: 10px;
   padding-left: 0;
-
-  a:visited {
-    color: $color-navy;
-  }
-
-  a:hover {
-    color: $color-hover;
-  }
 
   li {
     &.visible {
