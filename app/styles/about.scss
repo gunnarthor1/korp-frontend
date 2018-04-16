@@ -16,8 +16,26 @@ $color-black: #000;
 body {
   background-color: $background-color;
   box-sizing: border-box;
-  margin: auto;
-  max-width: 1200px;
+  counter-reset: h2counter;
+  margin-left: 200px;
+}
+
+h1 {
+  counter-reset: h2counter;
+}
+
+h2::before {
+  content: counter(h2counter) '.\0000a0\0000a0';
+  counter-increment: h2counter;
+}
+
+h2 {
+  counter-reset: h3counter;
+}
+
+h3::before {
+  content: counter(h2counter) '.' counter(h3counter) '.\0000a0\0000a0';
+  counter-increment: h3counter;
 }
 
 * {
@@ -29,6 +47,11 @@ body {
 //   border-radius: 5px;
 //   color: $color-white;
 // }
+.maincontent {
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
+}
 
 .mainsection {
   border-top: 1px solid $color-black;
@@ -64,7 +87,7 @@ body {
     }
 
     &-small {
-      width: 100%;
+      width: calc(25% - 10px);
     }
 
     img {
@@ -108,4 +131,16 @@ body {
   clear: both;
   content: '';
   display: table;
+}
+
+.sidebar-left {
+  border-right: 1px solid $color-black;
+  height: 100%; // Full-height: remove this if you want "auto" height
+  left: 0;
+  overflow-x: hidden; // Disable horizontal scroll
+  padding-top: 20px;
+  position: fixed; //Fixed Sidebar (stay in place on scroll)
+  top: 0; // Stay at the top
+  width: 200px; // Set the width of the sidebar
+  z-index: 1; // Stay on top
 }

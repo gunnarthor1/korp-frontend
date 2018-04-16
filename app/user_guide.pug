@@ -3,6 +3,7 @@ html
   head
     meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name='description', content='Notendaleiðbeiningar fyrir Risamálheildina')
     meta(name='google', content='notranslate')
     // Global site tag (gtag.js) - Google Analytics
@@ -24,36 +25,35 @@ html
     link(rel='shortcut icon', type='image/ico', href='favicon.ico')
     title Risamálheild - leiðbeiningar
   body
-    h1 Notkunarleiðbeiningar fyrir risamálheildina 
-    h2 (verk í vinnslu)
-    section.mainsection.clearfix
-      h2 Val á undirmálheildum
-      figure.fig.fig-right
-        figcaption Undirmálheildavalmynd
-        img(src="/img/user_guide/corp_selector.png")
-      p Ef smellt er á slána efst á síðunni birtist fellivalmynd. Í þeirri valmynd er hægt að velja í hvaða textasöfnum á að leita. 
-      p Textasöfnunum er raðað í flokka og hægt er að velja bæði heila flokka og stök textasöfn.
-      p Tímalínan sem sjá má hér til hægri lýsir tímadreifingu textans. Í dæminu sem er tekið eru aðeins Alþingisræður valdar svo gögnin eru nokkuð jafndreifð. 
-        | Gráu stöplarnir sýna svo dreifingu þeirra textasafna sem ekki eru valin en eru þó í málheildinni. Þar sést greinilega að stærstur hluti gagnanna er frá því eftir aldamót.
-      p Ef músarbendlinum er haldið yfir nafni textasafns birtast nánari upplýsingar um það.  
-    section.mainsection.clearfix
-      h2 Einföld leit
-      figure.fig.fig-right
-        figcaption Leitarvalmynd
-        img(src="/img/user_guide/simple_search.png")
-      p Einfaldasta leiðin til að nota Risamálheildina er að skrifa einfaldlega leitarorðið og smella á "Leita"
-      p Sjálfkrafa er hakað við "óháð há- og lágstöfum". Þetta er gert til að yfirsjást ekki orð sem koma fyrir í upphafi setninga.
-        | Einnig má haka við "upphaf" eða "endir" en þá fást orð sem annaðhvort byrja eða enda á textastrengnum sem leitað var eftir.
-      p Þar fyrir utan má velja hvort maður leitar eftir orðmynd eða uppflettimynd: 
+    div.maincontent
+      header
+        h1#top-of-page Notkunarleiðbeiningar fyrir risamálheildina 
+        p (verk í vinnslu)
+      section.mainsection.clearfix
+        h2#kafli-1 Val á undirmálheildum
+        figure.fig.fig-right
+          figcaption Undirmálheildavalmynd
+          img(src="/img/user_guide/corp_selector.png")
+        p Ef smellt er á slána efst á síðunni birtist fellivalmynd. Í þeirri valmynd er hægt að velja í hvaða textasöfnum á að leita. 
+        p Textasöfnunum er raðað í flokka og hægt er að velja bæði heila flokka og stök textasöfn.
+        p Tímalínan sem sjá má hér til hægri lýsir tímadreifingu textans. Í dæminu sem er tekið eru aðeins Alþingisræður valdar svo gögnin eru nokkuð jafndreifð. 
+          | Gráu stöplarnir sýna svo dreifingu þeirra textasafna sem ekki eru valin en eru þó í málheildinni. Þar sést greinilega að stærstur hluti gagnanna er frá því eftir aldamót.
+        p Ef músarbendlinum er haldið yfir nafni textasafns birtast nánari upplýsingar um það.  
+      section.mainsection.clearfix
+        h2#kafli-2 Einföld leit
+        figure.fig.fig-right
+          figcaption Leitarvalmynd
+          img(src="/img/user_guide/simple_search.png")
+        p Einfaldasta leiðin til að nota Risamálheildina er að skrifa einfaldlega leitarorðið og smella á "Leita"
+        p Sjálfkrafa er hakað við "óháð há- og lágstöfum". Þetta er gert til að yfirsjást ekki orð sem koma fyrir í upphafi setninga.
+          | Einnig má haka við "upphaf" eða "endir" en þá fást orð sem annaðhvort byrja eða enda á textastrengnum sem leitað var eftir.
+        p Þar fyrir utan má velja hvort maður leitar eftir orðmynd eða uppflettimynd: 
 
-      section
-        h3 Upphaf eða endir
+        h3#kafli-2-1 Upphaf eða endir
         p Ef hakað er við <i>upphaf</i> eða <i>endir</i> fást niðurstöður sem annað hvort byrja eða enda á leitarstrengnum, en gætu innihaldið fleiri stafi.
-      section
-        h3 Óháð há- og lágstöfum
+        h3#kafli-2-2 Óháð há- og lágstöfum
         p Valmöguleikinn <i>óháð há- og lágstöfum</i> stýrir því hvort tekið er tillit til hvort fyrsti stafur í leitarstreng sé há- eða lágstafur.
-      section
-        h3 Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
+        h3#kafli-2-3 Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
         p Ef merkt er við <i>orðmynd</i> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
           | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
         p Til þess að fá allar orðmyndir skal merkja við <i>uppflettimynd</i>: 
@@ -68,29 +68,57 @@ html
         p Hafa ber þó í huga að <b>ekki</b> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
           |  því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
         p Fyrir flóknari fyrirspurnir verður að grípa til útvíkkaðrar leitar.
-    section.mainsection.clearfix
-      h2 Útvíkkuð leit
-      figure.fig.fig-big
-        figcaption Útvíkkuð leit
-        img(src="/img/user_guide/extended_search_query.png")
-      figure.fig.fig-right
-        figcaption Útkoma útvíkkaðrar leitar
-        img(src="/img/user_guide/extended_search_results.png")
-      p Til að skýra útvíkkaða leit er best að taka dæmi. Fyrirspurnin að ofan leitar að þriggja orða runu. 
-        | Fyrst kemur "í", svo nafnorð í þolfalli eða þágufalli og loks persónufornafn í þágufalli.
-      p Orðið "því" er útilokað úr leitinni því það er talsvert um að persónufornafni sé ruglað við samtengingu í gögnunum.
-      p Hluta af niðurstöðum leitarinnar má svo sjá hér til hægri.
-      p Þar sem um þriggja orða runu er að ræða eru "spjöldin" sem byggja upp fyrirspurnina þrjú talsins. 
-      .row.clearfix
-        .col.col-4
-          img.fig-right(src="/img/user_guide/extended_search_card1.png")
-          p Spjaldið vinstra megin segir einfaldlega að orðið(orðmyndin sjálf) sem svarar til þess verði að vera "í"
-        .col.col-4
-          img.fig-right(src="/img/user_guide/extended_search_card2.png")
-          p Spjaldið í miðjunni segir að orðið sem svarar til þess verði að vera nafnorð OG það verði að vera í þolfalli eða þágufalli.
-        .col.col-4
-          img.fig-right(src="/img/user_guide/extended_search_card3.png")
-          p Spjaldið hægra megin segir að orðið sem svarar til þess megi ekki vera "því", verði að vera í þágufalli og verði að vera persónufornafn.
-      p 
-    section.mainsection.clearfix
-      h2 Meira á leiðinni...
+      section.mainsection.clearfix
+        h2#kafli-3 Útvíkkuð leit
+        figure.fig.fig-big
+          figcaption Útvíkkuð leit
+          img(src="/img/user_guide/extended_search_query.png")
+        figure.fig.fig-right
+          figcaption Útkoma útvíkkaðrar leitar
+          img(src="/img/user_guide/extended_search_results.png")
+        p Til að skýra útvíkkaða leit er best að taka dæmi. Fyrirspurnin að ofan leitar að þriggja orða runu. 
+          | Fyrst kemur "í", svo nafnorð í þolfalli eða þágufalli og loks persónufornafn í þágufalli.
+        p Orðið "því" er útilokað úr leitinni því það er talsvert um að persónufornafni sé ruglað við samtengingu í gögnunum.
+        p Hluta af niðurstöðum leitarinnar má svo sjá hér til hægri.
+        p Þar sem um þriggja orða runu er að ræða eru "spjöldin" sem byggja upp fyrirspurnina þrjú talsins. 
+        .row.clearfix
+          .col.col-4
+            img.fig-right(src="/img/user_guide/extended_search_card1.png")
+            p Spjaldið vinstra megin segir einfaldlega að orðið(orðmyndin sjálf) sem svarar til þess verði að vera "í"
+          .col.col-4
+            img.fig-right(src="/img/user_guide/extended_search_card2.png")
+            p Spjaldið í miðjunni segir að orðið sem svarar til þess verði að vera nafnorð OG það verði að vera í þolfalli eða þágufalli.
+          .col.col-4
+            img.fig-right(src="/img/user_guide/extended_search_card3.png")
+            p Spjaldið hægra megin segir að orðið sem svarar til þess megi ekki vera "því", verði að vera í þágufalli og verði að vera persónufornafn.
+        h3#kafli-3-1 Útvíkkuð leit byggð upp
+        figure.fig.fig-small.fig-right
+          figcaption Uppafsstillt leitarspjald
+          img(src="/img/user_guide/extended_token.png")
+        p Þegar útvíkkuð leit er valin mætir manni stakt spjald (sjá til hægri). Það spjald svarar til eins leitarorðs. 
+          | Ef smellt er á "orðmynd" birtist fellivalmynd sem sýnir þá þætti sem hægt er að leita eftir. Meðal þeirra er t.d. "Lemma", 
+          | sem er oft kallað uppflettimynd, og beygingarþættir svo sem kyn, tala, fall, háttur o.s.frv.
+      section.mainsection.clearfix
+        h2 Meira á leiðinni...
+      
+    div.sidebar-left
+      p Efni á þessarri síðu
+      ul.table-of-contents
+        li
+          a(href='#top-of-page') Fara efst á síðu
+        li
+          a(href='#kafli-1') Val á undirmálheildum
+        li
+          a(href='#kafli-2') Einföld leit
+          ul
+            li
+              a(href='#kafli-2-1') Upphaf eða endir
+            li
+              a(href='#kafli-2-2') Óháð há- og lágstöfum
+            li
+              a(href='#kafli-2-3') Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
+        li
+          a(href='#kafli-3') Útvíkkuð leit
+          ul
+            li
+              a(href="#kafli-3-1") Útvíkkuð leit byggð upp
