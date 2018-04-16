@@ -130,18 +130,18 @@ class view.KWICResults extends BaseResults
 
         i = Number(obj.dephead)
 
-        paragraph = word.closest(".sentence").find(".word")
+        sentence = word.closest(".sentence").find(".word")
         sent_start = 0
         querySentStart = ".open_sentence"
         if word.is(querySentStart)
-            sent_start = paragraph.index(word)
+            sent_start = sentence.index(word)
         else
 
-            l = paragraph.filter((__, item) ->
+            l = sentence.filter((__, item) ->
                 $(item).is(word) or $(item).is(querySentStart)
             )
-            sent_start = paragraph.index(l.eq(l.index(word) - 1))
-        aux = $(paragraph.get(sent_start + i - 1))
+            sent_start = sentence.index(l.eq(l.index(word) - 1))
+        aux = $(sentence.get(sent_start + i - 1))
         scope.selectionManager.select word, aux
         safeApply @s.$root, (s) ->
             s.$root.word_selected = word

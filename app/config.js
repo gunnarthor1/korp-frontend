@@ -135,6 +135,7 @@ settings.defaultOverviewContext = "7 words"
 settings.defaultReadingContext = "1 paragraph"
 
 settings.defaultWithin = {
+    "sentence": "sentence",
     "paragraph": "paragraph",
     "text": "text"
 };

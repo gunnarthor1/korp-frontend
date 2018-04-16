@@ -76,6 +76,7 @@ settings.corpora.kjarninn = {
     description: "Greinar frá fréttamiðlinum Kjarninn.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -91,6 +92,7 @@ settings.corpora.visir = {
     description: "Greinar frá fréttamiðlinum Vísir.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -106,6 +108,7 @@ settings.corpora.ruv = {
     description: "Fréttir af vefútgáfu fréttastofu Ríkisútvarpsins.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -121,6 +124,7 @@ settings.corpora.dfs = {
     description: "Fréttir af fréttavef Suðurlands.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -136,6 +140,7 @@ settings.corpora.sjonvarpid = {
     description: "Fréttatextar úr sjónvarpsfréttum frá fréttastofu Ríkisútvarpsins.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -151,6 +156,7 @@ settings.corpora.stod2 = {
     description: "Fréttatextar úr sjónvarpsfréttum frá fréttastofu Stöðvar 2.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -166,6 +172,7 @@ settings.corpora.mbl = {
     description: "Fréttir af vefútgáfu Morgunblaðins.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -181,6 +188,7 @@ settings.corpora.dv_is = {
     description: "Fréttir af vefútgáfu DV.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -196,6 +204,7 @@ settings.corpora.morgunbladid = {
     description: "Fréttir úr greinasafni Morgunblaðins.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -211,6 +220,7 @@ settings.corpora.bylgjan = {
     description: "Textar frá útvarpsstöðinni Bylgjunni.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -226,6 +236,7 @@ settings.corpora.ras1_og_2 = {
     description: "Textar frá útvarpsstöðvunum Rás 1 og Rás 2.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -242,6 +253,7 @@ settings.corpora.bbl = {
     description: "Fréttir af vefsíðu Bændablaðsins.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -257,6 +269,7 @@ settings.corpora.stundin = {
     description: "Fréttir af vefútgáfu Stundarinnar.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -272,6 +285,7 @@ settings.corpora.frettatiminn = {
     description: "Fréttatextar frá Fréttatímanum.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -290,6 +304,7 @@ settings.corpora.vf = {
     description: "Fréttir af vefsíðu Víkurfrétta.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -305,6 +320,7 @@ settings.corpora.bb = {
     description: "Textar fengnir af vefsíðu vikublaðsins Bæjarins besta.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -320,6 +336,7 @@ settings.corpora.fjardarpostur = {
     description: "Textar fengnir af vefsíðu Fjarðarpóstsins, bæjarblaðs Hafnfirðinga.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -335,6 +352,7 @@ settings.corpora.skessuhorn = {
     description: "Textar fengnir af vefsíðunni skessuhorn.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -354,6 +372,7 @@ settings.corpora.fjorirthrirthrir = {
     description: "Textar af fótboltafréttasíðunni 433.pressan.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -369,6 +388,7 @@ settings.corpora.fotbolti = {
     description: "Greinar af vefsíðunni fotbolti.net.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -388,6 +408,7 @@ settings.corpora.jonas = {
     description: "Pistlar af vefsíðu bloggarans Jónasar Kristjánssonar.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -403,6 +424,7 @@ settings.corpora.andriki = {
     description: "Greinar af vefsíðunni Andriki.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -422,6 +444,7 @@ settings.corpora.bleikt = {
     description: "Greinar af vefsíðunni Bleikt.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -437,6 +460,7 @@ settings.corpora.bondi = {
     description: "Greinar af vefsíðunni Bondi.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -452,6 +476,7 @@ settings.corpora.domstolar = {
     description: "Dómar úr gagnagrunni dómstóla Íslands.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -467,6 +492,7 @@ settings.corpora.haestirettur = {
     description: "Textar af vefsíðu Hæstaréttar.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -482,6 +508,7 @@ settings.corpora.althingislog = {
     description: "Lög Íslands.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -497,6 +524,7 @@ settings.corpora.althingi = {
     description: "Allar ræður sem fluttar hafa verið á Alþingi.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -513,6 +541,7 @@ settings.corpora.eyjan = {
     description: "Textar fengnir af vefmiðlinum eyjan.is.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -528,6 +557,7 @@ settings.corpora.wikipedia = {
     description: "Greinar frá íslenskri útgáfu vefalfræðiorðabókarinnar Wikipedia.org.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -543,6 +573,7 @@ settings.corpora.visindavefur = {
     description: "Greinar af vísindavefnum.",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -558,6 +589,7 @@ settings.corpora.heimur = {
     description: "Pistlar af vefsíðu útáfyrirtækisins Heims, heimur.is",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -573,6 +605,7 @@ settings.corpora.silfuregils = {
     description: "Textar frá bloggi Egils Helgasonar",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -588,6 +621,7 @@ settings.corpora.pressan = {
     description: "Textar frá miðlum Vefpressunnar, pressan.is",
     context: defaultContext,
     within: {
+        "sentence": "sentence",
         "paragraph": "paragraph",
         "text": "text"
     },
@@ -604,8 +638,8 @@ settings.corpora.textasafn = {
     description: "Samansafn texta eftir ýmsa höfunda.",
     context: defaultContext,
     within: {
-        "paragraph": "paragraph",
         "sentence": "sentence",
+        "paragraph": "paragraph",
         "text": "text"
     },
     attributes: icelandicAttrs,

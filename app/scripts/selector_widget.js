@@ -154,11 +154,14 @@ var hp_corpusChooser = {
 		// Number of tokens
 		var selectedNumberOfTokens = 0;
         var selectedNumberOfParagraphs = 0;
+        var selectedNumberOfSentences = 0;
 		checked_checkboxes.each(function(key, corpItem) {
 			var corpusID = $(this).attr('id').slice(9);
 			selectedNumberOfTokens += parseInt(settings.corpora[corpusID]["info"]["Size"]);
-			var numSen = parseInt(settings.corpora[corpusID]["info"]["Paragraphs"]);
-			if(!isNaN(numSen)) selectedNumberOfParagraphs += numSen;
+			var numPar = parseInt(settings.corpora[corpusID]["info"]["Paragraphs"]);
+			var numSen = parseInt(settings.corpora[corpusID]["info"]["Sentences"]);
+			if(!isNaN(numPar)) selectedNumberOfParagraphs += numPar;
+			if(!isNaN(numSen)) selectedNumberOfSentences += numSen;
 		});
 		var totalNumberOfTokens = this.totalTokenCount;
 		console.log(header_text_3);
@@ -172,7 +175,7 @@ var hp_corpusChooser = {
 		$("#hp_corpora_title2").html(util.getLocaleString(header_text_2));
 		$("#hp_corpora_titleTokens").html(" — " + util.suffixedNumbers(selectedNumberOfTokens.toString()) + '<span rel="localize[corpselector_of]">' + util.getLocaleString("corpselector_of") + '</span>' + util.suffixedNumbers(totalNumberOfTokens.toString()) + " ").append($("<span>").localeKey("corpselector_tokens"));
 		$("#paragraphCounter").html(util.prettyNumbers(selectedNumberOfParagraphs.toString()) + " ").append($("<span>").localeKey("corpselector_paragraphs_long"));
-        // $("#sentenceCounter").html(util.prettyNumbers(selectedNumberOfSentences.toString()) + " ").append($("<span>").localeKey("corpselector_sentences_long"));
+        $("#sentenceCounter").html(util.prettyNumbers(selectedNumberOfSentences.toString()) + " ").append($("<span>").localeKey("corpselector_sentences_long"));
 	},
 	triggerChange : function() {
 		this._trigger("change", null, [this.selectedItems()]);
