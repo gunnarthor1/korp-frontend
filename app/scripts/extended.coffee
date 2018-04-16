@@ -96,7 +96,8 @@ korpApp.factory "extendedComponents", () ->
                     <span class='val_mod'
                         title="{{ title | loc:lang}}"
                         ng-click='toggleSensitive()'
-                        ng-class='{sensitive : case == "sensitive", insensitive : case == "insensitive"}'>
+                        ng-class='{sensitive : case == "sensitive", insensitive : case == "insensitive"}'
+                        ng-if="orObj.op!='*=' && orObj.op!='!*='">
                             Aa
                     </span>
                 <div>
@@ -108,12 +109,10 @@ korpApp.factory "extendedComponents", () ->
         else
             $scope.case = "sensitive"
             $scope.title = "case_sensitive"
-
         $scope.makeSensitive = () ->
             $scope.case = "sensitive"
             $scope.title = "case_sensitive"
             delete $scope.orObj.flags?["c"]
-
         $scope.makeInsensitive = () ->
             flags = ($scope.orObj.flags or {})
             flags["c"] = true
@@ -127,7 +126,11 @@ korpApp.factory "extendedComponents", () ->
             else
                 $scope.makeSensitive()
         $scope.makeInsensitive() # Default is case insensitive
-
+        $scope.$watch "orObj.op", () ->
+            if $scope.orObj.op in ['*=', '!*=']
+                $scope.makeSensitive()
+            else
+                $scope.makeInsensitive()
         $scope.updateValue = () ->
             $scope.orObj.op = '*='
             $scope.orObj.val = '.*'
