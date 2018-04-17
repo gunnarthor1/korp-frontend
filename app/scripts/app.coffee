@@ -79,7 +79,7 @@ korpApp.run ($rootScope, $location, utils, searches, tmhDynamicLocale, $timeout,
             if s.savedState.reading_mode
                 $location.search "reading_mode"
             $location.search "display", "login"
-    
+
     s.restorePreLoginState = () ->
         if s.savedState
             for key, val of s.savedState
@@ -138,9 +138,13 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
     s.citeClick = () ->
         s.show_modal = 'about'
 
+    s.contactClick = () ->
+        console.log 'contact'
+        s.show_modal = 'contact'
+
     s.showLogin = () ->
         s.show_modal = 'login'
-    
+
     s.logout = () ->
         authenticationProxy.loginObj = {}
         $.jStorage.deleteKey "creds"
@@ -212,8 +216,12 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
         s.show_modal = false
 
     showModal = (key) ->
-        tmpl = {about: 'markup/about.html', login: 'login_modal'}[key]
-        params = 
+        tmpl = {
+          about: 'markup/about.html',
+          login: 'login_modal',
+          contact: 'markup/contact.html'
+        }[key]
+        params =
             templateUrl : tmpl
             scope : s
             windowClass : key
