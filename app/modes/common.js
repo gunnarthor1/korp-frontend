@@ -284,6 +284,18 @@ var icelandicAlthingiSAttrs = {
     }
 };
 
+var icelandicSAttrsNoDate = {
+    text_author: {
+        label: "text_author",
+        hideSidebar: "true"
+    },
+    text_midill: icelandicSattrs.text_midill,
+    text_wordcount: icelandicSattrs.text_wordcount,
+    text_id_midill: icelandicSattrs.text_id_midill,
+    text_title: icelandicSattrs.text_title,
+    text_url: icelandicSattrs.text_url,
+};
+
 var icelandicAttrs = {
     word: {
         label: "word",

@@ -562,7 +562,7 @@ settings.corpora.wikipedia = {
         "text": "text"
     },
     attributes: icelandicAttrs,
-    structAttributes: icelandicSattrs,
+    structAttributes: icelandicSAttrsNoDate,
     customAttributes: {
         article: icelandicCustomAttrs.article
     }
