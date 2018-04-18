@@ -285,15 +285,29 @@ var icelandicAlthingiSAttrs = {
 };
 
 var icelandicSAttrsNoDate = {
-    text_author: {
-        label: "text_author",
-        hideSidebar: "true"
-    },
+    text_author: icelandicSattrs.text_author,
     text_midill: icelandicSattrs.text_midill,
     text_wordcount: icelandicSattrs.text_wordcount,
     text_id_midill: icelandicSattrs.text_id_midill,
     text_title: icelandicSattrs.text_title,
     text_url: icelandicSattrs.text_url,
+};
+var mimSattrs = {
+    text_author: icelandicSattrs.text_author,
+    text_date: {
+        label: "text_date"
+    },
+    text_wordcount: icelandicSattrs.text_wordcount,
+    text_sentencecount: {
+        label: "text_sentencecount"
+    },
+    text_title: icelandicSattrs.text_title,
+    text_subtitle: {
+        label: "text_subtitle"
+    },
+    text_publishing_place: {
+        label: "text_publishing_place"
+    }
 };
 
 var icelandicAttrs = {

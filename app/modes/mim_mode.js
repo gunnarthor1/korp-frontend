@@ -19,9 +19,9 @@ settings.contextDefault = settings.contextValues[7];
 
 settings.inputCaseInsensitiveDefault = true;
 
-settings.corpora.althingi = {
+settings.corpora.mim_althingi = {
     id: "mim_althingi",
-    title: "TODO",
+    title: "Alþingi",
     context: defaultContext,
     description: "Ræður fluttar á Alþingi",
     within: {
@@ -29,12 +29,12 @@ settings.corpora.althingi = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.baekur = {
+settings.corpora.mim_baekur = {
     id: "mim_baekur",
-    title: "TODO",
+    title: "Bækur",
     context: defaultContext,
     description: "Textar úr prentuðum bókum",
     within: {
@@ -42,12 +42,12 @@ settings.corpora.baekur = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.blogg = {
+settings.corpora.mim_blogg = {
     id: "mim_blogg",
-    title: "TODO",
+    title: "Blogg",
     context: defaultContext,
     description: "Blogg",
     within: {
@@ -55,12 +55,12 @@ settings.corpora.blogg = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.domar = {
+settings.corpora.mim_domar = {
     id: "mim_domar",
-    title: "TODO",
+    title: "Dómar",
     context: defaultContext,
     description: "Dómar",
     within: {
@@ -68,12 +68,12 @@ settings.corpora.domar = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.frettablad = {
+settings.corpora.mim_frettablad = {
     id: "mim_frettablad",
-    title: "TODO",
+    title: "Fréttablaðið",
     context: defaultContext,
     description: "Fréttablaðið",
     within: {
@@ -81,12 +81,12 @@ settings.corpora.frettablad = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.log = {
+settings.corpora.mim_log = {
     id: "mim_log",
-    title: "TODO",
+    title: "Lög",
     context: defaultContext,
     description: "Frumvörp og lög af vef Alþingis",
     within: {
@@ -94,12 +94,12 @@ settings.corpora.log = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.mbl_kvikmyndir = {
+settings.corpora.mim_mbl_kvikmyndir = {
     id: "mim_mbl_kvikmyndir",
-    title: "TODO",
+    title: "Kvikmyndadómar Mbl",
     context: defaultContext,
     description: "Kvikmyndadómar úr Morgunblaðinu",
     within: {
@@ -107,12 +107,12 @@ settings.corpora.mbl_kvikmyndir = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.moggi = {
+settings.corpora.mim_moggi = {
     id: "mim_moggi",
-    title: "TODO",
+    title: "Morgumblaðið",
     context: defaultContext,
     description: "Morgunblaðið",
     within: {
@@ -120,12 +120,12 @@ settings.corpora.moggi = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.raduneyti = {
+settings.corpora.mim_raduneyti = {
     id: "mim_raduneyti",
-    title: "TODO",
+    title: "Ráðuneyti",
     context: defaultContext,
     description: "Skýrslur og greinagerðir af vefsetrum ráðuneyta",
     within: {
@@ -133,12 +133,12 @@ settings.corpora.raduneyti = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.ritgerdir = {
+settings.corpora.mim_ritgerdir = {
     id: "mim_ritgerdir",
-    title: "TODO",
+    title: "Ritgerðiðr",
     context: defaultContext,
     description: "Lokaritgerðir háskólastúdenta",
     within: {
@@ -146,12 +146,12 @@ settings.corpora.ritgerdir = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.ruv = {
+settings.corpora.mim_ruv = {
     id: "mim_ruv",
-    title: "TODO",
+    title: "Rúv",
     context: defaultContext,
     description: "Fréttir útvarps og sjónvarps (RÚV)",
     within: {
@@ -159,12 +159,12 @@ settings.corpora.ruv = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.sofnudir = {
+settings.corpora.mim_sofnudir = {
     id: "mim_sofnudir",
-    title: "TODO",
+    title: "Safnaðarblöð",
     context: defaultContext,
     description: "Safnaðarblöð",
     within: {
@@ -172,12 +172,12 @@ settings.corpora.sofnudir = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.talmal = {
+settings.corpora.mim_talmal = {
     id: "mim_talmal",
-    title: "TODO",
+    title: "Talmál",
     context: defaultContext,
     description: "Talmál",
     within: {
@@ -185,12 +185,12 @@ settings.corpora.talmal = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.textavarp = {
+settings.corpora.mim_textavarp = {
     id: "mim_textavarp",
-    title: "TODO",
+    title: "Textavarp",
     context: defaultContext,
     description: "Textavarp",
     within: {
@@ -198,12 +198,12 @@ settings.corpora.textavarp = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.timarit = {
+settings.corpora.mim_timarit = {
     id: "mim_timarit",
-    title: "TODO",
+    title: "Tímarit",
     context: defaultContext,
     description: "Prentuð tímarit af ýmsu tagi",
     within: {
@@ -211,12 +211,12 @@ settings.corpora.timarit = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.tolvupostur = {
+settings.corpora.mim_tolvupostur = {
     id: "mim_tolvupostur",
-    title: "TODO",
+    title: "Tölvupóstur",
     context: defaultContext,
     description: "Tölvupóstlistar",
     within: {
@@ -224,25 +224,25 @@ settings.corpora.tolvupostur = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.tonlist = {
-    id: "mim_tonlist",
-    title: "TODO",
-    context: defaultContext,
-    description: "Texti úr tónleikaskrám Sinfoníuhljómsveitar Íslands",
-    within: {
-        "paragraph": "paragraph",
-        "sentence": "sentence",
-        "text": "text"
-    },
-    attributes: fornritAttrs,
-    structAttributes: TODO
-};
-settings.corpora.upp = {
+// settings.corpora.mim_tonlist = {
+//     id: "mim_tonlist",
+//     title: "Tónleikaskrár",
+//     context: defaultContext,
+//     description: "Texti úr tónleikaskrám Sinfoníuhljómsveitar Íslands",
+//     within: {
+//         "paragraph": "paragraph",
+//         "sentence": "sentence",
+//         "text": "text"
+//     },
+//     attributes: icelandicAttrs,
+//     structAttributes: mimSattrs
+// };
+settings.corpora.mim_upp = {
     id: "mim_upp",
-    title: "TODO",
+    title: "Upplestur",
     context: defaultContext,
     description: "Efni til upplestrar",
     within: {
@@ -250,12 +250,12 @@ settings.corpora.upp = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.vefmidlar = {
+settings.corpora.mim_vefmidlar = {
     id: "mim_vefmidlar",
-    title: "TODO",
+    title: "Vefmiðlar",
     context: defaultContext,
     description: "Vefmiðlar",
     within: {
@@ -263,12 +263,12 @@ settings.corpora.vefmidlar = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.vefsetur = {
+settings.corpora.mim_vefsetur = {
     id: "mim_vefsetur",
-    title: "TODO",
+    title: "Ýmis vefsetur",
     context: defaultContext,
     description: "Texti af vefsetrum fyrirtækja, samtaka og stofnana",
     within: {
@@ -276,12 +276,12 @@ settings.corpora.vefsetur = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.veftimarit = {
+settings.corpora.mim_veftimarit = {
     id: "mim_veftimarit",
-    title: "TODO",
+    title: "Veftímarit",
     context: defaultContext,
     description: "Veftímarit",
     within: {
@@ -289,12 +289,12 @@ settings.corpora.veftimarit = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.verslo = {
+settings.corpora.mim_verslo = {
     id: "mim_verslo",
-    title: "TODO",
+    title: "Menntaskólaritgerðir",
     context: defaultContext,
     description: "Stúdentsprófsritgerðir í íslensku",
     within: {
@@ -302,21 +302,21 @@ settings.corpora.verslo = {
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
-settings.corpora.visindavefur = {
+settings.corpora.mim_visindavefur = {
     id: "mim_visindavefur",
-    title: "TODO",
+    title: "Vísindavefurinn",
     context: defaultContext,
-    description: "Pistlar af Vísindavef",
+    description: "Pistlar af Vísindavefnum",
     within: {
         "paragraph": "paragraph",
         "sentence": "sentence",
         "text": "text"
     },
-    attributes: fornritAttrs,
-    structAttributes: TODO
+    attributes: icelandicAttrs,
+    structAttributes: mimSattrs
 };
 
 /*

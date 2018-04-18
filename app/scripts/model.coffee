@@ -430,14 +430,13 @@ class model.TimeProxy extends BaseProxy
 
         xhr.done (data, status, xhr) =>
             c.log "timespan done", data
-            if data.ERROR
+            if _.isEmpty(data.combined) || data.ERROR
                 c.error "timespan error", data.ERROR
                 dfd.reject(data.ERROR )
                 return
 
             rest = data.combined[""]
             delete data.combined[""]
-
             @expandTimeStruct data.combined
             combined = @compilePlotArray(data.combined)
 

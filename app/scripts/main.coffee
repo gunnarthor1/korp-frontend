@@ -175,9 +175,10 @@ window.initTimeGraph = (def) ->
 
     window.timeDeferred = timeProxy.makeRequest()
         .fail (error) ->
-            $("#time_graph").html("<i>Could not draw graph due to a backend error.</i>")
+            $("#time_graph").html("<i>Time graph is unavailable for this corpus</i>")
         .done ([dataByCorpus, all_timestruct, rest]) ->
-            console.log all_timestruct
+            if !all_timestruct
+                return
             for corpus, struct of dataByCorpus
                 if corpus isnt "time"
                     cor = settings.corpora[corpus.toLowerCase()]

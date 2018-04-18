@@ -121,6 +121,10 @@ settings.modeConfig = [
     {
         localekey: "fornrit",
         mode: "fornrit"
+    },
+    {
+        localekey: "mim",
+        mode: "mim"
     }//,
     // {
     //     localekey: "parallel_texts",
