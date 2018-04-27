@@ -115,7 +115,6 @@ Sidebar =
         return [posItems, structItems]
 
     renderItem: (key, value, attrs, wordData, sentenceData, tokens) ->
-        console.log attrs.label, value, attrs.renderItem
         if (attrs.label and value) and value != "|" and value != ""
             output = $("<p><span rel='localize[#{attrs.label}]'></span>: </p>")
         else

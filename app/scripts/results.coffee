@@ -1670,6 +1670,8 @@ class view.GraphResults extends BaseResults
                 padding :
                     top : 0.1
                     right : 0.01
+            width = $(".tab-pane").width()
+            graph.setSize({width: width})
             graph.render()
             window._graph = @graph = graph
 
@@ -1679,7 +1681,10 @@ class view.GraphResults extends BaseResults
 
             $(window).on "resize", _.throttle(() =>
                 if @$result.is(":visible")
+                    width = $(".tab-pane").width()
                     graph.setSize()
+                    @preview.configure({width: width})
+                    @preview.render()
                     graph.render()
             , 200)
 
@@ -1763,8 +1768,8 @@ class view.GraphResults extends BaseResults
 
             xAxis = new Rickshaw.Graph.Axis.Time
                 graph: graph
-                # timeUnit: time.unit("month") # TODO: bring back decade
-                # timeFixture: new Rickshaw.Fixtures.Time()
+                timeUnit: time.unit("decade") # TODO: bring back decade
+                timeFixture: new Rickshaw.Fixtures.Time()
 
 
             @preview = new Rickshaw.Graph.RangeSlider.Preview
