@@ -136,8 +136,9 @@ statisticsFormatting.getTexts = function(reduceVals, hitValue, corpora) {
 
 // Get the html (no linking) representation of the result for the statistics table
 statisticsFormatting.reduceStringify = function(type, values, corpora) {
-    // Check whether the attribute is word or structural attribute
-    if (type == "word" || (~type.indexOf("_"))) {
+    // Check whether the attribute is word, lemma or structural attribute
+    // i.e. whether its value should be set by text input or drop-down menu
+    if (type == "word" || type == "lemma" || (~type.indexOf("_"))) {
         return values.join(" ");
     }
     var output =  _.map(values, function(token) {

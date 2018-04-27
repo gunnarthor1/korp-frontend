@@ -39,15 +39,15 @@ korpApp.factory "utils", ($location) ->
 korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
     requestCompare : (cmpObj1, cmpObj2, reduce) ->
         reduce = _.map reduce, (item) -> item.replace(/^_\./, "")
-        
+
         # remove all corpora which do not include all the "reduce"-attributes
         filterFun = (item) -> settings.corpusListing.corpusHasAttrs item, reduce
         corpora1 = _.filter cmpObj1.corpora, filterFun
         corpora2 = _.filter cmpObj2.corpora, filterFun
-         
+
         corpusListing = settings.corpusListing.subsetFactory cmpObj1.corpora
 
-        split = _.filter(reduce, (r) -> 
+        split = _.filter(reduce, (r) ->
             settings.corpusListing.getCurrentAttributes()[r]?.type == "set").join(',')
 
         rankedReduce = _.filter reduce, (item) ->
@@ -93,12 +93,12 @@ korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
                     value: key
                     loglike: value
                 }
-            
+
             tables = _.groupBy objs, (obj) ->
                 if obj.loglike > 0
-                    obj.abs = data.set2[obj.value] 
-                    return "positive" 
-                else 
+                    obj.abs = data.set2[obj.value]
+                    return "positive"
+                else
                     obj.abs = data.set1[obj.value]
                     return "negative"
 
@@ -114,7 +114,7 @@ korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
                     abs = 0
                     cqp = []
                     elems = []
-                    
+
                     _.map value, (val) ->
                         abs += val.abs
                         loglike += val.loglike
@@ -179,7 +179,7 @@ korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
                         countryCode: countryCode
                         lat : parseFloat lat
                         lng : parseFloat lng)
-                    
+
                 return (
                     label: label
                     cqp: cqp
@@ -275,7 +275,7 @@ korpApp.factory 'searches', (utils, $location, $rootScope, $http, $q, nameEntity
 
 
     searches = new Searches()
-    
+
     searches.getCqpExpr = () ->
         search = searches.activeSearch
         cqpExpr = null
@@ -285,7 +285,7 @@ korpApp.factory 'searches', (utils, $location, $rootScope, $http, $q, nameEntity
             else
                 cqpExpr = search.val
         return cqpExpr
-    
+
     oldValues = []
     $rootScope.$watchGroup [(() -> $location.search().search), "_loc.search().page"], (newValues) =>
         c.log "searches service watch", $location.search().search

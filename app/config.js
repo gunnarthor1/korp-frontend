@@ -125,6 +125,10 @@ settings.modeConfig = [
     {
         localekey: "mim",
         mode: "mim"
+    },
+    {
+        localekey: "otb",
+        mode: "otb"
     }//,
     // {
     //     localekey: "parallel_texts",
@@ -148,24 +152,24 @@ settings.defaultWithin = {
 settings.cqpPrio = [
     'pos',
     "fall",
-    "stf",
-    "pers",
     "kyn",
     "tala",
+    "pers",
     "lostig",
     "mynd",
     "hattur",
     "tid",
     "fsfall",
+    "greinir",
+    "sernafn",
     "tob",
     "fnf",
     "lob",
     "ft",
+    "stf",
     "lemma",
     'word',
-    "sernafn",
     "tt",
-    "greinir",
 ];
 
 settings.defaultOptions = {

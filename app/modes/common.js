@@ -140,7 +140,8 @@ settings.commonStructTypes = {
 };
 var icelandicSattrs = {
     text_author: {
-        label: "text_author"
+        label: "text_author",
+        order: 10
     },
     text_datefrom: {
         label: "text_date_from",
@@ -161,14 +162,17 @@ var icelandicSattrs = {
     text_date: {
         label: "text_date",
         hideExtended: "true",
-        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
+        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>',
+        order: 20
     },
     text_midill: {
         label: "text_midill",
-        hideExtended: "true"
+        hideExtended: "true",
+        order: 30
     },
     text_wordcount: {
-        label: "text_wordcount"
+        label: "text_wordcount",
+        order: 40
     },
     text_id_midill: {
         label: "text_id_midill",
@@ -188,7 +192,8 @@ var icelandicSattrs = {
 
 var icelandicSattrsNoUrl = {
     text_author: {
-        label: "text_author"
+        label: "text_author",
+        order: 10
     },
     text_datefrom: {
         label: "text_date_from",
@@ -209,14 +214,17 @@ var icelandicSattrsNoUrl = {
     text_date: {
         label: "text_date",
         hideExtended: "true",
-        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>'
+        pattern: '<%=val.substring(6,8)+"-"+val.substring(4,6)+"-"+val.substring(0,4)%>',
+        order: 20
     },
     text_midill: {
         label: "text_midill",
-        hideExtended: "true"
+        hideExtended: "true",
+        order: 30
     },
     text_wordcount: {
-        label: "text_wordcount"
+        label: "text_wordcount",
+        order: 40
     },
     text_id_midill: {
         label: "text_id_midill",
@@ -244,12 +252,14 @@ var icelandicCustomAttrs = {
     article: {
         label: 'article',
         customType: 'struct',
-        pattern: "<p><span rel='localize[text_title]'></span>: <a target='_blank' href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>"
+        pattern: "<p><span rel='localize[text_title]'></span>: <a target='_blank' href='<%=struct_attrs.text_url%>'><%=struct_attrs.text_title%></a></p>",
+        order: 0
     },
     article_nourl: {
         label: 'article',
         customType: 'struct',
-        pattern: "<p><span rel='localize[text_title]'></span>: <%=struct_attrs.text_title%></p>"
+        pattern: "<p><span rel='localize[text_title]'></span>: <%=struct_attrs.text_title%></p>",
+        order: 0
     },
     article_althingi: {
         label: 'article',
@@ -853,6 +863,28 @@ var textasafnSattrs = {
         label: "text_translator",
         type: "set",
         order: 26
+    }
+}
+
+var otbSattrs = {
+    text_date: textasafnSattrs.text_date,
+    text_datefrom: textasafnSattrs.text_datefrom,
+    text_dateto: textasafnSattrs.text_dateto,
+    text_timefrom: textasafnSattrs.text_timefrom,
+    text_author: textasafnSattrs.text_author,
+    text_translator: textasafnSattrs.text_translator,
+    text_publisher: textasafnSattrs.text_utgefandi,
+    text_publishing_place: {
+        label: "text_publishing_place",
+        hideExtended: true,
+        order: 35
+    },
+    text_wordcount: textasafnSattrs.text_wordcount,
+    text_sentencecount: textasafnSattrs.text_sentencecount,
+    text_paragraphcount: textasafnSattrs.text_paragraphcount,
+    text_title: {
+        label: "text_title",
+        order: 0
     }
 }
 

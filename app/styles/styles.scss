@@ -34,6 +34,7 @@ $primary-light: #d9e7ff;
 $background-color: #edf3f3;
 $fornrit-header-color: #9e8555;
 $mim-header-color: $color-navy;
+$otb-header-color: #993130;
 
 
 // Mode-specific styles:
@@ -47,6 +48,7 @@ $mim-header-color: $color-navy;
       &::after {
         color: $color-darkgray;
       }
+
       a:hover {
         color: $color-navy;
       }
@@ -68,6 +70,7 @@ $mim-header-color: $color-navy;
       &::after {
         color: $color-gray;
       }
+
       a:hover {
         color: $color-white;
       }
@@ -76,6 +79,18 @@ $mim-header-color: $color-navy;
 
   .tabbable .nav.nav-tabs {
     background-color: $mim-header-color;
+  }
+}
+
+.mode-otb {
+  #header {
+    background-color: $otb-header-color;
+
+
+  }
+
+  .tabbable .nav.nav-tabs {
+    background-color: $otb-header-color;
   }
 }
 // End mode-specific styles
@@ -1896,6 +1911,10 @@ label[for=lemgram_select]::before {
   font-size: 1.3em;
   margin: 1em 0 0 1em;
   vertical-align: top;
+}
+
+.error_msg {
+  min-height: 350px;
 }
 
 .error_msg ~ * {
