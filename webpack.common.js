@@ -57,7 +57,7 @@ module.exports = {
         ],
         use: [
           { loader: "file-loader" },
-          { 
+          {
             loader: "extract-loader",
             options: { publicPath: "" }
           },
@@ -69,11 +69,11 @@ module.exports = {
         test: /index.pug$/,
         use: [
           { loader: "file-loader?name=index.html" },
-          { 
+          {
             loader: "extract-loader",
             options: { publicPath: "" }
           },
-          { 
+          {
             loader: "html-loader",
             options: {
               attrs: ['img:src','link:href']
@@ -81,7 +81,32 @@ module.exports = {
           },
           {
             loader: "pug-html-loader",
-            options: { 
+            options: {
+              // TODO we should not pretty-print HTML, but removing this
+              // option will result in that some elements get closer together
+              // and need to be fixed with CSS
+              pretty: true
+            }
+          }
+        ]
+      },
+      {
+        test: /user_guide.pug$/,
+        use: [
+          { loader: "file-loader?name=user_guide.html" },
+          {
+            loader: "extract-loader",
+            options: { publicPath: "" }
+          },
+          {
+            loader: "html-loader",
+            options: {
+              attrs: ['img:src','link:href']
+            }
+          },
+          {
+            loader: "pug-html-loader",
+            options: {
               // TODO we should not pretty-print HTML, but removing this
               // option will result in that some elements get closer together
               // and need to be fixed with CSS
@@ -94,13 +119,13 @@ module.exports = {
         test: /\.html$/,
         use: [
           { loader: "file-loader" },
-          { 
+          {
             loader: "extract-loader",
             options: { publicPath: "" }
           },
           { loader: "html-loader" }
         ]
-        
+
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
