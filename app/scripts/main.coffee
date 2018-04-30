@@ -1,5 +1,5 @@
 
-korpFailImg = require "../img/korp_fail.svg"
+korpFailImg = require "../img/error_message.png"
 
 window.authenticationProxy = new model.AuthenticationProxy()
 window.timeProxy = new model.TimeProxy()

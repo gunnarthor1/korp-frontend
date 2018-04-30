@@ -1610,5 +1610,6 @@ module.exports = {
   otbSattrs,
   icelandicSattrsNoUrl,
   icelandicSAttrsNoDate,
-  mimSattrs
+  mimSattrs,
+  icelandicCustomAttrs
 }
