@@ -50,13 +50,13 @@ html
         p Þar fyrir utan má velja hvort maður leitar eftir orðmynd eða uppflettimynd: 
 
         h3#kafli-2-1 Upphaf eða endir
-        p Ef hakað er við <i>upphaf</i> eða <i>endir</i> fást niðurstöður sem annað hvort byrja eða enda á leitarstrengnum, en gætu innihaldið fleiri stafi.
+        p Ef hakað er við <em>upphaf</em> eða <em>endir</em> fást niðurstöður sem annað hvort byrja eða enda á leitarstrengnum, en gætu innihaldið fleiri stafi.
         h3#kafli-2-2 Óháð há- og lágstöfum
-        p Valmöguleikinn <i>óháð há- og lágstöfum</i> stýrir því hvort tekið er tillit til hvort fyrsti stafur í leitarstreng sé há- eða lágstafur.
-        h3#kafli-2-3 Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
-        p Ef merkt er við <i>orðmynd</i> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
+        p Valmöguleikinn <em>óháð há- og lágstöfum</em> stýrir því hvort tekið er tillit til hvort fyrsti stafur í leitarstreng sé há- eða lágstafur.
+        h3#kafli-2-3 Leita eftir <em>orðmynd</em> eða <em>uppflettimynd</em>
+        p Ef merkt er við <em>orðmynd</em> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
           | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
-        p Til þess að fá allar orðmyndir skal merkja við <i>uppflettimynd</i>: 
+        p Til þess að fá allar orðmyndir skal merkja við <em>uppflettimynd</em>: 
           img(src="/img/user_guide/simple_search_searchby.png")
         p Ef það er gert fást öll tilfelli af því orði sem leitað er eftir í textanum, óháð því hvaða birtingarmynd þau hafa.
         figure.fig.fig-left
@@ -65,7 +65,7 @@ html
         figure.fig.fig-right
           figcaption Leitað eftir uppflettimynd
           img(src="/img/user_guide/lemma_search_results.png")
-        p Hafa ber þó í huga að <b>ekki</b> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
+        p Hafa ber þó í huga að <strong>ekki</strong> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
           |  því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
         p Fyrir flóknari fyrirspurnir verður að grípa til útvíkkaðrar leitar.
       section.mainsection.clearfix
@@ -98,6 +98,23 @@ html
         p Þegar útvíkkuð leit er valin mætir manni stakt spjald (sjá til hægri). Það spjald svarar til eins leitarorðs. 
           | Ef smellt er á "orðmynd" birtist fellivalmynd sem sýnir þá þætti sem hægt er að leita eftir. Meðal þeirra er t.d. "Lemma", 
           | sem er oft kallað uppflettimynd, og beygingarþættir svo sem kyn, tala, fall, háttur o.s.frv.
+        p Einnig er hægt að leita eftir þáttum sem eiga við um textann í heild. Þessir þættir eru kallaðir <em>eigindi texta</em>. M.a. má leita eftir ritunartíma, höfundi, titli o.fl.
+        p Einnig eru sum eigindi sem eiga bara við ákveðin textasöfn. T.d. er hægt að takmarka leit í Alþingisræðum við einn þingmann. 
+          | Það er gert með því að velja <em>Þingmaður</em> undir <em>eigindi texta</em> í fellivalmyndinni á leitarspjaldinu og slá síðan inn fullt nafn þingmannsins. 
+        p Á spjaldinu má sjá tvo hnappa; <em>Bæta við möguleika</em> og <em>Bæta við skilyrði</em>.
+        ul
+          li Ef smellt er á <em>Bæta við möguleika</em> birtist annar reitur fyrir leitarskilyrði. Niðurstöðurnar verða þá öll orð sem uppfylla 
+            | <strong>annað hvort</strong> þeirra skilyrða sem skilgreind eru.
+          li Ef smellt er á <em>Bæta við skilyrði</em> birtist eins reitur fyrir leitarskilyrði. Niðurstöður leitarinnar verða öll orð sem uppfylla <strong>bæði</strong> 
+            | skilyrðin sem skilgreind eru
+        p Með þessum tveimur möguleikum er unnt að tvinna saman flókin leitarspjöld svo sem annað og þriðja spjaldið í dæminu <a href='#kafli-3'>hér að ofan</a>.
+        figure.fig.fig-small.fig-right
+          figcaption Samsett leitarspjald
+          img(src="/img/user_guide/thingmadur_token.png")
+        p Hér til hægri má einnig sjá dæmi um leitarspjald sem leitar eftir eftirfarandi skilyrði:
+        ul
+          li <em>Þingmaður</em> er 'Ólafur Ragnar Grímsson' <strong>OG</strong> <em>Lemma</em> er 'forseti'
+        p Sem sagt, þessi leit skilar öllum tilfellum úr þingræðum þar sem Ólafur Ragnar Grímsson hefur sagt einhverja orðmynd orðsins forseti
       section.mainsection.clearfix
         h2 Meira á leiðinni...
       
@@ -116,7 +133,7 @@ html
             li
               a(href='#kafli-2-2') Óháð há- og lágstöfum
             li
-              a(href='#kafli-2-3') Leita eftir <i>orðmynd</i> eða <i>uppflettimynd</i>
+              a(href='#kafli-2-3') Leita eftir <em>orðmynd</em> eða <em>uppflettimynd</em>
         li
           a(href='#kafli-3') Útvíkkuð leit
           ul
