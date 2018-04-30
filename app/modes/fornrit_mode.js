@@ -26,62 +26,62 @@ settings.corporafolders.islendingasogur = {
 settings.corporafolders.islendingasogur.a_g = {
     title: "A-G",
     contents: [
-        "bandamanna_saga_konungsbok",
-        "bardar_saga_snaefellsass",
-        "bjarnar_saga_hitdaelakappa",
-        "brennu_njals_saga",
-        "droplaugarsona_saga",
-        "egils_saga_skalla_grimssonar",
-        "eiriks_saga_rauda",
-        "eyrbyggja_saga",
-        "finnboga_saga_ramma",
-        "fljotsdaela_saga",
-        "floamanna_saga",
-        "fostbraedra_saga",
-        "gisla_saga_surssonar_lengri_gerd",
-        "gisla_saga_surssonar_styttri_gerd",
-        "grettis_saga_asmundarsonar",
-        "graenlendinga_saga",
-        "graenlendinga_thattur",
-        "gull_thoris_saga",
-        "gunnars_saga_keldugnupsfifls",
-        "gunnlaugs_saga_ormstungu",
+        "forn_bandamanna_saga_konungsbok",
+        "forn_bardar_saga_snaefellsass",
+        "forn_bjarnar_saga_hitdaelakappa",
+        "forn_brennu_njals_saga",
+        "forn_droplaugarsona_saga",
+        "forn_egils_saga_skalla_grimssonar",
+        "forn_eiriks_saga_rauda",
+        "forn_eyrbyggja_saga",
+        "forn_finnboga_saga_ramma",
+        "forn_fljotsdaela_saga",
+        "forn_floamanna_saga",
+        "forn_fostbraedra_saga",
+        "forn_gisla_saga_surssonar_lengri_gerd",
+        "forn_gisla_saga_surssonar_styttri_gerd",
+        "forn_grettis_saga_asmundarsonar",
+        "forn_graenlendinga_saga",
+        "forn_graenlendinga_thattur",
+        "forn_gull_thoris_saga",
+        "forn_gunnars_saga_keldugnupsfifls",
+        "forn_gunnlaugs_saga_ormstungu",
     ]
 };
 settings.corporafolders.islendingasogur.h_oe = {
     title: "H-Ö",
     contents: [
-        "hallfredar_saga_eftir_modruvallabok",
-        "hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
-        "hardar_saga_og_holmverja",
-        "havardar_saga_isfirdings",
-        "heidarviga_saga",
-        "hrafnkels_saga_freysgoda",
-        "haensna_thoris_saga",
-        "islendinga_thaettir",
-        "jokuls_thattur_buasonar",
-        "kjalnesinga_saga",
-        "kormaks_saga",
-        "kroka_refs_saga",
-        "laxdaela_saga",
-        "ljosvetninga_saga_a_gerd",
-        "ljosvetninga_saga_c_gerd",
-        "reykdaela_saga",
-        "svarfdaela_saga",
-        "valla_ljots_saga",
-        "vatnsdaela_saga",
-        "viga_glums_saga",
-        "viglundar_saga",
-        "vopnfirdinga_saga",
-        "thorsteins_saga_hvita",
-        "thorsteins_saga_sidu_hallssonar",
-        "thordar_saga_hredu",
-        "olkofra_saga"
+        "forn_hallfredar_saga_eftir_modruvallabok",
+        "forn_hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
+        "forn_hardar_saga_og_holmverja",
+        "forn_havardar_saga_isfirdings",
+        "forn_heidarviga_saga",
+        "forn_hrafnkels_saga_freysgoda",
+        "forn_haensna_thoris_saga",
+        "forn_islendinga_thaettir",
+        "forn_jokuls_thattur_buasonar",
+        "forn_kjalnesinga_saga",
+        "forn_kormaks_saga",
+        "forn_kroka_refs_saga",
+        "forn_laxdaela_saga",
+        "forn_ljosvetninga_saga_a_gerd",
+        "forn_ljosvetninga_saga_c_gerd",
+        "forn_reykdaela_saga",
+        "forn_svarfdaela_saga",
+        "forn_valla_ljots_saga",
+        "forn_vatnsdaela_saga",
+        "forn_viga_glums_saga",
+        "forn_viglundar_saga",
+        "forn_vopnfirdinga_saga",
+        "forn_thorsteins_saga_hvita",
+        "forn_thorsteins_saga_sidu_hallssonar",
+        "forn_thordar_saga_hredu",
+        "forn_olkofra_saga"
     ]
 };
 
-settings.corpora.bandamanna_saga_konungsbok = {
-    id: "bandamanna_saga_konungsbok",
+settings.corpora.forn_bandamanna_saga_konungsbok = {
+    id: "forn_bandamanna_saga_konungsbok",
     title: "Bandamanna saga",
     context: defaultContext,
     description: "",
@@ -93,8 +93,8 @@ settings.corpora.bandamanna_saga_konungsbok = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.bardar_saga_snaefellsass = {
-    id: "bardar_saga_snaefellsass",
+settings.corpora.forn_bardar_saga_snaefellsass = {
+    id: "forn_bardar_saga_snaefellsass",
     title: "Bárðar saga Snæfelsáss",
     context: defaultContext,
     description: "",
@@ -106,8 +106,8 @@ settings.corpora.bardar_saga_snaefellsass = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.bjarnar_saga_hitdaelakappa = {
-    id: "bjarnar_saga_hitdaelakappa",
+settings.corpora.forn_bjarnar_saga_hitdaelakappa = {
+    id: "forn_bjarnar_saga_hitdaelakappa",
     title: "Bjarnar saga Hítdælakappa",
     context: defaultContext,
     description: "",
@@ -119,8 +119,8 @@ settings.corpora.bjarnar_saga_hitdaelakappa = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.brennu_njals_saga = {
-    id: "brennu_njals_saga",
+settings.corpora.forn_brennu_njals_saga = {
+    id: "forn_brennu_njals_saga",
     title: "Brennu-Njáls saga",
     context: defaultContext,
     description: "",
@@ -132,8 +132,8 @@ settings.corpora.brennu_njals_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.droplaugarsona_saga = {
-    id: "droplaugarsona_saga",
+settings.corpora.forn_droplaugarsona_saga = {
+    id: "forn_droplaugarsona_saga",
     title: "Droplaugarsona saga",
     context: defaultContext,
     description: "",
@@ -145,8 +145,8 @@ settings.corpora.droplaugarsona_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.egils_saga_skalla_grimssonar = {
-    id: "egils_saga_skalla_grimssonar",
+settings.corpora.forn_egils_saga_skalla_grimssonar = {
+    id: "forn_egils_saga_skalla_grimssonar",
     title: "Egils saga Skalla-Grímssonar",
     context: defaultContext,
     description: "",
@@ -158,8 +158,8 @@ settings.corpora.egils_saga_skalla_grimssonar = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.eiriks_saga_rauda = {
-    id: "eiriks_saga_rauda",
+settings.corpora.forn_eiriks_saga_rauda = {
+    id: "forn_eiriks_saga_rauda",
     title: "Eiríks saga rauða",
     context: defaultContext,
     description: "",
@@ -171,8 +171,8 @@ settings.corpora.eiriks_saga_rauda = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.eyrbyggja_saga = {
-    id: "eyrbyggja_saga",
+settings.corpora.forn_eyrbyggja_saga = {
+    id: "forn_eyrbyggja_saga",
     title: "Eyrbyggja saga",
     context: defaultContext,
     description: "",
@@ -184,8 +184,8 @@ settings.corpora.eyrbyggja_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.finnboga_saga_ramma = {
-    id: "finnboga_saga_ramma",
+settings.corpora.forn_finnboga_saga_ramma = {
+    id: "forn_finnboga_saga_ramma",
     title: "Finnboga saga ramma",
     context: defaultContext,
     description: "",
@@ -197,8 +197,8 @@ settings.corpora.finnboga_saga_ramma = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.fljotsdaela_saga = {
-    id: "fljotsdaela_saga",
+settings.corpora.forn_fljotsdaela_saga = {
+    id: "forn_fljotsdaela_saga",
     title: "Fljótsdæla saga",
     context: defaultContext,
     description: "",
@@ -210,8 +210,8 @@ settings.corpora.fljotsdaela_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.floamanna_saga = {
-    id: "floamanna_saga",
+settings.corpora.forn_floamanna_saga = {
+    id: "forn_floamanna_saga",
     title: "Flóamanna saga",
     context: defaultContext,
     description: "",
@@ -223,8 +223,8 @@ settings.corpora.floamanna_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.fostbraedra_saga = {
-    id: "fostbraedra_saga",
+settings.corpora.forn_fostbraedra_saga = {
+    id: "forn_fostbraedra_saga",
     title: "Fóstbræðra saga",
     context: defaultContext,
     description: "",
@@ -236,8 +236,8 @@ settings.corpora.fostbraedra_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.gisla_saga_surssonar_lengri_gerd = {
-    id: "gisla_saga_surssonar_lengri_gerd",
+settings.corpora.forn_gisla_saga_surssonar_lengri_gerd = {
+    id: "forn_gisla_saga_surssonar_lengri_gerd",
     title: "Gísla saga Súrssonar (lengri gerð)",
     context: defaultContext,
     description: "",
@@ -249,8 +249,8 @@ settings.corpora.gisla_saga_surssonar_lengri_gerd = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.gisla_saga_surssonar_styttri_gerd = {
-    id: "gisla_saga_surssonar_styttri_gerd",
+settings.corpora.forn_gisla_saga_surssonar_styttri_gerd = {
+    id: "forn_gisla_saga_surssonar_styttri_gerd",
     title: "Gísla saga Súrssonar (styttri gerð)",
     context: defaultContext,
     description: "",
@@ -262,8 +262,8 @@ settings.corpora.gisla_saga_surssonar_styttri_gerd = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.graenlendinga_saga = {
-    id: "graenlendinga_saga",
+settings.corpora.forn_graenlendinga_saga = {
+    id: "forn_graenlendinga_saga",
     title: "Grænlendinga saga",
     context: defaultContext,
     description: "",
@@ -275,8 +275,8 @@ settings.corpora.graenlendinga_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.graenlendinga_thattur = {
-    id: "graenlendinga_thattur",
+settings.corpora.forn_graenlendinga_thattur = {
+    id: "forn_graenlendinga_thattur",
     title: "Grænlendinga þáttur",
     context: defaultContext,
     description: "",
@@ -288,8 +288,8 @@ settings.corpora.graenlendinga_thattur = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.grettis_saga_asmundarsonar = {
-    id: "grettis_saga_asmundarsonar",
+settings.corpora.forn_grettis_saga_asmundarsonar = {
+    id: "forn_grettis_saga_asmundarsonar",
     title: "Grettis saga Ásmundarsonar",
     context: defaultContext,
     description: "",
@@ -301,8 +301,8 @@ settings.corpora.grettis_saga_asmundarsonar = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.gull_thoris_saga = {
-    id: "gull_thoris_saga",
+settings.corpora.forn_gull_thoris_saga = {
+    id: "forn_gull_thoris_saga",
     title: "Gull-Þóris saga",
     context: defaultContext,
     description: "",
@@ -314,8 +314,8 @@ settings.corpora.gull_thoris_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.gunnars_saga_keldugnupsfifls = {
-    id: "gunnars_saga_keldugnupsfifls",
+settings.corpora.forn_gunnars_saga_keldugnupsfifls = {
+    id: "forn_gunnars_saga_keldugnupsfifls",
     title: "Gunnars saga Keldugnúpsfífls",
     context: defaultContext,
     description: "",
@@ -327,8 +327,8 @@ settings.corpora.gunnars_saga_keldugnupsfifls = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.gunnlaugs_saga_ormstungu = {
-    id: "gunnlaugs_saga_ormstungu",
+settings.corpora.forn_gunnlaugs_saga_ormstungu = {
+    id: "forn_gunnlaugs_saga_ormstungu",
     title: "Gunnlaugs saga ormstungu",
     context: defaultContext,
     description: "",
@@ -340,8 +340,8 @@ settings.corpora.gunnlaugs_saga_ormstungu = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.hallfredar_saga_eftir_modruvallabok = {
-    id: "hallfredar_saga_eftir_modruvallabok",
+settings.corpora.forn_hallfredar_saga_eftir_modruvallabok = {
+    id: "forn_hallfredar_saga_eftir_modruvallabok",
     title: "Hallfreðar saga (eftir Möðruvallabók)",
     context: defaultContext,
     description: "",
@@ -353,8 +353,8 @@ settings.corpora.hallfredar_saga_eftir_modruvallabok = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu = {
-    id: "hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
+settings.corpora.forn_hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu = {
+    id: "forn_hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu",
     title: "Hallfreðar saga (úr Ólafs sögu Tryggvasonar hinni mestu)",
     context: defaultContext,
     description: "",
@@ -366,8 +366,8 @@ settings.corpora.hallfredar_saga_ur_olafs_sogu_tryggvasonar_hinni_mestu = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.hardar_saga_og_holmverja = {
-    id: "hardar_saga_og_holmverja",
+settings.corpora.forn_hardar_saga_og_holmverja = {
+    id: "forn_hardar_saga_og_holmverja",
     title: "Harðar saga og Hólmverja",
     context: defaultContext,
     description: "",
@@ -379,8 +379,8 @@ settings.corpora.hardar_saga_og_holmverja = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.havardar_saga_isfirdings = {
-    id: "havardar_saga_isfirdings",
+settings.corpora.forn_havardar_saga_isfirdings = {
+    id: "forn_havardar_saga_isfirdings",
     title: "Hávarðar saga Ísfirðings",
     context: defaultContext,
     description: "",
@@ -392,8 +392,8 @@ settings.corpora.havardar_saga_isfirdings = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.heidarviga_saga = {
-    id: "heidarviga_saga",
+settings.corpora.forn_heidarviga_saga = {
+    id: "forn_heidarviga_saga",
     title: "Heiðarvíga saga",
     context: defaultContext,
     description: "",
@@ -405,8 +405,8 @@ settings.corpora.heidarviga_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.haensna_thoris_saga = {
-    id: "haensna_thoris_saga",
+settings.corpora.forn_haensna_thoris_saga = {
+    id: "forn_haensna_thoris_saga",
     title: "Hænsna-Þóris saga",
     context: defaultContext,
     description: "",
@@ -418,8 +418,8 @@ settings.corpora.haensna_thoris_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.heimskringla = {
-    id: "heimskringla",
+settings.corpora.forn_heimskringla = {
+    id: "forn_heimskringla",
     title: "Heimskringla",
     context: defaultContext,
     description: "",
@@ -431,8 +431,8 @@ settings.corpora.heimskringla = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.hrafnkels_saga_freysgoda = {
-    id: "hrafnkels_saga_freysgoda",
+settings.corpora.forn_hrafnkels_saga_freysgoda = {
+    id: "forn_hrafnkels_saga_freysgoda",
     title: "Hrafnkels saga Freysgoða",
     context: defaultContext,
     description: "",
@@ -444,8 +444,8 @@ settings.corpora.hrafnkels_saga_freysgoda = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.islendinga_thaettir = {
-    id: "islendinga_thaettir",
+settings.corpora.forn_islendinga_thaettir = {
+    id: "forn_islendinga_thaettir",
     title: "Íslendinga þættir",
     context: defaultContext,
     description: "",
@@ -457,8 +457,8 @@ settings.corpora.islendinga_thaettir = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.jokuls_thattur_buasonar = {
-    id: "jokuls_thattur_buasonar",
+settings.corpora.forn_jokuls_thattur_buasonar = {
+    id: "forn_jokuls_thattur_buasonar",
     title: "Jökuls þáttur Búasonar",
     context: defaultContext,
     description: "",
@@ -470,8 +470,8 @@ settings.corpora.jokuls_thattur_buasonar = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.kjalnesinga_saga = {
-    id: "kjalnesinga_saga",
+settings.corpora.forn_kjalnesinga_saga = {
+    id: "forn_kjalnesinga_saga",
     title: "Kjalnesinga saga",
     context: defaultContext,
     description: "",
@@ -483,8 +483,8 @@ settings.corpora.kjalnesinga_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.kormaks_saga = {
-    id: "kormaks_saga",
+settings.corpora.forn_kormaks_saga = {
+    id: "forn_kormaks_saga",
     title: "Kormáks saga",
     context: defaultContext,
     description: "",
@@ -496,8 +496,8 @@ settings.corpora.kormaks_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.kroka_refs_saga = {
-    id: "kroka_refs_saga",
+settings.corpora.forn_kroka_refs_saga = {
+    id: "forn_kroka_refs_saga",
     title: "Króka-Refs saga",
     context: defaultContext,
     description: "",
@@ -509,8 +509,8 @@ settings.corpora.kroka_refs_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.landnamabok_sturlubok = {
-    id: "landnamabok_sturlubok",
+settings.corpora.forn_landnamabok_sturlubok = {
+    id: "forn_landnamabok_sturlubok",
     title: "Landnámabók - Sturlubók",
     context: defaultContext,
     description: "",
@@ -522,8 +522,8 @@ settings.corpora.landnamabok_sturlubok = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.laxdaela_saga = {
-    id: "laxdaela_saga",
+settings.corpora.forn_laxdaela_saga = {
+    id: "forn_laxdaela_saga",
     title: "Laxdæla saga",
     context: defaultContext,
     description: "",
@@ -535,8 +535,8 @@ settings.corpora.laxdaela_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.ljosvetninga_saga_a_gerd = {
-    id: "ljosvetninga_saga_a_gerd",
+settings.corpora.forn_ljosvetninga_saga_a_gerd = {
+    id: "forn_ljosvetninga_saga_a_gerd",
     title: "Ljósvetninga saga (A-gerð)",
     context: defaultContext,
     description: "",
@@ -548,8 +548,8 @@ settings.corpora.ljosvetninga_saga_a_gerd = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.ljosvetninga_saga_c_gerd = {
-    id: "ljosvetninga_saga_c_gerd",
+settings.corpora.forn_ljosvetninga_saga_c_gerd = {
+    id: "forn_ljosvetninga_saga_c_gerd",
     title: "Ljósvetninga saga (c-gerð)",
     context: defaultContext,
     description: "",
@@ -561,8 +561,8 @@ settings.corpora.ljosvetninga_saga_c_gerd = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.olkofra_saga = {
-    id: "olkofra_saga",
+settings.corpora.forn_olkofra_saga = {
+    id: "forn_olkofra_saga",
     title: "Ölkofra saga",
     context: defaultContext,
     description: "",
@@ -574,8 +574,8 @@ settings.corpora.olkofra_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.reykdaela_saga = {
-    id: "reykdaela_saga",
+settings.corpora.forn_reykdaela_saga = {
+    id: "forn_reykdaela_saga",
     title: "Reykdæla saga",
     context: defaultContext,
     description: "",
@@ -587,8 +587,8 @@ settings.corpora.reykdaela_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.sturlunga = {
-    id: "sturlunga",
+settings.corpora.forn_sturlunga = {
+    id: "forn_sturlunga",
     title: "Sturlunga",
     context: defaultContext,
     description: "",
@@ -600,8 +600,8 @@ settings.corpora.sturlunga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.svarfdaela_saga = {
-    id: "svarfdaela_saga",
+settings.corpora.forn_svarfdaela_saga = {
+    id: "forn_svarfdaela_saga",
     title: "Svarfdæla saga",
     context: defaultContext,
     description: "",
@@ -613,8 +613,8 @@ settings.corpora.svarfdaela_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.thordar_saga_hredu = {
-    id: "thordar_saga_hredu",
+settings.corpora.forn_thordar_saga_hredu = {
+    id: "forn_thordar_saga_hredu",
     title: "Þórðar saga hreðu",
     context: defaultContext,
     description: "",
@@ -626,8 +626,8 @@ settings.corpora.thordar_saga_hredu = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.thorsteins_saga_hvita = {
-    id: "thorsteins_saga_hvita",
+settings.corpora.forn_thorsteins_saga_hvita = {
+    id: "forn_thorsteins_saga_hvita",
     title: "Þorsteins saga hvíta",
     context: defaultContext,
     description: "",
@@ -639,8 +639,8 @@ settings.corpora.thorsteins_saga_hvita = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.thorsteins_saga_sidu_hallssonar = {
-    id: "thorsteins_saga_sidu_hallssonar",
+settings.corpora.forn_thorsteins_saga_sidu_hallssonar = {
+    id: "forn_thorsteins_saga_sidu_hallssonar",
     title: "Þorsteins saga Síðu-Hallssonar",
     context: defaultContext,
     description: "",
@@ -652,8 +652,8 @@ settings.corpora.thorsteins_saga_sidu_hallssonar = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.valla_ljots_saga = {
-    id: "valla_ljots_saga",
+settings.corpora.forn_valla_ljots_saga = {
+    id: "forn_valla_ljots_saga",
     title: "Valla-Ljóts saga",
     context: defaultContext,
     description: "",
@@ -665,8 +665,8 @@ settings.corpora.valla_ljots_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.vatnsdaela_saga = {
-    id: "vatnsdaela_saga",
+settings.corpora.forn_vatnsdaela_saga = {
+    id: "forn_vatnsdaela_saga",
     title: "Vatnsdæla saga",
     context: defaultContext,
     description: "",
@@ -678,8 +678,8 @@ settings.corpora.vatnsdaela_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.viga_glums_saga = {
-    id: "viga_glums_saga",
+settings.corpora.forn_viga_glums_saga = {
+    id: "forn_viga_glums_saga",
     title: "Víga-Glúms saga",
     context: defaultContext,
     description: "",
@@ -691,8 +691,8 @@ settings.corpora.viga_glums_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.viglundar_saga = {
-    id: "viglundar_saga",
+settings.corpora.forn_viglundar_saga = {
+    id: "forn_viglundar_saga",
     title: "Víglundar saga",
     context: defaultContext,
     description: "",
@@ -704,8 +704,8 @@ settings.corpora.viglundar_saga = {
     attributes: fornritAttrs,
     structAttributes: fornritSattrs
 };
-settings.corpora.vopnfirdinga_saga = {
-    id: "vopnfirdinga_saga",
+settings.corpora.forn_vopnfirdinga_saga = {
+    id: "forn_vopnfirdinga_saga",
     title: "Vopnfirðinga saga",
     context: defaultContext,
     description: "",
