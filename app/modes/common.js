@@ -1611,5 +1611,6 @@ module.exports = {
   icelandicSattrsNoUrl,
   icelandicSAttrsNoDate,
   mimSattrs,
-  icelandicCustomAttrs
+  icelandicCustomAttrs,
+  icelandicAlthingiSAttrs
 }

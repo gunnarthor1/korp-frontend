@@ -48,7 +48,7 @@
     "about_logo": "Logotype by",
     "about_contributors": "Special thanks",
     "warning_header": "Please note",
-    "footer_about_korp": "This tool is built on <a target='_blank' href='https://spraakbanken.gu.se/korp/'><img class='footer-image' src='img/korplogo.png'></a>",
+    "footer_about_korp": "This tool is based on ",
     "warning_body": "The dependency relations illustrated herein are the result of automated parsing.",
     "fail_text": "An error has occurred.",
     "corpus": "Corpus",

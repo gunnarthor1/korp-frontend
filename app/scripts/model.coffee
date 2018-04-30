@@ -175,7 +175,7 @@ class model.LemgramProxy extends BaseProxy
             max : 1000
         @prevParams = params
         def =  $.ajax
-            url: settings.cgiScript
+            url: settings.korpBackendURL
             data: params
 
             success: (data) ->
@@ -338,7 +338,7 @@ class model.StatsProxy extends BaseProxy
         @prevParams = data
         def = $.Deferred()
         @pendingRequests.push $.ajax
-            url: settings.cgiScript
+            url: settings.korpBackendURL
             data: data
             beforeSend: (req, settings) ->
                 self.prevRequest = settings
@@ -425,7 +425,7 @@ class model.AuthenticationProxy
             throw "window.btoa is undefined"
         dfd = $.Deferred()
         $.ajax(
-            url: settings.cgiScript
+            url: settings.korpBackendURL
             type: "GET"
             data:
                 command: "authenticate"
@@ -462,7 +462,7 @@ class model.TimeProxy extends BaseProxy
 
 
         xhr = $.ajax
-            url: settings.cgiScript
+            url: settings.korpBackendURL
             type: "GET"
             data:
                 command: "timespan"
@@ -558,7 +558,7 @@ class model.GraphProxy extends BaseProxy
         def = $.Deferred()
 
         $.ajax
-            url: settings.cgiScript
+            url: settings.korpBackendURL
             dataType : "json"
             data : params
 

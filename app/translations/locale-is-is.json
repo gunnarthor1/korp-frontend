@@ -49,7 +49,7 @@
     "contact": "Hafa samband",
     "contact_text": "Ef þið hafið rekist á villu í leitarvélinni eða hafið ábendingar um hvað mætti betur fara hvetjum við ykkur til þess að hafa samband við okkur með því að senda tölvupóst á netfangið <a href='mailto:malfong@malfong.is'>malfong@malfong.is</a>",
     "warning_header": "Vinsamlegast athugið",
-    "footer_about_korp": "Þetta tól er byggt á <a target='_blank' href='https://spraakbanken.gu.se/korp/'><img class='footer-image' src='img/korplogo.png'></a>",
+    "footer_about_korp": "Þetta tól er byggt á ",
     "warning_body": "Venslin sem hér eru sett fram eru útkoma sjálfvirkrar þáttunar. Þau skal meðhöndla með fyrirvara um villur.",
     "fail_text": "Villa kom upp.",
     "corpus": "Undirmálheild",
@@ -251,7 +251,7 @@
     "empty": "[autt]",
     "link": "hlekkur",
     "text": "texti",
-    "word": "orðmynd",
+    "word": "Orðmynd",
     "words": "orð",
 
     "comparison": "Samanburður",

@@ -252,7 +252,7 @@ korpApp.factory "structService",  ($http, $q) ->
             count: count
 
         conf =
-            url : settings.cgiScript
+            url : settings.korpBackendURL
             params : params
             method : "GET"
             headers : {}
