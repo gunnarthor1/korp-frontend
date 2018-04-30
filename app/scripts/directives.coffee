@@ -20,7 +20,7 @@ korpApp.directive 'kwicWord', ->
             for struct in (wd._close or [])
                 output["close_" + struct] = true
 
-            return (x for [x, y] in _.pairs output when y).join " "
+            return (x for [x, y] in _.toPairs output when y).join " "
 
 
 
@@ -42,6 +42,7 @@ korpApp.directive "tabHash", (utils, $location, $timeout) ->
             ]
 
         s.setSelected = (index, ignoreCheck) ->
+            console.log("tab setSelected", index)
             if not ignoreCheck and index not of s.fixedTabs
                 index = s.maxTab
 
@@ -59,7 +60,11 @@ korpApp.directive "tabHash", (utils, $location, $timeout) ->
             watchHash()), 0
 
         s.newDynamicTab = () ->
-            $timeout (() -> s.setSelected(s.maxTab + 1, true)), 0
+            console.log("newDynamicTab s.maxTab", s.maxTab)
+            $timeout (() ->
+                s.setSelected(s.maxTab + 1, true)
+                s.maxTab += 1
+            ), 0
 
 
 
@@ -281,7 +286,7 @@ korpApp.directive "meter", () ->
             loglike: #{scope.loglike}
         """
 
-        w = elem.parent().width()
+        w = 394
         part = ((scope.loglike) / (Math.abs scope.max))
 
         bkg = elem.find(".background")
@@ -334,13 +339,13 @@ korpApp.directive "tabSpinner", ($rootElement) ->
 
 
 korpApp.directive "extendedList", ($location, $rootScope) ->
-    templateUrl : "views/extendedlist.html"
-    scope : {
+    templateUrl: require "../views/extendedlist.html"
+    scope: {
         cqp : "="
         lang: "="
         repeatError: "="
     },
-    link : ($scope, elem, attr) ->
+    link: ($scope, elem, attr) ->
         s = $scope
 
         setCQP = (val) ->
@@ -674,7 +679,7 @@ korpApp.directive "autoc", ($q, $http, $timeout, lexicons) ->
             return morphologies
 
         scope.getRows = (input) ->
-            corporaIDs = _.pluck settings.corpusListing.selected, "id"
+            corporaIDs = _.map settings.corpusListing.selected, "id"
             morphologies = scope.getMorphologies corporaIDs
             if scope.type is "lemgram"
                 return scope.getLemgrams input, morphologies, corporaIDs
@@ -842,7 +847,7 @@ korpApp.directive 'reduceSelect', ($timeout) ->
         )
 
         updateSelected = (scope) ->
-            scope.selected = _.pluck (_.filter scope.keyItems, (item, key) -> item.selected), "value"
+            scope.selected = _.map (_.filter scope.keyItems, (item, key) -> item.selected), "value"
             scope.numberAttributes = scope.selected.length
 
         scope.toggleSelected = (value, event) ->

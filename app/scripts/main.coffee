@@ -1,4 +1,6 @@
 
+korpFailImg = require "../img/korp_fail.svg"
+
 window.authenticationProxy = new model.AuthenticationProxy()
 window.timeProxy = new model.TimeProxy()
 
@@ -8,7 +10,7 @@ if creds
 
 # rewriting old url format to the angular one
 if(location.hash.length && location.hash[1] != "?")
-    location.hash = "#?" + _.str.lstrip(location.hash, "#")
+    location.hash = "#?" + _.trimStart(location.hash, "#")
 
 t = $.now()
 
@@ -24,13 +26,10 @@ deferred_domReady = $.Deferred((dfd) ->
         mode = $.deparam.querystring().mode
         unless mode
             mode = "default"
-        $.getScript("modes/common.js").done () ->
-            $.getScript("modes/#{mode}_mode.js").done () ->
-                dfd.resolve()
-            .fail (jqxhr, settings, exception) ->
-                c.error "Mode file parsing error: ", exception
+        $.getScript("modes/#{mode}_mode.js").done () ->
+            dfd.resolve()
         .fail (jqxhr, settings, exception) ->
-            c.error "common.js parsing error: ", exception
+            c.error "Mode file parsing error: ", exception
     return dfd
 ).promise()
 
@@ -41,10 +40,23 @@ $(document).keyup (event) ->
         lemgramResults?.abort()
         statsResults?.abort()
 
+toggleLogos = () ->
+    if $(window).width() > 1050
+        $(".logos").show()
+    else
+        $(".logos").hide()
+toggleLogos()
+
+$(window).resize (event) ->
+    toggleLogos()
+
 $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     c.log "preloading done, t = ", $.now() - t
 
-    angular.bootstrap(document, ['korpApp'])
+    try
+        angular.bootstrap(document, ['korpApp'])
+    catch e
+        c.error e
 
     try
         corpus = locationSearch()["corpus"]
@@ -63,7 +75,7 @@ $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     $("#search-history").change (event) ->
         c.log "select", $(this).find(":selected")
         target = $(this).find(":selected")
-        if _.str.contains target.val(), "http://"
+        if _.includes target.val(), "http://"
             location.href = target.val()
         else if target.is(".clear")
             c.log "empty searches"
@@ -207,9 +219,9 @@ window.initTimeGraph = (def) ->
                         out
 
                 output = _(settings.corpusListing.selected)
-                    .pluck("time")
+                    .map("time")
                     .filter(Boolean)
-                    .map(_.pairs)
+                    .map(_.toPairs)
                     .flatten(true)
                     .reduce((memo, [a, b]) ->
                         if typeof memo[a] is "undefined"
@@ -241,18 +253,12 @@ window.initTimeGraph = (def) ->
 
                 plots = [
                     data: normalize([].concat(all_timestruct, [[restyear, rest]]))
-                    bars:
-                        fillColor: "lightgrey"
                 ,
                     data: normalize(timestruct)
-                    bars:
-                        fillColor: "navy"
                 ]
                 if restdata
                     plots.push
                         data: normalize([[restyear, restdata]])
-                        bars:
-                            fillColor: "indianred"
 
                 plot = $.plot($("#time_graph"), plots,
                     bars:
@@ -275,7 +281,7 @@ window.initTimeGraph = (def) ->
                         tickDecimals: 0
 
                     hoverable: true
-                    colors: ["lightgrey", "navy"]
+                    colors: ["lightgrey", "navy", "#cd5c5c"]
                 )
                 $.each $("#time_graph .tickLabel"), ->
                     $(this).hide() if parseInt($(this).text()) > new Date().getFullYear()

@@ -1,5 +1,8 @@
-// scss-lint:disable IdSelector, ColorVariable, SelectorFormat, NestingDepth, SelectorDepth
-@import '../components/font-awesome/scss/font-awesome';
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "bootstrap-custom";
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
 
 @font-face {
   font-family: 'Source Sans Pro';
@@ -2798,11 +2801,10 @@ warning ~ * {
   }
 
   ul {
-    font-size: 1.1em;
-    margin-right: 2em;
-    padding: 2px;
-    width: 400px;
-
+    padding : 2px;
+    margin-right : 25px;
+    width : 400px;
+    font-size : 1.1em;
     li {
       margin-bottom: .5em;
       white-space: nowrap;
@@ -3029,7 +3031,7 @@ warning ~ * {
 }
 
 .leaflet-control-layers-toggle {
-  background-image: url('../components/leaflet/dist/images/layers.png');
+  background-image: url('../../node_modules/leaflet/dist/images/layers.png');
 }
 
 

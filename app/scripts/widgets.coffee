@@ -49,7 +49,7 @@ Sidebar =
                 wnd = this.contentWindow
                 tokens = tokens
                 wnd.draw_deptree.call wnd, tokens, (msg) ->
-                    [type, val] = _.head _.pairs msg
+                    [type, val] = _.head _.toPairs msg
                     info.empty().append $("<span>").localeKey(type), $("<span>: </span>"), $("<span>").localeKey("#{type}_#{val}")
 
             $("#deptree_popup").empty().append(info, iframe).dialog(
@@ -61,10 +61,10 @@ Sidebar =
 
     renderCorpusContent: (type, wordData, sentenceData, corpus_attrs, tokens, customAttrs, customData) ->
         if type == "struct"
-            pairs = _.pairs(sentenceData)
+            pairs = _.toPairs(sentenceData)
 
         else if type == "pos"
-            pairs = _.pairs(wordData)
+            pairs = _.toPairs(wordData)
 
         pairs = _.filter pairs, ([key, val]) -> corpus_attrs[key]
         pairs = _.filter pairs, ([key, val]) -> not (corpus_attrs[key].displayType == "hidden" or corpus_attrs[key].hideSidebar)
@@ -107,7 +107,7 @@ Sidebar =
         structItems = []
         posItems = []
         for key, attrs of corpus_attrs
-            output = @renderItem(key, null, attrs, wordData, sentenceData, tokens).get?(0)
+            output = @renderItem(key, "not_used", attrs, wordData, sentenceData, tokens).get?(0)
             if attrs.customType == "struct"
                 structItems.push [key, output]
             else if attrs.customType == "pos"
@@ -151,8 +151,8 @@ Sidebar =
                                 cqpExpr = if attrSettings.internalSearch then attrSettings.internalSearch searchKey, cqpVal else "[#{searchKey} contains '#{regescape(cqpVal)}']"
                                 locationSearch({"search": "cqp", "cqp": cqpExpr, "page": null})
                         if attrs.externalSearch
-                            address = _.template(attrs.externalSearch, {val : subValue})
-                            karpLink = $("<a href='#{address}' class='external_link' target='_blank' style='margin-top: -6px'></a>")
+                            address = _.template(attrs.externalSearch)({val : subValue})
+                            externalLink = $("<a href='#{address}' class='external_link' target='_blank' style='margin-top: -6px'></a>")
 
                         li.append inner
                         if attrSettings.joinValues and idx isnt subValues.length - 1
@@ -206,7 +206,7 @@ Sidebar =
             pattern = attrs.pattern or '<span data-key="<%= key %>"><%= val %></span>'
             ul = $("<ul>")
             getStringVal = (str) ->
-                return _.reduce(_.invoke(_.invoke(str, "charCodeAt", 0), "toString"), (a,b) -> a + b);
+                return _.reduce(_.invokeMap(_.invokeMap(str, "charCodeAt", 0), "toString"), (a,b) -> a + b);
             valueArray = _.filter(value?.split("|") or [], Boolean)
             if key == "variants"
                 # TODO: this doesn't sort quite as expected
@@ -222,7 +222,7 @@ Sidebar =
             lis = for x in itr when x.length
                 val = (attrs.stringify or _.identity)(x)
 
-                inner = $(_.template(pattern, {key : x, val : val}))
+                inner = $(_.template(pattern)({key : x, val : val}))
                 if attrs.translationKey?
                     prefix = attrs.translationKey or ""
                     inner.localeKey(prefix + val)
@@ -234,7 +234,7 @@ Sidebar =
 
                 li = $("<li></li>").data("key", x).append inner
                 if attrs.externalSearch
-                    address = _.template(attrs.externalSearch, {val : x})
+                    address = _.template(attrs.externalSearch)({val : x})
                     li.append $("<a href='#{address}' class='external_link' target='_blank'></a>")
 
 
@@ -252,14 +252,15 @@ Sidebar =
             return output.append "<a href='#{str_value}' class='exturl sidebar_url' target='_blank'>#{decodeURI(str_value)}</a>"
 
         else if key == "msd"
+            msdTags = require '../markup/msdtags.html'
             return output.append """<span class='msd_sidebar'>#{str_value}</span>
-                                        <a href='markup/msdtags.html' target='_blank'>
+                                        <a href='#{msdTags}' target='_blank'>
                                             <span id='sidbar_info' class='ui-icon ui-icon-info'></span>
                                         </a>
                                     </span>
                                 """
         else if attrs.pattern
-            return output.append _.template attrs.pattern, {key : key, val : str_value, pos_attrs : wordData, struct_attrs : sentenceData }
+            return output.append _.template(attrs.pattern)({key : key, val : str_value, pos_attrs : wordData, struct_attrs : sentenceData })
 
         else
             if attrs.translationKey
@@ -279,7 +280,7 @@ Sidebar =
         @element.find(".sidebar_url").css("white-space", "nowrap").each ->
             while $(this).width() > totalWidth
                 oldtext = $(this).text()
-                a = _.str.trim(oldtext, "/").replace("...", "").split("/")
+                a = _.trim(oldtext, "/").replace("...", "").split("/")
                 domain = a.slice(2, 3)
                 midsection = a.slice(3).join("/")
                 midsection = "..." + midsection.slice(2)

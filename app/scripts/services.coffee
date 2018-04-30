@@ -57,8 +57,7 @@ korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
 
         def = $q.defer()
         params =
-            command : "loglike"
-            groupby : reduce.join ','
+            group_by : reduce.join ','
             set1_corpus : corpora1.join(",").toUpperCase()
             set1_cqp : cmpObj1.cqp
             set2_corpus : corpora2.join(",").toUpperCase()
@@ -142,8 +141,7 @@ korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
 
         def = $q.defer()
         params =
-            command: "count"
-            groupby: attribute.label
+            group_by_struct: attribute.label
             cqp: cqp
             corpus: attribute.corpora.join(",")
             incremental: true
@@ -166,15 +164,29 @@ korpApp.factory 'backend', ($http, $q, utils, lexicons) ->
         xhr.then (response) ->
             data = response.data
             createResult = (subResult, cqp, label) ->
+                mergeSubResults = (absolute, relative) ->
+                    res_list = []
+                    for {value: value1, freq: abs_freq} in absolute
+                        remove_idxs = []
+                        for {value: value2, freq: rel_freq}, idx in relative
+                            val1 = _.values(value1)[0][0]
+                            val2 = _.values(value2)[0][0]
+                            if val1 == val2
+                                res_list.push {value: val1, abs_freq: abs_freq, rel_freq: rel_freq}
+                                remove_idxs.push idx
+                        removed_elems = _.pullAt relative, remove_idxs
+                    return res_list
+
                 points = []
-                _.map _.keys(subResult.absolute), (hit) ->
-                    if (hit.startsWith "|") or (hit.startsWith " ")
+                _.map mergeSubResults(subResult.absolute, subResult.relative), (actual_hit) ->
+                    hit = actual_hit.value
+                    if (hit is "") or (hit.startsWith " ")
                         return
                     [name, countryCode, lat, lng] = hit.split ";"
 
                     points.push (
-                        abs: subResult.absolute[hit]
-                        rel: subResult.relative[hit]
+                        abs: actual_hit.abs_freq
+                        rel: actual_hit.rel_freq
                         name: name
                         countryCode: countryCode
                         lat : parseFloat lat
@@ -255,8 +267,7 @@ korpApp.factory 'searches', (utils, $location, $rootScope, $http, $q, nameEntity
                 method : "GET"
                 url : settings.cgiScript
                 params:
-                    command : "info"
-                    corpus : _(settings.corpusListing.corpora).pluck("id").invoke("toUpperCase").join ","
+                    corpus : _.map(settings.corpusListing.corpora, "id").map((a) -> a.toUpperCase()).join ","
             ).then (response) ->
                 data = response.data
                 for corpus in settings.corpusListing.corpora

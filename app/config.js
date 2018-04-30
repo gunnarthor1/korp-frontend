@@ -1,6 +1,4 @@
 
-var settings = {};
-
 var isLab = window.isLab || false;
 
 settings.autocomplete = false;
@@ -8,6 +6,7 @@ settings.enableMap = !isLab;
 settings.mapPosTag = ["PM", "NNP", "NNPS"]
 settings.newMapEnabled = isLab;
 settings.hitsPerPageDefault = 25
+settings.hitsPerPageValues = [25,50,75,100,500,1000]
 settings.enableBackendKwicDownload = false
 settings.enableFrontendKwicDownload = true
 
@@ -182,7 +181,7 @@ settings.defaultOptions = {
     "matches_not": "!*=",
 }
 
-settings.cgiScript = "http://localhost/cgi-bin/korp.cgi";
+settings.korpBackendURL = "http://130.208.178.108/cgi-bin/korp.cgi";
 settings.downloadCgiScript = "https://ws.spraakbanken.gu.se/ws/korp/download";
 
 settings.mapCenter = {

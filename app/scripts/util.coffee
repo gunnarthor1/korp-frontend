@@ -1,3 +1,11 @@
+folderImg = require "../img/folder.png"
+samIconImg = require "../img/sam_logo.png"
+jRejectBackgroundImg = require "../img/browsers/background_browser.gif"
+require "../img/browsers/browser_chrome.gif"
+require "../img/browsers/browser_firefox.gif"
+require "../img/browsers/browser_safari.gif"
+require "../img/browsers/browser_opera.gif"
+
 window.util = {}
 
 
@@ -18,7 +26,7 @@ class window.CorpusListing
 
     subsetFactory : (idArray) ->
         #returns a new CorpusListing instance from an id subset.
-        idArray = _.invoke(idArray, "toLowerCase")
+        idArray = _.invokeMap(idArray, "toLowerCase")
         cl = new CorpusListing _.pick @struct, idArray...
         cl.selected = cl.corpora
         return cl
@@ -82,7 +90,7 @@ class window.CorpusListing
                 value["isStructAttr"] = true
 
             # if a position attribute is declared as structural, include here
-            pos_attrs = _.pick corpus.attributes, (val, key) ->
+            pos_attrs = _.pickBy corpus.attributes, (val, key) ->
                 val.isStructAttr
             _.extend {}, pos_attrs, corpus.structAttributes
         )
@@ -90,7 +98,7 @@ class window.CorpusListing
 
         # TODO this code merges datasets from attributes with the same name and
         # should be moved to the code for extended controller "datasetSelect"
-        withDataset = _.filter(_.pairs(rest), (item) ->
+        withDataset = _.filter(_.toPairs(rest), (item) ->
             item[1].dataset
         )
         $.each withDataset, (i, item) ->
@@ -99,12 +107,12 @@ class window.CorpusListing
             $.each attrs, (j, origStruct) ->
                 if origStruct[key]?.dataset
                     ds = origStruct[key].dataset
-                    ds = _.object(ds, ds) if $.isArray(ds)
+                    ds = _.zipObject(ds, ds) if $.isArray(ds)
 
-                    val.dataset = (_.object val.dataset, val.dataset) if _.isArray val.dataset
+                    val.dataset = (_.zipObject val.dataset, val.dataset) if _.isArray val.dataset
                     $.extend val.dataset, ds
 
-        $.extend rest, _.object(withDataset)
+        $.extend rest, _.fromPairs withDataset
         # End TODO
 
     getDefaultFilters: () ->
@@ -162,10 +170,10 @@ class window.CorpusListing
         return true
 
     stringifySelected: ->
-        _(@selected).pluck("id").invoke("toUpperCase").join ","
+        _.map(@selected, "id").map((a) -> a.toUpperCase()).join ","
 
     stringifyAll: ->
-        _(@corpora).pluck("id").invoke("toUpperCase").join ","
+        _.map(@corpora, "id").map((a) -> a.toUpperCase()).join ","
 
     getWithinKeys: () ->
         struct = _.map(@selected, (corpus) ->
@@ -190,11 +198,11 @@ class window.CorpusListing
             if defaultWithin not in withins
                 corpus.id.toUpperCase() + ":" + withins[0]
         within = _(output).compact().join()
-        return { defaultwithin : defaultWithin, within : within }
+        return { default_within : defaultWithin, within : within }
 
     getTimeInterval : ->
         all = _(@selected)
-            .pluck("time")
+            .map("time")
             .filter((item) -> item?)
             .map(_.keys)
             .flatten()
@@ -212,8 +220,8 @@ class window.CorpusListing
 
         infoGetter = (prop) =>
             return _(@selected)
-            .pluck("info")
-            .pluck(prop)
+            .map("info")
+            .map(prop)
             .compact()
             .map((item) -> moment(item))
             .value()
@@ -226,11 +234,11 @@ class window.CorpusListing
         unless froms.length
             from = null
         else
-            from = _.min froms, toUnix
+            from = _.minBy froms, toUnix
         unless tos.length
             to = null
         else
-            to = _.max tos, toUnix
+            to = _.maxBy tos, toUnix
 
         [from, to]
 
@@ -316,7 +324,7 @@ class window.ParallelCorpusListing extends CorpusListing
             corp = @struct[id]
             @selected = @selected.concat(@getLinked(corp, true, false))
 
-        @selected = _.unique @selected
+        @selected = _.uniq @selected
 
     setActiveLangs : (langlist) ->
         @activeLangs = langlist
@@ -425,7 +433,7 @@ class window.ParallelCorpusListing extends CorpusListing
     getWithinParameters : ->
         defaultWithin = locationSearch().within or _.keys(settings.defaultWithin)[0]
         within = @getAttributeQuery("within")
-        return {defaultwithin : defaultWithin, within : within}
+        return {default_within : defaultWithin, within : within}
 
 
 
@@ -438,7 +446,7 @@ class window.ParallelCorpusListing extends CorpusListing
                     item.lang == @activeLangs[0]
 
 
-            return _(struct).flatten().pluck("id").invoke("toUpperCase").join ","
+            return _.map(_.flatten(struct), "id").map((a) -> a.toUpperCase()).join ","
         c.log("struct", struct)
 
         output = []
@@ -559,7 +567,7 @@ util.localize = (root) ->
     return
 
 util.lemgramToString = (lemgram, appendIndex) ->
-    lemgram = _.str.trim(lemgram)
+    lemgram = _.trim(lemgram)
     infixIndex = ""
     concept = lemgram
     infixIndex = ""
@@ -604,7 +612,7 @@ util.splitLemgram = (lemgram) ->
         throw new Error("Input to util.splitLemgram is not a lemgram: " + lemgram)
     keys = ["morph", "form", "pos", "index", "startIndex"]
     splitArray = lemgram.match(/((\w+)--)?(.*?)\.\.(\w+)\.(\d\d?)(\:\d+)?$/).slice(2)
-    _.object keys, splitArray
+    _.zipObject keys, splitArray
 
 # Add download links for other formats, defined in
 # settings.downloadFormats (Jyrki Niemi <jyrki.niemi@helsinki.fi>
@@ -798,7 +806,7 @@ util.loadCorpora = ->
 
             output = """
             <b>
-                <img class="popup_icon" src="img/sam_logo.png" />
+                <img class="popup_icon" src="#{samIconImg}" />
                 #{corpusObj.title}
             </b>
             #{maybeInfo}
@@ -844,7 +852,7 @@ util.loadCorpora = ->
                 glueString = util.getLocaleString("corpselector_corporawith_sing")
             else
                 glueString = util.getLocaleString("corpselector_corporawith_plur")
-            "<b><img src=\"img/folder.png\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens_accusative") + "<br/><b>" + totalParagraphsString + "</b> " + util.getLocaleString("corpselector_paragraphs")
+            "<b><img src=\"" + folderImg + "\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens_accusative") + "<br/><b>" + totalSentencesString + "</b> " + util.getLocaleString("corpselector_sentences")
     ).bind("corpuschooserchange", (evt, corpora) ->
         c.log "corpuschooserchange", corpora
 
@@ -866,7 +874,7 @@ window.unregescape = (s) ->
     s.replace /\\/g, ""
 
 util.formatDecimalString = (x, mode, statsmode, stringOnly) ->
-    if _.contains(x, ".")
+    if _.includes(x, ".")
         parts = x.split(".")
         decimalSeparator = util.getLocaleString("util_decimalseparator")
         return parts[0] + decimalSeparator + parts[1] if stringOnly
@@ -883,15 +891,13 @@ util.formatDecimalString = (x, mode, statsmode, stringOnly) ->
 util.browserWarn = ->
     $.reject
         reject:
-
-            # all : false,
             msie5: true
             msie6: true
             msie7: true
             msie8: true
             msie9: true
 
-        imagePath: "img/browsers/"
+        imagePath: _.split(jRejectBackgroundImg, "/").slice(0,-1).join("/")
         display: [
             "firefox"
             "chrome"

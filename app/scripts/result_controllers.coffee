@@ -150,7 +150,7 @@ class KwicCtrl
 
                 output.push(hitContext)
                 if hitContext.aligned
-                    [corpus_aligned, tokens] = _.pairs(hitContext.aligned)[0]
+                    [corpus_aligned, tokens] = _.toPairs(hitContext.aligned)[0]
                     output.push
                         tokens : tokens
                         isLinked : true
@@ -211,7 +211,7 @@ class KwicCtrl
         s.$watch (() -> $location.search().hpp), (hpp) ->
             s.hitsPerPage = hpp or 25
 
-        s.download = 
+        s.download =
             options: [
                     {value: "", label: "download_kwic"},
                     {value: "kwic/csv", label: "download_kwic_csv"},
@@ -244,16 +244,19 @@ class ExampleCtrl extends KwicCtrl
         super(@scope, $timeout, utils, $location, @kwicDownload)
         s = @scope
 
+        s.$root.word_selected = false
+
         s.newDynamicTab()
 
         s.hitspictureClick = (pageNumber) ->
             s.page = Number(pageNumber)
-            s.pageChange(null, pageNumber)
+            s.pageObj.pager = Number(pageNumber + 1)
+            s.pageChange(null, pageNumber + 1)
 
 
         s.pageChange = ($event, page) ->
             $event?.stopPropagation()
-            s.instance.current_page = page
+            s.instance.current_page = page - 1
             s.instance.makeRequest()
 
         s.exampleReadingMode = s.kwicTab.readingMode
@@ -429,7 +432,7 @@ korpApp.directive "wordpicCtrl", () ->
           set = row[row.show_rel].split('|')
           lemgram = set[0]
 
-          word = _.str.trim(lemgram)
+          word = _.trim(lemgram)
           infixIndex = ""
           concept = lemgram
           infixIndex = ""
@@ -515,7 +518,7 @@ korpApp.directive "compareCtrl", () ->
             attributes = (_.extend {}, cl.getCurrentAttributes(), cl.getStructAttrs())
 
             s.stringify = _.map reduce, (item) ->
-                return attributes[_.str.strip item, "_."]?.stringify or angular.identity
+                return attributes[_.trimStart item, "_."]?.stringify or angular.identity
 
             s.max = max
 
@@ -537,7 +540,7 @@ korpApp.directive "compareCtrl", () ->
                 # transform result from grouping on attribute to grouping on token place
                 tokens = _.map [0 .. tokenLength - 1], (tokenIdx) ->
                            tokens = _.map reduce, (reduceAttr, attrIdx) ->
-                               return _.unique _.map(splitTokens, (res) ->
+                               return _.uniq _.map(splitTokens, (res) ->
                                    return res[attrIdx][tokenIdx])
                            return tokens
 

@@ -2,7 +2,7 @@ korpApp = angular.module("korpApp")
 
 window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($scope, $location, $filter, utils, searches) ->
     $scope.visibleTabs = [true, true, true, true]
-    $scope.extendedTmpl = "views/extended_tmpl.html"
+    $scope.extendedTmpl = require("../views/extended_tmpl.pug")
     # for parallel mode
     searches.langDef.resolve()
     $scope.isCompareSelected = false
@@ -27,7 +27,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches", ( ($
         $scope.$watch "show_map", (val) -> $location.search("show_map", Boolean(val) or null)
 
     setupWatchStats = () ->
-        $location.search("hide_stats", true)
+        $scope.showStatistics = true
 
         $scope.$watch (() -> $location.search().hide_stats), (val) ->
             $scope.showStatistics = not val?
@@ -153,6 +153,12 @@ korpApp.controller "SearchCtrl", window.SearchCtrl
 
 korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope, searches, compareSearches, $uibModal, $timeout) ->
     s = $scope
+
+    $scope.inOrder = not $location.search().in_order?
+    $scope.$watch (() -> $location.search().in_order), (val) ->
+        $scope.inOrder = not val?
+    $scope.$watch "inOrder", (val) ->
+        $location.search("in_order", if not s.inOrder then false else null)
 
     s.prefix = false
     s.suffix = false
@@ -403,7 +409,7 @@ korpApp.controller "ExtendedToken", ($scope, utils, $location) ->
         if confObj.type == "set"
             confObj.is = "contains"
 
-        return _.pairs confObj
+        return _.toPairs confObj
 
 
     onCorpusChange = (event, selected) ->
@@ -412,7 +418,7 @@ korpApp.controller "ExtendedToken", ($scope, utils, $location) ->
         lang = s.$parent.$parent?.l?.lang
         allAttrs = settings.corpusListing.getAttributeGroups(lang)
         s.types = _.filter allAttrs, (item) -> not item.hideExtended
-        s.typeMapping = _.object _.map s.types, (item) ->
+        s.typeMapping = _.fromPairs _.map s.types, (item) ->
             if item.isStructAttr
                 ["_." + item.value, item]
             else
