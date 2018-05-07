@@ -8,7 +8,7 @@ if creds
 
 # rewriting old url format to the angular one
 if(location.hash.length && location.hash[1] != "?")
-    location.hash = "#?" + _.str.lstrip(location.hash, "#")
+    location.hash = "#?" + _.trimStart(location.hash, "#")
 
 t = $.now()
 
@@ -41,6 +41,16 @@ $(document).keyup (event) ->
         lemgramResults?.abort()
         statsResults?.abort()
 
+toggleLogos = () ->
+    if $(window).width() > 1050
+        $(".logos").show()
+    else
+        $(".logos").hide()
+toggleLogos()
+
+$(window).resize (event) ->
+    toggleLogos()
+
 $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     c.log "preloading done, t = ", $.now() - t
 
@@ -63,7 +73,7 @@ $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     $("#search-history").change (event) ->
         c.log "select", $(this).find(":selected")
         target = $(this).find(":selected")
-        if _.str.contains target.val(), "http://"
+        if _.includes target.val(), "http://"
             location.href = target.val()
         else if target.is(".clear")
             c.log "empty searches"
@@ -207,9 +217,9 @@ window.initTimeGraph = (def) ->
                         out
 
                 output = _(settings.corpusListing.selected)
-                    .pluck("time")
+                    .map("time")
                     .filter(Boolean)
-                    .map(_.pairs)
+                    .map(_.toPairs)
                     .flatten(true)
                     .reduce((memo, [a, b]) ->
                         if typeof memo[a] is "undefined"

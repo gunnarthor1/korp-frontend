@@ -31,10 +31,10 @@ class BaseProxy
         @total = null
 
     abort: ->
-        _.invoke @pendingRequests, "abort" if @pendingRequests.length
+        _.invokeMap @pendingRequests, "abort" if @pendingRequests.length
 
     hasPending : () ->
-        _.any _.map @pendingRequests, (req) -> req.readyState != 4 and req.readyState != 0
+        _.some _.map @pendingRequests, (req) -> req.readyState != 4 and req.readyState != 0
 
     parseJSON: (data) ->
         try
@@ -48,7 +48,7 @@ class BaseProxy
             return JSON.parse(data)
 
     addAuthorizationHeader: (req) ->
-        pairs = _.pairs model.getAuthorizationHeader()
+        pairs = _.toPairs model.getAuthorizationHeader()
         if pairs.length
             req.setRequestHeader pairs[0]...
 
@@ -360,16 +360,45 @@ class model.NameProxy extends model.StatsProxy
     constructor: ->
         super()
 
-    makeParameters: (reduceVal, cqp) ->
-        # ignore reduceVal, map only works for word
-        parameters = super(["word"], cqp, false)
+    makeRequest: (cqp, callback) ->
+        self = this
+        super()
+
         posTags = for posTag in settings.mapPosTag
             "pos='#{posTag}'"
-        parameters.cqp2  = "[" + posTags.join(" | ") + "]"
-        return parameters
 
-    processData: (def, data, reduceval) ->
-        def.resolve data
+        parameters =
+            groupby: "word"
+            cqp: @expandCQP cqp
+            cqp2: "[" + posTags.join(" | ") + "]"
+            corpus: settings.corpusListing.stringifySelected(true)
+            incremental: true
+        _.extend parameters, settings.corpusListing.getWithinParameters()
+
+        def = $.Deferred()
+        @pendingRequests.push $.ajax
+            url: settings.korpBackendURL + "/count"
+            data: parameters
+
+            beforeSend: (req, settings) ->
+                self.addAuthorizationHeader req
+
+            error: (jqXHR, textStatus, errorThrown) ->
+                def.reject(textStatus, errorThrown)
+
+            progress: (data, e) ->
+                progressObj = self.calcProgress(e)
+                return unless progressObj?
+                callback? progressObj
+
+            success: (data) =>
+                if data.ERROR?
+                    c.log "gettings stats failed with error", data.ERROR
+                    def.reject(data)
+                    return
+                def.resolve data
+
+        return def.promise()
 
 
 class model.AuthenticationProxy
@@ -464,7 +493,7 @@ class model.TimeProxy extends BaseProxy
         output
 
     expandTimeStruct: (struct) ->
-        years = _.map(_.pairs(_.omit(struct, "")), (item) ->
+        years = _.map(_.toPairs(_.omit(struct, "")), (item) ->
             Number item[0]
         )
         unless years.length then return
@@ -494,7 +523,7 @@ class model.GraphProxy extends BaseProxy
         array = for cqp, i in subArray
             p = padding[i.toString().length..].join("")
             ["subcqp#{p}#{i}", cqp]
-        return _.object array
+        return _.fromPairs array
 
     makeRequest: (cqp, subcqps, corpora, from, to) ->
         super()

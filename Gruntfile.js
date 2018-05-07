@@ -330,7 +330,7 @@ module.exports = function (grunt) {
             '*.{ico,txt,js,xml}',
             '.htaccess',
             'components/components-jqueryui/themes/smoothness/images/*',
-            'components/SlickGrid/images/*',
+            'components/slickgrid/images/*',
             'translations/*',
             'img/*',
             'img/browsers/*',
@@ -348,7 +348,7 @@ module.exports = function (grunt) {
             'components/geokorp/dist/data/name_mapping.json',
             'components/leaflet/dist/images/layers.png',
             'components/d3/d3.min.js',
-            'components/lodash/dist/lodash.js'
+            'components/lodash/lodash.js'
           ]
         },
         {
@@ -384,7 +384,7 @@ module.exports = function (grunt) {
             files: [
                 'node_modules/angular/angular.js',
                 'node_modules/angular-mocks/angular-mocks.js',
-                'node_modules/lodash/dist/lodash.js',
+                'node_modules/lodash/lodash.js',
                 'node_modules/moment/moment.js',
                 'app/scripts/bin/util.js',
                 '<%= yeoman.korpConfig %>/config.js',

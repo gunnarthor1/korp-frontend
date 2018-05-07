@@ -4,7 +4,7 @@ prio = settings.cqpPrio or ['deprel', 'pos', 'msd', 'suffix', 'prefix', 'grundfo
 
 
 parseDateInterval = (op, val, expanded_format) ->
-    val = _.invoke val, "toString"
+    val = _.invokeMap val, "toString"
     unless expanded_format
         return "$date_interval #{op} '#{val.join(",")}'"
 
@@ -138,8 +138,8 @@ window.CQP =
                         to.push moment("#{item.val[1]}#{item.val[3]}", "YYYYMMDDhhmmss")
 
         unless from.length then return
-        from = _.min from, (mom) -> mom.toDate()
-        to = _.max to, (mom) -> mom.toDate()
+        from = _.minBy from, (mom) -> mom.toDate()
+        to = _.maxBy to, (mom) -> mom.toDate()
 
         return [from, to]
 

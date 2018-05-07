@@ -598,7 +598,7 @@ class view.LemgramResults extends BaseResults
             output.push [item.dep, item.deppos.toLowerCase()] if item.dep.split("_")[0] is word
             output
         )
-        unique_words = _.uniq wordlist, ([word, pos]) ->
+        unique_words = _.uniqBy wordlist, ([word, pos]) ->
             word + pos
         tagsetTrans = _.invert settings.wordpictureTagset
         unique_words = _.filter unique_words, ([currentWd, pos]) ->
@@ -675,7 +675,7 @@ class view.LemgramResults extends BaseResults
                     if table and table[0]
                         rel = table[0].rel
                         show_rel = table[0].show_rel
-                        all_lemgrams = _.unique (_.map (_.pluck table, show_rel), (item) ->
+                        all_lemgrams = _.uniq (_.map (_.map table, show_rel), (item) ->
                             if util.isLemgramId item
                                 return item.slice 0, -1
                             else
@@ -801,11 +801,8 @@ class view.StatsResults extends BaseResults
         dataDelimiter = "	" if selType is "tsv"
         cl = settings.corpusListing.subsetFactory(_.keys @savedData.corpora)
 
-        header = [
-            util.getLocaleString("stats_hit"),
-            util.getLocaleString("stats_total")
-        ]
-        header = header.concat _.pluck cl.corpora, "title"
+        header.push util.getLocaleString("stats_total")
+        header = header.concat _.map cl.corpora, "title"
 
         fmt = (what) ->
             what.toString()
@@ -1091,6 +1088,7 @@ class view.StatsResults extends BaseResults
         .parent().find(".ui-dialog-title").localeKey("statstable_hitsheader_lemgram")
         $("#dialog").fadeTo 400, 1
         $("#dialog").find("a").blur() # Prevents the focus of the first link in the "dialog"
+
         stats2Instance = $("#chartFrame").pie_widget(
             container_id: "chartFrame"
             data_items: dataItems
@@ -1282,7 +1280,7 @@ class view.GraphResults extends BaseResults
 
         newZoom = null
         idealNumHits = 1000
-        newZoom = _.min @validZoomLevels, (zoom) ->
+        newZoom = _.minBy @validZoomLevels, (zoom) ->
             nPoints = to.diff(from, zoom)
             return Math.abs(idealNumHits - nPoints)
 
@@ -1305,16 +1303,16 @@ class view.GraphResults extends BaseResults
                 return moment(time, "YYYYMMDDHHmmss")
 
     fillMissingDate : (data) ->
-        dateArray = _.pluck data, "x"
-        min = _.min dateArray, (mom) -> mom.toDate()
-        max = _.max dateArray, (mom) -> mom.toDate()
+        dateArray = _.map data, "x"
+        min = _.minBy dateArray, (mom) -> mom.toDate()
+        max = _.maxBy dateArray, (mom) -> mom.toDate()
 
         min.startOf(@zoom)
         max.endOf(@zoom)
 
         n_diff = moment(max).diff min, @zoom
 
-        momentMapping = _.object _.map data, (item) =>
+        momentMapping = _.fromPairs _.map data, (item) =>
             mom = moment(item.x)
             mom.startOf(@zoom)
             [mom.unix(), item.y]
@@ -1338,7 +1336,7 @@ class view.GraphResults extends BaseResults
         # TODO: getTimeInterval should take the corpora of this parent tab instead of the global ones.
         # [first, last] = settings.corpusListing.getTimeInterval()
         [firstVal, lastVal] = settings.corpusListing.getMomentInterval()
-        output = for [x, y] in (_.pairs data)
+        output = for [x, y] in (_.toPairs data)
             mom = (@parseDate @zoom, x)
             {x : mom, y : y}
 
@@ -1384,7 +1382,7 @@ class view.GraphResults extends BaseResults
 
     getNonTime : () ->
         #TODO: move settings.corpusListing.selected to the subview
-        non_time = _.reduce (_.pluck settings.corpusListing.selected, "non_time"), ((a, b) -> (a or 0) + (b or 0)), 0
+        non_time = _.reduce (_.map settings.corpusListing.selected, "non_time"), ((a, b) -> (a or 0) + (b or 0)), 0
         sizelist = _.map settings.corpusListing.selected, (item) -> Number item.info.Size
         totalsize = _.reduce sizelist, (a, b) -> a + b
         return (non_time / totalsize) * 100
@@ -1422,8 +1420,8 @@ class view.GraphResults extends BaseResults
 
         $(".empty_area", @$result).remove()
         for list in emptyIntervals
-            max = _.max list, "x"
-            min = _.min list, "x"
+            max = _.maxBy list, "x"
+            min = _.minBy list, "x"
             from = graph.x min.x
             to = graph.x max.x
 
@@ -1470,7 +1468,7 @@ class view.GraphResults extends BaseResults
                     if selVal is "relative"
                         cells.push cell.y
                     else
-                        i = _.indexOf (_.pluck row.abs_data, "x"), cell.x, true
+                        i = _.indexOf (_.map row.abs_data, "x"), cell.x, true
                         cells.push row.abs_data[i].y
                 output.push cells
 
@@ -1523,7 +1521,7 @@ class view.GraphResults extends BaseResults
                                     "<span class='absStat'>(" + valTup[0].toLocaleString(loc) + ")</span> " +
                               "<span>"
                         return fmt(value)
-                i = _.indexOf (_.pluck row.abs_data, "x"), item.x, true
+                i = _.indexOf (_.map row.abs_data, "x"), item.x, true
                 new_time_row[timestamp] = [item.y, row.abs_data[i].y]
             time_table_data.push new_time_row
         # Sort columns
@@ -1731,7 +1729,7 @@ class view.GraphResults extends BaseResults
 
                     "<br><span rel='localize[rel_hits_short]'>#{util.getLocaleString 'rel_hits_short'}</span> " + val
                 formatter : (series, x, y, formattedX, formattedY, d) ->
-                    i = _.indexOf (_.pluck series.data, "x"), x, true
+                    i = _.indexOf (_.map series.data, "x"), x, true
                     try
                         abs_y = series.abs_data[i].y
                     catch e

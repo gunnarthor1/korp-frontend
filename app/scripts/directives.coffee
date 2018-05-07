@@ -20,7 +20,7 @@ korpApp.directive 'kwicWord', ->
             for struct in (wd._close or [])
                 output["close_" + struct] = true
 
-            return (x for [x, y] in _.pairs output when y).join " "
+            return (x for [x, y] in _.toPairs output when y).join " "
 
 
 
@@ -674,7 +674,7 @@ korpApp.directive "autoc", ($q, $http, $timeout, lexicons) ->
             return morphologies
 
         scope.getRows = (input) ->
-            corporaIDs = _.pluck settings.corpusListing.selected, "id"
+            corporaIDs = _.map settings.corpusListing.selected, "id"
             morphologies = scope.getMorphologies corporaIDs
             if scope.type is "lemgram"
                 return scope.getLemgrams input, morphologies, corporaIDs
@@ -842,7 +842,7 @@ korpApp.directive 'reduceSelect', ($timeout) ->
         )
 
         updateSelected = (scope) ->
-            scope.selected = _.pluck (_.filter scope.keyItems, (item, key) -> item.selected), "value"
+            scope.selected = _.map (_.filter scope.keyItems, (item, key) -> item.selected), "value"
             scope.numberAttributes = scope.selected.length
 
         scope.toggleSelected = (value, event) ->

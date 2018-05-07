@@ -138,7 +138,7 @@ var hp_corpusChooser = {
 		} else if (num_checked_checkboxes == 1) {
 			var currentCorpusName = checked_checkboxes.parent().parent().attr('data');
 			if (currentCorpusName.length > 37) { // Ellipsis
-				currentCorpusName = _.str.trim(currentCorpusName.substr(0, 37)) + "...";
+				currentCorpusName = _.trim(currentCorpusName.substr(0, 37)) + "...";
 			}
 			header_text = currentCorpusName;
 			header_text_2 = "corpselector_selectedone";

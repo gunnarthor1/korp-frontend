@@ -93,7 +93,7 @@ korpApp.run ($rootScope, $location, utils, searches, tmhDynamicLocale, $timeout,
     s.$on "corpuschooserchange", (event, corpora) ->
         c.log "corpuschooserchange", corpora
         settings.corpusListing.select corpora
-        nonprotected = _.pluck(settings.corpusListing.getNonProtected(), "id")
+        nonprotected = _.map(settings.corpusListing.getNonProtected(), "id")
         if corpora.length and _.intersection(corpora, nonprotected).length isnt nonprotected.length
             $location.search "corpus", corpora.join(",")
         else
@@ -111,7 +111,7 @@ korpApp.run ($rootScope, $location, utils, searches, tmhDynamicLocale, $timeout,
                 currentCorpora = [].concat(currentCorpora, getAllCorporaInFolders(settings.corporafolders, val))
         else
             if not settings.preselectedCorpora?.length
-                currentCorpora = _.pluck settings.corpusListing.corpora, "id"
+                currentCorpora = _.map settings.corpusListing.corpora, "id"
             else
                 for pre_item in settings.preselectedCorpora
                     pre_item = pre_item.replace /^__/g, ''
@@ -175,7 +175,7 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
     s.visible = s.modes[...N_VISIBLE]
     s.menu = s.modes[N_VISIBLE..]
 
-    i = $.inArray currentMode, (_.pluck s.menu, "mode")
+    i = $.inArray currentMode, (_.map s.menu, "mode")
     if i != -1
         s.visible.push s.menu[i]
         s.menu.splice(i, 1)
