@@ -183,7 +183,9 @@ settings.defaultOptions = {
 
 settings.korpBackendURL = "http://localhost/cgi-bin/korp.cgi";
 
-// settings.downloadCgiScript = "https://ws.spraakbanken.gu.se/ws/korp/download";
+settings.cgiScript = "http://localhost/cgi-bin/korp.cgi";
+
+settings.downloadCgiScript = "https://ws.spraakbanken.gu.se/ws/korp/download";
 
 settings.mapCenter = {
   lat: 62.99515845212052,
