@@ -1,4 +1,4 @@
-settings.senseAutoComplete = "<autoc model='model' placeholder='placeholder' type='sense'/>";
+settings.senseAutoComplete = "<autoc model='model' placeholder='placeholder' type='sense' text-in-field='textInField'/>";
 
 var selectType = {
     extendedTemplate: "<select ng-model='input' escaper "
@@ -75,6 +75,237 @@ var spWithin = {
     "paragraph": "paragraph"
 };
 
+
+var modernAttrs2 = {
+    pos: attrs.pos,
+    msd: attrs.msd,
+    lemma: attrs.baseform,
+    lex: attrs.lemgram,
+    dephead: attrs.dephead,
+    deprel: attrs.deprel,
+    ref: attrs.ref,
+    prefix: attrs.prefix,
+    suffix: attrs.suffix,
+    ne_ex: attrs.ne_ex,
+    ne_type: attrs.ne_type,
+    ne_subtype: attrs.ne_subtype,
+    ne_name: attrs.ne_name,
+    complemgram: modernAttrs.complemgram,
+    compwf: modernAttrs.compwf,
+    sense: modernAttrs.sense,
+    sentiment: {
+        label: "sentiment"
+    },
+    blingbring: {
+        label: "blingbring",
+        type: "set",
+        internalSearch: true
+    },
+    swefn: {
+        label: "swefn",
+        type: "set",
+        externalSearch: "https://spraakbanken.gu.se/karp/#?mode=swefn&search=sense%7C%7Cswefn--<%= val %>",
+        internalSearch: true
+    }
+};
+
+var lexClassesText = {
+    text_blingbring: {
+        label: "blingbring",
+        type: "set",
+        isStructAttr: true,
+        ranked: true,
+        order: 500,
+        display: {
+            expandList: {
+                internalSearch: function(key, value) { return "[_.text_blingbring highest_rank '" + regescape(value) + "']"},
+                linkAllValues: true,
+                showAll: true
+            }
+        },
+        internalSearch: true
+    },
+    text_swefn: {
+        label: "swefn",
+        type: "set",
+        isStructAttr: true,
+        ranked: true,
+        order: 501,
+        display: {
+            expandList: {
+                internalSearch: function(key, value) { return "[_.text_swefn highest_rank '" + regescape(value) + "']"},
+                linkAllValues: true,
+                showAll: true
+            }
+        },
+        externalSearch: "https://spraakbanken.gu.se/karp/#?mode=swefn&search=sense%7C%7Cswefn--<%= val %>",
+        internalSearch: true
+    }
+};
+
+var readability = {
+    lix: {
+        label: "lix",
+        isStructAttr: true,
+        order: 600
+    },
+    ovix: {
+        label: "ovix",
+        isStructAttr: true,
+        order: 601
+    },
+    nk: {
+        label: "nk",
+        isStructAttr: true,
+        order: 602
+    }
+};
+
+settings.posset = {
+   type: "set",
+   label: "posset",
+   opts: setOptions,
+   translationKey: "pos_",
+   extendedComponent: "datasetSelect",
+   dataset:  {
+        "AB": "AB",
+        "MID|MAD|PAD": "DL",
+        "DT": "DT",
+        "HA": "HA",
+        "HD": "HD",
+        "HP": "HP",
+        "HS": "HS",
+        "IE": "IE",
+        "IN": "IN",
+        "JJ": "JJ",
+        "KN": "KN",
+        "NN": "NN",
+        "PC": "PC",
+        "PL": "PL",
+        "PM": "PM",
+        "PN": "PN",
+        "PP": "PP",
+        "PS": "PS",
+        "RG": "RG",
+        "RO": "RO",
+        "SN": "SN",
+        "UO": "UO",
+        "VB": "VB"
+    },
+    order: 0
+};
+
+settings.fsvlemma = {
+    type: "set",
+    label: "baseform",
+    opts: setOptions,
+    extendedTemplate: "<input ng-model='model' >"
+};
+settings.fsvlex = {
+    type: "set",
+    label: "lemgram",
+    opts: setOptions,
+    extendedTemplate: "<autoc model='model' placeholder='placeholder' type='lemgram' text-in-field='textInField'/>",
+    stringify: function(str) {
+        return util.lemgramToString(str, true);
+    },
+    externalSearch: karpLemgramLink,
+    internalSearch: true
+};
+settings.fsvvariants = {
+    type: "set",
+    label: "variants",
+    stringify: function(str) {
+        return util.lemgramToString(str, true);
+    },
+    extendedTemplate: "<autoc model='model' placeholder='placeholder' type='lemgram' text-in-field='textInField'/>",
+    opts: setOptions,
+    externalSearch: karpLemgramLink,
+    internalSearch: true,
+    order: 4
+};
+
+settings.fsvdescription ='<a target="_blank" href="http://project2.sol.lu.se/fornsvenska/">Fornsvenska textbanken</a> är ett projekt som digitaliserar fornsvenska texter och gör dem tillgängliga över webben. Projektet leds av Lars-Olof Delsing vid Lunds universitet.';
+
+var fsv_yngrelagar = {
+    morphology: 'fsvm',
+    id: "fsv-yngrelagar",
+    title: "Yngre lagar – Fornsvenska textbankens material",
+    description: settings.fsvdescription,
+    within: settings.defaultWithin,
+    context: spContext,
+    attributes: {
+        posset: settings.posset,
+        lemma: settings.fsvlemma,
+        lex: settings.fsvlex,
+        variants: settings.fsvvariants
+        },
+    structAttributes: {
+        text_title: {
+            label: "title",
+            extendedComponent: "datasetSelect",
+            dataset: [
+                "Kristoffers Landslag, nyskrivna flockar i förhållande till MEL",
+                "Kristoffers Landslag, innehållsligt ändrade flockar i förhållande til MEL",
+                "Kristoffers Landslag, flockar direkt hämtade från MEL",
+                "Kristoffers Landslag"
+                ],
+        },
+        text_date: {label: "date"}
+    }
+};
+
+var fsv_aldrelagar = {
+    morphology: 'fsvm',
+    id: "fsv-aldrelagar",
+    title: "Äldre lagar – Fornsvenska textbankens material",
+    description: settings.fsvdescription,
+    within: settings.defaultWithin,
+    context: spContext,
+    attributes: {
+        posset: settings.posset,
+        lemma: settings.fsvlemma,
+        lex: settings.fsvlex,
+        variants: settings.fsvvariants
+                },
+    structAttributes: {
+        text_title: {
+            label: "title",
+            extendedComponent: "datasetSelect",
+            dataset: [
+                "Yngre Västgötalagens äldsta fragment, Lydekini excerpter och anteckningar",
+                "Tillägg till Upplandslagen, hskr A (Ups B 12)",
+                "Södermannalagen, enligt Codex iuris Sudermannici",
+                "Östgötalagen, fragment H, ur Kyrkobalken ur Skokloster Avdl I 145",
+                "Yngre Västmannalagen, enl Holm B 57",
+                "Vidhemsprästens anteckningar",
+                "Magnus Erikssons Stadslag, exklusiva stadslagsflockar",
+                "Södermannalagens additamenta, efter NKS 2237",
+                "Hälsingelagen",
+                "Yngre Västgötalagen, tillägg, enligt Holm B 58",
+                "Östgötalagen, fragment C, ur Holm B 1709",
+                "Yngre Västgötalagen, enligt Holm B 58",
+                "Upplandslagen enl Schlyters utgåva och Codex Ups C 12, hskr A",
+                "Skånelagen, enligt Holm B 76",
+                "Östgötalagen, fragment D, ur Holm B 24",
+                "Östgötalagen A, ur Holm B 50",
+                "Äldre Västgötalagen",
+                "Östgötalagen, fragment M, ur Holm B 196",
+                "Gutalagen enligt Holm B 64",
+                "Upplandslagen enligt Codex Holm B 199, Schlyters hskr B",
+                "Smålandslagens kyrkobalk",
+                "Dalalagen (Äldre Västmannalagen)",
+                "Gutalagens additamenta enligt AM 54",
+                "Bjärköarätten",
+                "Magnus Erikssons Landslag",
+                "Östgötalagen, fragment N, ur Köpenhamn AM 1056",
+                "Södermannalagen stadsfästelse - Confirmatio, enligt NKS 2237",
+                "Östgötalagen, fragment E, ur Ups B 22"
+                            ],
+        },
+        text_date: {label: "date"}
+    }
+};
 
 settings.commonStructTypes = {
     date_interval: {
@@ -942,4 +1173,29 @@ var fornritSattrs = {
             $scope.model = $scope.model || "t"
         },
     }
+
+module.exports = {
+  spWithin,
+  spContext,
+  modernAttrs,
+  modernAttrs2,
+  defaultContext,
+  attrs,
+  sattrs,
+  modernAttrsOld,
+  setOptions,
+  liteOptions,
+  lexClassesText,
+  readability,
+  icelandicSattrs,
+  icelandicSattrsNoUrl,
+  icelandicSAttrsNoDate,
+  icelandicAlthingiSAttrs,
+  mimSattrs,
+  icelandicCustomAttrs,
+  icelandicAttrs,
+  fornritSattrs,
+  fornritAttrs,
+  textasafnSattrs,
+  otbSattrs
 }

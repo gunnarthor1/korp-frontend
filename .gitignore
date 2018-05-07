@@ -6,8 +6,6 @@ node_modules
 /app/components/*
 *.map
 .vscode
-test/e2e/bin/
-test/karma/bin
 release_bin
 app/index.html
 app/user_guide.html

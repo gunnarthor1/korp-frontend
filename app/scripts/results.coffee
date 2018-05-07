@@ -1,3 +1,5 @@
+errorImg = require "../img/error_message.png"
+
 class BaseResults
     constructor: (resultSelector, tabSelector, scope) ->
         @s = scope
@@ -44,8 +46,8 @@ class BaseResults
         c.error "json fetch error: ", data
         @hidePreloader()
         @resetView()
-        $('<object class="error_message" type="image/svg+xml" data="img/error_message.png">')
-            .append("<img class='error_message' src='img/error_message.png'>")
+        $('<object class="error_message" type="image/svg+xml" data="' + errorImg + '">')
+            .append("<img class='error_message' src='" + errorImg + "'>")
             .add($("<div class='fail_text' />")
             .localeKey("fail_text"))
             .addClass("inline-block")
@@ -479,7 +481,7 @@ class view.ExampleResults extends view.KWICResults
         super tabSelector, resultSelector, scope
         @proxy = new model.KWICProxy()
 
-        @current_page = 1
+        @current_page = 0
         if @s.$parent.kwicTab.queryParams
             @makeRequest().then () =>
                 @onentry()
@@ -496,10 +498,11 @@ class view.ExampleResults extends view.KWICResults
         opts = @s.$parent.kwicTab.queryParams
 
         @resetView()
-        opts.ajaxParams.incremental = true
+        # example tab cannot handle incremental = true
+        opts.ajaxParams.incremental = false
 
-        opts.ajaxParams.start = (@current_page - 1) * items_per_page
-        opts.ajaxParams.end = (opts.ajaxParams.start + items_per_page - 1)
+        opts.ajaxParams.start = @current_page * items_per_page
+        opts.ajaxParams.end = opts.ajaxParams.start + items_per_page - 1
 
         prev = _.pick @proxy.prevParams, "cqp", "command", "corpus", "source"
         _.extend opts.ajaxParams, prev
@@ -1434,7 +1437,7 @@ class view.GraphResults extends BaseResults
     setBarMode : () ->
         if $(".legend .line", @$result).length > 1
             $(".legend li:last:not(.disabled) .action", @$result).click()
-            if (_.all _.map $(".legend .line", @$result), (item) -> $(item).is(".disabled"))
+            if (_.every _.map $(".legend .line", @$result), (item) -> $(item).is(".disabled"))
                 $(".legend li:first .action", @$result).click()
         return
     setLineMode : () ->
@@ -1468,7 +1471,7 @@ class view.GraphResults extends BaseResults
                     if selVal is "relative"
                         cells.push cell.y
                     else
-                        i = _.indexOf (_.map row.abs_data, "x"), cell.x, true
+                        i = _.sortedIndexOf (_.map row.abs_data, "x"), cell.x
                         cells.push row.abs_data[i].y
                 output.push cells
 
@@ -1521,7 +1524,7 @@ class view.GraphResults extends BaseResults
                                     "<span class='absStat'>(" + valTup[0].toLocaleString(loc) + ")</span> " +
                               "<span>"
                         return fmt(value)
-                i = _.indexOf (_.map row.abs_data, "x"), item.x, true
+                i = _.sortedIndexOf (_.map row.abs_data, "x"), item.x
                 new_time_row[timestamp] = [item.y, row.abs_data[i].y]
             time_table_data.push new_time_row
         # Sort columns
@@ -1729,7 +1732,7 @@ class view.GraphResults extends BaseResults
 
                     "<br><span rel='localize[rel_hits_short]'>#{util.getLocaleString 'rel_hits_short'}</span> " + val
                 formatter : (series, x, y, formattedX, formattedY, d) ->
-                    i = _.indexOf (_.map series.data, "x"), x, true
+                    i = _.sortedIndexOf (_.map series.data, "x"), x
                     try
                         abs_y = series.abs_data[i].y
                     catch e
