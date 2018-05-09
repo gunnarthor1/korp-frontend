@@ -253,7 +253,7 @@ korpApp.factory 'searches', (utils, $location, $rootScope, $http, $q, nameEntity
             def = $q.defer()
             $http(
                 method : "GET"
-                url : settings.cgiScript
+                url : settings.korpBackendURL + "/info"
                 params:
                     corpus : _.map(settings.corpusListing.corpora, "id").map((a) -> a.toUpperCase()).join ","
             ).then (response) ->

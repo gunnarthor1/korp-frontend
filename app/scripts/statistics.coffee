@@ -3,7 +3,7 @@ pieChartImg = require "../img/stats2.png"
 createStatisticsService = () ->
     createColumns = (corpora, reduceVals, reduceValLabels) ->
         loc = {
-            'sv' : "sv-SE"
+            'is' : "is-IS"
             'en' : "gb-EN"
         }[$("body").scope().lang]
         

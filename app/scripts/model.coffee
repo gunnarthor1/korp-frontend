@@ -349,7 +349,7 @@ class model.StatsProxy extends BaseProxy
                     c.log "gettings stats failed with error", data.ERROR
                     def.reject(data)
                     return
-                @processData(def, data, reduceVals, reduceValLabels, ignoreCase)
+                statisticsService.processData(def, data, reduceVals, reduceValLabels, ignoreCase)
 
         return def.promise()
 
