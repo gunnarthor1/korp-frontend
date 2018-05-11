@@ -253,7 +253,7 @@ korpApp.factory 'searches', (utils, $location, $rootScope, $http, $q, nameEntity
                 method : "GET"
                 url : settings.korpBackendURL + "/info"
                 params:
-                    corpus : _(settings.corpusListing.corpora).pluck("id").invoke("toUpperCase").join ","
+                    corpus : _(settings.corpusListing.corpora).map("id").invokeMap("toUpperCase").join ","
             ).then (response) ->
                 data = response.data
                 for corpus in settings.corpusListing.corpora
