@@ -70,6 +70,7 @@ class BaseResults
     onentry : () ->
         @s.$root.jsonUrl = null
         @firstResultDef.promise.then () =>
+            console.log("@proxy?.prevUrl", @proxy?.prevUrl)
             @s.$root.jsonUrl = @proxy?.prevUrl
 
     onexit : () ->
@@ -341,9 +342,9 @@ class view.KWICResults extends BaseResults
             command : "query"
             corpus : settings.corpusListing.stringifySelected()
             cqp : cqp or @proxy.prevCQP
-            querydata : @proxy.queryData if @proxy.queryData
+            query_data : @proxy.queryData if @proxy.queryData
             context : context
-            defaultcontext : preferredContext
+            default_context : preferredContext
             incremental: true
         }
 
@@ -516,7 +517,7 @@ class view.ExampleResults extends view.KWICResults
             preferredContext = locationSearch().context or preferredContext
 
         context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
-        _.extend opts.ajaxParams, {context: context, defaultcontext : preferredContext }
+        _.extend opts.ajaxParams, {context: context, default_context : preferredContext }
 
         @showPreloader()
 
@@ -767,8 +768,6 @@ class view.StatsResults extends BaseResults
 
         $("#showGraph").on "click", () =>
             if $("#showGraph").is(".disabled") then return
-            params = @proxy.prevParams
-            reduceVal = params.groupby
 
             subExprs = []
             labelMapping = {}

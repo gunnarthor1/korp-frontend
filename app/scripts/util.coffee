@@ -90,7 +90,7 @@ class window.CorpusListing
                 value["isStructAttr"] = true
 
             # if a position attribute is declared as structural, include here
-            pos_attrs = _.pick corpus.attributes, (val, key) ->
+            pos_attrs = _.pickBy corpus.attributes, (val, key) ->
                 val.isStructAttr
             _.extend {}, pos_attrs, corpus.structAttributes
         )
@@ -198,7 +198,7 @@ class window.CorpusListing
             if defaultWithin not in withins
                 corpus.id.toUpperCase() + ":" + withins[0]
         within = _(output).compact().join()
-        return { defaultwithin : defaultWithin, within : within }
+        return { default_within : defaultWithin, within : within }
 
     getTimeInterval : ->
         all = _(@selected)
@@ -433,7 +433,7 @@ class window.ParallelCorpusListing extends CorpusListing
     getWithinParameters : ->
         defaultWithin = locationSearch().within or _.keys(settings.defaultWithin)[0]
         within = @getAttributeQuery("within")
-        return {defaultwithin : defaultWithin, within : within}
+        return {default_within : defaultWithin, within : within}
 
 
 
