@@ -46,11 +46,11 @@ class BaseResults
         c.error "json fetch error: ", data
         @hidePreloader()
         @resetView()
-        $('<object class="error_message" type="image/svg+xml" data="' + errorImg + '">')
-            .append("<img class='error_message' src='" + errorImg + "'>")
+        $('<object class="korp_fail" type="image/svg+xml" data="' + korpFailImg + '">')
+            .append("<img class='korp_fail' src='" + korpFailImg + "'>")
             .add($("<div class='fail_text' />")
             .localeKey("fail_text"))
-            .addClass("inline-block")
+            .addClass("inline_block")
             .prependTo(@$result)
             .wrapAll "<div class='error_msg'>"
 
@@ -133,18 +133,18 @@ class view.KWICResults extends BaseResults
 
         i = Number(obj.dephead)
 
-        sentence = word.closest(".sentence").find(".word")
+        paragraph = word.closest(".sentence").find(".word")
         sent_start = 0
         querySentStart = ".open_sentence"
         if word.is(querySentStart)
-            sent_start = sentence.index(word)
+            sent_start = paragraph.index(word)
         else
 
-            l = sentence.filter((__, item) ->
+            l = paragraph.filter((__, item) ->
                 $(item).is(word) or $(item).is(querySentStart)
             )
-            sent_start = sentence.index(l.eq(l.index(word) - 1))
-        aux = $(sentence.get(sent_start + i - 1))
+            sent_start = paragraph.index(l.eq(l.index(word) - 1))
+        aux = $(paragraph.get(sent_start + i - 1))
         scope.selectionManager.select word, aux
         safeApply @s.$root, (s) ->
             s.$root.word_selected = word
@@ -332,9 +332,9 @@ class view.KWICResults extends BaseResults
         else
             preferredContext = settings.defaultOverviewContext
             avoidContext = settings.defaultReadingContext
-            preferredContext = locationSearch().context or preferredContext
 
         context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
+
         if not isPaging
             @proxy.queryData = null
 
@@ -514,7 +514,6 @@ class view.ExampleResults extends view.KWICResults
         else
             preferredContext = settings.defaultOverviewContext
             avoidContext = settings.defaultReadingContext
-            preferredContext = locationSearch().context or preferredContext
 
         context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
         _.extend opts.ajaxParams, {context: context, default_context : preferredContext }
@@ -724,17 +723,16 @@ class view.StatsResults extends BaseResults
         window.statsProxy = @proxy
         @$result.on "click", ".arcDiagramPicture", (event) =>
             parts = $(event.currentTarget).attr("id").split("__")
-
-            if parts[1] != "Σ"
-                @newDataInGraph parts[1]
-            else # The ∑ row
-                @newDataInGraph "SIGMA_ALL"
+            @showPieChart parseInt(parts[1])
 
         @$result.on "click", ".slick-cell .statistics-link", (e) =>
             rowIx = $(e.currentTarget).data "row"
-            rowData = @grid.getData()[rowIx]
-
-            cqp2 = statisticsFormatting.getCqp(@searchParams.reduceVals, rowData.hit_value, @searchParams.ignoreCase)
+            # TODO don't loop
+            for row in @data
+                if row.rowId == parseInt(rowIx)
+                    rowData = row
+                    break
+            cqp2 = statisticsFormatting.getCqp(rowData.statsValues, @searchParams.ignoreCase)
             corpora = @searchParams.corpora
 
             opts = {}
@@ -939,10 +937,6 @@ class view.StatsResults extends BaseResults
 
         @s.totalNumberOfRows = @grid.getDataLength()
 
-        sortCol = columns[2]
-        log = _.debounce () ->
-            c.log "grid sort"
-        , 200
         grid.onSort.subscribe (e, args) =>
             if @doSort
                 sortColumns = grid.getSortColumns()[0]
@@ -954,7 +948,6 @@ class view.StatsResults extends BaseResults
                         return -1
                     if(b.id == "row_total")
                         return -1
-                    log()
                     if sortCol.field is "hit_value"
                         x = a[sortColumns.columnId]
                         y = b[sortColumns.columnId]
@@ -994,16 +987,14 @@ class view.StatsResults extends BaseResults
             safeApply @s, () =>
                 @updateGraphBtnState()
 
-        @s.getGeoAttributes(@proxy.prevParams.corpus.split(","))
+        @s.getGeoAttributes(@searchParams.corpora)
 
         safeApply @s, () =>
             @hidePreloader()
 
     updateGraphBtnState : () ->
-
         @s.graphEnabled = true
-        cl = settings.corpusListing.subsetFactory(@proxy.prevParams.corpus.split(","))
-
+        cl = settings.corpusListing.subsetFactory(@searchParams.corpora)
         if not (_.compact cl.getTimeInterval()).length
             @s.graphEnabled = false
 
