@@ -70,7 +70,15 @@ var statisticsFormattingModule = function() {
     };
 
     // Get the html (no linking) representation of the result for the statistics table
-    reduceStringify = function(type, values, structAttributes) {
+    reduceStringify = function(type, values, attributes, structAttributes) {
+        if (attributes && attributes.translationKey) {
+            var output =  _.map(values, function(token) {
+                return $("<span>")
+                .localeKey(attributes.translationKey + attributes.dataset[token])
+                .outerHTML()
+            }).join(" ");
+            return output;
+        }
         switch(type) {
             case "word":
             case "msd":

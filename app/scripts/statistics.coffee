@@ -16,7 +16,8 @@ createStatisticsService = () ->
         minWidth = 100
         columns = []
         cl = settings.corpusListing.subsetFactory corporaKeys
-        attrObj = cl.getStructAttrs()
+        sAttrObj = cl.getStructAttrs()
+        attrObj = cl.getCurrentAttributes()
         for [reduceVal, reduceValLabel] in _.zip reduceVals, reduceValLabels
             do(reduceVal) ->
                 columns.push
@@ -26,7 +27,7 @@ createStatisticsService = () ->
                     sortable: true
                     formatter: (row, cell, value, columnDef, dataContext) ->
                         if dataContext["rowId"] != 0
-                            formattedValue = statisticsFormatting.reduceStringify(reduceVal, dataContext[reduceVal], attrObj[reduceVal])
+                            formattedValue = statisticsFormatting.reduceStringify(reduceVal, dataContext[reduceVal], attrObj[reduceVal], sAttrObj[reduceVal])
                             dataContext["formattedValue"][reduceVal] = formattedValue
                             return "<span class=\"statistics-link\" data-row=" + dataContext["rowId"] + ">" + formattedValue + "</span>"
                         else
