@@ -870,14 +870,12 @@ class view.StatsResults extends BaseResults
 
         @showPreloader()
         @proxy.makeRequest(cqp, ((args...) => @onProgress(args...))
-        ).done( ([data, wordArray, columns, dataset, summarizedData, searchParams]) =>
+        ).done( ([data, columns, searchParams]) =>
             safeApply @s, () =>
                 @hidePreloader()
-            @savedData = data
-            @savedSummarizedData = summarizedData
-            @savedWordArray = wordArray
+            @data = data
             @searchParams = searchParams
-            @renderResult columns, dataset
+            @renderResult columns, data
         ).fail (textStatus, err) =>
             c.log "fail", arguments
             c.log "stats fail", @s.$parent.loading, _.map @proxy.pendingRequests, (item) -> item.readyState
