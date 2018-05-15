@@ -6,8 +6,11 @@
 <div id="about_body" class="modal-body" >
     <p ng-bind-html="'about_gwc' | loc:lang | trust"></p>
     <b ng-bind-html="'about_korp_header' | loc:lang | trust"></b>
-    <p ng-bind-html="'about_body' | loc:lang | trust" >
-        <a target='_blank' href='http://spraakbanken.gu.se'><img style='max-width: 100px; vertical-align: middle' src='app/img/sb_logo.jpg'></a>
+    <p>
+        <span ng-bind-html="'about_body' | loc:lang | trust"></span>
+        <a target='_blank' href='http://spraakbanken.gu.se'>
+            <img style='max-width: 100px; vertical-align: middle' src='../img/sb_logo.jpg'>
+        </a>
     </p>
 
     <!-- <b ng-bind-html="'about_cite_header' | loc:lang | trust"></b>

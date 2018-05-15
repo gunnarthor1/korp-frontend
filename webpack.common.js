@@ -81,13 +81,7 @@ module.exports = {
             }
           },
           {
-            loader: "pug-html-loader",
-            options: {
-              // TODO we should not pretty-print HTML, but removing this
-              // option will result in that some elements get closer together
-              // and need to be fixed with CSS
-              pretty: true
-            }
+            loader: "pug-html-loader"
           }
         ]
       },
@@ -106,13 +100,7 @@ module.exports = {
             }
           },
           {
-            loader: "pug-html-loader",
-            options: {
-              // TODO we should not pretty-print HTML, but removing this
-              // option will result in that some elements get closer together
-              // and need to be fixed with CSS
-              pretty: true
-            }
+            loader: "pug-html-loader"
           }
         ]
       },
@@ -216,7 +204,8 @@ module.exports = {
   ],
   entry: {
     bundle: './app/index.js',
-    worker: './app/scripts/statistics_worker.js'
+    worker: './app/scripts/statistics_worker.js',
+    user_guide: './app/user_guide.js'
   },
   output: {
     filename: '[name].js',

@@ -13,15 +13,8 @@ html
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-109855699-1');
-
-    // build:css styles/korp.css
-    link(rel='stylesheet', type='text/css', href='styles/bootstrap.css')
-    link(type='text/css', href='styles/ui_mods.css', rel='stylesheet')
-    // endbuild
-    link(type='text/css', href='components/jquery-ui/themes/smoothness/jquery-ui.min.css', rel='stylesheet')
-    
-
-    link(rel='stylesheet', type='text/css', href='styles/about.css')
+    style
+      include styles/about.css
     link(rel='shortcut icon', type='image/ico', href='favicon.ico')
     title Risamálheild - leiðbeiningar
   body
@@ -33,7 +26,7 @@ html
         h2#kafli-1 Val á undirmálheildum
         figure.fig.fig-right
           figcaption Undirmálheildavalmynd
-          img(src="/img/user_guide/corp_selector.png")
+          img(src="./img/user_guide/corp_selector.png")
         p Ef smellt er á slána efst á síðunni birtist fellivalmynd. Í þeirri valmynd er hægt að velja í hvaða textasöfnum á að leita. 
         p Textasöfnunum er raðað í flokka og hægt er að velja bæði heila flokka og stök textasöfn.
         p Tímalínan sem sjá má hér til hægri lýsir tímadreifingu textans. Í dæminu sem er tekið eru aðeins Alþingisræður valdar svo gögnin eru nokkuð jafndreifð. 
@@ -43,7 +36,7 @@ html
         h2#kafli-2 Einföld leit
         figure.fig.fig-right
           figcaption Leitarvalmynd
-          img(src="/img/user_guide/simple_search.png")
+          img(src="./img/user_guide/simple_search.png")
         p Einfaldasta leiðin til að nota Risamálheildina er að skrifa einfaldlega leitarorðið og smella á "Leita"
         p Sjálfkrafa er hakað við "óháð há- og lágstöfum". Þetta er gert til að yfirsjást ekki orð sem koma fyrir í upphafi setninga.
           | Einnig má haka við "upphaf" eða "endir" en þá fást orð sem annaðhvort byrja eða enda á textastrengnum sem leitað var eftir.
@@ -57,14 +50,14 @@ html
         p Ef merkt er við <em>orðmynd</em> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
           | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
         p Til þess að fá allar orðmyndir skal merkja við <em>uppflettimynd</em>: 
-          img(src="/img/user_guide/simple_search_searchby.png")
+          img(src="./img/user_guide/simple_search_searchby.png")
         p Ef það er gert fást öll tilfelli af því orði sem leitað er eftir í textanum, óháð því hvaða birtingarmynd þau hafa.
         figure.fig.fig-left
           figcaption Leitað eftir orði
-          img(src="/img/user_guide/word_search_results.png")
+          img(src="./img/user_guide/word_search_results.png")
         figure.fig.fig-right
           figcaption Leitað eftir uppflettimynd
-          img(src="/img/user_guide/lemma_search_results.png")
+          img(src="./img/user_guide/lemma_search_results.png")
         p Hafa ber þó í huga að <strong>ekki</strong> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
           |  því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
         p Fyrir flóknari fyrirspurnir verður að grípa til útvíkkaðrar leitar.
@@ -72,10 +65,10 @@ html
         h2#kafli-3 Útvíkkuð leit
         figure.fig.fig-big
           figcaption Útvíkkuð leit
-          img(src="/img/user_guide/extended_search_query.png")
+          img(src="./img/user_guide/extended_search_query.png")
         figure.fig.fig-right
           figcaption Útkoma útvíkkaðrar leitar
-          img(src="/img/user_guide/extended_search_results.png")
+          img(src="./img/user_guide/extended_search_results.png")
         p Til að skýra útvíkkaða leit er best að taka dæmi. Fyrirspurnin að ofan leitar að þriggja orða runu. 
           | Fyrst kemur "í", svo nafnorð í þolfalli eða þágufalli og loks persónufornafn í þágufalli.
         p Orðið "því" er útilokað úr leitinni því það er talsvert um að persónufornafni sé ruglað við samtengingu í gögnunum.
@@ -83,18 +76,18 @@ html
         p Þar sem um þriggja orða runu er að ræða eru "spjöldin" sem byggja upp fyrirspurnina þrjú talsins. 
         .row.clearfix
           .col.col-4
-            img.fig-right(src="/img/user_guide/extended_search_card1.png")
+            img.fig-right(src="./img/user_guide/extended_search_card1.png")
             p Spjaldið vinstra megin segir einfaldlega að orðið(orðmyndin sjálf) sem svarar til þess verði að vera "í"
           .col.col-4
-            img.fig-right(src="/img/user_guide/extended_search_card2.png")
+            img.fig-right(src="./img/user_guide/extended_search_card2.png")
             p Spjaldið í miðjunni segir að orðið sem svarar til þess verði að vera nafnorð OG það verði að vera í þolfalli eða þágufalli.
           .col.col-4
-            img.fig-right(src="/img/user_guide/extended_search_card3.png")
+            img.fig-right(src="./img/user_guide/extended_search_card3.png")
             p Spjaldið hægra megin segir að orðið sem svarar til þess megi ekki vera "því", verði að vera í þágufalli og verði að vera persónufornafn.
         h3#kafli-3-1 Útvíkkuð leit byggð upp
         figure.fig.fig-small.fig-right
           figcaption Uppafsstillt leitarspjald
-          img(src="/img/user_guide/extended_token.png")
+          img(src="./img/user_guide/extended_token.png")
         p Þegar útvíkkuð leit er valin mætir manni stakt spjald (sjá til hægri). Það spjald svarar til eins leitarorðs. 
           | Ef smellt er á "orðmynd" birtist fellivalmynd sem sýnir þá þætti sem hægt er að leita eftir. Meðal þeirra er t.d. "Lemma", 
           | sem er oft kallað uppflettimynd, og beygingarþættir svo sem kyn, tala, fall, háttur o.s.frv.
@@ -110,7 +103,7 @@ html
         p Með þessum tveimur möguleikum er unnt að tvinna saman flókin leitarspjöld svo sem annað og þriðja spjaldið í dæminu <a href='#kafli-3'>hér að ofan</a>.
         figure.fig.fig-small.fig-right
           figcaption Samsett leitarspjald
-          img(src="/img/user_guide/thingmadur_token.png")
+          img(src="./img/user_guide/thingmadur_token.png")
         p Hér til hægri má einnig sjá dæmi um leitarspjald sem leitar eftir eftirfarandi skilyrði:
         ul
           li <em>Þingmaður</em> er 'Ólafur Ragnar Grímsson' <strong>OG</strong> <em>Lemma</em> er 'forseti'

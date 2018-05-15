@@ -233,9 +233,9 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
 
     showModal = (key) ->
         tmpl = {
-          about: 'app/markup/about.html',
+          about: require('../markup/about.html'),
           login: 'login_modal',
-          contact: 'app/markup/contact.html'
+          contact: require('../markup/contact.html')
         }[key]
         params =
             templateUrl : tmpl

@@ -134,7 +134,10 @@ html
 
             div(id='video-modal', ng-controller='VideoCtrl')
     footer
-      p.korp-info(ng-bind-html="'footer_about_korp'|loc:lang | trust")
+      p
+        span.korp-info(ng-bind-html="'footer_about_korp'|loc:lang | trust")
+        a(target='_blank' href='https://spraakbanken.gu.se/korp/')
+          img(class='footer-image' src='img/korplogo.png')
 
     #deptree_popup
 
