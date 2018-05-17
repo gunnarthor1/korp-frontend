@@ -185,6 +185,7 @@ class view.KWICResults extends BaseResults
                     @s.$parent.pageObj.pager = @s.$parent.page + 1
                 return false
             when 70 # f
+                if @current_page is 0 then return
                 safeApply @s, =>
                     @s.$parent.page--
                     @s.$parent.pageObj.pager = @s.$parent.page + 1
@@ -199,8 +200,10 @@ class view.KWICResults extends BaseResults
                 next = @selectPrev()
             when 40 # down
                 next = @selectDown()
-        @scrollToShowWord($(next)) if next
-        return false
+        
+        if next
+            @scrollToShowWord($(next))
+            return false
 
 
     getPageInterval: (page) ->

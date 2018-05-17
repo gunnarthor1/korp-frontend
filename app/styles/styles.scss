@@ -824,10 +824,14 @@ table {
   flex-direction: column;
   margin: 0;
   margin-left: 10px;
-  padding: 5px;
-
-  * {
-    margin: 0;
+  // font-weight: bold;
+  color: #555;
+  &:hover {
+    color: #333;
+  }
+  .plus-btn {
+      position: relative;
+      top: 3px;
   }
 }
 
@@ -880,6 +884,10 @@ table {
       opacity: 1;
       transition: opacity 200ms ease;
     }
+  .arg_opts {
+    margin-left: 5px;
+    vertical-align: middle;
+  }
 
     .remove_arg {
       margin-top: 15px;
@@ -1930,10 +1938,18 @@ label[for=lemgram_select]::before {
 
 #korp-simple {
   #simple_text {
+    position: relative;
     display: inline-block;
     margin-top: 2px;
     position: relative;
     vertical-align: middle;
+    input {
+      padding: 5px 10px 6px 10px;
+      border-radius: 3px;
+      border-style: solid;
+      border-color: lightgrey;
+      border-width: 1px;
+    }
   }
 
   .simple_form {
@@ -3257,19 +3273,28 @@ warning ~ * {
   }
 }
 
+global-filters {
+  display: block;
+}
+
 .global-filters-container {
   margin-bottom: 10px;
 
   > div {
     margin-bottom: 10px;
   }
+
+  button {
+    margin-right: 5px;
+    vertical-align: baseline;
+  }
 }
 
 .korp-uib-dropdown-menu {
-  font-weight: bold;
   margin-left: 4px;
   margin-top: 7px;
   padding: 0;
+  // font-weight: bold;
 
   .selected {
     background: #f2f7ff;
@@ -3279,8 +3304,14 @@ warning ~ * {
     padding: 5px;
   }
 
-  .attribute:hover {
-    background-color: #e6e6e6;
+  .attribute:not(.disabled):hover {
+    background-color: #428bca;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .attribute.disabled {
+    opacity: .5;
   }
 
   ul {
