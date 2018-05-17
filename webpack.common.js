@@ -54,7 +54,8 @@ module.exports = {
         test: /\.pug$/i,
         exclude: [
           // does not work
-          path.resolve(__dirname, "app/index.pug")
+          path.resolve(__dirname, "app/index.pug"),
+          path.resolve(__dirname, "app/user_guide.pug")
         ],
         use: [
           { loader: "file-loader" },

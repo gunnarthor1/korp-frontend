@@ -251,7 +251,7 @@
     "empty": "[autt]",
     "link": "hlekkur",
     "text": "texti",
-    "word": "orðmynd",
+    "word": "Orðmynd",
     "words": "orð",
 
     "comparison": "Samanburður",
@@ -376,7 +376,7 @@
 
     "search_by": "Leita eftir: ",
     "dictform": "uppflettimynd (fá allar orðmyndir)",
-    "wordform": "orðmynd",
+    "wordform": "Orðmynd",
 
     "results_by_corpus": "Niðurstöður eftir undirmálheildum",
 
