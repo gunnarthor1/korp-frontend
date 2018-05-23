@@ -20,6 +20,8 @@ html
       header
         h1#top-of-page Notkunarleiðbeiningar fyrir risamálheildina 
         p (verk í vinnslu)
+
+
       section.mainsection.clearfix
         h2#kafli-1 Val á undirmálheildum
         figure.fig.fig-right
@@ -30,6 +32,8 @@ html
         p Tímalínan sem sjá má hér til hægri lýsir tímadreifingu textans. Í dæminu sem er tekið eru aðeins Alþingisræður valdar svo gögnin eru nokkuð jafndreifð. 
           | Gráu stöplarnir sýna svo dreifingu þeirra textasafna sem ekki eru valin en eru þó í málheildinni. Þar sést greinilega að stærstur hluti gagnanna er frá því eftir aldamót.
         p Ef músarbendlinum er haldið yfir nafni textasafns birtast nánari upplýsingar um það.  
+
+
       section.mainsection.clearfix
         h2#kafli-2 Einföld leit
         figure.fig.fig-right
@@ -42,8 +46,12 @@ html
 
         h3#kafli-2-1 Upphaf eða endir
         p Ef hakað er við <em>upphaf</em> eða <em>endir</em> fást niðurstöður sem annað hvort byrja eða enda á leitarstrengnum, en gætu innihaldið fleiri stafi.
+
+
         h3#kafli-2-2 Óháð há- og lágstöfum
         p Valmöguleikinn <em>óháð há- og lágstöfum</em> stýrir því hvort tekið er tillit til hvort fyrsti stafur í leitarstreng sé há- eða lágstafur.
+
+
         h3#kafli-2-3 Leita eftir <em>orðmynd</em> eða <em>uppflettimynd</em>
         p Ef merkt er við <em>orðmynd</em> í leitarvalmyndinni fást öll tilfelli af nákvæmlega þeirri orðmynd í völdum textasöfnum. 
           | Þetta skilar þó ekki öllum tilfellum af orðinu sjálfu, þar sem mögulegt er að sama orð komi fyrir í annari mynd.
@@ -59,6 +67,8 @@ html
         p Hafa ber þó í huga að <strong>ekki</strong> dugar að leita eftir hvaða orðmynd sem er ef seinni valkosturinn er valinn,
           |  því aðeins virkar að leita eftir uppflettimyndinni, líkt og ef flett væri upp í orðabók. 
         p Fyrir flóknari fyrirspurnir verður að grípa til útvíkkaðrar leitar.
+
+
       section.mainsection.clearfix
         h2#kafli-3 Útvíkkuð leit
         figure.fig.fig-big
@@ -74,14 +84,16 @@ html
         p Þar sem um þriggja orða runu er að ræða eru "spjöldin" sem byggja upp fyrirspurnina þrjú talsins. 
         .row.clearfix
           .col.col-4
-            img.fig-right(src="./img/user_guide/extended_search_card1.png")
             p Spjaldið vinstra megin segir einfaldlega að orðið(orðmyndin sjálf) sem svarar til þess verði að vera "í"
+            img.fig.fig-big(src="./img/user_guide/extended_search_card1.png")
           .col.col-4
-            img.fig-right(src="./img/user_guide/extended_search_card2.png")
             p Spjaldið í miðjunni segir að orðið sem svarar til þess verði að vera nafnorð OG það verði að vera í þolfalli eða þágufalli.
+            img.fig.fig-big(src="./img/user_guide/extended_search_card2.png")
           .col.col-4
-            img.fig-right(src="./img/user_guide/extended_search_card3.png")
             p Spjaldið hægra megin segir að orðið sem svarar til þess megi ekki vera "því", verði að vera í þágufalli og verði að vera persónufornafn.
+            img.fig.fig-big(src="./img/user_guide/extended_search_card3.png")
+
+
         h3#kafli-3-1 Útvíkkuð leit byggð upp
         figure.fig.fig-small.fig-right
           figcaption Uppafsstillt leitarspjald
@@ -90,8 +102,6 @@ html
           | Ef smellt er á "orðmynd" birtist fellivalmynd sem sýnir þá þætti sem hægt er að leita eftir. Meðal þeirra er t.d. "Lemma", 
           | sem er oft kallað uppflettimynd, og beygingarþættir svo sem kyn, tala, fall, háttur o.s.frv.
         p Einnig er hægt að leita eftir þáttum sem eiga við um textann í heild. Þessir þættir eru kallaðir <em>eigindi texta</em>. M.a. má leita eftir ritunartíma, höfundi, titli o.fl.
-        p Einnig eru sum eigindi sem eiga bara við ákveðin textasöfn. T.d. er hægt að takmarka leit í Alþingisræðum við einn þingmann. 
-          | Það er gert með því að velja <em>Þingmaður</em> undir <em>eigindi texta</em> í fellivalmyndinni á leitarspjaldinu og slá síðan inn fullt nafn þingmannsins. 
         p Á spjaldinu má sjá tvo hnappa; <em>Bæta við möguleika</em> og <em>Bæta við skilyrði</em>.
         ul
           li Ef smellt er á <em>Bæta við möguleika</em> birtist annar reitur fyrir leitarskilyrði. Niðurstöðurnar verða þá öll orð sem uppfylla 
@@ -99,26 +109,35 @@ html
           li Ef smellt er á <em>Bæta við skilyrði</em> birtist eins reitur fyrir leitarskilyrði. Niðurstöður leitarinnar verða öll orð sem uppfylla <strong>bæði</strong> 
             | skilyrðin sem skilgreind eru
         p Með þessum tveimur möguleikum er unnt að tvinna saman flókin leitarspjöld svo sem annað og þriðja spjaldið í dæminu <a href='#kafli-3'>hér að ofan</a>.
+
+
+        h3#kafli-3-2 Sérstök textaeigindi
+        p Sum eigindi eiga bara við ákveðin textasöfn. T.d. er hægt að takmarka leit í Alþingisræðum við einn eða fleiri þingmenn. 
+        | Það er gert með því að velja <em>Þingmaður</em> undir <em>eigindi texta</em> í fellivalmyndinni á leitarspjaldinu og slá síðan inn fullt nafn þingmannsins. 
         figure.fig.fig-small.fig-right
           figcaption Samsett leitarspjald
           img(src="./img/user_guide/thingmadur_token.png")
         p Hér til hægri má einnig sjá dæmi um leitarspjald sem leitar eftir eftirfarandi skilyrði:
         ul
           li <em>Þingmaður</em> er 'Ólafur Ragnar Grímsson' <strong>OG</strong> <em>Lemma</em> er 'forseti'
-        p Sem sagt, þessi leit skilar öllum tilfellum úr þingræðum þar sem Ólafur Ragnar Grímsson hefur sagt einhverja orðmynd orðsins forseti
+        p Sem sagt, þessi leit skilar öllum tilfellum úr þingræðum þar sem Ólafur Ragnar Grímsson hefur sagt einhverja orðmynd orðsins forseti.
+      section.mainsection.clearfix
+        
       section.mainsection.clearfix
         h2 Meira á leiðinni...
-      
+
+
+
     div.sidebar-left
-      p Efni á þessarri síðu
-      ul.table-of-contents
+      p Efni á þessarri síðu:
+      ol.table-of-contents
         li
           a(href='#top-of-page') Fara efst á síðu
         li
           a(href='#kafli-1') Val á undirmálheildum
         li
           a(href='#kafli-2') Einföld leit
-          ul
+          ol
             li
               a(href='#kafli-2-1') Upphaf eða endir
             li
@@ -127,7 +146,7 @@ html
               a(href='#kafli-2-3') Leita eftir <em>orðmynd</em> eða <em>uppflettimynd</em>
         li
           a(href='#kafli-3') Útvíkkuð leit
-          ul
+          ol
             li
               a(href="#kafli-3-1") Útvíkkuð leit byggð upp
               

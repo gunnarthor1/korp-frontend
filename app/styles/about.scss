@@ -13,11 +13,18 @@ $color-gray: #888;
 $color-white: #fff;
 $color-black: #000;
 
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+header {
+  padding: 20px;
+}
+
 body {
   background-color: $background-color;
   box-sizing: border-box;
   counter-reset: h2counter;
-  margin-left: 200px;
+  font-family: 'Lato', Helvetica, Arial;
+  margin-left: 250px;
 }
 
 h1 {
@@ -38,6 +45,17 @@ h3::before {
   counter-increment: h3counter;
 }
 
+.sidebar-left ol {
+  counter-reset: section;
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.sidebar-left li::before {
+  counter-increment: section;
+  content: counters(section, '.') ' ';
+}
+
 * {
   box-sizing: border-box;
 }
@@ -48,6 +66,7 @@ h3::before {
 //   color: $color-white;
 // }
 .maincontent {
+  font-size: 20px;
   margin: auto;
   max-width: 1200px;
   width: 100%;
@@ -139,9 +158,10 @@ h3::before {
   height: 100%; // Full-height: remove this if you want "auto" height
   left: 0;
   overflow-x: hidden; // Disable horizontal scroll
+  padding-left: 10px;
   padding-top: 20px;
   position: fixed; //Fixed Sidebar (stay in place on scroll)
   top: 0; // Stay at the top
-  width: 200px; // Set the width of the sidebar
+  width: 250px; // Set the width of the sidebar
   z-index: 1; // Stay on top
 }
