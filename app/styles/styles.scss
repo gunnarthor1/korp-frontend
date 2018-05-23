@@ -336,6 +336,7 @@ img {
 .search-history-wrapper {
   align-items: center;
   align-self: flex-end;
+  color: $color-black;
   display: flex;
   flex-direction: row;
   margin-left: auto;
@@ -664,6 +665,7 @@ $corpusbox-width: 480px;
 .popupchecks {
   background-color: #fefefe;
   border: solid thin #ccc;
+  color: $color-black;
   display: none;
   max-height: 600px;
   overflow-x: hidden;
@@ -699,6 +701,7 @@ $corpusbox-width: 480px;
 .corpusInfoSpace {
   background-color: $color-white;
   border: 1px solid #ccc;
+  color: $color-black;
   display: none;
   left: 615px;
   max-width: 33%;
