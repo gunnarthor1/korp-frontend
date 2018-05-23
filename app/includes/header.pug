@@ -38,9 +38,10 @@
     .clearfix
   .header-row
     .header-left
-      //- TODO RMLOGO Skipta út fyrir logo Risamálheildarinnar
-      a(ng-click="logoClick()")
-        img#main_logo(src='img/sam_logo.png')
+      a#main_logo(ng-click="logoClick()")
+        figure
+          img(src='img/risamh_logo.svg')
+          figcaption Halló hér
       #corpusbox.scroll_checkboxes.inline-block
         .hp_topframe.buttonlink.ui-state-default.ui-corner-all
           div.pull-left
@@ -74,9 +75,8 @@
       .corpusInfoSpace.ui-corner-all
         div
           p(style='padding: 10px; margin: 0px;')
-      //- TODO RMLOGO Sýna þegar það er komið annað logo fyrir risamálheildina
-      //- a#as_logo(href="http://www.arnastofnun.is")
-      //-   img(src='img/sam_logo.png')
+      a#as_logo(href="http://www.arnastofnun.is")
+        img(src='img/sam_logo.png')
     .header-right
       //- TODO Make user guide and link to it correctly
       a.user-guide(target="_blank" href="user_guide.html")

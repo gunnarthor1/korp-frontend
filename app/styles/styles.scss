@@ -41,9 +41,16 @@ $otb-header-color: #993130;
 
 
 // Mode-specific styles:
+.mode-default {
+  #header {
+    color: $color-gray;
+  }
+}
+
 .mode-fornrit {
   #header {
     background-color: $fornrit-header-color;
+    color: $color-darkgray;
 
     #top-bar * {
       color: $color-darkgray;
@@ -66,6 +73,7 @@ $otb-header-color: #993130;
 .mode-mim {
   #header {
     background-color: $mim-header-color;
+    color: $color-gray;
 
     #top-bar * {
       color: $color-gray;
@@ -337,8 +345,6 @@ img {
     color: $color-white;
     margin-right: 10px;
   }
-  // TODO RMLOGO Bæta við þegar risamálheildarlogo er komið
-  // margin: 0 10px;
   option {
     &:first-child {
       color: $color-gray;
@@ -623,13 +629,18 @@ $corpusbox-width: 480px;
 
 #corpusbox {
   cursor: pointer;
+  max-width: 70%;
+  text-overflow: ellipsis;
+  width: $corpusbox-width;
 
   .hp_topframe {
     color: #222;
+    overflow-x: hidden;
     padding: .5em 1em .5em 20px;
     position: relative;
     text-decoration: none;
-    width: $corpusbox-width;
+    text-overflow: ellipsis;
+    width: 100%;
 
     &:link,
     &:visited {
@@ -1867,11 +1878,41 @@ label[for=lemgram_select]::before {
 }
 
 #main_logo {
-  max-width: 200px;
+  border: 1px dotted $color-darkgray;
+  color: inherit;
+  margin-right: 10px;
+  min-width: 100px;
+  text-decoration: none;
+  width: 8%;
+
+  &:hover {
+    color: inherit;
+  }
+
+  figure {
+    display: inline-block;
+    margin: 10px;
+
+    img {
+      vertical-align: top;
+      width: 100%;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
 }
 
 #as_logo {
   margin-left: auto;
+  max-width: 20%;
+  width: 150px;
+
+  img {
+    width: 100%;
+  }
 }
 
 #korplink {

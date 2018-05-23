@@ -1,5 +1,10 @@
 
 korpFailImg = require "../img/error_message.png"
+risamh_logo = require "../img/risamh_logo.svg"
+mim_logo = require "../img/mim_logo.svg"
+fornrit_logo = require "../img/fornrit_logo.svg"
+otb_logo = require "../img/ohlogo_hvitt_m.png"
+
 
 window.authenticationProxy = new model.AuthenticationProxy()
 window.timeProxy = new model.TimeProxy()
@@ -70,6 +75,20 @@ $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     $("body").addClass "lab" if isLab
 
     $("body").addClass "mode-" + currentMode
+    mainLogoFig = document.getElementById("main_logo").firstChild
+    switch currentMode
+        when "mim"
+            mainLogoFig.firstChild.src = mim_logo
+            mainLogoFig.childNodes[1].setAttribute("rel", "localize[mim_logo]")
+        when "fornrit"
+            mainLogoFig.firstChild.src = fornrit_logo
+            mainLogoFig.childNodes[1].setAttribute("rel", "localize[fornrit_logo]")
+        when "otb"
+            mainLogoFig.firstChild.src = otb_logo
+            mainLogoFig.childNodes[1].setAttribute("rel", "localize[otb_logo]")
+        else
+            mainLogoFig.firstChild.src = risamh_logo
+            mainLogoFig.childNodes[1].setAttribute("rel", "localize[rmh_logo]")
     util.browserWarn()
 
     $("#search-history").change (event) ->
