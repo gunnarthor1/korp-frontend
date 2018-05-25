@@ -139,7 +139,7 @@ settings.primaryColor = "rgb(221, 233, 255)";
 settings.primaryLight = "rgb(242, 247, 255)";
 
 settings.defaultOverviewContext = "7 words"
-settings.defaultReadingContext = "1 paragraph"
+settings.defaultReadingContext = "1 sentence"
 
 settings.defaultWithin = {
     "sentence": "sentence",

@@ -200,7 +200,7 @@ class view.KWICResults extends BaseResults
                 next = @selectPrev()
             when 40 # down
                 next = @selectDown()
-        
+
         if next
             @scrollToShowWord($(next))
             return false
@@ -335,9 +335,8 @@ class view.KWICResults extends BaseResults
         else
             preferredContext = settings.defaultOverviewContext
             avoidContext = settings.defaultReadingContext
-
         context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
-
+        preferredContext = locationSearch().context
         if not isPaging
             @proxy.queryData = null
 
