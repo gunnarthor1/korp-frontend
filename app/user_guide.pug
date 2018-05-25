@@ -224,7 +224,8 @@ html
           | (eigindi orðs). Einnig er hægt að færa sig á milli orða í niðurstöðunum 
           | með því að nota pílurnar á lyklaborðinu.
         h3#kafli-5-1 Tölfræði
-        p Í verkfærastikunni má einnig sjá fellivalmynd fyrir tölfræði. [MYND]
+        p Í verkfærastikunni má einnig sjá fellivalmynd fyrir tölfræði.
+        img.center(src='./img/user_guide/stats_dropdown.png')
         p Leitarvél Risamálheildarinnar býður upp á að draga saman tíðniupplýsingar 
           | úr niðurstöðum leita. Þannig má fá upplýsingar um það hvaða orðmynd 
           | ákveðins orðs er algengust, hvaða þingmaður hefur sagt tiltekið 
@@ -233,20 +234,28 @@ html
         p Niðurstöðunum má raða eftir tíðni í hverri undirmálheild fyrir sig og 
           | ef smellt er á línu í töflunni opnast leitargluggi sem inniheldur 
           | orðstöðulykla fyrir einungis þær niðurstöður sem eiga við þá röð.
+        p Hér að neðan má sjá dæmi um tölfræðiniðurstöður fyrir leitina [lemma = "leitarorð"], 
+          | dregið saman fyrir orðmynd.
+
+        img.cencter(src='./img/user_guide/stats_table.png')
+
         h3#kafli-5-2 Graf
         p Hægt er að skoða þróun orðtíðni yfir tíma með því að smella á 
-          | hnappinn „Sýna notkun yfir tíma“ í tölfræðiflipanum. Þá birtist nýr 
-          | flipi þar sem inn hleðst línurit yfir orðtíðni sem fall af tíma. [MYND] 
+          | hnappinn 
+          img(src='./img/user_guide/show_graph.png')
+          |  í tölfræðiflipanum. Þá birtist nýr 
+          | flipi þar sem inn hleðst línurit yfir orðtíðni sem fall af tíma.
           | Mögulegt er að birta sömu upplýsingar sem súlurit eða sem töflu, 
           | en síðastnefndi kosturinn er gagnlegur ef skoða á gögnin nánar í 
           | töflureikni eða tölfræðiforriti (Sjá hér að neðan).
+        img(src='./img/user_guide/stats_graph.png')
         p Stilla má tímabilið sem birtist á grafinu með því að draga til 
-          | handföng á rekkanum fyrir neðan grafið. [MYND] 
+          | handföng á rekkanum fyrir neðan grafið.
           | Ef tímabilið er stillt nógu smátt þá eykst nákvæmni töflunnar. 
           | Það getur þó tekið nokkrar sekúndur að hlaða uppfærðu grafi.
       section.mainsection.clearfix
         h2#kafli-6 Úttak og skil leitarvélar
-        h3#kafli-6-1 Úttak fyrir töflureikna (CSV & TSV)
+        h3#kafli-6-1 Úttak fyrir töflureikna (CSV &amp; TSV)
         p Til þess að beita töflureiknum og tölfræðihugbúnaði á við Microsoft Excel 
           | og SPSS á útkomur leita í Risamálheildinni er 
           | mikilvægt að fá gögnin á nothæfu sniði fyrir þann hugbúnað. 
@@ -254,23 +263,28 @@ html
           | tölfræðitöflum sem annað hvort CSV (Comma Separated Value) eða 
           | TSV (Tab Separated Value). Fyrir leitarniðurstöðurnar er smellt 
           | á hnappinn „Hala síðu niður sem...“ sem er staðsettur neðarlega til 
-          | hægri á síðunni. Svo er sá möguleiki valinn sem hentar. [MYND] 
-          | Fyrir tölfræðitöflur er aðferðin svipuð. Fyrst velur maður 
+          | hægri á síðunni. Svo er sá möguleiki valinn sem hentar. 
+        img.center(src='./img/user_guide/download_kwic.png')
+        p Fyrir tölfræðitöflur er aðferðin svipuð. Fyrst velur maður 
           | töfluflipann á niðurstöðusíðunni. Þá má sjá litla valmynd neðst til 
           | vinstri á síðunni. Þar velur maður hvort hala á niður hlutfallslegum 
           | tíðnum eða heildartíðnum, og jafnframt hvort CSV eða TSV gildi 
           | skulu notuð. Síðan er smellt á hnappinn sem á stendur „Keyra út“. 
           | Þá breytist texti hnappsins í „Hala niður“ og maður smellir 
           | aftur til þess að hala niður gögnunum.
+        img.center(src='./img/user_guide/download_stats.png')
+        img.center(src='./img/user_guide/download_stats2.png')
         h3#kafli-6-2 JSON
-        p Bakendi Korp skilar gögnum á JSON formi[https://www.json.org/] sem 
-          | framendinn vinnur síðan úr. Hægt er að sækja hráu JSON gögnin 
+        p Bakendi Korp skilar gögnum á 
+          a(href='https://www.json.org/') JSON formi
+          |  sem framendinn vinnur síðan úr. Hægt er að sækja hráu JSON gögnin 
           | með því að framkvæma leit og smella svo á JSON takkann sem er 
           | staðsettur neðarlega til hægri á síðunni. Slíkt snið hentar vel til 
           | meðhöndlunar með forritunarmálum á borð við JavaScript og Python. 
           | Áhugasömum forriturum viljum við einnig benda á að hægt er að sækja 
           | frumgögn Risamálheildarinnar ásamt fleiri mállegum gagnasöfnum 
-          | á síðunni malfong.is[http://malfong.is]
+          | á síðunni 
+          a(href='http://malfong.is') malfong.is
 
     div.sidebar-left
       p Efni á þessarri síðu:
