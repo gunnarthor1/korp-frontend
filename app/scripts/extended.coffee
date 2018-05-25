@@ -38,7 +38,7 @@ korpApp.factory "extendedComponents", () ->
             localizer = localize($scope)
             # console.log("getStructValues data", data)
 
-            dataset = _.map (_.uniq data), (item) -> 
+            dataset = _.map (_.uniq data), (item) ->
                 if item is ""
                     return [item, util.getLocaleString "empty"]
                 return [item, localizer item]
@@ -67,6 +67,7 @@ korpApp.factory "extendedComponents", () ->
         template: selectTemplate
         controller: ["$scope", ($scope) ->
             localizer = localize($scope)
+            delete $scope.orObj.flags?["c"]
             if _.isArray $scope.dataset
                 dataset = _.map $scope.dataset, (item) -> return [item, localizer item]
             else
