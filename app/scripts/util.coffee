@@ -738,8 +738,11 @@ util.loadCorporaFolderRecursive = (first_level, folder) ->
         # Add all corpora which have not been added to a corpus
         for val of settings.corpora
             cont = false
+            # continue if it is a duplicate corpus (due to parallel corpora)
+            if settings.corpora[val].hide
+                continue
             for usedid of added_corpora_ids
-                if added_corpora_ids[usedid] is val or settings.corpora[val].hide
+                if added_corpora_ids[usedid] is val
                     cont = true
             continue if cont
 
