@@ -1,8 +1,6 @@
 var collapsedImg = require('../img/collapsed.png')
-var extendedImg = require('../img/extended.png')
 
 var hp_corpusChooser = {
-
 	options: {
 		template : ''
 	},
@@ -21,7 +19,6 @@ var hp_corpusChooser = {
 				$(".popupchecks").fadeOut('fast');
 				$(".corpusInfoSpace").fadeOut('fast');
 				$(".hp_topframe").removeClass("ui-corner-top");
-				$(".hp_topframe").addClass("ui-corner-all");
 			}
 		});
 
@@ -225,7 +222,6 @@ var hp_corpusChooser = {
 					$(".popupchecks").fadeOut('fast');
 					$(".corpusInfoSpace").fadeOut('fast');
 					$(".hp_topframe").removeClass("ui-corner-top");
-					$(".hp_topframe").addClass("ui-corner-all");
 				} else {
 					$(".popupchecks")
 					.show()
@@ -236,7 +232,6 @@ var hp_corpusChooser = {
 					});
 					hp_this._trigger("open");
 					$(".hp_topframe").addClass("ui-corner-top");
-					$(".hp_topframe").removeClass("ui-corner-all");
 				}
 				e.stopPropagation();
 			});
@@ -275,11 +270,9 @@ var hp_corpusChooser = {
 		 		if($(this).parent().hasClass("collapsed")) {
 		 			$(this).parent().removeClass('collapsed').addClass('extended');
 		 			$(this).siblings('div').fadeToggle("fast");
-		 			$(this).attr({src : extendedImg});
 		 		} else {
 		 			$(this).parent().removeClass('extended').addClass('collapsed');
 		 			$(this).siblings('div').fadeToggle("fast");
-		 			$(this).attr({src : collapsedImg});
 		 		}
 			});
 
@@ -407,7 +400,9 @@ var hp_corpusChooser = {
 				// Fire callback "change":
 		 		hp_this.triggerChange();
  			});
-
+		function wrapWithSpan(htmlStr) {
+			return "<span>" + htmlStr + "</span>"
+		}
 		function recursive_transform(einHTML, levelindent) {
 			var outStr = "";
 			var ul = $(einHTML).children();
@@ -448,11 +443,11 @@ var hp_corpusChooser = {
 						if(levelindent > 0) {
 							// Indragna och gömda per default
 							hasDirectCorporaChildren = true;
-							outStr += '<div data="' + theHTML + '" class="boxdiv ui-corner-all' + (disable ? " disabled" : "")  + '" style="margin-left:46px; display:none; background-color:' + settings.primaryColor + '"><label class="hplabel"><span id="' + item_id + '" class="checkbox ' + (disable ? " unchecked" : "checked")  + '" /> ' + theHTML + ' </label></div>';
+							outStr += '<div data="' + theHTML + '" class="boxdiv' + (disable ? " disabled" : "")  + '" style="margin-left:46px; display:none; background-color:' + settings.primaryColor + '"><label class="hplabel"><span id="' + item_id + '" class="checkbox ' + (disable ? " unchecked" : "checked")  + '"></span> ' + wrapWithSpan(theHTML) + ' </label></div>';
 						} else {
 							if (index != ul.length) {
 								hasDirectCorporaChildren = true;
-								outStr += '<div data="' + theHTML + '" class="boxdiv ui-corner-all' + (disable ? " disabled" : "")  + '" style="margin-left:16px; background-color:' + settings.primaryColor + '"><label class="hplabel"><span id="' + item_id + '" class="checkbox ' + (disable ? " unchecked" : "checked")  + '" /> ' + theHTML + ' </label></div>';
+								outStr += '<div data="' + theHTML + '" class="boxdiv' + (disable ? " disabled" : "")  + '" style="margin-left:16px; background-color:' + settings.primaryColor + '"><label class="hplabel"><span id="' + item_id + '" class="checkbox ' + (disable ? " unchecked" : "checked")  + '"></span> ' + wrapWithSpan(theHTML) + ' </label></div>';
 							}
 						}
 					}
