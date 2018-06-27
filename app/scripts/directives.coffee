@@ -61,7 +61,7 @@ korpApp.directive "tabHash", (utils, $location, $timeout) ->
 
         s.newDynamicTab = () ->
             console.log("newDynamicTab s.maxTab", s.maxTab)
-            $timeout (() -> 
+            $timeout (() ->
                 s.setSelected(s.maxTab + 1, true)
                 s.maxTab += 1
             ), 0
@@ -343,7 +343,7 @@ korpApp.directive "extendedList", ($location, $rootScope) ->
     scope: {
         cqp : "="
         lang: "="
-        repeatError: "="
+        repeatError: "=?"
     },
     link: ($scope, elem, attr) ->
         s = $scope
