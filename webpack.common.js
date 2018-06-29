@@ -204,7 +204,10 @@ module.exports = {
         // we need to change geokorp so that these files are required
         to: 'components/geokorp/dist/data',
         flatten: true
-      }
+    },
+    {
+        from: '.htaccess'
+    }
     ])
   ],
   entry: {

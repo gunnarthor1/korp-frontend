@@ -1,0 +1,10 @@
+RewriteEngine on
+RewriteRule ^fornrit$ "http://malheildir.arnastofnun.is/?mode=fornrit"
+RewriteRule ^mim$ "http://malheildir.arnastofnun.is/?mode=mim"
+RewriteRule ^otb$ "http://malheildir.arnastofnun.is/?mode=otb"
+RewriteRule ^rmh2017$ "http://malheildir.arnastofnun.is/"
+RewriteRule ^fornrit/$ "http://malheildir.arnastofnun.is/?mode=fornrit"
+RewriteRule ^mim/$ "http://malheildir.arnastofnun.is/?mode=mim"
+RewriteRule ^otb/$ "http://malheildir.arnastofnun.is/?mode=otb"
+RewriteRule ^rmh2017/$ "http://malheildir.arnastofnun.is/"
+

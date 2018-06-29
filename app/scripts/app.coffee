@@ -210,7 +210,7 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
         langParam = "#?lang=#{s.$root.lang}"
         if modeId is "default"
             return location.pathname + langParam
-        return location.pathname + "?mode=#{modeId}" + langParam
+        return location.pathname + "#{modeId}" + langParam
 
     s.show_modal = false
 
