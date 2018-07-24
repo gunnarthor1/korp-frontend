@@ -932,7 +932,7 @@ class view.StatsResults extends BaseResults
         grid = new Slick.Grid $("#myGrid"), data, columns,
             enableCellNavigation: false
             enableColumnReorder: false
-            forceFitColumns: true
+            forceFitColumns: false
 
         grid.setSelectionModel(new Slick.RowSelectionModel({selectActiveRow: false}))
         grid.registerPlugin(checkboxSelector)
