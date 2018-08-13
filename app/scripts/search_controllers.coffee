@@ -320,7 +320,8 @@ korpApp.controller "SimpleCtrl", ($scope, utils, $location, backend, $rootScope,
     utils.setupHash s, [
             {key : "prefix"},
             {key : "suffix"},
-            {key : "isCaseInsensitive"}
+            {key : "isCaseInsensitive"},
+            {key : "searchBy"}
     ]
 
 
