@@ -1893,17 +1893,20 @@ label[for=lemgram_select]::before {
   }
 
   figure {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
 
     img {
       vertical-align: top;
-      width: 100%;
+      width: 70px;
     }
 
     figcaption {
       margin-top: 10px;
       text-align: center;
+      color: #fff;
     }
   }
 }
