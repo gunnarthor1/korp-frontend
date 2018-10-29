@@ -38,6 +38,7 @@ $background-color: #edf3f3;
 $fornrit-header-color: #9e8555;
 $mim-header-color: $color-navy;
 $otb-header-color: #993130;
+$parallel-header-color: #025411;
 
 
 // Mode-specific styles:
@@ -102,6 +103,18 @@ $otb-header-color: #993130;
 
   .tabbable .nav.nav-tabs {
     background-color: $otb-header-color;
+  }
+}
+
+.mode-parallel {
+  #header {
+    background-color: $parallel-header-color;
+
+
+  }
+
+  .tabbable .nav.nav-tabs {
+    background-color: $parallel-header-color;
   }
 }
 // End mode-specific styles

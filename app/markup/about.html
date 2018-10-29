@@ -1,11 +1,36 @@
 <div class="modal-header">
-    <h2>Risamálheildin - Útgáfa 2017</h2>
+    <h2>Um málheildirnar</h2>
     <span ng-click="clickX()" class="close-x">×</span>
-
 </div>
+
 <div id="about_body" class="modal-body" >
+
+    <p ng-bind-html="'about_intro' | loc:lang | trust"></p>
+    <h2>Risamálheildin - Útgáfa 2017</h2>
     <p ng-bind-html="'about_gwc' | loc:lang | trust"></p>
+    <p ng-bind-html="'about_gwc_cite' | loc:lang | trust"></p>
+
+
+    <h2>Mörkuð íslensk málheild</h2>
+    <p ng-bind-html="'about_mim' | loc:lang | trust"></p>
+    <p ng-bind-html="'about_mim_cite' | loc:lang | trust"></p>
+
+    <h2>Íslensk orðtíðnibókin</h2>
+    <p ng-bind-html="'about_otb' | loc:lang | trust"></p>
+    <p ng-bind-html="'about_otb_cite' | loc:lang | trust"></p>
+    <h2>Fornritin</h2>
+    <p ng-bind-html="'about_fornritin' | loc:lang | trust"></p>
+    <p ng-bind-html="'about_fornritin_cite' | loc:lang | trust"></p>
+
+    <h2>Samhliða málheild</h2>
+    <p ng-bind-html="'about_parallel' | loc:lang | trust"></p>
+    <p ng-bind-html="'about_parallel_cite' | loc:lang | trust"></p>
+   <!--
+    <p><hr><p>
+
     <b ng-bind-html="'about_korp_header' | loc:lang | trust"></b>
+
+
     <p>
         <span ng-bind-html="'about_body' | loc:lang | trust"></span>
         <a target='_blank' href='http://spraakbanken.gu.se'>
@@ -13,34 +38,12 @@
         </a>
     </p>
 
+
+
     <!-- <b ng-bind-html="'about_cite_header' | loc:lang | trust"></b>
     <p ng-bind-html="'about_cite' | loc:lang | trust"></p> -->
 
-    <div>
-        <b>{{'about_man' | loc:lang}}</b>
-        <ul>
-            <li>
-                Eiríkur Rögnvaldsson
-            </li>
-            <li>
-                Sigrún Helgadóttir
-            </li>
-            <li>
-                Steinþór Steingrímsson
-            </li>
-        </ul>
-        <b>{{'about_dev' | loc:lang}}</b>
-        <ul>
-            <li>
-                <span>Starkaður Barkarson</span>
-            </li>
-            <li>
-                <span>Gunnar Thor Örnólfsson</span>
-            </li>
-            <li>
-                <span>Kristján Rúnarsson</span>
-            </li>
-        </ul>
+
 
         <!-- TODO bæta við fleiri þátttakendum í verkefninu -->
         <!-- <b>{{'about_contributors' | loc:lang}}</b>
@@ -52,5 +55,4 @@
         </ul> -->
 
 
-    </div>
 </div>

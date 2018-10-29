@@ -67,6 +67,7 @@ korpApp.factory "extendedComponents", () ->
         template: selectTemplate
         controller: ["$scope", ($scope) ->
             localizer = localize($scope)
+            
             delete $scope.orObj.flags?["c"]
             if _.isArray $scope.dataset
                 dataset = _.map $scope.dataset, (item) -> return [item, localizer item]

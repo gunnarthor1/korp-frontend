@@ -1,10 +1,9 @@
 RewriteEngine on
-RewriteRule ^fornrit$ "http://malheildir.arnastofnun.is/?mode=fornrit"
-RewriteRule ^mim$ "http://malheildir.arnastofnun.is/?mode=mim"
-RewriteRule ^otb$ "http://malheildir.arnastofnun.is/?mode=otb"
-RewriteRule ^rmh2017$ "http://malheildir.arnastofnun.is/"
-RewriteRule ^fornrit/$ "http://malheildir.arnastofnun.is/?mode=fornrit"
-RewriteRule ^mim/$ "http://malheildir.arnastofnun.is/?mode=mim"
-RewriteRule ^otb/$ "http://malheildir.arnastofnun.is/?mode=otb"
-RewriteRule ^rmh2017/$ "http://malheildir.arnastofnun.is/"
-
+RewriteRule ^fornrit$ "localhost:9111/?mode=fornrit"
+RewriteRule ^mim$ "localhost:9111/?mode=mim"
+RewriteRule ^otb$ "localhost:9111/?mode=otb"
+RewriteRule ^rmh2017$ "localhost:9111/"
+RewriteRule ^fornrit/$ "localhost:9111/?mode=fornrit"
+RewriteRule ^mim/$ "localhost:9111/?mode=mim"
+RewriteRule ^otb/$ "localhost:9111/?mode=otb"
+RewriteRule ^rmh2017/$ "localhost:9111/"
