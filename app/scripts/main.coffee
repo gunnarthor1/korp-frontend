@@ -79,16 +79,19 @@ $.when(loc_dfd, deferred_domReady).then ((loc_data) ->
     switch currentMode
         when "mim"
             mainLogoFig.firstChild.src = mim_logo
-            mainLogoFig.childNodes[1].setAttribute("rel", "localize[mim_logo]")
+            #mainLogoFig.childNodes[1].setAttribute("rel", "localize[mim_logo]")
         when "fornrit"
             mainLogoFig.firstChild.src = fornrit_logo
-            mainLogoFig.childNodes[1].setAttribute("rel", "localize[fornrit_logo]")
+            #mainLogoFig.childNodes[1].setAttribute("rel", "localize[fornrit_logo]")
         when "otb"
             mainLogoFig.firstChild.src = otb_logo
-            mainLogoFig.childNodes[1].setAttribute("rel", "localize[otb_logo]")
+            #mainLogoFig.childNodes[1].setAttribute("rel", "localize[otb_logo]")
+        when "parallel"
+            mainLogoFig.firstChild.src = risamh_logo
+            #mainLogoFig.childNodes[1].setAttribute("rel", "localize[samhlida_logo]")
         else
             mainLogoFig.firstChild.src = risamh_logo
-            mainLogoFig.childNodes[1].setAttribute("rel", "localize[rmh_logo]")
+            #mainLogoFig.childNodes[1].setAttribute("rel", "localize[rmh_logo]")
     util.browserWarn()
 
     $("#search-history").change (event) ->
