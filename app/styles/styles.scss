@@ -119,6 +119,12 @@ $parallel-header-color: #025411;
 }
 // End mode-specific styles
 
+#corpus_selected_title {
+
+  font-size: 20px;
+  color : #FFFFFF;
+  font-weight:bold
+}
 
 html {
   background-color: $background-color;
@@ -3396,6 +3402,7 @@ global-filters {
 .input-error {
   border: $color-red 2px solid;
 }
+
 
 // TODO we should not do this, update boostrap instead?
 .sr-only {

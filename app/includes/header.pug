@@ -1,9 +1,18 @@
 #header(ng-controller="headerCtrl")
   #top-bar
     ul#mode_switch
+     li.menu_more.visible()
+      a.dropdown-toggle(popper, no-close-on-click="true", my="right+15% top+10", at="bottom right") {{'risamalheildin' | loc:lang}}
+        i.fa.fa-angle-double-down
+      ul.dropdown-menu.popper-menu
+         li(ng-repeat="mode in visible_rmh", class="rmh_visible", ng-class="{selected: mode.selected}")
+           a(ng-href="{{getUrl(mode.mode)}}")
+             | {{mode.localekey | loc:lang}}
+
       li(ng-repeat="mode in visible", class="visible", ng-class="{selected: mode.selected}")
         a(ng-href="{{getUrl(mode.mode)}}")
           | {{mode.localekey | loc:lang}}
+
       li.menu_more.visible(ng-if="menu.length")
         a.dropdown-toggle(popper, no-close-on-click="true", my="right+15% top+10", at="bottom right") {{'more' | loc:lang}}
           i.fa.fa-angle-double-down
@@ -42,39 +51,44 @@
         figure
           img(src='img/risamh_logo.svg')
           //figcaption Risamálheildin
-      #corpusbox.scroll_checkboxes.inline-block
-        .hp_topframe.buttonlink.ui-state-default.ui-corner-all
-          div.pull-left
-            span#hp_corpora_title3
-            span#hp_corpora_title1
-            span#hp_corpora_titleOf(rel='localize[corpselector_of]')  of
-            span#hp_corpora_titleTotal
-            span#hp_corpora_title2
-            span#hp_corpora_titleTokens(style='color: #888888;')
-          div(style='float: right; width: 16px;')
-            span.ui-icon.ui-icon-triangle-2-n-s(style='text-align: right; left: auto;')
-          .clearfix
-      .popupchecks.ui-corner-bottom
-        .header
-          #time
-            #time_graph
-            #rest_time_graph
-          .buttons
-            button.btn.btn-default.btn-sm.selectall
-              span.fa.fa-check
-              span(rel='localize[corpselector_buttonselectall]')
-              span(data-loc='corpselector_buttonselectall')
-            button.btn.btn-default.btn-sm.selectnone
-              span.fa.fa-times
-              span(rel='localize[corpselector_buttonselectnone]')
-          div(style='clear: both;')
-        .checks
-        br
-        p#paragraphCounter(style='font-size: 85%;')
-        p#sentenceCounter(style='font-size: 85%;')
-      .corpusInfoSpace.ui-corner-all
-        div
-          p(style='padding: 10px; margin: 0px;')
+
+      div#wr1()
+        div#corpus_selected_title()
+          | {{ currMode | loc:lang }}:
+
+        #corpusbox.scroll_checkboxes.inline-block
+          .hp_topframe.buttonlink.ui-state-default.ui-corner-all
+            div.pull-left
+              span#hp_corpora_title3
+              span#hp_corpora_title1
+              span#hp_corpora_titleOf(rel='localize[corpselector_of]')  of
+              span#hp_corpora_titleTotal
+              span#hp_corpora_title2
+              span#hp_corpora_titleTokens(style='color: #888888;')
+            div(style='float: right; width: 16px;')
+              span.ui-icon.ui-icon-triangle-2-n-s(style='text-align: right; left: auto;')
+            .clearfix
+        .popupchecks.ui-corner-bottom
+          .header
+            #time
+              #time_graph
+              #rest_time_graph
+            .buttons
+              button.btn.btn-default.btn-sm.selectall
+                span.fa.fa-check
+                span(rel='localize[corpselector_buttonselectall]')
+                span(data-loc='corpselector_buttonselectall')
+              button.btn.btn-default.btn-sm.selectnone
+                span.fa.fa-times
+                span(rel='localize[corpselector_buttonselectnone]')
+            div(style='clear: both;')
+          .checks
+          br
+          p#paragraphCounter(style='font-size: 85%;')
+          p#sentenceCounter(style='font-size: 85%;')
+        .corpusInfoSpace.ui-corner-all
+          div
+            p(style='padding: 10px; margin: 0px;')
       a#as_logo(href="http://www.arnastofnun.is")
         img(src='img/sam_logo.png')
     .header-right

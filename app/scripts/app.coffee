@@ -146,6 +146,8 @@ korpApp.run ($rootScope, $location, utils, searches, tmhDynamicLocale, $timeout,
 
 korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
     s = $scope
+    #SB: saves the current mode to use inf header.pug to write currently selected mode
+    s.currMode = currentMode
 
     s.logoClick = () ->
         window.location = $scope.getUrl currentMode
@@ -186,14 +188,16 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
         return
 
     N_VISIBLE = settings.visibleModes
+    #SB: the number of versions of RMH to be added to a dropdown list
+    N_VISIBLE_RMH = settings.visibleModesRMH
 
     s.modes = _.filter settings.modeConfig
     if !isLab
         s.modes = _.filter settings.modeConfig, (item) ->
             item.labOnly != true
 
-
-    s.visible = s.modes[...N_VISIBLE]
+    s.visible_rmh = s.modes[...N_VISIBLE_RMH]
+    s.visible = s.modes[N_VISIBLE_RMH...N_VISIBLE]
     s.menu = s.modes[N_VISIBLE..]
 
     i = $.inArray currentMode, (_.map s.menu, "mode")
