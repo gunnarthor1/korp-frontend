@@ -158,7 +158,6 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
         s.show_modal = 'about'
 
     s.contactClick = () ->
-        console.log 'contact'
         s.show_modal = 'contact'
 
     s.showLogin = () ->
@@ -188,7 +187,7 @@ korpApp.controller "headerCtrl", ($scope, $location, $uibModal, utils) ->
         return
 
     N_VISIBLE = settings.visibleModes
-    #SB: the number of versions of RMH to be added to a dropdown list
+    #SB: the number of versions of RMH
     N_VISIBLE_RMH = settings.visibleModesRMH
 
     s.modes = _.filter settings.modeConfig
