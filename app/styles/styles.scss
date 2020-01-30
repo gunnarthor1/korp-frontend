@@ -342,11 +342,12 @@ img {
   flex-direction: column;
   justify-content: center;
   width: 20%;
-
-  .user-guide {
-    color: #fff;
+  .user-guide{
     margin-bottom: 20px;
     margin-right: 20px;
+  }
+  .user-guide a {
+    color: #fff;
     text-align: center;
     text-decoration: underline;
   }

@@ -29,8 +29,13 @@ $.ajaxPrefilter "json", (options, orig, jqXHR) ->
 deferred_domReady = $.Deferred((dfd) ->
     $ ->
         mode = $.deparam.querystring().mode
+        #fix til að mode birtist í url        
         unless mode
-            mode = "default"
+
+            mode = "rmh2018"
+            newURL = $.param.querystring($.param.querystring(), {mode: mode})
+            window.location.href = newURL
+
         $.getScript("modes/#{mode}_mode.js").done () ->
             dfd.resolve()
         .fail (jqxhr, settings, exception) ->

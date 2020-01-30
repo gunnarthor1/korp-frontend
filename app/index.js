@@ -38,7 +38,7 @@ require("./lib/jquery.format.js")
 
 window.c = console
 window.isLab = window.location.pathname.split("/")[1] == "korplabb"
-window.currentMode = $.deparam.querystring().mode || "default"
+window.currentMode = $.deparam.querystring().mode || "rmh2018"
 
 // tmhDynamicLocale = require("angular-dynamic-locale/src/tmhDynamicLocale")
 require("angular-dynamic-locale/dist/tmhDynamicLocale.js")
