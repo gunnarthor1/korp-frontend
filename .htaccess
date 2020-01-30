@@ -1,9 +1,8 @@
-RewriteEngine on
-RewriteRule ^fornrit$ "localhost:9111/?mode=fornrit"
-RewriteRule ^mim$ "localhost:9111/?mode=mim"
-RewriteRule ^otb$ "localhost:9111/?mode=otb"
-RewriteRule ^rmh2017$ "localhost:9111/"
-RewriteRule ^fornrit/$ "localhost:9111/?mode=fornrit"
-RewriteRule ^mim/$ "localhost:9111/?mode=mim"
-RewriteRule ^otb/$ "localhost:9111/?mode=otb"
-RewriteRule ^rmh2017/$ "localhost:9111/"
+RewriteEngine On
+RewriteRule ^fornrit$ /?mode=fornrit [R,END]
+RewriteRule ^mim$ /?mode=mim [R,END]
+RewriteRule ^otb$ /?mode=otb [R,END]
+RewriteRule ^parallel$ /?mode=parallel [R,END]
+RewriteRule ^rmh2017$ /?mode=rmh2017 [R,END]
+RewriteRule ^rmh2018$ /?mode=rmh2018 [R,END]
+
