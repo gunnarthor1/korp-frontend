@@ -1,5 +1,10 @@
 {
+    "risamalheildin": "Risamálheildin",
     "risamalheild2017": "Risamálheildin (2017)",
+    "risamalheild2018": "Risamálheildin (2018)",
+    "rmh2017": "Risamálheildin (2017)",
+    "rmh2018": "Risamálheildin (2018)",
+    "default" : "Risamálheildin (2018)",
     "swedish_texts": "Sænska",
     "parallel_texts": "Samhliða",
 
@@ -178,7 +183,11 @@
 
     "fornrit": "Fornrit",
     "mim": "MÍM (Mörkuð Íslensk Málheild)",
-    "otb": "Íslensk orðtíðnibók"
+    "otb": "Íslensk orðtíðnibók",
+    "biblian": "Biblían",
+    "film_year": "Útg.ár myndar",
+    "film_id" : "ID myndar",
+    "file_id" : "ID skjals"
 
 
 }

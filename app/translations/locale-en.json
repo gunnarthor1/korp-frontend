@@ -35,11 +35,28 @@
     "remove_lang": "Remove lang",
     "not_containing": "Does not contain",
     "negate_explanation": "Negates the search expression, giving only sentences that do not match.",
-    "about": "About The Gigaword Corpus",
+    "about": "About the corpora",
     "contact": "Contact us",
     "contact_text": "If you have encountered an error or have tips on how we may improve this website, we encourage you to contact us via our email address <a href='mailto:malfong@malfong.is'>malfong@malfong.is</a>",
-    "about_gwc": "The Icelandic Gigaword corpus consists of about 1300 million running words of text. Part of the corpus texts are official texts (parliamentary speeches since 1907, law text, adjudications) but it also contains text from news media. The Gigaword corpus is a tagged corpus which means that each running word is accompanied by a morphosyntactic tag and lemma and each text is accompanied by bibliographic information. The morphosyntatctic tags and lemma make it easier to search for special constructions in the corpus. The corpus was compiled during the years 2015 to 2017 at the Árni Magnússon Institute for Icelandic Studies and was funded mostly by the Infrastructure Fund (no. 151110-0031, project manager Eiríkur Rögnvaldsson), the Contribution grants fund (Mótframlagssjóður) at the University of Iceland and the Ministry of Education and Culture. The texts can be downloaded from the website <a href='http://www.málföng.is'>málföng.is</a> for use in research and language technology tools.",
-    "about_body": "The Icelandic Gigaword corpus runs on Korp, which is the concordance search tool of Språkbanken (The Swedish Language Bank). For more information, visit ",
+    "about_gwc": "Ný útfáfa Íslensku risamálheildarinnar er gefin út árlega. Sú fyrsta, RMH 2017, kom út árið 2018 og inniheldur gögn allt til loka árs 2017. Nýjasta útgáfa (RMH 2018) inniheldur um 1.390 milljón lesmálsorð af texta. Hluti textanna eru opinberir textar (Alþingisræður allt frá 1907, lagatexti, dómar). Einnig inniheldur málheildin stór textasöfn frá ýmsum fjölmiðlum. Risamálheildin er mörkuð málheild.",
+    "about_gwc_cite": "Þegar birtar eru niðurstöður rannsókna sem gerðar eru með aðstoð RMH skal það gert þannig:",
+    "about_gwc_cite2": "Steinþór Steingrímsson, Sigrún Helgadóttir, Eiríkur Rögnvaldsson, Starkaður Barkarson and Jón Guðnason. 2018. Risamálheild: A Very Large Icelandic Text Corpus. <i>Proceedings of LREC 2018</i>, p. 4361-4366. Myazaki, Japan.",
+    "about_gwc2": "Þá er einnig mikilvægt að fram komi með hvaða útgáfu risamálheildarinnar var unnið. Ef vísað er til leitarniðurstaða á þessum vef með link þá inniheldur hann ávallt stikann (e. parameter) <i>mode</i> sem vísar til þeirrar útgáfu sem unnið var með (t.d. mode=rmh2018).",
+    "about_korp_header": "Um leitarvélina",
+    "about_mim": "Mörkuð íslensk málheild er safn um 25 milljóna lesmálsorða af texta. Textar í málheildinni hafa verið flokkaðir í 23 flokka og eru allir frá tímabilinu 2000-2010. Textar úr útgefnum bókum eru stærsti textaflokkurinn en einnig hefur málheildin að geyma texta úr dagblöðum, margvíslegum prentuðum tímaritum og frá opinberum aðilum.  Hafist var handa við gerð málheidlarinnar árið 2004 á Orðabók Háskólans og síðar undir merkjum Stofnunar Árna Magnússonar í íslenskum fræðum eftir að Orðabók Háskólans hafði sameinast Stofnun Árna Magnússonar á Ísland árið 2006. Málheildin var gerð aðgengileg árið 2013.",
+    "about_mim_cite": "Þegar birtar eru niðurstöður sem eru fengnar með því að nota gögn Markaðrar íslenskrar málheildar vinsamlegast vitnið í:",
+    "about_mim_cite2": "Sigrún Helgadóttir, Ásta Svavarsdóttir, Eiríkur Rögnvaldsson, Kristín Bjarnadóttir og Hrafn Loftsson. 2012. The Tagged Icelandic Corpus (MÍM). <i>Proceedings of the Workshop on Language Technology for Normalisation of Less-Resourced Languages -SaLTMiL 8 – AfLaT2012</i>,s. 67-72. Istanbúl, Tyrklandi.",
+    "about_otb": "Textasafn Íslenskrar orðtíðnibókar er mörkuð málheild og er safn um 590.000 lesmálsorða af texta. Málheildin samanstendur af brotum úr 100 textum sem voru gefnir út á tímabilinu 1980-1989, hvert með um 5.000 lesmálsorðum. Textarnir voru valdir úr fimm textaflokkum: íslenskum skáldverkum (20 textar), þýddum skáldverkum (20 textar), ævisögum og minningum (20 textar), fræðslutextum (10 á sviði hugvísinda, 10 á sviði raunvísinda) og barna- og unglingabókum (10 frumsamdir textar, 10 þýddir textar). Textasafnið sem málheildin byggir á var gert fyrir vinnslu Íslenskrar orðtíðnibókar sem Orðabók Háskólans gaf út 1991.",
+    "about_otb_cite": "Þegar birtar eru niðurstöður sem eru fengnar með því að nota gögn Orðtíðnibókarinnar vinsamlegast vitnið í:",
+    "about_otb_cite2": "Jörgen Pind (ritstj.), Friðrik Magnússon og Stefán Briem. 1991. <i>Íslensk orðtíðnibók.</i> Orðabók Háskólans, Reykjavík.",
+    "about_fornritin": "Þessi markaða málheild byggir á textum úr 41 Íslendingasögu, Sturlungu, Heimskringlu og Landnámabók, alls 1.511.275 orð (greinarmerki ekki talin með). Texti Íslendingasagna er úr útgáfu Svarts og hvítu frá 1985-1986. Texti Sturlungu er úr útgáfu Svarts og hvítu frá 1988. Texti Heimskringlu er úr útgáfu frá Máli og menningu frá árinu 1991. Stafsetning var umrituð til nútímastafsetningar og nokkrar beygingarendingar eru færðar til nútímamáls. Texti Landnámabókar úr útgáfu Jakobs Benediktssonar frá 1968 (Jakob Benediktsson 1968) var ljóslesinn og síðan færður til nútímastafsetningar á sama hátt.",
+    "about_fornritin_cite": "Þegar birtar eru niðurstöður rannsókna sem gerðar eru með aðstoð Fornritanna skal það gert þannig:",
+    "about_fornritin_cite2": "Eiríkur Rögnvaldsson og Sigrún Helgadóttir. Morphosyntactic Tagging of Old Icelandic Texts and Its Use in Studying Syntactic Variation and Change. Sporleder, Caroline, Antal P.J. van den Bosch og Kalliopi A. Zervanou (ritstj:): <i>Language Technology for Cultural Heritage: Selected Papers from the LaTeCH Workshop Series</i>. s. 63–76. Springer, Berlín.",
+    "about_parallel": "Í samhliða málheildinni eru textar á íslensku og ensku, þar sem málsgreinar eða hlutar málsgreina tungumálanna tveggja hafa verið pöruð saman. Alls inniheldur málheildin 3.561.789 paraðar línur. Textasöfnin sem málheildin byggir á eru alls ellefu. Voru textar yfirleitt fengnir úr tiltækum samhliða málheildum (Opus, Tilde, ELRC) eða sóttir af vefsíðum. Verkið var unnið á Stofnun Árna Magnússonar í íslenskum fræðum á árunum 2017 til 2018.",
+    "about_parallel_cite": "Þegar birtar eru niðurstöður rannsókna sem gerðar eru með aðstoð málheildarinnar skal það gert þannig:",
+    "about_parallel_cite2": "Starkaður Barkarson og Steinþór Steingrímsson. 2019. Compiling and Filtering ParIce:An English-Icelandic Parallel Corpus. <i>Proceedings of the 22nd Nordic Conference on Computational Linguistics (NoDaLiDa)</i>, s. 140-145. Turku, Finnlandi.",
+    "about_intro": "Hér er að finna fimm markaðar einmála málheildir og eina samhliða málheild. Mörkuð málheild er málheild þar sem öllum lesmálsorðum fylgir greiningarstrengur, mark, þar sem fram kemur orðflokkur og beygingarleg atriði og nefnimynd. Málfræðigreiningin gefur færi á markvissri leit í textunum. Auk þess fylgja einmála málheildunum upplýsingar um uppruna textans (s.s. titil, höfund og dagsetning). Samhliða málheildir innihalda texta á tveimur tungumálum þar sem setningar hafa verið paraðar saman. Í þeim má leita að einstaka orðmyndum á öðru hvoru tungumálinu og kalla þannig fram allar setningar þar sem orðmyndin kemur fyrir auk sambærilegra setninga á hinu tungumálinu. Nánari upplýsingar um málheildirnar má finna á <a target='_blank' href='http://www.malfong.is' target=_blank>www.malfong.is</a>. Þar er einnig hægt aðsækja textana til þess að nota í rannsóknum og í máltæknitólum.",
+    "about_body": "The Icelandic Gigaword corpus runs on Korp, which is the concordance search tool of Språkbanken (The Swedish Language Bank). For more information, visit <a href='http://spraakbanken.gu.se'><img style='max-width: 100px; vertical-align: middle' src='app/img/sb_logo.jpg'></a>.",
     "about_korp_header": "About the search tool",
     "about_cite": "Lars Borin, Markus Forsberg and Johan Roxendal. 2012. <a target='_blank' href='https://spraakbanken.gu.se/eng/publikationer/korp-%E2%80%93-corpus-infrastructure-sprakbanken'>Korp – the corpus infrastructure of Språkbanken</a>Proceedings of LREC 2012. Istanbul: ELRA, pages 474–478.<br><a href='https://spraakbanken.gu.se/publication/1822/bibtex'><img src='https://spraakbanken.gu.se/sites/spraakbanken.gu.se/modules/custom/gup_publications/images/bibtex.png' alt='BibTeX'></a>",
     "about_man": "Project Managers",
@@ -48,7 +65,7 @@
     "about_logo": "Logotype by",
     "about_contributors": "Special thanks",
     "warning_header": "Please note",
-    "footer_about_korp": "This tool is built on ",
+    "footer_about_korp": "This tool is based on ",
     "warning_body": "The dependency relations illustrated herein are the result of automated parsing.",
     "fail_text": "An error has occurred.",
     "corpus": "Corpus",
@@ -357,7 +374,7 @@
     "no_geo_info": "No location data available",
     "map_cluster": "Cluster",
 
-    "global_filter": "Filter",
+    "global_filter": "Filter:",
     "add_filter": "Add filter",
     "add_filter_value": "Add",
 
@@ -377,6 +394,6 @@
     "wordform": "word form",
 
     "results_by_corpus": "Results by corpus",
-
-    "get-user-guide": "View user guide (only in Icelandic)"
+    "get-user-guide": "View user guide (only in Icelandic)",
+    "reference-corpora": "How to reference the corpora"
 }
