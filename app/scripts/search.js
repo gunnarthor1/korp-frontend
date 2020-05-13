@@ -1,33 +1,42 @@
-window.view = {}
+/*
+ * decaffeinate suggestions:
+ * DS101: Remove unnecessary use of Array.from
+ * DS102: Remove unnecessary code created because of implicit returns
+ * DS104: Avoid inline assignments
+ * DS204: Change includes calls to have a more natural evaluation order
+ * DS207: Consider shorter variations of null checks
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+window.view = {};
 
-#**************
-# Search view objects
-#**************
+//**************
+// Search view objects
+//**************
 
-view.updateSearchHistory = (value, href) ->
-    filterParam = (url) ->
-        $.grep($.param.fragment(url).split("&"), (item) ->
-            item.split("=")[0] is "search" or item.split("=")[0] is "corpus"
-        ).join "&"
-    $("#search-history").empty()
-    searches = $.jStorage.get("searches") or []
-    searchLocations = $.map(searches, (item) ->
-        filterParam item.location
-    )
-    if value? and filterParam(href) not in searchLocations
-        searches.splice 0, 0,
-            label: value
+view.updateSearchHistory = function(value, href) {
+    let needle;
+    const filterParam = url => $.grep($.param.fragment(url).split("&"), item => (item.split("=")[0] === "search") || (item.split("=")[0] === "corpus")).join("&");
+    $("#search-history").empty();
+    const searches = $.jStorage.get("searches") || [];
+    const searchLocations = $.map(searches, item => filterParam(item.location));
+    if ((value != null) && (needle = filterParam(href), !Array.from(searchLocations).includes(needle))) {
+        searches.splice(0, 0, {
+            label: value,
             location: href
+        }
+        );
 
-        $.jStorage.set "searches", searches
-    return unless searches.length
-    opts = $.map(searches, (item) ->
-        output = $("<option />", value: item.location)
-        .text(item.label).get(0)
-        output
-    )
-    placeholder = $("<option>").localeKey("search-history").get(0)
-    clear = $("<option class='clear'>").localeKey("search-history-clear")
+        $.jStorage.set("searches", searches);
+    }
+    if (!searches.length) { return; }
+    const opts = $.map(searches, function(item) {
+        const output = $("<option />", {value: item.location})
+        .text(item.label).get(0);
+        return output;
+    });
+    const placeholder = $("<option>").localeKey("search-history").get(0);
+    const clear = $("<option class='clear'>").localeKey("search-history-clear");
 
-    $("#search-history").html(opts)
-        .prepend(clear)
+    return $("#search-history").html(opts)
+        .prepend(clear);
+};
