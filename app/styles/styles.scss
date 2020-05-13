@@ -1,5 +1,6 @@
 
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+// @import "bootstrap4-custom";
 @import "bootstrap-custom";
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
@@ -869,6 +870,10 @@ table {
   &:hover {
     color: #333;
   }
+  .plus-btn {
+      position: relative;
+      top: -1px;
+  }
 }
 
 .token_row {
@@ -1505,6 +1510,10 @@ table {
   #selected_sentence > h4:last-child {
     display: none;
   }
+
+  #selected_word > h4:last-child {
+    display : none;
+  }
 }
 
 .external_link {
@@ -2062,7 +2071,6 @@ label[for=lemgram_select]::before {
   }
 }
 
-.modal-header h3,
 .modal-header h2 {
   font-weight: normal;
   margin: 0 inherit;
@@ -2755,6 +2763,7 @@ warning ~ * {
   padding-top: .2em;
 
   li {
+    position: relative;
     cursor: pointer;
     margin-right: .2em;
   }
@@ -3425,4 +3434,15 @@ global-filters {
 .cite {
    padding-left:20px;
    font-size:0.9em;
+}
+.logos {
+    position: absolute;
+    right: 160px;
+    img {
+        padding:5px;
+        height: 68px;
+    }
+    .sb {
+      padding-bottom: 0;
+    }
 }

@@ -1,4 +1,8 @@
 
+let $ = require("jquery");
+window.jQuery = $;
+window.$ = $;
+
 require("slickgrid/slick.grid.css")
 require("./lib/jquery.reject.css")
 require("./styles/ui_mods.css")
@@ -9,15 +13,17 @@ require("leaflet/dist/leaflet.css")
 require("leaflet.markercluster/dist/MarkerCluster.css")
 require("geokorp/dist/styles/geokorp.css")
 require("components-jqueryui/themes/smoothness/jquery-ui.min.css")
+require("./styles/bootstrap4-custom.scss")
 require("./styles/styles.scss")
+require("./styles/textreader.css")
 
 window._ = require("lodash")
-window.$ = require("jquery")
-require("jquery-ui/ui/widget")
-require("jquery-ui/ui/widgets/sortable.js")
-require("jquery-ui/ui/widgets/dialog.js")
 
-window.angular = require("angular")
+require("components-jqueryui/ui/widget.js")
+require("components-jqueryui/ui/widgets/sortable.js")
+require("components-jqueryui/ui/widgets/dialog.js")
+
+require("angular")
 require("angular-ui-bootstrap/src/typeahead")
 require("angular-ui-bootstrap/src/tooltip")
 require("angular-ui-bootstrap/src/modal")
@@ -27,25 +33,26 @@ require("angular-ui-bootstrap/src/pagination")
 require("angular-ui-bootstrap/src/datepicker")
 require("angular-ui-bootstrap/src/timepicker")
 require("angular-ui-bootstrap/src/buttons")
+require("angular-ui-bootstrap/src/popover")
 
 require("angular-spinner")
 require("angular-ui-sortable/src/sortable")
 
 require("jreject")
-require("jquerybqq")
 require("jquerylocalize")
+require("jqueryhoverintent")
 require("./lib/jquery.format.js")
+
+let deparam = require("jquery-deparam")
 
 window.c = console
 window.isLab = window.location.pathname.split("/")[1] == "korplabb"
-window.currentMode = $.deparam.querystring().mode || "rmh2018"
+window.currentMode = deparam(window.location.search.slice(1)).mode || "rmh2018"
 
 // tmhDynamicLocale = require("angular-dynamic-locale/src/tmhDynamicLocale")
 require("angular-dynamic-locale/dist/tmhDynamicLocale.js")
 window.Raphael = require("raphael")
 
-require("jstorage")
-require("jquery-hoverintent")
 require("jquery-flot/jquery.flot.js")
 require("jquery-flot/jquery.flot.stack.js")
 
@@ -77,7 +84,7 @@ settings.markup = {
   msd: require("./markup/msd.html")
 }
 require("configjs")
-commonSettings = require("commonjs")
+let commonSettings = require("commonjs")
 // we need to put the exports on window so that the non-webpacked modes modes files
 // can use the exports
 _.map(commonSettings, function(v, k) {
@@ -87,30 +94,34 @@ _.map(commonSettings, function(v, k) {
   window[k] = v
 })
 
-
 require("./config/statistics_config.js")
-require("./scripts/statistics.coffee")
+require("./scripts/statistics.js")
 require("./scripts/cqp_parser/CQPParser.js")
-require("./scripts/cqp_parser/cqp.coffee")
-require("./scripts/util.coffee")
-require("./scripts/pie-widget.coffee")
-require("./scripts/search.coffee")
-require("./scripts/results.coffee")
-require("./scripts/model.coffee")
-require("./scripts/widgets.coffee")
-require("./scripts/main.coffee")
+require("./scripts/cqp_parser/cqp.js")
+require("./scripts/util.js")
+require("./scripts/pie-widget.js")
+require("./scripts/search.js")
+require("./scripts/results.js")
+require("./scripts/model.js")
+require("./scripts/widgets.js")
+require("./scripts/main.js")
 require("./scripts/selector_widget.js")
-require("./scripts/app.coffee")
-require("./scripts/search_controllers.coffee")
-require("./scripts/kwic_download.coffee")
-require("./scripts/result_controllers.coffee")
-require("./scripts/map_controllers.coffee")
-require("./scripts/video_controllers.coffee")
-require("./scripts/services.coffee")
-require("./scripts/extended.coffee")
-require("./scripts/struct_services.coffee")
-require("./scripts/directives.coffee")
-require("./scripts/filter_directives.coffee")
-require("./scripts/newsdesk.coffee")
+require("./scripts/app.js")
+require("./scripts/search_controllers.js")
+require("./scripts/kwic_download.js")
+require("./scripts/result_controllers.js")
+require("./scripts/map_controllers.js")
+require("./scripts/text_reader_controller.js")
+require("./scripts/video_controllers.js")
+require("./scripts/services.js")
+require("./scripts/extended.js")
+require("./scripts/struct_services.js")
+require("./scripts/directives.js")
+require("./scripts/filter_directives.js")
+require("./scripts/newsdesk.js")
+
+function requireAll(r) { r.keys().forEach(r) } 
+requireAll(require.context('customcss', true, /\.css$/))
+requireAll(require.context('customscripts', true, /\.js$/))
 
 require("./index.pug")
