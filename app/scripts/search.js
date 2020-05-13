@@ -1,3 +1,8 @@
+/* eslint-disable
+    no-unused-vars,
+*/
+// TODO: This file was created by bulk-decaffeinate.
+// Fix any style issues and re-enable lint.
 /*
  * decaffeinate suggestions:
  * DS101: Remove unnecessary use of Array.from
@@ -7,36 +12,36 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-window.view = {};
+window.view = {}
 
-//**************
+//* *************
 // Search view objects
-//**************
+//* *************
 
 view.updateSearchHistory = function(value, href) {
-    let needle;
-    const filterParam = url => $.grep($.param.fragment(url).split("&"), item => (item.split("=")[0] === "search") || (item.split("=")[0] === "corpus")).join("&");
-    $("#search-history").empty();
-    const searches = $.jStorage.get("searches") || [];
-    const searchLocations = $.map(searches, item => filterParam(item.location));
+    let needle
+    const filterParam = url => $.grep($.param.fragment(url).split("&"), item => (item.split("=")[0] === "search") || (item.split("=")[0] === "corpus")).join("&")
+    $("#search-history").empty()
+    const searches = $.jStorage.get("searches") || []
+    const searchLocations = $.map(searches, item => filterParam(item.location))
     if ((value != null) && (needle = filterParam(href), !Array.from(searchLocations).includes(needle))) {
         searches.splice(0, 0, {
             label: value,
             location: href
         }
-        );
+        )
 
-        $.jStorage.set("searches", searches);
+        $.jStorage.set("searches", searches)
     }
-    if (!searches.length) { return; }
+    if (!searches.length) { return }
     const opts = $.map(searches, function(item) {
-        const output = $("<option />", {value: item.location})
-        .text(item.label).get(0);
-        return output;
-    });
-    const placeholder = $("<option>").localeKey("search-history").get(0);
-    const clear = $("<option class='clear'>").localeKey("search-history-clear");
+        const output = $("<option />", { value: item.location })
+        .text(item.label).get(0)
+        return output
+    })
+    const placeholder = $("<option>").localeKey("search-history").get(0)
+    const clear = $("<option class='clear'>").localeKey("search-history-clear")
 
     return $("#search-history").html(opts)
-        .prepend(clear);
-};
+        .prepend(clear)
+}
