@@ -642,7 +642,7 @@ korpApp.factory("lexicons", function($q, $http) {
                         } else {
                             const eNodes = _.map(data.hits.hits, entry =>
                                 ({
-                                    "label" : entry._source.Sense[0].senseid.replace("swefn--", "")
+                                    "label" : entry._source.Sense[0].senseid.replace("swefn--", ""),
                                     "words" : entry._source.Sense[0].LU
                                 })
                         )

@@ -224,7 +224,7 @@ korpApp.controller("SimpleCtrl", function($scope, utils, $location, backend, $ro
                     orParts.push(regescape(token))
                 }
                 if (s.searchBy === 'lemma') {
-                    res = _.map(orParts, orPart => `lemma = "${orPart}"${suffix}`
+                    res = _.map(orParts, orPart => `lemma = "${orPart}"${suffix}`)
                 } else {
                     res = _.map(orParts, orPart => `word = "${orPart}"${suffix}`)
                 }

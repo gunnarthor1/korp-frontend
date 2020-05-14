@@ -43,14 +43,6 @@ module.exports = {
         use: 'imports-loader?this=>window'
       },
       {
-        test: /\.coffee$/,
-        use: [
-          {
-            loader: 'coffee-loader'
-          }
-        ]
-      },
-      {
         test: /\.pug$/i,
         exclude: [
           // does not work

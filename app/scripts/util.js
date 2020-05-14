@@ -18,11 +18,7 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 const folderImg = require("../img/folder.png")
-<<<<<<< HEAD
 const samLogo = require("../img/sam_logo.png")
-=======
-const korpIconImg = require("../img/korp_icon.png")
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
 const jRejectBackgroundImg = require("../img/browsers/background_browser.gif")
 require("../img/browsers/browser_chrome.gif")
 require("../img/browsers/browser_firefox.gif")
@@ -105,15 +101,9 @@ window.CorpusListing = class CorpusListing {
 
     getStructAttrsIntersection() {
         const attrs = this.mapSelectedCorpora(function(corpus) {
-<<<<<<< HEAD
-            for (const key in corpus.structAttributes) {
-                const value = corpus.structAttributes[key]
-                value.isStructAttr = true
-=======
             for (let key in corpus.structAttributes) {
                 const value = corpus.structAttributes[key]
                 value["isStructAttr"] = true
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             }
 
             return corpus.structAttributes
@@ -124,15 +114,9 @@ window.CorpusListing = class CorpusListing {
 
     getStructAttrs() {
         const attrs = this.mapSelectedCorpora(function(corpus) {
-<<<<<<< HEAD
-            for (const key in corpus.structAttributes) {
-                const value = corpus.structAttributes[key]
-                value.isStructAttr = true
-=======
             for (let key in corpus.structAttributes) {
                 const value = corpus.structAttributes[key]
                 value["isStructAttr"] = true
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             }
 
             // if a position attribute is declared as structural, include here
@@ -174,15 +158,9 @@ window.CorpusListing = class CorpusListing {
         let attrNames = []
         let attrs = {}
 
-<<<<<<< HEAD
-        for (const corpus of Array.from(this.selected)) {
-            if (filterType in corpus) {
-                for (const filter of Array.from(corpus[filterType])) {
-=======
         for (let corpus of Array.from(this.selected)) {
             if (filterType in corpus) {
                 for (let filter of Array.from(corpus[filterType])) {
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
                     if (!Array.from(attrNames).includes(filter)) {
                         attrNames.push(filter)
                     }
@@ -203,11 +181,7 @@ window.CorpusListing = class CorpusListing {
             const attrNames2 = []
             const attrs2 = {}
             const corpusCount = this.selected.length
-<<<<<<< HEAD
-            for (const attr of Array.from(attrNames)) {
-=======
             for (let attr of Array.from(attrNames)) {
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
                 if (attrs[attr].corpora.length === corpusCount) {
                     attrNames2.push(attr)
                     attrs2[attr] = attrs[attr]
@@ -225,15 +199,9 @@ window.CorpusListing = class CorpusListing {
         const intersection = this._mapping_intersection(attrs)
         $.each(union, function(key, value) {
             if (intersection[key] == null) {
-<<<<<<< HEAD
-                return value.disabled = true
-            } else {
-                return delete value.disabled
-=======
                 return value["disabled"] = true
             } else {
                 return delete value["disabled"]
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             }
     })
 
@@ -242,11 +210,7 @@ window.CorpusListing = class CorpusListing {
 
     // returns true if coprus has all attrs, else false
     corpusHasAttrs(corpus, attrs) {
-<<<<<<< HEAD
-        for (const attr of Array.from(attrs)) {
-=======
         for (let attr of Array.from(attrs)) {
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             if ((attr !== "word") && !(attr in $.extend({}, this.struct[corpus].attributes, this.struct[corpus].structAttributes))) {
                 return false
             }
@@ -270,11 +234,7 @@ window.CorpusListing = class CorpusListing {
     getContextQueryString(prefer, avoid) {
         const output = (() => {
             const result = []
-<<<<<<< HEAD
-            for (const corpus of Array.from(this.selected)) {
-=======
             for (let corpus of Array.from(this.selected)) {
->>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
                 const contexts = _.keys(corpus.context)
                 if (!Array.from(contexts).includes(prefer)) {
                     if ((contexts.length > 1) && Array.from(contexts).includes(avoid)) {
