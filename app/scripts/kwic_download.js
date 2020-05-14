@@ -1,5 +1,6 @@
 /* eslint-disable
     no-tabs,
+    no-undef,
     no-unused-vars,
     no-use-before-define,
 */
@@ -26,44 +27,46 @@ korpApp.factory("kwicDownload", function() {
 
     const createFile = function(dataType, fileType, content) {
         const date = moment().format("YYYYDDMM_HHmmss")
-        const filename = "korp_" + dataType + "_" + date + "." + fileType
-        const blobURL = window.URL.createObjectURL(new Blob([content], { type: "text/" + fileType }))
+        const filename = `korp_${dataType}_${date}.${fileType}`
+        const blobURL = window.URL.createObjectURL(new Blob([content], { type: `text/${fileType}` }))
         return [filename, blobURL]
     }
 
-    const padRows = (data, length) => _.map(data, function(row) {
-        const newRow = emptyRow(length)
-        newRow[0] = row
-        return newRow
-    })
+    const padRows = (data, length) =>
+        _.map(data, function(row) {
+            const newRow = emptyRow(length)
+            newRow[0] = row
+            return newRow
+        })
+    
 
     const createSearchInfo = function(requestInfo, totalHits) {
         const rows = []
         const fields = ["cqp", "context", "within", "sorting", "start", "end", "hits"]
-        for (const field of Array.from(fields)) {
+        for (let field of Array.from(fields)) {
             var row
             if (field === "cqp") {
-                row = "## CQP query: " + requestInfo.cqp
+                row = `## CQP query: ${requestInfo.cqp}`
             }
             if (field === "context") {
-                row = "## context: " + requestInfo.default_context
+                row = `## context: ${requestInfo.default_context}`
             }
             if (field === "within") {
-                row = "## within: " + requestInfo.default_within
+                row = `## within: ${requestInfo.default_within}`
             }
             if (field === "sorting") {
                 const sorting = requestInfo.sort || "none"
-                row = "## sorting: " + sorting
+                row = `## sorting: ${sorting}`
             }
             if (field === "start") {
-                row = "## start: " + requestInfo.start
+                row = `## start: ${requestInfo.start}`
             }
             if (field === "end") {
                 const cqpQuery = ""
-                row = "## end: " + requestInfo.end
+                row = `## end: ${requestInfo.end}`
             }
             if (field === "hits") {
-                row = "## Total hits: " + totalHits
+                row = `## Total hits: ${totalHits}`
             }
             rows.push(row)
         }
@@ -75,18 +78,18 @@ korpApp.factory("kwicDownload", function() {
         const columnCount = headers.length + 1
         const res = padRows(searchInfo, columnCount)
         res.push(["match"].concat(headers)) 
-        for (const row of Array.from(data)) {
+        for (let row of Array.from(data)) {
             if (row.tokens) {
                 const textAttributes = []
-                for (const attrName  in row.structs) {
+                for (let attrName  in row.structs) {
                     const attrValue = row.structs[attrName]
                     textAttributes.push((attrName + ": \"" + attrValue + "\""))
                 }
                 const hitInfo = emptyRow(columnCount)
-                hitInfo[0] = "# " + corpus + "; text attributes: " + textAttributes.join(", ")
+                hitInfo[0] = `# ${corpus}; text attributes: ${textAttributes.join(", ")}`
                 res.push(hitInfo)
                 
-                for (const token of Array.from(row.tokens || [])) {
+                for (let token of Array.from(row.tokens || [])) {
                     var match
                     if ((token.position >= row.match.start) && (token.position < row.match.end)) {
                         match = "***"
@@ -94,7 +97,7 @@ korpApp.factory("kwicDownload", function() {
                         match = ""
                     }
                     const newRow = [match]
-                    for (const field of Array.from(headers)) {
+                    for (let field of Array.from(headers)) {
                         newRow.push(token[field])
                     }
                     res.push(newRow)

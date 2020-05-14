@@ -1,7 +1,10 @@
 /* eslint-disable
     no-return-assign,
     no-undef,
+<<<<<<< HEAD
     no-unused-vars,
+=======
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
     no-useless-escape,
 */
 // TODO: This file was created by bulk-decaffeinate.
@@ -15,7 +18,11 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 const folderImg = require("../img/folder.png")
+<<<<<<< HEAD
 const samLogo = require("../img/sam_logo.png")
+=======
+const korpIconImg = require("../img/korp_icon.png")
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
 const jRejectBackgroundImg = require("../img/browsers/background_browser.gif")
 require("../img/browsers/browser_chrome.gif")
 require("../img/browsers/browser_firefox.gif")
@@ -98,9 +105,15 @@ window.CorpusListing = class CorpusListing {
 
     getStructAttrsIntersection() {
         const attrs = this.mapSelectedCorpora(function(corpus) {
+<<<<<<< HEAD
             for (const key in corpus.structAttributes) {
                 const value = corpus.structAttributes[key]
                 value.isStructAttr = true
+=======
+            for (let key in corpus.structAttributes) {
+                const value = corpus.structAttributes[key]
+                value["isStructAttr"] = true
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             }
 
             return corpus.structAttributes
@@ -111,9 +124,15 @@ window.CorpusListing = class CorpusListing {
 
     getStructAttrs() {
         const attrs = this.mapSelectedCorpora(function(corpus) {
+<<<<<<< HEAD
             for (const key in corpus.structAttributes) {
                 const value = corpus.structAttributes[key]
                 value.isStructAttr = true
+=======
+            for (let key in corpus.structAttributes) {
+                const value = corpus.structAttributes[key]
+                value["isStructAttr"] = true
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             }
 
             // if a position attribute is declared as structural, include here
@@ -155,9 +174,15 @@ window.CorpusListing = class CorpusListing {
         let attrNames = []
         let attrs = {}
 
+<<<<<<< HEAD
         for (const corpus of Array.from(this.selected)) {
             if (filterType in corpus) {
                 for (const filter of Array.from(corpus[filterType])) {
+=======
+        for (let corpus of Array.from(this.selected)) {
+            if (filterType in corpus) {
+                for (let filter of Array.from(corpus[filterType])) {
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
                     if (!Array.from(attrNames).includes(filter)) {
                         attrNames.push(filter)
                     }
@@ -178,7 +203,11 @@ window.CorpusListing = class CorpusListing {
             const attrNames2 = []
             const attrs2 = {}
             const corpusCount = this.selected.length
+<<<<<<< HEAD
             for (const attr of Array.from(attrNames)) {
+=======
+            for (let attr of Array.from(attrNames)) {
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
                 if (attrs[attr].corpora.length === corpusCount) {
                     attrNames2.push(attr)
                     attrs2[attr] = attrs[attr]
@@ -196,9 +225,15 @@ window.CorpusListing = class CorpusListing {
         const intersection = this._mapping_intersection(attrs)
         $.each(union, function(key, value) {
             if (intersection[key] == null) {
+<<<<<<< HEAD
                 return value.disabled = true
             } else {
                 return delete value.disabled
+=======
+                return value["disabled"] = true
+            } else {
+                return delete value["disabled"]
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             }
     })
 
@@ -207,7 +242,11 @@ window.CorpusListing = class CorpusListing {
 
     // returns true if coprus has all attrs, else false
     corpusHasAttrs(corpus, attrs) {
+<<<<<<< HEAD
         for (const attr of Array.from(attrs)) {
+=======
+        for (let attr of Array.from(attrs)) {
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
             if ((attr !== "word") && !(attr in $.extend({}, this.struct[corpus].attributes, this.struct[corpus].structAttributes))) {
                 return false
             }
@@ -231,7 +270,11 @@ window.CorpusListing = class CorpusListing {
     getContextQueryString(prefer, avoid) {
         const output = (() => {
             const result = []
+<<<<<<< HEAD
             for (const corpus of Array.from(this.selected)) {
+=======
+            for (let corpus of Array.from(this.selected)) {
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
                 const contexts = _.keys(corpus.context)
                 if (!Array.from(contexts).includes(prefer)) {
                     if ((contexts.length > 1) && Array.from(contexts).includes(avoid)) {
@@ -252,7 +295,7 @@ window.CorpusListing = class CorpusListing {
 
         const output = (() => {
             const result = []
-            for (const corpus of Array.from(this.selected)) {
+            for (let corpus of Array.from(this.selected)) {
                 const withins = _.keys(corpus.within)
                 if (!Array.from(withins).includes(defaultWithin)) {
                     result.push(corpus.id.toUpperCase() + ":" + withins[0])
@@ -354,7 +397,7 @@ window.CorpusListing = class CorpusListing {
 
         const attrs = (() => {
             const result = []
-            for (const key in allAttrs) {
+            for (let key in allAttrs) {
                 const obj = allAttrs[key]
                 if (obj.displayType !== "hidden") {
                     result.push(_.extend({ group : "word_attr", value : key }, obj))
@@ -379,7 +422,7 @@ window.CorpusListing = class CorpusListing {
         let sentAttrs = (() => {
             const result = []
             const object = _.extend({}, common, allAttrs)
-            for (const key in object) {
+            for (let key in object) {
                 const obj = object[key]
                 if (obj.displayType !== "hidden") {
                      result.push(_.extend({ group : "sentence_attr", value : key }, obj))
@@ -394,14 +437,14 @@ window.CorpusListing = class CorpusListing {
     }
 
     getAttributeGroups(lang) {
-        // words = @getWordGroup false
+        // words = @getWordGroup false // TODO: Skoða betur seinna, gæti brotið eitthvað const words = this.getWordGroup(false)
         const attrs = this.getWordAttributeGroups(lang, 'union')
         const sentAttrs = this.getStructAttributeGroups(lang, 'union')
-        return attrs.concat(sentAttrs)
+        return attrs.concat(sentAttrs) // return words.concat(attrs, sentAttrs)
     }
 
     getStatsAttributeGroups(lang) {
-        // words = @getWordGroup true
+        // words = @getWordGroup true // const words = this.getWordGroup(true)
 
         const wordOp = settings.reduceWordAttributeSelector || "union"
         const attrs = this.getWordAttributeGroups(lang, wordOp)
@@ -409,7 +452,7 @@ window.CorpusListing = class CorpusListing {
         const structOp = settings.reduceStructAttributeSelector || "union"
         const sentAttrs = this.getStructAttributeGroups(lang, structOp)
 
-        return attrs.concat(sentAttrs)
+        return attrs.concat(sentAttrs) // return words.concat(attrs, sentAttrs)
     }
 }
 
@@ -449,7 +492,7 @@ window.ParallelCorpusListing = class ParallelCorpusListing extends CorpusListing
         const corpora = _.filter(this.selected, item => item.lang === lang)
         const struct = _.reduce(corpora, (a, b) => $.extend({}, a.structAttributes, b.structAttributes)
         , {})
-        $.each(struct, (key, val) => val.isStructAttr = true)
+        $.each(struct, (key, val) => val["isStructAttr"] = true)
 
         return struct
     }
@@ -457,9 +500,9 @@ window.ParallelCorpusListing = class ParallelCorpusListing extends CorpusListing
     getStructAttrsIntersection(lang) {
         const corpora = _.filter(this.selected, item => item.lang === lang)
         const attrs = _.map(corpora, function(corpus) {
-            for (const key in corpus.structAttributes) {
+            for (let key in corpus.structAttributes) {
                 const value = corpus.structAttributes[key]
-                value.isStructAttr = true
+                value["isStructAttr"] = true
             }
 
             return corpus.structAttributes
@@ -479,7 +522,7 @@ window.ParallelCorpusListing = class ParallelCorpusListing extends CorpusListing
     getEnabledByLang(lang, andSelf, flatten) {
         if (andSelf == null) { andSelf = false }
         if (flatten == null) { flatten = true }
-        const corps = _.filter(this.selected, item => item.lang === lang)
+        const corps = _.filter(this.selected, item => item["lang"] === lang)
         const output = _(corps).map(item => {
             return this.getLinked(item, andSelf)
         }).value()
@@ -612,9 +655,9 @@ window.initLocales = function() {
     const defs = []
     window.loc_data = {}
     const def = $.Deferred()
-    for (const lang of Array.from(settings.languages)) {
+    for (let lang of Array.from(settings.languages)) {
         loc_data[lang] = {}
-        for (const pkg of Array.from(packages)) {
+        for (let pkg of Array.from(packages)) {
             (function(lang, pkg) {
                 let file = pkg + "-" + lang + '.json'
                 file = prefix + "/" + file
@@ -642,7 +685,7 @@ window.safeApply = function(scope, fn) {
 }
 
 window.util.setLogin = function() {
-    for (const corp of Array.from(authenticationProxy.loginObj.credentials)) {
+    for (let corp of Array.from(authenticationProxy.loginObj.credentials)) {
         $(`#hpcorpus_${corp.toLowerCase()}`)
             .closest(".boxdiv.disabled").removeClass("disabled")
     }
@@ -749,7 +792,7 @@ util.isLemgramId = lemgram => lemgram.search(util.lemgramRegexp) !== -1
 
 util.splitLemgram = function(lemgram) {
     if (!util.isLemgramId(lemgram)) {
-        throw new Error("Input to util.splitLemgram is not a lemgram: " + lemgram)
+        throw new Error(`Input to util.splitLemgram is not a lemgram: ${lemgram}`)
     }
     const keys = ["morph", "form", "pos", "index", "startIndex"]
     const splitArray = lemgram.match(/((\w+)--)?(.*?)\.\.(\w+)\.(\d\d?)(\:\d+)?$/).slice(2)
@@ -814,7 +857,7 @@ util.setDownloadLinks = function(xhr_settings, result_data) {
         const option = $(`\
 <option
     value="${format}"
-    title="${util.getLocaleString('formatdescr_' + format)}"
+    title="${util.getLocaleString(`formatdescr_${format}`)}"
     class="download_link">${format.toUpperCase()}</option>\
 `
         )
@@ -824,7 +867,7 @@ util.setDownloadLinks = function(xhr_settings, result_data) {
                 $.deparam.querystring(xhr_settings.url)),
             format,
             korp_url: window.location.href,
-            korp_server_url: settings.cgiScript,
+            korp_server_url: settings.korpBackendURL,
             corpus_config: JSON.stringify(result_corpora_settings),
             corpus_config_info_keys: [
                 'metadata',
@@ -871,7 +914,7 @@ util.loadCorporaFolderRecursive = function(first_level, folder) {
     if (first_level) {
         outHTML = "<ul>"
     } else {
-        outHTML = "<ul title=\"" + folder.title + "\" description=\"" + escape(folder.description) + "\">"
+        outHTML = `<ul title="${folder.title}" description="${escape(folder.description)}">`
     }
     if (folder) { // This check makes the code work even if there isn't a ___settings.corporafolders = {};___ in config.js
         // Folders
@@ -880,9 +923,9 @@ util.loadCorporaFolderRecursive = function(first_level, folder) {
         })
 
         // Corpora
-        if (folder.contents && (folder.contents.length > 0)) {
+        if (folder["contents"] && (folder["contents"].length > 0)) {
             $.each(folder.contents, function(key, value) {
-                outHTML += "<li id=\"" + value + "\">" + settings.corpora[value].title + "</li>"
+                outHTML += `<li id="${value}">${settings.corpora[value]["title"]}</li>`
                 added_corpora_ids.push(value)
             })
         }
@@ -891,7 +934,7 @@ util.loadCorporaFolderRecursive = function(first_level, folder) {
     if (first_level) {
 
         // Add all corpora which have not been added to a corpus
-        for (const val in settings.corpora) {
+        for (let val in settings.corpora) {
             let cont = false
             // continue if it is a duplicate corpus (due to parallel corpora)
             if (settings.corpora[val].hide) {
@@ -916,7 +959,7 @@ util.loadCorporaFolderRecursive = function(first_level, folder) {
 util.prettyNumbers = function(numstring) {
     const regex = /(\d+)(\d{3})/
     let outStrNum = numstring.toString()
-    while (regex.test(outStrNum)) { outStrNum = outStrNum.replace(regex, "$1<span rel=\"localize[util_numbergroupseparator]\">" + util.getLocaleString("util_numbergroupseparator") + "</span>" + "$2") }
+    while (regex.test(outStrNum)) { outStrNum = outStrNum.replace(regex, `$1<span rel="localize[util_numbergroupseparator]">${util.getLocaleString("util_numbergroupseparator")}</span>$2`) }
 
     return outStrNum
 }
@@ -934,7 +977,7 @@ util.suffixedNumbers = function(num) {
     } else if (num >= 1e12) { // 232,21T
         out = (num / 1e12).toFixed(2).toString() + "T"
     }
-    return out.replace(".","<span rel=\"localize[util_decimalseparator]\">" + util.getLocaleString("util_decimalseparator") + "</span>")
+    return out.replace(".",`<span rel="localize[util_decimalseparator]">${util.getLocaleString("util_decimalseparator")}</span>`)
 }
 
 // Goes through the settings.corporafolders and recursively adds the settings.corpora hierarchically to the corpus chooser widget
@@ -955,7 +998,7 @@ util.loadCorpora = function() {
                 baseLangTokenHTML = `${util.getLocaleString("corpselector_numberoftokens")}: <b>${util.prettyNumbers(settings.corpora[baseLang].info.Size)}
 </b> (${util.getLocaleString(settings.corpora[baseLang].lang)})<br/>\
 `
-                const baseLangSentenceHTML = `${util.getLocaleString("corpselector_numberofsentences")}: <b>${util.prettyNumbers(settings.corpora[baseLang].info.Sentences)}
+                let baseLangSentenceHTML = `${util.getLocaleString("corpselector_numberofsentences")}: <b>${util.prettyNumbers(settings.corpora[baseLang].info.Sentences)}
 </b> (${util.getLocaleString(settings.corpora[baseLang].lang)})<br/>\
 `
                 baseLangParagraphHTML = `${util.getLocaleString("corpselector_numberofparagraphs")}: <b>${util.prettyNumbers(settings.corpora[baseLang].info.Paragraphs)}
@@ -967,8 +1010,8 @@ util.loadCorpora = function() {
                 baseLangParagraphHTML = ""
             }
 
-            const numParagraphs = corpusObj.info.Paragraphs
-            let lastUpdate = corpusObj.info.Updated
+            const numSentences = corpusObj["info"]["Paragraphs"]
+            let lastUpdate = corpusObj["info"]["Updated"]
             if (!lastUpdate) { lastUpdate = "?" }
             let paragraphString = "-"
             if (numParagraphs) { paragraphString = util.prettyNumbers(numParagraphs.toString()) }
@@ -1000,16 +1043,14 @@ ${util.getLocaleString("corpselector_lastupdate")}:
         },
 
         infoPopupFolder(indata) {
-            const {
-                corporaID
-            } = indata
+            const { corporaID } = indata
             const desc = indata.description
             let totalTokens = 0
             let totalParagraphs = 0
             let missingParagraphData = false
             $(corporaID).each(function(key, oneID) {
-                totalTokens += parseInt(settings.corpora[oneID].info.Size)
-                const oneCorpusParagraphs = settings.corpora[oneID].info.Paragraphs
+                totalTokens += parseInt(settings.corpora[oneID]["info"]["Size"])
+                const oneCorpusParagraphs = settings.corpora[oneID]["info"]["Paragraphs"]
                 if (oneCorpusParagraphs) {
                     totalParagraphs += parseInt(oneCorpusParagraphs)
                 } else {
@@ -1027,7 +1068,7 @@ ${util.getLocaleString("corpselector_lastupdate")}:
             } else {
                 glueString = util.getLocaleString("corpselector_corporawith_plur")
             }
-            return "<b><img src=\"" + folderImg + "\" style=\"margin-right:4px; vertical-align:middle; margin-top:-1px\"/>" + indata.title + "</b><br/><br/>" + maybeInfo + "<b>" + corporaID.length + "</b> " + glueString + ":<br/><br/><b>" + util.prettyNumbers(totalTokens.toString()) + "</b> " + util.getLocaleString("corpselector_tokens_accusative") + "<br/><b>" + totalParagraphsString + "</b> " + util.getLocaleString("corpselector_paragraphs")
+            return `<b><img src="${folderImg}" style="margin-right:4px; vertical-align:middle; margin-top:-1px"/>${indata.title}</b><br/><br/>${maybeInfo}<b>${corporaID.length}</b> ${glueString}:<br/><br/><b>${util.prettyNumbers(totalTokens.toString())}</b> ${util.getLocaleString("corpselector_tokens_accusative")}<br/><b>${totalSentencesString}</b> ${util.getLocaleString("corpselector_paragraphs")}`
         }
     }).bind("corpuschooserchange", function(evt, corpora) {
         c.log("corpuschooserchange", corpora)

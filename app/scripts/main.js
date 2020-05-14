@@ -4,7 +4,6 @@
     no-undef,
     no-unused-vars,
     no-use-before-define,
-    prefer-const,
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
@@ -34,7 +33,7 @@ if (creds) {
 
 // rewriting old url format to the angular one
 if(location.hash.length && (location.hash[1] !== "?")) {
-    location.hash = "#?" + _.trimStart(location.hash, "#")
+    location.hash = `#?${_.trimStart(location.hash, "#")}`
 }
 
 const t = $.now()
@@ -50,9 +49,7 @@ $.ajaxPrefilter("json", function(options, orig, jqXHR) {
 
 const deferred_domReady = $.Deferred(function(dfd) {
     $(function() {
-        let {
-            mode
-        } = $.deparam.querystring()
+        let { mode } = $.deparam.querystring()
         // fix til að mode birtist í url        
         if (!mode) {
 
@@ -60,7 +57,6 @@ const deferred_domReady = $.Deferred(function(dfd) {
             const newURL = $.param.querystring($.param.querystring(), { mode })
             window.location.href = newURL
         }
-
         return $.getScript(`modes/${mode}_mode.js`).done(() => dfd.resolve()).fail((jqxhr, settings, exception) => c.error("Mode file parsing error: ", exception))
     })
     return dfd
@@ -102,7 +98,7 @@ $.when(loc_dfd, deferred_domReady).then(function(loc_data) {
     }
 
     try {
-        const corpus = locationSearch().corpus
+        const corpus = locationSearch()["corpus"]
         if (corpus) {
             settings.corpusListing.select(corpus.split(","))
         }
@@ -115,7 +111,7 @@ $.when(loc_dfd, deferred_domReady).then(function(loc_data) {
 
     if (isLab) { $("body").addClass("lab") }
 
-    $("body").addClass("mode-" + currentMode)
+    $("body").addClass(`mode-${currentMode}`)
     const mainLogoFig = document.getElementById("main_logo").firstChild
     switch (currentMode) {
         case "mim":
@@ -165,9 +161,7 @@ $.when(loc_dfd, deferred_domReady).then(function(loc_data) {
             $("#languages").radioList("select", newLang)
         }
 
-        const {
-            display
-        } = locationSearch()
+        const { display } = locationSearch()
 
         if (isInit) {
             util.localize()
@@ -235,7 +229,7 @@ window.getAllCorporaInFolders = function(lastLevel, folderOrCorpus) {
 
 
         // And add the corpora in this folder level
-        outCorpora = outCorpora.concat(lastLevel[folderOrCorpus].contents)
+        outCorpora = outCorpora.concat(lastLevel[folderOrCorpus]["contents"])
     } else {
 
         // Corpus
@@ -276,7 +270,7 @@ window.initTimeGraph = function(def) {
             if (!all_timestruct) {
                 return
             }
-            for (const corpus in dataByCorpus) {
+            for (let corpus in dataByCorpus) {
                 let struct = dataByCorpus[corpus]
                 if (corpus !== "time") {
                     const cor = settings.corpora[corpus.toLowerCase()]
@@ -302,11 +296,13 @@ window.initTimeGraph = function(def) {
                 // the height of the graph
                 const one_px = max / 46
 
-                const normalize = array => _.map(array, function(item) {
-                    const out = [].concat(item)
-                    if ((out[1] < one_px) && (out[1] > 0)) { out[1] = one_px }
-                    return out
-                })
+                const normalize = array =>
+                    _.map(array, function(item) {
+                        const out = [].concat(item)
+                        if ((out[1] < one_px) && (out[1] > 0)) { out[1] = one_px }
+                        return out
+                    })
+                
 
                 const output = _(settings.corpusListing.selected)
                     .map("time")
@@ -347,7 +343,8 @@ window.initTimeGraph = function(def) {
                     { data: normalize(timestruct) }
                 ]
                 if (restdata) {
-                    plots.push({ data: normalize([[restyear, restdata]]) })
+                    plots.push({
+                        data: normalize([[restyear, restdata]]) })
                 }
 
                 const plot = $.plot($("#time_graph"), plots, {

@@ -1,5 +1,6 @@
 /* eslint-disable
     no-return-assign,
+    no-undef,
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
@@ -24,13 +25,15 @@ korpApp.factory("extendedComponents", function() {
 </div>\
 `
     const selectTemplate = "<select ng-model='input' escaper ng-options='tuple[0] as tuple[1] for tuple in dataset'></select>"
-    const localize = $scope => function(str) {
-        if (!$scope.translationKey) {
-            return str
-        } else {
-            return util.getLocaleString( ($scope.translationKey || "") + str)
+    const localize = $scope =>
+        function(str) {
+            if (!$scope.translationKey) {
+                return str
+            } else {
+                return util.getLocaleString( ($scope.translationKey || "") + str)
+            }
         }
-    }
+    
 
     const selectController = autocomplete => ["$scope", "structService", function($scope, structService) {
         const attribute = $scope.$parent.tokenValue.value
@@ -38,7 +41,7 @@ korpApp.factory("extendedComponents", function() {
 
         // check which corpora support attributes
         const corpora = []
-        for (const corpusSettings of Array.from(selectedCorpora)) {
+        for (let corpusSettings of Array.from(selectedCorpora)) {
             if (attribute in corpusSettings.structAttributes || (attribute in corpusSettings.attributes)) {
                 corpora.push(corpusSettings.id)
             }
@@ -54,7 +57,7 @@ korpApp.factory("extendedComponents", function() {
             const localizer = localize($scope)
             // console.log("getStructValues data", data)
 
-            const dataset = _.map((_.uniq(data)), function(item) {
+            const dataset = _.map((_.uniq(data)), function(item) { 
                 if (item === "") {
                     return [item, util.getLocaleString("empty")]
                 }
@@ -153,11 +156,11 @@ korpApp.factory("extendedComponents", function() {
             $scope.makeSensitive = function() {
                 $scope.case = "sensitive"
                 $scope.title = "case_sensitive"
-                return ($scope.orObj.flags != null ? delete $scope.orObj.flags.c : undefined)
+                return ($scope.orObj.flags != null ? delete $scope.orObj.flags["c"] : undefined)
             }
-            $scope.makeInsensitive = function() {
+            return $scope.makeInsensitive = function() {
                 const flags = ($scope.orObj.flags || {})
-                flags.c = true
+                flags["c"] = true
                 $scope.orObj.flags = flags
 
                 $scope.case = "insensitive"
@@ -182,6 +185,11 @@ korpApp.factory("extendedComponents", function() {
                 $scope.orObj.op = '*='
                 $scope.orObj.val = '.*'
                 return $scope.input = $scope.orObj.val
+            }
+        }
+        ]
+    }
+})
             }
         }
         ]

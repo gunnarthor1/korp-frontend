@@ -1,5 +1,6 @@
 /* eslint-disable
     no-return-assign,
+    no-undef,
     no-unused-vars,
 */
 // TODO: This file was created by bulk-decaffeinate.
@@ -65,11 +66,11 @@ korpApp.controller("VideoInstanceCtrl", function($scope, $compile, $timeout, $ui
         let sMins = String(mins + ":")
         
         if ((sMins.length === 2) && sHours) {
-            sMins = "0" + sMins
+            sMins = `0${sMins}`
         }
         let secs = String(Math.floor(d.asSeconds()) - (hours * 3600) - (mins * 60))
         if (secs.length === 1) {
-            secs = "0" + secs
+            secs = `0${secs}`
         }
 
         return sHours + sMins + secs
@@ -86,7 +87,7 @@ korpApp.controller("VideoInstanceCtrl", function($scope, $compile, $timeout, $ui
         const videoElem = angular.element("#korp-video")
 
         // workaround for firefox problem, not possible to create source-elem in template
-        for (const videoData of Array.from(items)) {
+        for (let videoData of Array.from(items)) {
             const srcElem = angular.element('<source>')
             srcElem.attr('src', videoData.url)
             srcElem.attr('type', videoData.type)

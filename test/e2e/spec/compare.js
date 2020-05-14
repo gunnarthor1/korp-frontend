@@ -25,7 +25,7 @@ describe("compare", function() {
     }
         
     const saveSearch = function(name) {
-        element(By.css(".search-submit .opener")).click()
+        element(By.css(".search_submit .opener")).click()
         const input = element(By.css("#cmp_input"))
         input.sendKeys(name)
         return element(By.css(".popover.compare.bottom .btn")).click()
@@ -33,40 +33,44 @@ describe("compare", function() {
 
     const getCompareTabHeading = () => (element.all(By.css(".search_tabs .nav-tabs li"))).last()
 
-    it("should be possible to save searches", () => browser.get(browser.params.url + "#?corpus=suc2").then(function() {
-    
-        selectLemgram("gå")
-        saveSearch("gå")
+    it("should be possible to save searches", () =>
+        browser.get(browser.params.url + "#?corpus=suc2").then(function() {
         
-        const compareTabHeading = getCompareTabHeading()
-        
-        expect(compareTabHeading.getText()).toBe("Jämförelse 1")
-        
-        selectLemgram("springa")
-        saveSearch("springa")
-        
-        return expect(compareTabHeading.getText()).toBe("Jämförelse 2")
-    }))
-    
-    return it("should work for simple word comparison", () => browser.get(browser.params.url + "#?corpus=suc2").then(function() {
-    
-        selectLemgram("gå")
-        saveSearch("gå")
-        
-        selectLemgram("springa")
-        saveSearch("springa")
-        
-        getCompareTabHeading().click();
-        
-        (element.all(By.css(".search_compare button"))).last().click()
-        
-        const negativeMeters = element.all(By.css(".compare_result .negative li"))
-        const positiveMeters = element.all(By.css(".compare_result .positive li"))
-
-        negativeMeters.first().getText().then(text => expect(text.replace(/\n/g, " ")).toBe("går 879"))
+            selectLemgram("gå")
+            saveSearch("gå")
             
-        return positiveMeters.first().getText().then(text => expect(text.replace(/\n/g, " ")).toBe("sprang 45"))
-    }))
+            const compareTabHeading = getCompareTabHeading()
+            
+            expect(compareTabHeading.getText()).toBe("Jämförelse 1")
+            
+            selectLemgram("springa")
+            saveSearch("springa")
+            
+            return expect(compareTabHeading.getText()).toBe("Jämförelse 2")
+        })
+    )
+    
+    return it("should work for simple word comparison", () =>
+        browser.get(browser.params.url + "#?corpus=suc2").then(function() {
+        
+            selectLemgram("gå")
+            saveSearch("gå")
+            
+            selectLemgram("springa")
+            saveSearch("springa")
+            
+            getCompareTabHeading().click();
+            
+            (element.all(By.css(".search_compare button"))).last().click()
+            
+            const negativeMeters = element.all(By.css(".compare_result .negative li"))
+            const positiveMeters = element.all(By.css(".compare_result .positive li"))
+    
+            negativeMeters.first().getText().then(text => expect(text.replace(/\n/g, " ")).toBe("går 879"))
+                
+            return positiveMeters.first().getText().then(text => expect(text.replace(/\n/g, " ")).toBe("sprang 45"))
+        })
+    )
 })
 
             // todo fails because if weird NaN error on start & end parameters

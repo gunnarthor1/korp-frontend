@@ -11,7 +11,6 @@
     no-unused-expressions,
     no-unused-vars,
     no-useless-escape,
-    prefer-const,
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
@@ -26,7 +25,7 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-const errorImg = require("../img/error_message.png")
+const korpFailImg = require("../img/error_message.png")
 
 class BaseResults {
     constructor(resultSelector, tabSelector, scope) {
@@ -44,8 +43,8 @@ class BaseResults {
 
     onProgress(progressObj) {
         return safeApply(this.s, () => {
-            this.s.$parent.progress = Math.round(progressObj.stats)
-            return this.s.hits_display = util.prettyNumbers(progressObj.total_results)
+            this.s.$parent.progress = Math.round(progressObj["stats"])
+            return this.s.hits_display = util.prettyNumbers(progressObj["total_results"])
         })
     }
 
@@ -84,8 +83,8 @@ class BaseResults {
         c.error("json fetch error: ", data)
         this.hidePreloader()
         this.resetView()
-        return $('<object class="korp_fail" type="image/svg+xml" data="' + korpFailImg + '">')
-            .append("<img class='korp_fail' src='" + korpFailImg + "'>")
+        return $(`<object class="korp_fail" type="image/svg+xml" data="${korpFailImg}">`)
+            .append(`<img class='korp_fail' src='${korpFailImg}'>`)
             .add($("<div class='fail_text' />")
             .localeKey("fail_text"))
             .addClass("inline_block")
@@ -133,8 +132,8 @@ view.KWICResults = class KWICResults extends BaseResults {
         {
           // Hack: trick Babel/TypeScript into allowing this before super.
           if (false) { super() }
-          const thisFn = (() => { return this }).toString()
-          const thisName = thisFn.match(/return (?:_assertThisInitialized\()*(\w+)\)*;/)[1]
+          let thisFn = (() => { return this }).toString()
+          let thisName = thisFn.match(/return (?:_assertThisInitialized\()*(\w+)\)*;/)[1]
           eval(`${thisName} = this;`)
         }
         const self = this
@@ -175,7 +174,7 @@ view.KWICResults = class KWICResults extends BaseResults {
         event.stopPropagation()
         const word = $(event.target)
 
-        if ($("#sidebar").data().korpSidebar) {
+        if ($("#sidebar").data()["korpSidebar"]) {
             $("#sidebar").sidebar("updateContent", sent.structs, obj, sent.corpus.toLowerCase(), sent.tokens)
         }
 
@@ -319,7 +318,7 @@ view.KWICResults = class KWICResults extends BaseResults {
         }
 
         this.s.$apply($scope => {
-            const useContextData = (locationSearch().in_order != null)
+            const useContextData = (locationSearch()["in_order"] != null)
             if (isReading || useContextData) {
                 $scope.setContextData(data)
                 this.selectionManager.deselect()
@@ -343,7 +342,7 @@ view.KWICResults = class KWICResults extends BaseResults {
 
         if ((currentMode === "parallel") && !isReading) {
             const scrollLeft = $(".table_scrollarea", this.$result).scrollLeft() || 0
-            for (const linked of Array.from($(".table_scrollarea > .kwic .linked_sentence"))) {
+            for (let linked of Array.from($(".table_scrollarea > .kwic .linked_sentence"))) {
                 const mainrow = $(linked).prev()
                 if (!mainrow.length) { continue }
                 let firstWord = mainrow.find(".left .word:first")
@@ -369,12 +368,12 @@ view.KWICResults = class KWICResults extends BaseResults {
     }
 
     renderHitsPicture(data) {
-        let items = _.map(data.corpus_order, obj => ({
-            rid : obj,
-            rtitle : settings.corpusListing.getTitle(obj.toLowerCase()),
-            relative : data.corpus_hits[obj] / data.hits,
-            abs : data.corpus_hits[obj]
-        }))
+        let items = _.map(data.corpus_order, obj =>
+            ({ "rid" : obj,
+            "rtitle" : settings.corpusListing.getTitle(obj.toLowerCase()),
+            "relative" : data.corpus_hits[obj] / data.hits,
+            "abs" : data.corpus_hits[obj] })
+    )
         items = _.filter(items, item => item.abs > 0)
         // calculate which is the first page of hits for each item
         let index = 0
@@ -408,9 +407,7 @@ view.KWICResults = class KWICResults extends BaseResults {
         let avoidContext, preferredContext
         const opts = {}
         const getSortParams = function() {
-            const {
-                sort
-            } = locationSearch()
+            const { sort } = locationSearch()
             if (!sort) { return {} }
             if (sort === "random") {
                 let rnd
@@ -698,8 +695,8 @@ view.LemgramResults = class LemgramResults extends BaseResults {
         {
           // Hack: trick Babel/TypeScript into allowing this before super.
           if (false) { super() }
-          const thisFn = (() => { return this }).toString()
-          const thisName = thisFn.match(/return (?:_assertThisInitialized\()*(\w+)\)*;/)[1]
+          let thisFn = (() => { return this }).toString()
+          let thisName = thisFn.match(/return (?:_assertThisInitialized\()*(\w+)\)*;/)[1]
           eval(`${thisName} = this;`)
         }
         const self = this
@@ -817,10 +814,7 @@ view.LemgramResults = class LemgramResults extends BaseResults {
 
         const res = _.map(tables, function(...args) {
             let [token, wordClass] = Array.from(args[0])
-            const getRelType = item => ({
-                rel : tagsetTrans[item.rel.toLowerCase()],
-                field_reverse : item.dep === token
-            })
+            const getRelType = item => ({ rel : tagsetTrans[item.rel.toLowerCase()] , field_reverse : item.dep === token })
 
             const wordClassShort = wordClass.toLowerCase()
             wordClass = (_.invert(settings.wordpictureTagset))[wordClassShort]
@@ -864,29 +858,27 @@ view.LemgramResults = class LemgramResults extends BaseResults {
                 return unsortedList = $.grep(unsortedList, (item, index) => Boolean(item))
             })
 
-            orderArrays = _.map(orderArrays, (section, i) => _.map(section, function(table, j) {
-                if (table && table[0]) {
-                    const {
-                        rel
-                    } = table[0]
-                    const {
-                        show_rel
-                    } = table[0]
-                    const all_lemgrams = _.uniq((_.map((_.map(table, show_rel)), function(item) {
-                        if (util.isLemgramId(item)) {
-                            return item.slice(0, -1)
-                        } else {
-                            return item
-                        }
-                }))
-                    )
-                    return { table, rel, show_rel, all_lemgrams }
-                } else {
-                    return { table }
-                }
-        }))
+            orderArrays = _.map(orderArrays, (section, i) =>
+                _.map(section, function(table, j) {
+                    if (table && table[0]) {
+                        const { rel } = table[0]
+                        const { show_rel } = table[0]
+                        const all_lemgrams = _.uniq((_.map((_.map(table, show_rel)), function(item) {
+                            if (util.isLemgramId(item)) {
+                                return item.slice(0, -1)
+                            } else {
+                                return item
+                            }
+                    }))
+                        )
+                        return { table, rel, show_rel, all_lemgrams }
+                    } else {
+                        return { table }
+                    }
+            })
+        )
 
-            return { token: token, wordClass: wordClass, wordClassShort: wordClassShort, data: orderArrays }
+            return { "token": token, "wordClass": wordClass, "wordClassShort": wordClassShort, "data": orderArrays }
     })
 
         return this.s.$root.$broadcast('word_picture_data_available', res)
@@ -935,16 +927,14 @@ view.StatsResults = class StatsResults extends BaseResults {
             let rowData
             const rowIx = $(e.currentTarget).data("row")
             // TODO don't loop
-            for (const row of Array.from(this.data)) {
+            for (let row of Array.from(this.data)) {
                 if (row.rowId === parseInt(rowIx)) {
                     rowData = row
                     break
                 }
             }
             const cqp2 = statisticsFormatting.getCqp(rowData.statsValues, this.searchParams.ignoreCase)
-            const {
-                corpora
-            } = this.searchParams
+            const { corpora } = this.searchParams
 
             const opts = {}
             opts.ajaxParams = {
@@ -1006,7 +996,7 @@ view.StatsResults = class StatsResults extends BaseResults {
 
             const activeCorpora = []
             const totalRow = this.getDataAt(rowIx)
-            for (const corpus of Array.from(this.searchParams.corpora)) {
+            for (let corpus of Array.from(this.searchParams.corpora)) {
                 if (totalRow[corpus + "_value"][0] > 0) {
                     activeCorpora.push(corpus)
                 }
@@ -1026,7 +1016,7 @@ view.StatsResults = class StatsResults extends BaseResults {
 
 
     updateExportBlob() {
-        let reduceVal
+        let reduceVal, val
         const selVal = $("#kindOfData option:selected").val() === "absolute" ? 0 : 1
         const selType = $("#kindOfFormat option:selected").val()
         let dataDelimiter = ";"
@@ -1058,8 +1048,8 @@ view.StatsResults = class StatsResults extends BaseResults {
                     return result1
                 })()
                 outputRow.push(fmt(row.total_value[selVal]))
-                for (const corp of Array.from(this.searchParams.corpora)) {
-                    const val = row[corp + "_value"][selVal]
+                for (let corp of Array.from(this.searchParams.corpora)) {
+                    val = row[corp + "_value"][selVal]
                     if (val) {
                         outputRow.push(fmt(val))
                     } else {
@@ -1165,9 +1155,11 @@ view.StatsResults = class StatsResults extends BaseResults {
     renderResult(columns, data) {
         this.showGenerateExport()
 
-        const refreshHeaders = () => $(".localized-header .slick-column-name").not("[rel^=localize]").each(function() {
-            return $(this).localeKey($(this).text())
-        })
+        const refreshHeaders = () =>
+            $(".localized-header .slick-column-name").not("[rel^=localize]").each(function() {
+                return $(this).localeKey($(this).text())
+            })
+        
 
         this.gridData = data
         const resultError = super.renderResult(data)
@@ -1180,7 +1172,8 @@ view.StatsResults = class StatsResults extends BaseResults {
             return
         }
 
-        const checkboxSelector = new Slick.CheckboxSelectColumn({ cssClass: "slick-cell-checkboxsel" })
+        const checkboxSelector = new Slick.CheckboxSelectColumn({
+            cssClass: "slick-cell-checkboxsel" })
 
         columns = [checkboxSelector.getColumnDefinition()].concat(columns)
 
@@ -1203,9 +1196,7 @@ view.StatsResults = class StatsResults extends BaseResults {
                 const sortColumns = grid.getSortColumns()[0]
                 this.sortColumn = sortColumns.columnId
                 this.sortAsc = sortColumns.sortAsc
-                const {
-                    sortCol
-                } = args
+                const { sortCol } = args
                 data.sort(function(a, b) {
                     let x, y
                     if(a.id === "row_total") {
@@ -1316,13 +1307,13 @@ view.StatsResults = class StatsResults extends BaseResults {
             } else {
                 valueType = 0
             }
-            for (const row of Array.from(this.data)) {
+            for (let row of Array.from(this.data)) {
                 if (row.rowId === rowId) {
-                    for (const corpus of Array.from(this.searchParams.corpora)) {
+                    for (let corpus of Array.from(this.searchParams.corpora)) {
                         const freq = row[corpus + "_value"][valueType]
                         dataItems.push({
                             value: freq,
-                            caption: settings.corpora[corpus.toLowerCase()].title + ": " + util.formatDecimalString(freq.toString()),
+                            caption: settings.corpora[corpus.toLowerCase()]["title"] + ": " + util.formatDecimalString(freq.toString()),
                             shape_id: rowId
                         })
                     }
@@ -1408,12 +1399,12 @@ view.GraphResults = class GraphResults extends BaseResults {
             "second"
         ]
         this.granularities = {
-            year : "y",
-            month : "m",
-            day : "d",
-            hour : "h",
-            minute : "n",
-            second : "s"
+            "year" : "y",
+            "month" : "m",
+            "day" : "d",
+            "hour" : "h",
+            "minute" : "n",
+            "second" : "s"
         }
 
         this.zoom = "year"
@@ -1585,13 +1576,15 @@ view.GraphResults = class GraphResults extends BaseResults {
 
 
     getSeriesData(data, showSelectedCorporasStartDate, zoom) {
+        let x
         delete data[""]
         // TODO: getTimeInterval should take the corpora of this parent tab instead of the global ones.
         // [first, last] = settings.corpusListing.getTimeInterval()
         const [firstVal, lastVal] = Array.from(settings.corpusListing.getMomentInterval())
         let output = (() => {
+            let y
             const result = []
-            for (const [x, y] of Array.from((_.toPairs(data)))) {
+            for ([x, y] of Array.from((_.toPairs(data)))) {
                 const mom = (this.parseDate(this.zoom, x))
                 result.push({ x : mom, y })
             }
@@ -1610,7 +1603,7 @@ view.GraphResults = class GraphResults extends BaseResults {
         // remove last element WHY WOULD I DO THIS
         // output.splice(output.length-1, 1)
 
-        for (const tuple of Array.from(output)) {
+        for (let tuple of Array.from(output)) {
             tuple.x = tuple.x.unix()
             tuple.zoom = zoom
         }
@@ -1676,11 +1669,9 @@ view.GraphResults = class GraphResults extends BaseResults {
 
 
     drawIntervals(graph) {
-        const {
-            emptyIntervals
-        } = graph.series[0]
+        const { emptyIntervals } = graph.series[0]
         this.s.hasEmptyIntervals = emptyIntervals.length
-        const obj = graph.renderer.domain(); let [from, to] = Array.from(obj.x)
+        let obj = graph.renderer.domain(); let [from, to] = Array.from(obj.x)
 
         const unitSpan = moment.unix(to).diff(moment.unix(from), this.zoom)
         const unitWidth = graph.width / unitSpan
@@ -1688,7 +1679,7 @@ view.GraphResults = class GraphResults extends BaseResults {
         $(".empty_area", this.$result).remove()
         return (() => {
             const result = []
-            for (const list of Array.from(emptyIntervals)) {
+            for (let list of Array.from(emptyIntervals)) {
                 const max = _.maxBy(list, "x")
                 const min = _.minBy(list, "x")
                 from = graph.x(min.x)
@@ -1696,8 +1687,7 @@ view.GraphResults = class GraphResults extends BaseResults {
 
                 result.push($("<div>", { class : "empty_area" }).css({
                     left : from - (unitWidth / 2),
-                    width : (to - from) + unitWidth
-}).appendTo(graph.element))
+                    width : (to - from) + unitWidth }).appendTo(graph.element))
             }
             return result
         })()
@@ -1712,7 +1702,6 @@ view.GraphResults = class GraphResults extends BaseResults {
             }
         }
     }
-
     setLineMode() {}
 
     setTableMode(series) {
@@ -1733,7 +1722,7 @@ view.GraphResults = class GraphResults extends BaseResults {
             const selType = $(".timeKindOfFormat option:selected", this.$result).val()
             const dataDelimiter = selType === "TSV" ? "%09" : ";"
 
-            const header = [util.getLocaleString("stats_hit")]
+            const header = [ util.getLocaleString("stats_hit") ]
 
             for (cell of Array.from(series[0].data)) {
                 const stampformat = this.zoomLevelToFormat(cell.zoom)
@@ -1742,8 +1731,8 @@ view.GraphResults = class GraphResults extends BaseResults {
 
             const output = [header]
 
-            for (const row of Array.from(series)) {
-                const cells = [row.name === "&Sigma;" ? "Σ" : row.name]
+            for (let row of Array.from(series)) {
+                const cells = [ row.name === "&Sigma;" ? "Σ" : row.name ]
                 for (cell of Array.from(row.data)) {
                     if (selVal === "relative") {
                         cells.push(cell.y)
@@ -1772,12 +1761,12 @@ view.GraphResults = class GraphResults extends BaseResults {
 
     zoomLevelToFormat(zoom) {
         const stampFormats = {
-            second : "YYYY-MM-DD hh:mm:ss",
-            minute : "YYYY-MM-DD hh:mm",
-            hour : "YYYY-MM-DD hh",
-            day : "YYYY-MM-DD",
-            month : "YYYY-MM",
-            year : "YYYY"
+            "second" : "YYYY-MM-DD hh:mm:ss",
+            "minute" : "YYYY-MM-DD hh:mm",
+            "hour" : "YYYY-MM-DD hh",
+            "day" : "YYYY-MM-DD",
+            "month" : "YYYY-MM",
+            "year" : "YYYY"
         }
         return stampFormats[zoom]
     }
@@ -1785,14 +1774,14 @@ view.GraphResults = class GraphResults extends BaseResults {
     renderTable(series) {
         const time_table_data = []
         const time_table_columns_intermediate = {}
-        for (const row of Array.from(series)) {
-            const new_time_row = { label : row.name }
-            for (const item of Array.from(row.data)) {
+        for (let row of Array.from(series)) {
+            const new_time_row = { "label" : row.name }
+            for (let item of Array.from(row.data)) {
                 const stampformat = this.zoomLevelToFormat(item.zoom)
                 const timestamp = moment(item.x * 1000).format(stampformat) // this needs to be fixed for other resolutions
                 time_table_columns_intermediate[timestamp] = {
-                    name : timestamp,
-                    field : timestamp,
+                    "name" : timestamp,
+                    "field" : timestamp,
                     "formatter"(row, cell, value, columnDef, dataContext) {
                         const loc = {
                             is : "is-IS",
@@ -1816,12 +1805,12 @@ view.GraphResults = class GraphResults extends BaseResults {
         }
         // Sort columns
         const time_table_columns = [{
-                            name : "Hit",
-                            field : "label",
+                            "name" : "Hit",
+                            "field" : "label",
                             "formatter"(row, cell, value, columnDef, dataContext) { return value }
                         }
                             ]
-        for (const key of Array.from(_.keys(time_table_columns_intermediate).sort())) {
+        for (let key of Array.from(_.keys(time_table_columns_intermediate).sort())) {
             time_table_columns.push(time_table_columns_intermediate[key])
         }
 
@@ -1842,7 +1831,7 @@ view.GraphResults = class GraphResults extends BaseResults {
         if (_.isArray(data.combined)) {
             const palette = new Rickshaw.Color.Palette("colorwheel")
             series = []
-            for (const item of Array.from(data.combined)) {
+            for (let item of Array.from(data.combined)) {
                 color = palette.color()
                 series.push({
                     data : this.getSeriesData(item.relative, showSelectedCorporasStartDate, zoom),
@@ -1866,7 +1855,7 @@ view.GraphResults = class GraphResults extends BaseResults {
         const emptyIntervals = this.getEmptyIntervals(series[0].data)
         series[0].emptyIntervals = emptyIntervals
 
-        for (const s of Array.from(series)) {
+        for (let s of Array.from(series)) {
             s.data = _.filter(s.data, item => item.y !== null)
             s.abs_data = _.filter(s.abs_data, item => item.y !== null)
         }
@@ -1922,7 +1911,7 @@ view.GraphResults = class GraphResults extends BaseResults {
 
         return (() => {
             const result = []
-            for (const zoomLevel in grouped) {
+            for (let zoomLevel in grouped) {
                 const points = grouped[zoomLevel]
                 if (zoomLevel !== this.zoom) {
                     const from = moment.unix(points[0].x)
@@ -2025,10 +2014,10 @@ view.GraphResults = class GraphResults extends BaseResults {
 
             $(".form_switch", this.$result).click(event => {
                 const val = this.s.mode
-                for (const cls of Array.from(this.$result.attr("class").split(" "))) {
+                for (let cls of Array.from(this.$result.attr("class").split(" "))) {
                     if (cls.match(/^form-/)) { this.$result.removeClass(cls) }
                 }
-                this.$result.addClass("form-" + val)
+                this.$result.addClass(`form-${val}`)
                 $(".chart,.legend", this.$result.parent()).show()
                 $(".time_table", this.$result.parent()).hide()
                 if (val === "bar") {
@@ -2161,9 +2150,9 @@ view.GraphResults = class GraphResults extends BaseResults {
 }
 
 function __range__(left, right, inclusive) {
-  const range = []
-  const ascending = left < right
-  const end = !inclusive ? right : ascending ? right + 1 : right - 1
+  let range = []
+  let ascending = left < right
+  let end = !inclusive ? right : ascending ? right + 1 : right - 1
   for (let i = left; ascending ? i < end : i > end; ascending ? i++ : i--) {
     range.push(i)
   }

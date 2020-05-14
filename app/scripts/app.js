@@ -46,7 +46,10 @@ window.korpApp = angular.module('korpApp', [
 
 korpApp.config(tmhDynamicLocaleProvider => tmhDynamicLocaleProvider.localeLocationPattern("translations/angular-locale_{{locale}}.js"))
 
-korpApp.config($uibTooltipProvider => $uibTooltipProvider.options({ appendToBody: true }))
+korpApp.config($uibTooltipProvider =>
+    $uibTooltipProvider.options({
+        appendToBody: true })
+)
 
 korpApp.config(['$locationProvider', $locationProvider => $locationProvider.hashPrefix('')
 ])
@@ -118,7 +121,7 @@ korpApp.run(function($rootScope, $location, utils, searches, tmhDynamicLocale, $
 
     s.restorePreLoginState = function() {
         if (s.savedState) {
-            for (const key in s.savedState) {
+            for (let key in s.savedState) {
                 const val = s.savedState[key]
                 $location.search(key, val)
             }
@@ -150,9 +153,7 @@ korpApp.run(function($rootScope, $location, utils, searches, tmhDynamicLocale, $
     })
 
     return searches.infoDef.then(function() {
-        ({
-            corpus
-        } = $location.search())
+        ({ corpus } = $location.search())
         let currentCorpora = []
         if (corpus) {
             _.map(corpus.split(","), val => currentCorpora = [].concat(currentCorpora, getAllCorporaInFolders(settings.corporafolders, val)))
@@ -198,7 +199,7 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
         $.jStorage.deleteKey("creds")
 
         // TODO figure out another way to do this
-        for (const corpusObj of Array.from(settings.corpusListing.corpora)) {
+        for (let corpusObj of Array.from(settings.corpusListing.corpora)) {
             corpus = corpusObj.id
             if (corpusObj.limitedAccess) {
                 $(`#hpcorpus_${corpus}`).closest(".boxdiv").addClass("disabled")
@@ -240,7 +241,7 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
         s.menu.splice(i, 1)
     }
 
-    for (const mode of Array.from(s.modes)) {
+    for (let mode of Array.from(s.modes)) {
         mode.selected = false
         if (mode.mode === currentMode) {
             mode.selected = true
@@ -252,7 +253,7 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
         if (modeId === "default") {
             return location.pathname + langParam
         }
-        return location.pathname + `${modeId}` + langParam
+        return location.pathname + `?mode=${modeId}` + langParam
     }
 
     s.show_modal = false
@@ -327,4 +328,6 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
 })
 
 
-korpApp.filter("trust", $sce => input => $sce.trustAsHtml(input))
+korpApp.filter("trust", $sce =>
+    input => $sce.trustAsHtml(input)
+)

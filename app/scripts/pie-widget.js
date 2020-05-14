@@ -44,20 +44,20 @@ const pie_widget = {
     },
 
     _constructSVGPath(highlight, circleTrack, continueArc, offsetX, offsetY, radius, part) {
-        let str = "M" + (offsetX + radius) + "," + (offsetY + radius)
+        let str = `M${offsetX + radius},${offsetY + radius}`
         if (part === 1.0) { // Special case, make two arc halves
-            str += "\nm -" + radius + ", 0\n"
-            str += "a " + radius + "," + radius + " 0 1,0 " + (radius * 2) + ",0"
-            str += "a " + radius + "," + radius + " 0 1,0 -" + (radius * 2) + ",0"
+            str += `\nm -${radius}, 0\n`
+            str += `a ${radius},${radius} 0 1,0 ${radius * 2},0`
+            str += `a ${radius},${radius} 0 1,0 -${radius * 2},0`
             str += " Z"
             return str
         } else {
             let lineToArcX, lineToArcY
-            const radians = (part + circleTrack.accumulatedArc) * 2 * Math.PI
+            const radians = (part + circleTrack["accumulatedArc"]) * 2 * Math.PI
             str += " L"
             if (continueArc) {
-                lineToArcX = circleTrack.lastArcX
-                lineToArcY = circleTrack.lastArcY
+                lineToArcX = circleTrack["lastArcX"]
+                lineToArcY = circleTrack["lastArcY"]
             } else {
                 lineToArcX = offsetX + radius
                 lineToArcY = offsetY
@@ -77,9 +77,9 @@ const pie_widget = {
             }
             str += (lineToArcX) + "," + (lineToArcY)
             if (highlight) {
-                str += " A" + (radius * 1.1) + "," + (radius * 1.1)
+                str += ` A${radius * 1.1},${radius * 1.1}`
             } else {
-                str += " A" + radius + "," + radius
+                str += ` A${radius},${radius}`
             }
             str += " 0 "
             if (part > 0.5) { // Makes the arc always go the long way instead of taking a shortcut
@@ -91,8 +91,8 @@ const pie_widget = {
             let x2 = offsetX + radius + (Math.sin(radians) * radius)
             let y2 = (offsetY + radius) - (Math.cos(radians) * radius)
             if (!highlight) {
-                circleTrack.lastArcX = x2
-                circleTrack.lastArcY = y2
+                circleTrack["lastArcX"] = x2
+                circleTrack["lastArcY"] = y2
             }
             if (highlight) {
                 const endDegree = Math.acos((y2 - offsetY - radius) / radius)
@@ -107,9 +107,9 @@ const pie_widget = {
             str += x2 + "," + y2
             if (!highlight) {
                 if (continueArc) {
-                    circleTrack.accumulatedArc += part
+                    circleTrack["accumulatedArc"] += part
                 } else {
-                    circleTrack.accumulatedArc = part
+                    circleTrack["accumulatedArc"] = part
                 }
             }
             str += " Z"
@@ -140,30 +140,30 @@ const pie_widget = {
         const r = Raphael(this.options.container_id)
         this.canvas = r
         const pieTrack = []
-        pieTrack.accumulatedArc = 0
-        pieTrack.lastArcX = 0
-        pieTrack.lastArcY = 0
+        pieTrack["accumulatedArc"] = 0
+        pieTrack["lastArcX"] = 0
+        pieTrack["lastArcY"] = 0
         const SVGArcObjects = []
         let first = true
-        for (const fvalue of Array.from(pieparts)) {
-            const partOfTotal = fvalue.share
+        for (let fvalue of Array.from(pieparts)) {
+            const partOfTotal = fvalue["share"]
             if (partOfTotal !== 0) {
                 const bufferPieTrack = []
-                bufferPieTrack.accumulatedArc = pieTrack.accumulatedArc
-                bufferPieTrack.lastArcX = pieTrack.lastArcX
-                bufferPieTrack.lastArcY = pieTrack.lastArcY
+                bufferPieTrack["accumulatedArc"] = pieTrack["accumulatedArc"]
+                bufferPieTrack["lastArcX"] = pieTrack["lastArcX"]
+                bufferPieTrack["lastArcY"] = pieTrack["lastArcY"]
                 const origPath = nowthis._constructSVGPath(false, pieTrack, !first, 30, 30, radius, partOfTotal)
                 const newPiece = r.path(origPath)
                 const newPieceDOMNode = newPiece.node
-                newPieceDOMNode.continue = !first
-                newPieceDOMNode.offsetX = 30
-                newPieceDOMNode.offsetY = 30
-                newPieceDOMNode.radius = radius
-                newPieceDOMNode.shape_id = fvalue.shape_id
-                newPieceDOMNode.caption = fvalue.caption
-                newPieceDOMNode.part = partOfTotal
-                newPieceDOMNode.track = bufferPieTrack
-                newPieceDOMNode.origpath = origPath
+                newPieceDOMNode["continue"] = !first
+                newPieceDOMNode["offsetX"] = 30
+                newPieceDOMNode["offsetY"] = 30
+                newPieceDOMNode["radius"] = radius
+                newPieceDOMNode["shape_id"] = fvalue["shape_id"]
+                newPieceDOMNode["caption"] = fvalue["caption"]
+                newPieceDOMNode["part"] = partOfTotal
+                newPieceDOMNode["track"] = bufferPieTrack
+                newPieceDOMNode["origpath"] = origPath
                 $(newPieceDOMNode).tooltip({
                     delay: 80,
                     bodyHandler() {
@@ -179,7 +179,7 @@ const pie_widget = {
                     if ($.isFunction(callback)) { return callback(nowthis.eventArc(this)) }
                 })
 
-                newPiece.attr({ fill: fvalue.color })
+                newPiece.attr({ fill: fvalue["color"] })
                 newPiece.attr({ stroke: "white" })
                 newPiece.attr({ opacity: 0.7 })
                 newPiece.attr({ "stroke-linejoin": "miter" })
@@ -193,7 +193,7 @@ const pie_widget = {
 
     _sortDataDescending(indata) {
         const sortedData = indata.slice(0)
-        return sortedData.sort((a, b) => b.value - a.value)
+        return sortedData.sort((a, b) => b["value"] - a["value"])
     },
 
     initDiagram(indata) {
@@ -217,7 +217,7 @@ const pie_widget = {
         // Calculate the sum of the array
         let total = 0
         for (fvalue of Array.from(sortedData)) {
-            total += fvalue.value
+            total += fvalue["value"]
         }
 
         // Piece of cake!
@@ -225,36 +225,36 @@ const pie_widget = {
         let acc = 0
         let colorCount = 0
         for (fvalue of Array.from(sortedData)) {
-            const relative = fvalue.value / total
-            acc += fvalue.value
-            const itemID = fvalue.shape_id
-            const itemCaption = fvalue.caption
+            const relative = fvalue["value"] / total
+            acc += fvalue["value"]
+            const itemID = fvalue["shape_id"]
+            const itemCaption = fvalue["caption"]
             piePieceDefinitions.push({
                 share: relative,
-                color: (defaultOptions.colors[colorCount]),
+                color: (defaultOptions["colors"][colorCount]),
                 shape_id: itemID,
                 caption: itemCaption
             })
-            colorCount = (colorCount + 1) % defaultOptions.colors.length
+            colorCount = (colorCount + 1) % defaultOptions["colors"].length
         }
         return this._makeSVGPie(piePieceDefinitions, this.options.diameter * 0.5)
     },
 
     _highlight(item) {
         const n = item.node
-        const newpath = this._constructSVGPath(true, n.track, n.continue, n.offsetX, n.offsetY, n.radius, n.part)
+        const newpath = this._constructSVGPath(true, n["track"], n["continue"], n["offsetX"], n["offsetY"], n["radius"], n["part"])
         return item.attr({ path: newpath })
     },
 
     _deHighlight(item) {
         const n = item.node
         return item.animate(
-            { path: n.origpath }
+            { path: n["origpath"] }
         , 400, "elastic")
     },
 
     highlightArc(itemID) {
-        for (const shape in this.shapes) {
+        for (let shape in this.shapes) {
             const n = this.shapes[shape].node
             if ((n != null ? n.shape_id : undefined) === itemID) {
                 // Highlight the arc
@@ -265,7 +265,7 @@ const pie_widget = {
     },
 
     deHighlightArc(itemID) {
-        for (const shape in this.shapes) {
+        for (let shape in this.shapes) {
             const n = this.shapes[shape].node
             if ((n != null ? n.shape_id : undefined) === itemID) {
                 // Highlight the arc
@@ -277,7 +277,7 @@ const pie_widget = {
 
     eventArc(item) {
         // Return the clicked arc's ID
-        return item.node.shape_id
+        return item.node["shape_id"]
     }
 }
 

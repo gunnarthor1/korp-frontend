@@ -74,34 +74,34 @@ const stringifyCqp = function(cqp_obj, expanded_format) {
     const output = []
     cqp_obj = CQP.prioSort(_.cloneDeep(cqp_obj))
 
-    for (const token of Array.from(cqp_obj)) {
+    for (let token of Array.from(cqp_obj)) {
         if (typeof token === "string") {
             output.push(token)
             continue
         }
 
         const outer_and_array = []
-        for (const and_array of Array.from(token.and_block)) {
+        for (let and_array of Array.from(token.and_block)) {
             const or_array = []
             for (let { type, op, val, flags } of Array.from(and_array)) {
                 var out
                 if (expanded_format) {
                     [val, op] = Array.from({
                         "^=" : [val + ".*", "="],
-                        "_=" : [".*" + val + ".*", "="],
-                        "&=" : [".*" + val, "="],
+                        "_=" : [`.*${val}.*`, "="],
+                        "&=" : [`.*${val}`, "="],
                         "*=" : [val, "="],
                         "!*=" : [val, "!="],
-                        rank_contains: [val + ":.*", "contains"],
-                        not_rank_contains: [val + ":.*", "not contains"],
-                        highest_rank : ["\\|" + val + ":.*", "="],
-                        not_highest_rank: ["\\|" + val + ":.*", "!="]
+                        "rank_contains": [val + ":.*", "contains"],
+                        "not_rank_contains": [val + ":.*", "not contains"],
+                        "highest_rank" : [`\\|${val}:.*`, "="],
+                        "not_highest_rank": [`\\|${val}:.*`, "!="]
                     }[op] || [val, op])
                 }
 
                 let flagstr = ""
-                if (flags && _.keys(flags).length && (type !== "date_interval")) {
-                    flagstr = " %" + _.keys(flags).join("")
+                if (flags && _.keys(flags).length) {
+                    flagstr = ` %${_.keys(flags).join("")}`
                 }
 
                 if ((type === "word") && (val === "")) {
@@ -129,7 +129,7 @@ const stringifyCqp = function(cqp_obj, expanded_format) {
 
         if (token.bound) {
             or_out = _.compact(or_out)
-            for (const bound of Array.from(_.keys((token.bound)))) {
+            for (let bound of Array.from(_.keys((token.bound)))) {
                 or_out.push(`${bound}(sentence)`)
             }
         }
@@ -164,9 +164,9 @@ window.CQP = {
     getTimeInterval(obj) {
         let from = []
         let to = []
-        for (const token of Array.from(obj)) {
-            for (const or_block of Array.from(token.and_block)) {
-                for (const item of Array.from(or_block)) {
+        for (let token of Array.from(obj)) {
+            for (let or_block of Array.from(token.and_block)) {
+                for (let item of Array.from(or_block)) {
                     if (item.type === "date_interval") {
                         from.push(moment(`${item.val[0]}${item.val[2]}`, "YYYYMMDDhhmmss"))
                         to.push(moment(`${item.val[1]}${item.val[3]}`, "YYYYMMDDhhmmss"))
@@ -188,7 +188,7 @@ window.CQP = {
             return Math.min(...Array.from(numbers || []))
         }
 
-        for (const token of Array.from(cqpObjs)) {
+        for (let token of Array.from(cqpObjs)) {
             token.and_block = (_.sortBy(token.and_block, getPrio)).reverse()
         }
 

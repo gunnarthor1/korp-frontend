@@ -16,7 +16,7 @@ require("configjs")
 const commonSettings = require("commonjs")
 _.map(commonSettings, function(v, k) {
   if (k in window) {
-    console.error("warning, overwriting setting" + k)
+    console.error(`warning, overwriting setting${k}`)
 }
   return window[k] = v
 })

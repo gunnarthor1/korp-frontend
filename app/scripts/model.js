@@ -2,7 +2,10 @@
     constructor-super,
     no-constant-condition,
     no-eval,
+<<<<<<< HEAD
     no-lone-blocks,
+=======
+>>>>>>> e65f90621834bc45b5d9282356b90e8696dbbe7a
     no-return-assign,
     no-throw-literal,
     no-undef,
@@ -31,7 +34,7 @@ window.model = {}
 
 model.getAuthorizationHeader = function() {
     if ((typeof authenticationProxy !== "undefined") && !$.isEmptyObject(authenticationProxy.loginObj)) {
-        return { Authorization : "Basic " + authenticationProxy.loginObj.auth }
+        return { "Authorization" : `Basic ${authenticationProxy.loginObj.auth}` }
     } else {
         return {}
     }
@@ -75,7 +78,7 @@ class BaseProxy {
     parseJSON(data) {
         try {
             let json = data
-            if (json[0] !== "{") { json = "{" + json }
+            if (json[0] !== "{") { json = `{${json}` }
             if (json.match(/,\s*$/)) {
                 json = json.replace(/,\s*$/, "") + "}"
             }
@@ -111,7 +114,7 @@ class BaseProxy {
 
         const stats = (this.progress / this.total) * 100
         if ((this.total == null) && (struct.progress_corpora != null ? struct.progress_corpora.length : undefined)) {
-            const tmp = $.map(struct.progress_corpora, function(corpus) {
+            const tmp = $.map(struct["progress_corpora"], function(corpus) {
                 if (!corpus.length) { return }
 
                 return _(corpus.split("|")).map(corpus => parseInt(settings.corpora[corpus.toLowerCase()].info.Size)).reduce((a, b) => a + b
@@ -146,16 +149,15 @@ model.KWICProxy = class KWICProxy extends BaseProxy {
         super.makeRequest()
         kwicCallback = kwicCallback || $.proxy(kwicResults.renderResult, kwicResults)
         self.progress = 0
-        var progressObj = {
- progress(data, e) {
+        var progressObj = { progress(data, e) {
                 progressObj = self.calcProgress(e)
                 if (progressObj == null) { return }
 
                 progressCallback(progressObj)
-                if (progressObj.struct.kwic) {
+                if (progressObj["struct"].kwic) {
                     c.log("found kwic!")
                     this.foundKwic = true
-                    return kwicCallback(progressObj.struct)
+                    return kwicCallback(progressObj["struct"])
                 }
             }
     }
@@ -172,7 +174,7 @@ model.KWICProxy = class KWICProxy extends BaseProxy {
         }
 
         $.extend(data, kwicResults.getPageInterval(page), options.ajaxParams)
-        for (const corpus of Array.from(settings.corpusListing.selected)) {
+        for (let corpus of Array.from(settings.corpusListing.selected)) {
             var key, val
             for (key in corpus.within) {
                 val = corpus.within[key]
@@ -194,9 +196,14 @@ model.KWICProxy = class KWICProxy extends BaseProxy {
             data.cqp = this.expandCQP(data.cqp)
         }
         this.prevCQP = data.cqp
-        data.show = (_.uniq([].concat(data.show))).join(",")
+        data.show = (_.uniq(["sentence"].concat(data.show))).join(",")
         c.log("data.show", data.show)
         data.show_struct = (_.uniq(data.show_struct)).join(",")
+
+        if (locationSearch()["in_order"] === false) {
+            data.in_order = false
+        }
+
         this.prevRequest = data
         this.prevParams = data
         const def = $.ajax({
@@ -273,110 +280,11 @@ model.StatsProxy = class StatsProxy extends BaseProxy {
         this.prevParams = null
     }
 
-    processData(def, data, reduceVals, reduceValLabels, ignoreCase) {
-        let reduceVal
-        let reduceValLabel
-        const minWidth = 100
-
-        const columns = []
-
-        for ([reduceVal, reduceValLabel] of Array.from(_.zip(reduceVals, reduceValLabels))) {
-            columns.push({
-                id: reduceVal,
-                name: reduceValLabel,
-                field: "hit_value",
-                sortable: true,
-                formatter: statisticsFormatting.reduceStatistics(reduceVals, ignoreCase, _.keys(data.corpora)),
-                minWidth,
-                cssClass: "parameter-column",
-                headerCssClass: "localized-header"
-            })
-        }
-
-        columns.push({
-            id: "pieChart",
-            name: "",
-            field: "hit_value",
-            sortable: false,
-            formatter: statisticsFormatting.reduceStatisticsPieChart,
-            maxWidth: 25,
-            minWidth: 25
-        })
-
-        columns.push({
-            id: "total",
-            name: "stats_total",
-            field: "total_value",
-            sortable: true,
-            formatter: this.valueFormatter,
-            minWidth,
-            headerCssClass: "localized-header"
-        })
-
-        $.each(_.keys(data.corpora).sort(), (i, corpus) => {
-            return columns.push({
-                id: corpus,
-                name: settings.corpora[corpus.toLowerCase()].title,
-                field: corpus + "_value",
-                sortable: true,
-                formatter: this.valueFormatter,
-                minWidth
-            })
-        })
-
-        const groups = _.groupBy(_.keys(data.total.absolute), function(item) {
-            let field
-            item.replace(/(:.+?)(\/|$| )/g, "$2")
-            const fields = item.split("/")
-            const newFields = []
-            for ([reduceVal, field] of Array.from(_.zip(reduceVals, fields))) {
-                if (["saldo", "prefix", "suffix", "lex", "lemma", "sense", "text_swefn", "text_blingbring"].includes(reduceVal)) {
-                    newFields.push(field.replace(/(:.+?)($| )/g, "$2"))
-
-                } else {
-                    newFields.push(field)
-                }
-            }
-            newFields.join("/")
-            return newFields
-        })
-
-        const wordArray = _.keys(groups)
-
-        const sizeOfDataset = wordArray.length
-        const dataset = new Array(sizeOfDataset + 1)
-
-        const statsWorker = new Worker("scripts/statistics_worker.js")
-        statsWorker.onmessage = function(e) {
-            c.log("Called back by the worker!\n")
-            c.log(e)
-            const searchParams = {
-                reduceVals,
-                ignoreCase,
-                corpora: _.keys(data.corpora)
-            }
-            return def.resolve([data, wordArray, columns, e.data.dataset, e.data.summarizedData, searchParams])
-        }
-
-        return statsWorker.postMessage({
-            total : data.total,
-            dataset : dataset,
-            allrows : (wordArray),
-            corpora : data.corpora,
-            groups : groups,
-            loc : {
-                sv : "sv-SE",
-                en : "gb-EN"
-            }[$("body").scope().lang],
-            attrs : reduceVals
-        })
-    }
-
     makeParameters(reduceVals, cqp, ignoreCase) {
         const structAttrs = settings.corpusListing.getStructAttrs(settings.corpusListing.getReduceLang())
         const groupBy = []
         const groupByStruct = []
-        for (const reduceVal of Array.from(reduceVals)) {
+        for (let reduceVal of Array.from(reduceVals)) {
             if (structAttrs[reduceVal]) {
                 groupByStruct.push(reduceVal)
             } else {
@@ -438,7 +346,7 @@ model.StatsProxy = class StatsProxy extends BaseProxy {
             },
 
             error(jqXHR, textStatus, errorThrown) {
-                c.log("gettings stats error, status: " + textStatus)
+                c.log(`gettings stats error, status: ${textStatus}`)
                 return def.reject(textStatus, errorThrown)
             },
 
@@ -461,13 +369,9 @@ model.StatsProxy = class StatsProxy extends BaseProxy {
 
         return def.promise()
     }
-
-    valueFormatter(row, cell, value, columnDef, dataContext) {
-        return dataContext[columnDef.id + "_display"]
-    }
 }
 
-model.NameProxy = class NameProxy extends model.StatsProxy {
+model.NameProxy = class NameProxy extends BaseProxy {
     constructor() {
         super()
     }
@@ -482,7 +386,7 @@ model.NameProxy = class NameProxy extends model.StatsProxy {
         const parameters = {
             group_by: "word",
             cqp: this.expandCQP(cqp),
-            cqp2: "[" + posTags.join(" | ") + "]",
+            cqp2: `[${posTags.join(" | ")}]`,
             corpus: settings.corpusListing.stringifySelected(true),
             incremental: true
         }
@@ -541,7 +445,7 @@ model.AuthenticationProxy = class AuthenticationProxy {
             url: settings.korpBackendURL + "/authenticate",
             type: "GET",
             beforeSend(req) {
-                return req.setRequestHeader("Authorization", "Basic " + auth)
+                return req.setRequestHeader("Authorization", `Basic ${auth}`)
             }
         }).done(function(data, status, xhr) {
             if (!data.corpora) {
@@ -577,8 +481,8 @@ model.TimeProxy = class TimeProxy extends BaseProxy {
         {
           // Hack: trick Babel/TypeScript into allowing this before super.
           if (false) { super() }
-          const thisFn = (() => { return this }).toString()
-          const thisName = thisFn.match(/return (?:_assertThisInitialized\()*(\w+)\)*;/)[1]
+          let thisFn = (() => { return this }).toString()
+          let thisName = thisFn.match(/return (?:_assertThisInitialized\()*(\w+)\)*;/)[1]
           eval(`${thisName} = this;`)
         }
     }
@@ -607,6 +511,7 @@ model.TimeProxy = class TimeProxy extends BaseProxy {
 
             const rest = data.combined[""]
             delete data.combined[""]
+
             this.expandTimeStruct(data.combined)
             const combined = this.compilePlotArray(data.combined)
 
@@ -742,9 +647,9 @@ function __guard__(value, transform) {
   return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined
 }
 function __range__(left, right, inclusive) {
-  const range = []
-  const ascending = left < right
-  const end = !inclusive ? right : ascending ? right + 1 : right - 1
+  let range = []
+  let ascending = left < right
+  let end = !inclusive ? right : ascending ? right + 1 : right - 1
   for (let i = left; ascending ? i < end : i > end; ascending ? i++ : i--) {
     range.push(i)
   }

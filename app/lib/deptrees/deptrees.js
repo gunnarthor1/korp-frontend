@@ -1,6 +1,7 @@
 /* eslint-disable
     no-return-assign,
     no-undef,
+    standard/array-bracket-even-spacing,
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
@@ -32,11 +33,13 @@ window.draw_deptree = function(sent, hover_fun) {
 }
 
 
-window.sentence_xml_to_json = sent => _.map($(sent).children(), function(word) {
-    const obj = { word: word.textContent }
-    _.map(["pos", "ref", "dephead", "deprel"], attr => obj[attr] = $(word).attr(attr))
-    return obj
-})
+window.sentence_xml_to_json = sent =>
+    _.map($(sent).children(), function(word) {
+        const obj = { word: word.textContent }
+        _.map(["pos", "ref", "dephead", "deprel"], attr => obj[attr] = $(word).attr(attr))
+        return obj
+    })
+
 
 // Initialise brat
 $(document).ready(head.js)
@@ -73,29 +76,32 @@ const color_from_chars = function(w, sat_min, sat_max, lightness) {
 }
 
 // Makes a brat entity from a positional attribute
-const make_entity_from_pos = p => ({
-    type: p,
-    labels: [p],
-    bgColor: color_from_chars(p, 0.8, 0.95, 0.95),
-    borderColor: "darken"
-})
+const make_entity_from_pos = p =>
+    ({
+        type: p,
+        labels: [p],
+        bgColor: color_from_chars(p, 0.8, 0.95, 0.95),
+        borderColor: "darken"
+    })
+
 
 // Makes a brat relation from a dependency relation
-const make_relation_from_rel = r => ({
-    type: r,
-    labels: [r],
-    color: "#000000",
+const make_relation_from_rel = r =>
+    ({
+        type: r,
+        labels: [r],
+        color: "#000000",
+        args: [{
+            role: "parent",
+            targets: []
+        },
+         {
+            role: "child",
+            targets: []
+        }
+        ]
+    })
 
-    args: [{
-        role: "parent",
-        targets: []
-    },
-     {
-        role: "child",
-        targets: []
-    }
-    ]
-})
 
 // from http://stackoverflow.com/a/1830844/165544
 const isNumber = n => (!isNaN(parseFloat(n))) && isFinite(n)
@@ -127,14 +133,14 @@ var draw_brat_tree = function(words, to_div, hover_fun) {
             relation_types.push(make_relation_from_rel(deprel))
         }
 
-        const entity = ["T" + ref, pos, [[start, stop]]]
+        const entity = [`T${ref}`, pos, [[start, stop]]]
         entities.push(entity)
 
         if (isNumber(dephead)) {
             const relation =
-                ["R" + ref, deprel,
-                 [["parent", "T" + dephead],
-                   ["child", "T" + ref]
+                [ `R${ref}`, deprel,
+                 [ ["parent", `T${dephead}` ],
+                   ["child", `T${ref}`]
                   ]
                 ]
             return relations.push(relation)
@@ -170,7 +176,7 @@ var draw_brat_tree = function(words, to_div, hover_fun) {
 
         const dispatcher = Util.embed(to_div, collData, docData, webFontURLs)
 
-        const div = $("#" + to_div)
+        const div = $(`#${to_div}`)
         // Set up hover callbacks
         return dispatcher.on('doneRendering', function() {
 

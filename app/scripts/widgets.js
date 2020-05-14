@@ -1,10 +1,10 @@
 /* eslint-disable
     no-self-assign,
+    no-template-curly-in-string,
     no-undef,
     no-unused-vars,
     no-useless-call,
     no-useless-escape,
-    prefer-const,
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
@@ -29,8 +29,8 @@ const Sidebar = {
         const corpusInfo = $("<div />").html(`<h4 rel='localize[corpus]'></h4> <p>${corpusObj.title}</p>`)
         corpusInfo.prependTo("#selected_sentence")
 
-        if (corpusObj.inStrix) {
-            const sentenceID = sentenceData.sentence_id
+        if (corpusObj["inStrix"]) {
+            const sentenceID = sentenceData["sentence_id"]
             if (sentenceID) {
                 // TODO fix this so that strix uses correct corpus ids
                 const strixCorpus = corpus === "wikipedia-sv" ? "wikipedia" : corpus
@@ -107,7 +107,7 @@ const Sidebar = {
         let key; [key, val] = Array.from(args[0]); return !((corpus_attrs[key].displayType === "hidden") || corpus_attrs[key].hideSidebar) 
 })
 
-        for (const custom of Array.from(customData)) {
+        for (let custom of Array.from(customData)) {
             pairs.push(custom)
         }
 
@@ -132,7 +132,7 @@ const Sidebar = {
         })
 
         let items = []
-        for (const [key, value] of Array.from(pairs)) {
+        for (let [key, value] of Array.from(pairs)) {
             if (key in customAttrs) {
                 items.push(value)
             } else {
@@ -147,7 +147,7 @@ const Sidebar = {
     renderCustomContent(wordData, sentenceData, corpus_attrs, tokens) {
         const structItems = []
         const posItems = []
-        for (const key in corpus_attrs) {
+        for (let key in corpus_attrs) {
             const attrs = corpus_attrs[key]
             const output = __guardMethod__(this.renderItem(key, "not_used", attrs, wordData, sentenceData, tokens), 'get', o => o.get(0))
             if (attrs.customType === "struct") {
@@ -173,7 +173,7 @@ const Sidebar = {
 
         output.data("attrs", attrs)
         if ((!value && !attrs.pattern) || (value === "|") || (value === "")) {
-            // output.append "<i rel='localize[empty]' style='color : grey'>${util.getLocaleString('empty')}</i>"
+            // output.append "<i rel='localize[empty]' style='color : grey'>${util.getLocaleString('empty')}</i>" // TODO af hverju er þetta kommentað?
             return output
         }
 
@@ -186,14 +186,14 @@ const Sidebar = {
                 lis = []
 
                 for (let outerIdx = 0; outerIdx < valueArray.length; outerIdx++) {
-                    let prob;
+                    var externalLink, prob;
                     [value, prob] = valueArray[outerIdx]
                     li = $("<li></li>")
                     const subValues = attrSettings.splitValue ? attrSettings.splitValue(value) : [value]
                     for (let idx = 0; idx < subValues.length; idx++) {
                         const subValue = subValues[idx]
                         val = (attrs.stringify || attrSettings.stringify || _.identity)(subValue)
-                        inner = $("<span>" + val + "</span>")
+                        inner = $(`<span>${val}</span>`)
                         inner.attr("title", prob)
 
                         if (attrs.internalSearch && (attrSettings.linkAllValues || (outerIdx === 0))) {
@@ -202,12 +202,12 @@ const Sidebar = {
                                 const searchKey = attrSettings.searchKey || key
                                 cqpVal = $(this).data("key")
                                 const cqpExpr = attrSettings.internalSearch ? attrSettings.internalSearch(searchKey, cqpVal) : `[${searchKey} contains '${regescape(cqpVal)}']`
-                                return locationSearch({ search: "cqp", cqp: cqpExpr, page: null })
+                                return locationSearch({ "search": "cqp", "cqp": cqpExpr, "page": null })
                             })
                         }
                         if (attrs.externalSearch) {
                             address = _.template(attrs.externalSearch)({ val : subValue })
-                            const externalLink = $(`<a href='${address}' class='external_link' target='_blank' style='margin-top: -6px'></a>`)
+                            externalLink = $(`<a href='${address}' class='external_link' target='_blank' style='margin-top: -6px'></a>`)
                         }
 
                         li.append(inner)
@@ -215,8 +215,8 @@ const Sidebar = {
                             li.append(attrSettings.joinValues)
                         }
                     }
-                    if (karpLink) {
-                        li.append(karpLink)
+                    if (externalLink) {
+                        li.append(externalLink)
                     }
                     lis.push(li)
                 }
@@ -240,7 +240,7 @@ const Sidebar = {
 
                     _.map(lis, function(li, idx) { if (idx !== 0) { return li.css('display', 'none') } })
 
-                    const showAll = $("<span class='link' rel='localize[complemgram_show_all]'></span><span> (" + (lis.length - 1) + ")</span>")
+                    const showAll = $(`<span class='link' rel='localize[complemgram_show_all]'></span><span> (${lis.length - 1})</span>`)
                     ul.append(showAll)
 
                     const showOne = $("<span class='link' rel='localize[complemgram_show_one]'></span>")
@@ -271,7 +271,7 @@ const Sidebar = {
         } else if (attrs.type === "set") {
             pattern = attrs.pattern || '<span data-key="<%= key %>"><%= val %></span>'
             ul = $("<ul>")
-            const getStringVal = str => _.reduce(_.invokeMap(_.invokeMap(str, "charCodeAt", 0), "toString"), (a, b) => a + b)
+            const getStringVal = str => _.reduce(_.invokeMap(_.invokeMap(str, "charCodeAt", 0), "toString"), (a,b) => a + b)
             valueArray = _.filter((value != null ? value.split("|") : undefined) || [], Boolean)
             if (key === "variants") {
                 // TODO: this doesn't sort quite as expected
@@ -288,7 +288,7 @@ const Sidebar = {
             const itr = _.isArray(valueArray) ? valueArray : _.values(valueArray)
             lis = (() => {
                 const result = []
-                for (const x of Array.from(itr)) {
+                for (let x of Array.from(itr)) {
                     if (x.length) {
                         val = (attrs.stringify || _.identity)(x)
 
@@ -301,7 +301,7 @@ const Sidebar = {
                         if (attrs.internalSearch) {
                             inner.addClass("link").click(function() {
                                 cqpVal = $(this).data("key")
-                                return locationSearch({ page: null, search: "cqp", cqp: `[${key} contains \"${regescape(cqpVal)}\"]` })
+                                return locationSearch({ "page": null, "search": "cqp", "cqp": `[${key} contains \"${regescape(cqpVal)}\"]` })
                             })
                         }
 
@@ -370,7 +370,7 @@ const Sidebar = {
                     const a = _.trim(oldtext, "/").replace("...", "").split("/")
                     const domain = a.slice(2, 3)
                     let midsection = a.slice(3).join("/")
-                    midsection = "..." + midsection.slice(2)
+                    midsection = `...${midsection.slice(2)}`
                     $(this).text(["http:/"].concat(domain, midsection).join("/"))
                     if (midsection === "...") { break } else {
                         result.push(undefined)

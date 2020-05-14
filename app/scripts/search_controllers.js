@@ -44,10 +44,7 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches",  fun
     const setupWatchStats = function() {
         $scope.showStatistics = false
 
-        $scope.$watch(() => $location.search().hide_stats, function(val) {
-            $scope.showStatistics = (val == null)
-            return console.log($scope.showStatistics)
-        })
+        $scope.$watch(() => $location.search().hide_stats, val => $scope.showStatistics = (val == null))
 
         return $scope.$watch("showStatistics", function(val) {
             if ($scope.showStatistics) {
@@ -101,28 +98,6 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches",  fun
         }
     }, true)
 
-    const setupContext = function() {
-        $scope.getContextFormat = function(val) {
-            if (settings.contextValues[val] === $scope.context) {
-                return $filter("loc")("context", $scope.lang) + ": " + val + " " + $filter("loc")("words", $scope.lang)
-            } else {
-                return val
-            }
-        }
-        $scope.contextValues = settings.contextValues
-        $scope.context = $location.search().context || settings.contextDefault
-
-        $scope.$watch(() => $location.search().context, val => $scope.context = val || settings.contextDefault)
-
-        return $scope.$watch("context", function(val) {
-            if (val === settings.contextDefault) {
-                return $location.search("context", null)
-            } else {
-                return $location.search("context", val)
-            }
-        })
-    }
-
     const setupHitsPerPage = function() {
         $scope.getHppFormat = function(val) {
             if (val === $scope.hitsPerPage) {
@@ -149,12 +124,11 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches",  fun
     const setupKwicSort = function() {
         const kwicSortValueMap = {
             "": "appearance_context",
-            keyword: "word_context",
-            left: "left_context",
-            right: "right_context",
-            random: "random_context"
+            "keyword": "word_context",
+            "left": "left_context",
+            "right": "right_context",
+            "random": "random_context"
         }
-            // "_.date": "date_context"
         $scope.kwicSortValues = _.keys(kwicSortValueMap)
 
         $scope.getSortFormat = function(val) {
@@ -180,7 +154,6 @@ window.SearchCtrl = ["$scope", "$location", "$filter", "utils", "searches",  fun
     }
 
     setupHitsPerPage()
-    setupContext()
     return setupKwicSort()
 
 }]
@@ -245,17 +218,17 @@ korpApp.controller("SimpleCtrl", function($scope, utils, $location, backend, $ro
                     orParts.push(token + ".*")
                 }
                 if (s.suffix) {
-                    orParts.push(".*" + token)
+                    orParts.push(`.*${token}`)
                 }
                 if (!(s.prefix || s.suffix)) {
                     orParts.push(regescape(token))
                 }
                 if (s.searchBy === 'lemma') {
-                    res = _.map(orParts, orPart => 'lemma = "' + orPart + '"' + suffix)
+                    res = _.map(orParts, orPart => `lemma = "${orPart}"${suffix}`
                 } else {
-                    res = _.map(orParts, orPart => 'word = "' + orPart + '"' + suffix)
+                    res = _.map(orParts, orPart => `word = "${orPart}"${suffix}`)
                 }
-                return "[" + res.join(" | ") + "]"
+                return `[${res.join(" | ")}]`
             })
             val = tokenArray.join(" ")
         } else if (s.placeholder || util.isLemgramId(currentText)) {
@@ -352,7 +325,7 @@ korpApp.controller("SimpleCtrl", function($scope, utils, $location, backend, $ro
             if (search.type === "lemgram") {
                 let sense = true
                 let saldo = true
-                for (const corpus of Array.from(settings.corpusListing.selected)) {
+                for (let corpus of Array.from(settings.corpusListing.selected)) {
                     if ("sense" in corpus.attributes) {
                         saldo = false
                     }
@@ -400,11 +373,7 @@ korpApp.controller("ExtendedSearch", function($scope, utils, $location, backend,
         return $timeout( function() {
             let needle, within
             $location.search("search", "cqp")
-            if ((needle = s.within, !Array.from(_.keys(settings.defaultWithin)).includes(needle))) {
- ({
-                within
-            } = s) 
-}
+            if ((needle = s.within, !Array.from(_.keys(settings.defaultWithin)).includes(needle))) { ({ within } = s) }
             return $location.search("within", within)
         }
         , 0)
@@ -445,9 +414,7 @@ korpApp.controller("ExtendedSearch", function($scope, utils, $location, backend,
 
     s.getWithins = function() {
         const union = settings.corpusListing.getWithinKeys()
-        const output = _.map(union, item => ({
-            value : item
-        }))
+        const output = _.map(union, item => ({ value : item }))
         return output
     }
 
@@ -507,7 +474,7 @@ korpApp.controller("ExtendedToken", function($scope, utils, $location) {
         s.types = _.filter(allAttrs, item => !item.hideExtended)
         return s.typeMapping = _.fromPairs(_.map(s.types, function(item) {
             if (item.isStructAttr) {
-                return ["_." + item.value, item]
+                return [`_.${item.value}`, item]
             } else {
                 return [item.value, item]
             }
@@ -567,42 +534,48 @@ korpApp.directive("advancedSearch", () => ({
             $location.search("page", null)
             $location.search("within", null)
             $location.search("in_order", null)
-            return $timeout( () => $location.search("search", "cqp|" + $scope.cqp)
+            return $timeout( () => $location.search("search", `cqp|${$scope.cqp}`)
             , 0)
         })
     }
 }))
 
 
-korpApp.filter("mapper", () => (item, f) => f(item))
+korpApp.filter("mapper", () =>
+    (item, f) => f(item)
+)
 
 
-korpApp.directive("compareSearchCtrl", () => ({
-    controller($scope, utils, $location, backend, $rootScope, compareSearches) {
-        const s = $scope
-        s.valfilter = utils.valfilter
+korpApp.directive("compareSearchCtrl", () =>
+    ({
+        controller($scope, utils, $location, backend, $rootScope, compareSearches) {
+            const s = $scope
+            s.valfilter = utils.valfilter
+    
+            s.savedSearches = compareSearches.savedSearches
+            s.$watch("savedSearches.length", function() {
+                s.cmp1 = compareSearches.savedSearches[0]
+                s.cmp2 = compareSearches.savedSearches[1]
+                if (!s.cmp1 || !s.cmp2) { return }
+    
+                const listing = settings.corpusListing.subsetFactory(_.uniq(([].concat(s.cmp1.corpora, s.cmp2.corpora))))
+                const allAttrs = listing.getAttributeGroups()
+                return s.currentAttrs = _.filter(allAttrs, item => !item.hideCompare)
+            })
+    
+            s.reduce = 'word'
+    
+            s.sendCompare = () => $rootScope.compareTabs.push(backend.requestCompare(s.cmp1, s.cmp2, [s.reduce]))
+    
+            return s.deleteCompares = () => compareSearches.flush()
+        }
+    })
+)
 
-        s.savedSearches = compareSearches.savedSearches
-        s.$watch("savedSearches.length", function() {
-            s.cmp1 = compareSearches.savedSearches[0]
-            s.cmp2 = compareSearches.savedSearches[1]
-            if (!s.cmp1 || !s.cmp2) { return }
 
-            const listing = settings.corpusListing.subsetFactory(_.uniq(([].concat(s.cmp1.corpora, s.cmp2.corpora))))
-            const allAttrs = listing.getAttributeGroups()
-            return s.currentAttrs = _.filter(allAttrs, item => !item.hideCompare)
-        })
-
-        s.reduce = 'word'
-
-        s.sendCompare = () => $rootScope.compareTabs.push(backend.requestCompare(s.cmp1, s.cmp2, [s.reduce]))
-
-        return s.deleteCompares = () => compareSearches.flush()
-    }
-}))
-
-
-korpApp.filter("loc", $rootScope => (translationKey, lang) => util.getLocaleString(translationKey, lang))
+korpApp.filter("loc", $rootScope =>
+    (translationKey, lang) => util.getLocaleString(translationKey, lang)
+)
 
 function __guard__(value, transform) {
   return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined

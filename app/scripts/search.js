@@ -1,5 +1,5 @@
 /* eslint-disable
-    no-unused-vars,
+    no-undef,
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
@@ -20,8 +20,10 @@ window.view = {}
 
 view.updateSearchHistory = function(value, href) {
     let needle
-    const filterParam = url => $.grep($.param.fragment(url).split("&"), item => (item.split("=")[0] === "search") || (item.split("=")[0] === "corpus")).join("&")
-    $("#search-history").empty()
+    const filterParam = url =>
+        $.grep($.param.fragment(url).split("&"), item => (item.split("=")[0] === "search") || (item.split("=")[0] === "corpus")).join("&")
+    
+    $("#search_history").empty()
     const searches = $.jStorage.get("searches") || []
     const searchLocations = $.map(searches, item => filterParam(item.location))
     if ((value != null) && (needle = filterParam(href), !Array.from(searchLocations).includes(needle))) {
@@ -44,4 +46,5 @@ view.updateSearchHistory = function(value, href) {
 
     return $("#search-history").html(opts)
         .prepend(clear)
+        .prepend(placeholder)
 }
