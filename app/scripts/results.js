@@ -1,10 +1,4 @@
 /** @format */
-// TODO: This file was created by bulk-decaffeinate.
-// Fix any style issues and re-enable lint.
-/*
- * decaffeinate suggestions:
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 const korpFailImg = require("../img/error_message.png")
 
 class BaseResults {
@@ -870,7 +864,7 @@ view.LemgramResults = class LemgramResults extends BaseResults {
 
         const tagsetTrans = _.invert(settings.wordpictureTagset)
 
-        const res = _.map(tables, function([[token, wordClass]]) {
+        const res = _.map(tables, function([token, wordClass]) {
             const getRelType = item => ({
                 rel: tagsetTrans[item.rel.toLowerCase()],
                 field_reverse: item.dep === token
@@ -1616,7 +1610,7 @@ view.GraphResults = class GraphResults extends BaseResults {
         const idealNumHits = 1000
         let newZoom = _.minBy(this.validZoomLevels, function(zoom) {
             const nPoints = to.diff(from, zoom)
-            Math.abs(idealNumHits - nPoints)
+            return Math.abs(idealNumHits - nPoints)
         })
 
         if ((newZoom && oldZoom !== newZoom) || forceSearch) {
@@ -1676,13 +1670,11 @@ view.GraphResults = class GraphResults extends BaseResults {
     }
 
     getSeriesData(data, showSelectedCorporasStartDate, zoom) {
-        let x
         delete data[""]
         // TODO: getTimeInterval should take the corpora of this parent tab instead of the global ones.
         // const [firstVal, lastVal] = settings.corpusListing.getMomentInterval()
-        let y
         let output = []
-        for ([x, y] of _.toPairs(data)) {
+        for (let [x, y] of _.toPairs(data)) {
             const mom = this.parseDate(this.zoom, x)
             output.push({ x: mom, y })
         }
