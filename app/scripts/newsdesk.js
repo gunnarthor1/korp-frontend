@@ -1,15 +1,4 @@
 /** @format */
-/* eslint-disable
-*/
-// TODO: This file was created by bulk-decaffeinate.
-// Fix any style issues and re-enable lint.
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS205: Consider reworking code to avoid use of IIFEs
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 // SB-newsdesk 1.0b
 // Requirements: JQuery, JQuery.ui.position, trust filter, loc filter, Font Awesome
 
@@ -53,7 +42,7 @@ angular
             s.onPopoverClick = event => event.stopPropagation()
     
             s.newsitems = []
-            s.initData = function() {
+            function initData() {
                 let d
                 s.lastChecked = localStorage.getItem(s.storage)
                 if (!s.lastChecked) {
@@ -61,7 +50,7 @@ angular
                     d.setFullYear(d.getFullYear() - 1)
                     s.lastChecked = d.toISOString().slice(0, 10)
                 }
-                return $.ajax({
+                $.ajax({
                     type: "GET",
                     url: settings.newsDeskUrl,
                     async: false,
@@ -69,14 +58,12 @@ angular
                     contentType: "application/json",
                     dataType: "jsonp",
                     success(json) {
-                        const currentDate = new (Date()
-                            .toISOString()
-                            .slice(0, 10))()
+                        const currentDate = new Date().toISOString().slice(0, 10)
                         s.newsitems = _.filter(json, newsitem => {
                             return !newsitem.e || newsitem.e >= currentDate
                         })
                         let n = 0
-                        for (let nItem of Array.from(s.newsitems)) {
+                        for (let nItem of s.newsitems) {
                             if (nItem.d > s.lastChecked) {
                                 n += 1
                             }
@@ -94,8 +81,8 @@ angular
             s.currentLang = $location.search().lang || "sv"
     
             s.numNewNews = 0
-            s.initData()
-    
+            initData()
+
             s.togglePopover = function(event) {
                 if (s.isPopoverVisible) {
                     s.popHide()

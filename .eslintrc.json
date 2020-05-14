@@ -48,6 +48,10 @@
         "timeProxy": true,
         "CSV": true,
         "locationSearch": true,
-        "statisticsService": true
+        "statisticsService": true,
+        "Slick": true,
+        "Rickshaw": true,
+        "initTimeGraph": true,
+        "statisticsFormatting": true
     }
 }
