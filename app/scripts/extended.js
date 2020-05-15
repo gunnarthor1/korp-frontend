@@ -153,7 +153,7 @@ korpApp.factory("extendedComponents", function() {
                 $scope.title = "case_sensitive"
                 return ($scope.orObj.flags != null ? delete $scope.orObj.flags["c"] : undefined)
             }
-            return $scope.makeInsensitive = function() {
+            $scope.makeInsensitive = function() {
                 const flags = ($scope.orObj.flags || {})
                 flags["c"] = true
                 $scope.orObj.flags = flags
