@@ -105,29 +105,6 @@ window.SearchCtrl = [
             },
             true
         )
-        const setupContext = function() {
-            $scope.getContextFormat = function(val) {
-                if (settings.contextValues[val] == $scope.context){
-                    return $filter("loc")("context", $scope.lang) + ": " + val + " " + $filter("loc")("words", $scope.lang)
-                } else {
-                    return val
-                }
-            }
-            $scope.contextValues = settings.contextValues
-            $scope.context = $location.search().context || settings.contextDefault
-
-            $scope.$watch (
-                () => $location.search().context,
-                (val) => ($scope.context = val || settings.contextDefault)
-            )
-            return $scope.$watch ("context", function(val) {
-                if (val == settings.contextDefault) {
-                    $location.search("context", null)
-                } else {
-                    $location.search("context", val)
-                }
-            })
-        }
 
         const setupHitsPerPage = function() {
             $scope.getHppFormat = function(val) {
@@ -191,7 +168,6 @@ window.SearchCtrl = [
             })
         }
 
-        setupContext()
         setupHitsPerPage()
         setupKwicSort()
     }
@@ -220,7 +196,6 @@ korpApp.controller("SimpleCtrl", function(
     s.prefix = false
     s.suffix = false
     s.isCaseInsensitive = false
-    s.searchBy = 'word'
     if (settings.inputCaseInsensitiveDefault) {
         s.isCaseInsensitive = true
     }
@@ -261,7 +236,6 @@ korpApp.controller("SimpleCtrl", function(
             suffix = s.isCaseInsensitive ? " %c" : ""
             const wordArray = currentText.split(" ")
             const tokenArray = _.map(wordArray, token => {
-                let res
                 const orParts = []
                 if (s.prefix) {
                     orParts.push(token + ".*")
@@ -272,11 +246,7 @@ korpApp.controller("SimpleCtrl", function(
                 if (!(s.prefix || s.suffix)) {
                     orParts.push(regescape(token))
                 }
-                if (s.searchBy === 'lemma') {
-                    res = _.map(orParts, orPart => `lemma = "${orPart}"${suffix}`)
-                } else {
-                    res = _.map(orParts, orPart => `word = "${orPart}"${suffix}`)
-                }
+                const res = _.map(orParts, orPart => `word = "${orPart}"${suffix}`)
                 return `[${res.join(" | ")}]`
             })
             val = tokenArray.join(" ")
@@ -407,7 +377,7 @@ korpApp.controller("SimpleCtrl", function(
         }
     }
 
-    utils.setupHash(s, [{ key: "prefix" }, { key: "suffix" }, { key: "isCaseInsensitive" }]) // , { key : "searchBy" }
+    utils.setupHash(s, [{ key: "prefix" }, { key: "suffix" }, { key: "isCaseInsensitive" }])
 })
 
 korpApp.controller("ExtendedSearch", function(
@@ -476,14 +446,13 @@ korpApp.controller("ExtendedSearch", function(
         $location.search("cqp", val)
     })
 
+    s.withins = []
+
     s.getWithins = function() {
         const union = settings.corpusListing.getWithinKeys()
         const output = _.map(union, item => ({ value: item }))
         return output
     }
-
-    s.withins = s.getWithins()
-    s.within = s.withins[0] != null ? s.withins[0].value : undefined
 
     return s.$on("corpuschooserchange", function() {
         s.withins = s.getWithins()

@@ -122,7 +122,6 @@ class KwicCtrl {
             for (let i = 0; i < hitArray.length; i++) {
                 var corpus, linkCorpusId, mainCorpusId, matches
                 const hitContext = hitArray[i]
-                const currentStruct = {}
                 if (currentMode === "parallel") {
                     mainCorpusId = hitContext.corpus.split("|")[0].toLowerCase()
                     linkCorpusId = hitContext.corpus.split("|")[1].toLowerCase()
@@ -140,17 +139,17 @@ class KwicCtrl {
                     matches = hitContext.match
                 }
 
-                for (let i in _.range(0, hitContext.tokens)) {
-                    var structItem
+                const currentStruct = {}
+                for (let i in _.range(0, hitContext.tokens.length)) {
                     const wd = hitContext.tokens[i]
                     wd.position = i
-                    wd._open = []
-                    wd._close = []
+
                     for (let { start, end } of matches) {
                         if (start <= i && i < end) {
                             _.extend(wd, { _match: true })
                         }
                     }
+
                     if (matchSentenceStart < i && i < matchSentenceEnd) {
                         _.extend(wd, { _matchSentence: true })
                     }
@@ -158,29 +157,35 @@ class KwicCtrl {
                         _.extend(wd, { _punct: true })
                     }
 
-                    if (wd.structs && (wd.structs.open || []).length) {
-                        var key, val
-                        const spaceIdx = structItem.indexOf(" ")
-                        if (spaceIdx === -1) {
-                            key = structItem
-                            val = ""
-                        } else {
-                            key = structItem.substring(0, spaceIdx)
-                            val = structItem.substring(spaceIdx + 1)
+                    wd.structs = wd.structs || {}
+
+                    for (let structItem of wd.structs.open || []) {
+                        const structKey = _.keys(structItem)[0]
+                        if (structKey == "sentence") {
+                            wd._open_sentence = true
                         }
-                        wd._open.push(key)
-                        if (key in settings.corpora[id].attributes) {
-                            currentStruct[key] = val
+
+                        currentStruct[structKey] = {}
+                        const attrs = _.toPairs(structItem[structKey]).map(([key, val]) => [
+                            structKey + "_" + key,
+                            val
+                        ])
+                        for (let [key, val] of _.concat([[structKey, ""]], attrs)) {
+                            if (key in settings.corpora[id].attributes) {
+                                currentStruct[structKey][key] = val
+                            }
                         }
                     }
 
-                    _.extend(wd, currentStruct)
+                    const attrs = _.reduce(
+                        _.values(currentStruct),
+                        (val, ack) => _.merge(val, ack),
+                        {}
+                    )
+                    _.extend(wd, attrs)
 
-                    if (wd.structs && (wd.structs.close || []).length) {
-                        for (structItem of wd.structs.close) {
-                            wd._close.push(structItem)
-                            delete currentStruct[structItem]
-                        }
+                    for (let structItem of wd.structs.close || []) {
+                        delete currentStruct[structItem]
                     }
                 }
 
@@ -683,10 +688,10 @@ korpApp.directive("compareCtrl", () => ({
                 console.log("args", args)
                 const xhr = args[1]
                 s.loading = false
-    
+
                 s.tables = tables
                 s.reduce = reduce
-    
+
                 let cl = settings.corpusListing.subsetFactory([].concat(cmp1.corpora, cmp2.corpora))
                 const attributes = _.extend({}, cl.getCurrentAttributes(), cl.getStructAttrs())
 
@@ -703,19 +708,19 @@ korpApp.directive("compareCtrl", () => ({
 
                 s.cmp1 = cmp1
                 s.cmp2 = cmp2
-    
+
                 const cmps = [cmp1, cmp2]
 
                 s.rowClick = function(row, cmp_index) {
                     const cmp = cmps[cmp_index]
-    
+
                     const splitTokens = _.map(row.elems, elem =>
                         _.map(elem.split("/"), tokens => tokens.split(" "))
                     )
-    
+
                     // number of tokens in search
                     const tokenLength = splitTokens[0][0].length
-    
+
                     // transform result from grouping on attribute to grouping on token place
                     var tokens = _.map(_.range(0, tokenLength), function(tokenIdx) {
                         tokens = _.map(reduce, (reduceAttr, attrIdx) =>
@@ -723,6 +728,7 @@ korpApp.directive("compareCtrl", () => ({
                         )
                         return tokens
                     })
+
                     const cqps = _.map(tokens, function(token) {
                         const cqpAnd = _.map(_.range(0, token.length), function(attrI) {
                             let type, val
@@ -732,7 +738,7 @@ korpApp.directive("compareCtrl", () => ({
                             if (attrKey.includes("_.")) {
                                 c.log("error, attribute key contains _.")
                             }
-    
+
                             const attribute = attributes[attrKey]
                             if (attribute) {
                                 ;({ type } = attribute)
@@ -770,14 +776,14 @@ korpApp.directive("compareCtrl", () => ({
                                 return `${attrKey} ${op} "${val}"`
                             }
                         })
-    
+
                         return `[${cqpAnd.join(" & ")}]`
                     })
-    
+
                     const cqp = cqps.join(" ")
-    
+
                     cl = settings.corpusListing.subsetFactory(cmp.corpora)
-    
+
                     const opts = {
                         start: 0,
                         end: 24,

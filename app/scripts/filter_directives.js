@@ -9,11 +9,11 @@
 const plusImg = require("../img/plus.png")
 
 korpApp.directive("globalFilters", globalFilterService => ({
-  restrict: "E",
-  scope: {
-    lang: "="
-  },
-  template: `\
+    restrict: "E",
+    scope: {
+        lang: "="
+    },
+    template: `\
 <div ng-if="dataObj.showDirective" class="global-filters-container">
       <span style="font-weight: bold;"> {{ 'global_filter' | loc:lang}}:</span>
       <div style="display: inline-block">
@@ -47,113 +47,113 @@ korpApp.directive("globalFilters", globalFilterService => ({
            <span style="font-weight: bold" > {{'add_filter' | loc:lang}}</span>
        </div>
 </div>`,
-  link(scope, element, attribute) {
-    globalFilterService.registerScope(scope)
+    link(scope, element, attribute) {
+        globalFilterService.registerScope(scope)
 
-    scope.dataObj = { showDirective: false }
+        scope.dataObj = { showDirective: false }
 
-    scope.update = dataObj => (scope.dataObj = dataObj)
+        scope.update = dataObj => (scope.dataObj = dataObj)
 
-    scope.getFilterLabel = filterKey => scope.dataObj.attributes[filterKey].settings.label
+        scope.getFilterLabel = filterKey => scope.dataObj.attributes[filterKey].settings.label
 
-    scope.getTranslationKey = filterKey =>
-      scope.dataObj.attributes[filterKey].settings.translationKey || ""
+        scope.getTranslationKey = filterKey =>
+            scope.dataObj.attributes[filterKey].settings.translationKey || ""
 
-    scope.removeFilter = filter => globalFilterService.removeFilter(filter)
+        scope.removeFilter = filter => globalFilterService.removeFilter(filter)
 
-    scope.getAvailableFilters = () =>
-      _.filter(
-        scope.dataObj.optionalFilters,
-        filter => !scope.dataObj.selectedFilters.includes(filter)
-      )
+        scope.getAvailableFilters = () =>
+            _.filter(
+                scope.dataObj.optionalFilters,
+                filter => !scope.dataObj.selectedFilters.includes(filter)
+            )
 
-    scope.isOptionalFilter = filterKey =>
-      scope.dataObj.optionalFilters.indexOf(filterKey) > -1 &&
-      scope.dataObj.defaultFilters.indexOf(filterKey) === -1
+        scope.isOptionalFilter = filterKey =>
+            scope.dataObj.optionalFilters.indexOf(filterKey) > -1 &&
+            scope.dataObj.defaultFilters.indexOf(filterKey) === -1
 
-    scope.addNewFilter = value => globalFilterService.addNewFilter(value, true)
-  }
+        scope.addNewFilter = value => globalFilterService.addNewFilter(value, true)
+    }
 }))
 
 korpApp.directive("globalFilter", globalFilterService => ({
-  restrict: "E",
-  scope: {
-    attr: "=",
-    attrLabel: "=",
-    attrValue: "=",
-    possibleValues: "=",
-    lang: "=",
-    translationKey: "=",
-    closeable: "="
-  },
-  template: `\
+    restrict: "E",
+    scope: {
+        attr: "=",
+        attrLabel: "=",
+        attrValue: "=",
+        possibleValues: "=",
+        lang: "=",
+        translationKey: "=",
+        closeable: "="
+    },
+    template: `\
 <span uib-dropdown auto-close="outsideClick" on-toggle="dropdownToggle(open)">
-  <button uib-dropdown-toggle class="btn btn-sm btn-default global-filter-toggle">
-    <span ng-if="attrValue.length == 0">
-      <span>{{ "add_filter_value" | loc:lang }}</span>
-      <span>{{attrLabel | loc:lang}}</span>
-    </span>
-    <span ng-if="attrValue.length != 0">
-      <span style="text-transform: capitalize">{{attrLabel | loc:lang}}:</span>
-      <span ng-repeat="selected in attrValue" class="selected-attr-value">{{translationKey + selected | loc:lang }} </span>
-    </span>
-    <i ng-if="closeable" class="close_btn fa fa-times-circle-o fa-1" ng-click="removeFilter($event)" />
-  </button>
-  <div uib-dropdown-menu class="korp-uib-dropdown-menu">
-    <ul>
-      <li ng-repeat="value in possibleValues" ng-class="selected" class="attribute"
-          ng-click="toggleSelected(value[0], $event)"
-          ng-if="isSelectedList(value[0])">
-        <span ng-if="isSelected(value[0])">✔</span>
-        <span>{{translationKey + value[0] | loc:lang }}</span>
-        <span style="font-size: x-small;">{{value[1]}}</span>
-      </li>
-      <li ng-repeat="value in possibleValues" class="attribute"
-          ng-click="toggleSelected(value[0], $event)"
-          ng-if="!isSelectedList(value[0]) && value[1] > 0">
-        <span ng-if="isSelected(value[0])">✔</span>
-        <span>{{translationKey + value[0] | loc:lang }}</span>
-        <span style="font-size: x-small;">{{value[1]}}</span>
-      </li>
-      <li ng-repeat="value in possibleValues" class="attribute disabled"
-          ng-if="!isSelectedList(value[0]) && value[1] == 0"
-          >
-        <span>{{translationKey + value[0] | loc:lang }}</span>
-        <span style="font-size: x-small;">{{value[1]}}</span>
-      </li>
-    </ul>
-  </div>
+      <button uib-dropdown-toggle class="btn btn-sm btn-default global-filter-toggle">
+        <span ng-if="attrValue.length == 0">
+          <span>{{ "add_filter_value" | loc:lang }}</span>
+          <span>{{attrLabel | loc:lang}}</span>
+        </span>
+        <span ng-if="attrValue.length != 0">
+          <span style="text-transform: capitalize">{{attrLabel | loc:lang}}:</span>
+          <span ng-repeat="selected in attrValue" class="selected-attr-value">{{translationKey + selected | loc:lang }} </span>
+        </span>
+        <i ng-if="closeable" class="close_btn fa fa-times-circle-o fa-1" ng-click="removeFilter($event)" />
+      </button>
+      <div uib-dropdown-menu class="korp-uib-dropdown-menu">
+        <ul>
+          <li ng-repeat="value in possibleValues" ng-class="selected" class="attribute"
+              ng-click="toggleSelected(value[0], $event)"
+              ng-if="isSelectedList(value[0])">
+            <span ng-if="isSelected(value[0])">✔</span>
+            <span>{{translationKey + value[0] | loc:lang }}</span>
+            <span style="font-size: x-small;">{{value[1]}}</span>
+          </li>
+          <li ng-repeat="value in possibleValues" class="attribute"
+              ng-click="toggleSelected(value[0], $event)"
+              ng-if="!isSelectedList(value[0]) && value[1] > 0">
+            <span ng-if="isSelected(value[0])">✔</span>
+            <span>{{translationKey + value[0] | loc:lang }}</span>
+            <span style="font-size: x-small;">{{value[1]}}</span>
+          </li>
+          <li ng-repeat="value in possibleValues" class="attribute disabled"
+              ng-if="!isSelectedList(value[0]) && value[1] == 0"
+              >
+            <span>{{translationKey + value[0] | loc:lang }}</span>
+            <span style="font-size: x-small;">{{value[1]}}</span>
+          </li>
+        </ul>
+      </div>
 </span>`,
 
-  link(scope, element, attribute) {
-    // if scope.possibleValues.length > 20
-    //     # TODO enable autocomplete
+    link(scope, element, attribute) {
+        // if scope.possibleValues.length > 20
+        //     # TODO enable autocomplete
 
-    scope.selected = _.clone(scope.attrValue)
-    scope.dropdownToggle = function(open) {
-      if (!open) {
-        scope.selected = []
-        return scope.attrValue.map(value => scope.selected.push(value))
-      }
+        scope.selected = _.clone(scope.attrValue)
+        scope.dropdownToggle = function(open) {
+            if (!open) {
+                scope.selected = []
+                return scope.attrValue.map(value => scope.selected.push(value))
+            }
+        }
+
+        scope.toggleSelected = function(value, event) {
+            if (scope.isSelected(value)) {
+                _.pull(scope.attrValue, value)
+            } else {
+                scope.attrValue.push(value)
+            }
+            event.stopPropagation()
+            return globalFilterService.valueChange(scope.attr)
+        }
+
+        scope.isSelected = value => scope.attrValue.includes(value)
+
+        scope.isSelectedList = value => scope.selected.includes(value)
+
+        scope.removeFilter = function(event) {
+            event.stopPropagation()
+            return scope.$parent.removeFilter(scope.attr)
+        }
     }
-
-    scope.toggleSelected = function(value, event) {
-      if (scope.attrValue.includes(value)) {
-        _.remove(scope.attrValue, value)
-      } else {
-        scope.attrValue.push(value)
-      }
-      event.stopPropagation()
-      return globalFilterService.valueChange(scope.attr)
-    }
-
-    scope.isSelected = value => scope.attrValue.includes(value)
-
-    scope.isSelectedList = value => scope.selected.includes(value)
-
-    scope.removeFilter = function(event) {
-      event.stopPropagation()
-      return scope.$parent.removeFilter(scope.attr)
-    }
-  }
 }))

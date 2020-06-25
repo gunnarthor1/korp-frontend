@@ -16,11 +16,8 @@ korpApp.directive("kwicWord", () => ({
                 link_selected: wd._link_selected
             }
 
-            for (struct of wd._open || []) {
-                output[`open_${struct}`] = true
-            }
-            for (struct of wd._close || []) {
-                output[`close_${struct}`] = true
+            if ("_open_sentence" in wd) {
+                output[`open_sentence`] = true
             }
 
             const result = []
@@ -87,7 +84,7 @@ korpApp.directive("tabHash", (utils, $location, $timeout) => ({
         }
 
         s.closeDynamicTab = function() {
-            $timeout (function() {
+            $timeout(function() {
                 s.maxTab = -1
                 for (let tab of contentScope.tabset.tabs) {
                     if (tab.index > s.maxTab) {
@@ -321,8 +318,8 @@ korpApp.directive("searchSubmit", ($window, $document, $rootElement) => ({
 korpApp.directive("meter", () => ({
     template: `\
 <div>
-    <div class="background" ng-bind-html="displayWd | trust"></div>
-    <div class="abs badge" uib-tooltip-html="tooltipHTML | trust">{{meter.abs}}</div>
+        <div class="background" ng-bind-html="displayWd | trust"></div>
+        <div class="abs badge" uib-tooltip-html="tooltipHTML | trust">{{meter.abs}}</div>
 </div>\
 `,
     replace: true,
@@ -407,7 +404,7 @@ korpApp.directive("tabSpinner", $rootElement => ({
     template: `\
 <i class="fa fa-times-circle close_icon"></i>
 <span class="tab_spinner"
-    us-spinner="{lines : 8 ,radius:4, width:1.5, length: 2.5, left : 4, top : -12}"></span>\
+        us-spinner="{lines : 8 ,radius:4, width:1.5, length: 2.5, left : 4, top : -12}"></span>\
 `
 }))
 
@@ -459,33 +456,36 @@ korpApp.directive("extendedList", ($location, $rootScope) => ({
 
         s.$watch("data", () => (s.cqp = CQP.stringify(s.data) || ""), true)
 
-            s.addToken = function() {
-                const token1 = { and_block : [[]] }
-                s.data.push(token1)
-                s.addOr(token1.and_block[0])
-                token1.repeat = [0,0]
-                s.repeatError = false
-                console.log(token1)
-                const token2 = { and_block : [[]] }
-                s.data.push(token2)
-                s.addOr(token2.and_block[0])
-                return s.repeatError = false
-            }
+        s.addOr = function(and_array) {
+            and_array.push({
+                type: "word",
+                op: "=",
+                val: ""
+            })
+            return and_array
+        }
 
-            s.removeToken = function(i) {
-                if (!(s.data.length > 1)) {
-					return
-				}
-                s.data.splice(Math.max(i - 1,0), 2)
-                let repeatError = true
-                for (let token of s.data) {
-                    if (!token.repeat || (token.repeat[0] > 0)) {
-                        repeatError = false
-                        break
-                    }
-                }
-            	s.repeatError = repeatError
+        s.addToken = function() {
+            const token = { and_block: [[]] }
+            s.data.push(token)
+            s.addOr(token.and_block[0])
+            s.repeatError = false
+        }
+
+        s.removeToken = function(i) {
+            if (!(s.data.length > 1)) {
+                return
             }
+            s.data.splice(i, 1)
+            let repeatError = true
+            for (let token of s.data) {
+                if (!token.repeat || token.repeat[0] > 0) {
+                    repeatError = false
+                    break
+                }
+            }
+            s.repeatError = repeatError
+        }
 
         s.toggleRepeat = function(token) {
             if (!token.repeat) {
@@ -512,9 +512,13 @@ korpApp.directive("extendedList", ($location, $rootScope) => ({
                 token.repeat[repeat_idx] = 100
             }
 
-                if (token.repeat[1] < token.repeat[0]) {
-                    token.repeat[(repeat_idx + 1) % 2] = token.repeat[repeat_idx]
-                }
+            if (token.repeat[1] < token.repeat[0] && repeat_idx === 0) {
+                token.repeat[1] = token.repeat[0]
+            }
+
+            if (token.repeat[1] < token.repeat[0] && repeat_idx === 1) {
+                token.repeat[0] = token.repeat[1]
+            }
 
             if (token.repeat[1] < 1) {
                 token.repeat[1] = 1
@@ -540,60 +544,23 @@ korpApp.directive("extendedList", ($location, $rootScope) => ({
                 }
             }
 
-            s.betweenChange = function(between_idx, token_idx) {
-                const token = s.data[token_idx]
-
-                if (token.repeat[between_idx] === null) {
-                    return
-                }
-
-                if (token.repeat[between_idx] < 0) {
-                    token.repeat[between_idx] = 0
-                } else if (token.repeat[between_idx] > 100) {
-                    token.repeat[between_idx] = 100
-                }
-
-                if (token.repeat[1] < token.repeat[0]) {
-                    return token.repeat[(between_idx + 1) % 2] = token.repeat[between_idx]
-                }
-            }
-
-
-            return s.betweenBlur = function(between_idx, token_idx) {
-                let token = s.data[token_idx]
-
-                if (token.repeat[between_idx] === null) {
-                    token.repeat[between_idx] = token.repeat[between_idx === 0 ? 1 : 0]
-                }
-
-                let repeatError = true
-                for (token of Array.from(s.data)) {
-                    if (!token.repeat || (token.repeat[0] > 0)) {
-                        repeatError = false
-                        break
-                    }
-                }
-
-                s.repeatError = repeatError
-            }
-	}
+            s.repeatError = repeatError
+        }
     }
 }))
 
-
-korpApp.directive("tabPreloader", () =>
-    ({
-    restrict : "E",
-    scope : {
-        value : "=",
-        spinner : "="
+korpApp.directive("tabPreloader", () => ({
+    restrict: "E",
+    scope: {
+        value: "=",
+        spinner: "="
     },
-    replace : true,
-    template : `\
+    replace: true,
+    template: `\
 <div class="tab_preloaders">
         <div ng-if="!spinner" class="tab_progress" style="width:{{value || 0}}%"></div>
             <span ng-if="spinner" class="preloader_spinner"
-            us-spinner="{lines : 8 ,radius:4, width:1.5, length: 2.5, left : 7, top : -12}"></span>
+                us-spinner="{lines : 8 ,radius:4, width:1.5, length: 2.5, left : 7, top : -12}"></span>
 </div>\
 `,
 
@@ -724,25 +691,25 @@ korpApp.directive("autoc", ($q, $http, $timeout, lexicons) => ({
         scope.typeaheadClose = function() {
             if (scope.typeaheadCloseCallback) {
                 return scope.typeaheadCloseCallback({
-                    valueSelected: (scope.model != null) && _.isEmpty(scope.textInField)
+                    valueSelected: scope.model != null && _.isEmpty(scope.textInField)
                 })
             }
         }
-    
+
         scope.lemgramify = function(lemgram) {
             const lemgramRegExp = /([^_.-]*--)?(.*)\.\.(\w+)\.(\d\d?)/
             const match = lemgram.match(lemgramRegExp)
-        	if (!match) {
-            	return false
-        	}
+            if (!match) {
+                return false
+            }
             return {
-                "main" : match[2].replace(/_/g, " "),
-                "pos" : util.getLocaleString(match[3].slice(0, 2)),
-                "index" : match[4],
-                "namespace" : match[1] ? match[1].slice(0, -2) : "" 
-			}
+                main: match[2].replace(/_/g, " "),
+                pos: util.getLocaleString(match[3].slice(0, 2)),
+                index: match[4],
+                namespace: match[1] ? match[1].slice(0, -2) : ""
+            }
         }
-    
+
         scope.sensify = function(sense) {
             const senseParts = sense.split("..")
             return {
@@ -750,7 +717,7 @@ korpApp.directive("autoc", ($q, $http, $timeout, lexicons) => ({
                 index: senseParts[1]
             }
         }
-    
+
         scope.placeholderToString = _.memoize(function(placeholder) {
             if (!placeholder) {
                 return
@@ -761,95 +728,98 @@ korpApp.directive("autoc", ($q, $http, $timeout, lexicons) => ({
                 return util.saldoToPlaceholderString(placeholder, true)
             }
         })
-    
-            scope.selectedItem = function(item, model, label) {
-                if (scope.type === "lemgram") {
-                    scope.placeholder = model.lemgram
-                    scope.model = regescape(model.lemgram)
-                } else {
-                    scope.placeholder = model.sense
-                    scope.model = regescape(model.sense)
-                }
-                scope.textInField = ""
-                return scope.typeaheadClose()
+
+        scope.selectedItem = function(item, model, label) {
+            if (scope.type === "lemgram") {
+                scope.placeholder = model.lemgram
+                scope.model = regescape(model.lemgram)
+            } else {
+                scope.placeholder = model.sense
+                scope.model = regescape(model.sense)
             }
-    
-            if (scope.model) {
-                if (scope.type === "sense") {
-                    scope.selectedItem(null, { sense: unregescape(scope.model) })
-                } else {
-                    scope.selectedItem(null, { lemgram: unregescape(scope.model) })
-                }
+            scope.textInField = ""
+            return scope.typeaheadClose()
+        }
+
+        if (scope.model) {
+            if (scope.type === "sense") {
+                scope.selectedItem(null, { sense: unregescape(scope.model) })
+            } else {
+                scope.selectedItem(null, { lemgram: unregescape(scope.model) })
             }
-    
-            scope.getMorphologies = function(corporaIDs) {
-                const morphologies = []
-                if (scope.variant === "dalin") {
-                    morphologies.push("dalinm")
-                } else {
-                    for (let corporaID of corporaIDs) {
-                        const morfs = settings.corpora[corporaID].morphology || ""
-                        for (let morf of morfs.split("|")) {
-                            if (!morphologies.includes(morf)) {
-                                morphologies.push(morf)
-                            }
+        }
+
+        scope.getMorphologies = function(corporaIDs) {
+            const morphologies = []
+            if (scope.variant === "dalin") {
+                morphologies.push("dalinm")
+            } else {
+                for (let corporaID of corporaIDs) {
+                    const morfs = settings.corpora[corporaID].morphology || ""
+                    for (let morf of morfs.split("|")) {
+                        if (!morphologies.includes(morf)) {
+                            morphologies.push(morf)
                         }
                     }
                 }
-                return morphologies
-            }
-    
-            scope.getRows = function(input) {
-                const corporaIDs = _.map(settings.corpusListing.selected, "id")
-                const morphologies = scope.getMorphologies(corporaIDs)
-                if (scope.type === "lemgram") {
-                    return scope.getLemgrams(input, morphologies, corporaIDs)
-                } else if (scope.type === "sense") {
-                    return scope.getSenses(input, morphologies, corporaIDs)
+                if (morphologies.length === 0) {
+                    morphologies.push("saldom")
                 }
             }
-    
-            scope.getLemgrams = function(input, morphologies, corporaIDs) {
-                const deferred = $q.defer()
-            	const http = lexicons.getLemgrams(
-            	    input,
-            	    morphologies,
-            	    corporaIDs,
-            	    scope.variant === "affix"
-            	)
-                http.then(function(data) {
-                    data.forEach(function(item) {
-                	    if (scope.variant === "affix") {
-                	        item.count = -1
-                	    }
-                        item.parts = scope.lemgramify(item.lemgram)
-                        item.variant = scope.variant
-                    })
-                    data.sort((a, b) => b.count - a.count)
-                    return deferred.resolve(data)
-                })
-                return deferred.promise
+            return morphologies
+        }
+
+        scope.getRows = function(input) {
+            const corporaIDs = _.map(settings.corpusListing.selected, "id")
+            const morphologies = scope.getMorphologies(corporaIDs)
+            if (scope.type === "lemgram") {
+                return scope.getLemgrams(input, morphologies, corporaIDs)
+            } else if (scope.type === "sense") {
+                return scope.getSenses(input, morphologies, corporaIDs)
             }
-    
-            scope.getSenses = function(input, morphologies, corporaIDs) {
-                const deferred = $q.defer()
-                const http = lexicons.getSenses(input, morphologies.join("|"), corporaIDs)
-                http.then(function(data) {
-                    data.forEach(function(item) {
-                        item.parts = scope.sensify(item.sense)
+        }
+
+        scope.getLemgrams = function(input, morphologies, corporaIDs) {
+            const deferred = $q.defer()
+            const http = lexicons.getLemgrams(
+                input,
+                morphologies,
+                corporaIDs,
+                scope.variant === "affix"
+            )
+            http.then(function(data) {
+                data.forEach(function(item) {
+                    if (scope.variant === "affix") {
+                        item.count = -1
+                    }
+                    item.parts = scope.lemgramify(item.lemgram)
+                    item.variant = scope.variant
+                })
+                data.sort((a, b) => b.count - a.count)
+                return deferred.resolve(data)
+            })
+            return deferred.promise
+        }
+
+        scope.getSenses = function(input, morphologies, corporaIDs) {
+            const deferred = $q.defer()
+            const http = lexicons.getSenses(input, morphologies.join("|"), corporaIDs)
+            http.then(function(data) {
+                data.forEach(function(item) {
+                    item.parts = scope.sensify(item.sense)
                     if (item.desc) {
                         item.desc = scope.sensify(item.desc)
                     }
                     item.variant = scope.variant
-                    })
-                    data.sort(function(a, b) {
-                        if (a.parts.main === b.parts.main) {
-                            return b.parts.index < a.parts.index
-                        } else {
-                            return a.sense.length - b.sense.length
-                        }
-                    })
-                    return deferred.resolve(data)
+                })
+                data.sort(function(a, b) {
+                    if (a.parts.main === b.parts.main) {
+                        return b.parts.index < a.parts.index
+                    } else {
+                        return a.sense.length - b.sense.length
+                    }
+                })
+                return deferred.resolve(data)
             })
             return deferred.promise
         }
@@ -876,7 +846,7 @@ korpApp.directive("typeaheadClickOpen", function($parse, $timeout) {
     }
 })
 
-korpApp.directive("timeInterval", uibDateParser => ({
+korpApp.directive("timeInterval", () => ({
     scope: {
         dateModel: "=",
         timeModel: "=",
@@ -888,98 +858,97 @@ korpApp.directive("timeInterval", uibDateParser => ({
     restrict: "E",
     template: `\
 <div>
-        <label> Slá inn dagsetningu: <input type="text" uib-datepicker-popup="yyyy-MM-dd" placeholder="yyyy-mm-dd" ng-model="dateModel"></label>
         <div uib-datepicker class="well well-sm" ng-model="dateModel"
             min-date="minDate" max-date="maxDate" init-date="minDate"
             show-weeks="true" starting-day="1"></div>
-    
+
         <div class="time">
             <i class="fa fa-3x fa-clock-o"></i><div uib-timepicker class="timepicker" ng-model="timeModel"
                 hour-step="1" minute-step="1" show-meridian="false"></div>
         </div>
-    </div>\
-    `,
-    
-        link(s, elem, attr) {
-            let w
-            s.isOpen = false
-            s.open = function(event) {
-                event.preventDefault()
-                event.stopPropagation()
-                s.isOpen = true
-            }
-    
-            const time_units = ["hour", "minute"]
-            w = s.$watchGroup(["dateModel", "timeModel"], function(...args) {
-                const [date, time] = args[0]
-                if (date && time) {
-                    const m = moment(moment(date).format("YYYY-MM-DD"))
-                    for (let t of time_units) {
-                        const m_time = moment(time)
-                        m.add(m_time[t](), t)
-                    }
-                    s.model = m
-                }
-            })
+</div>\
+`,
+
+    link(s, elem, attr) {
+        let w
+        s.isOpen = false
+        s.open = function(event) {
+            event.preventDefault()
+            event.stopPropagation()
+            s.isOpen = true
         }
+
+        const time_units = ["hour", "minute"]
+        w = s.$watchGroup(["dateModel", "timeModel"], function(...args) {
+            const [date, time] = args[0]
+            if (date && time) {
+                const m = moment(moment(date).format("YYYY-MM-DD"))
+                for (let t of time_units) {
+                    const m_time = moment(time)
+                    m.add(m_time[t](), t)
+                }
+                s.model = m
+            }
+        })
+    }
 }))
-    
+
 korpApp.directive("reduceSelect", $timeout => ({
     restrict: "AE",
     scope: {
-        items: '=reduceItems',
-        selected: '=reduceSelected',
-        insensitive: '=reduceInsensitive',
-        lang: '=reduceLang'
-    },    
-    replace : true,
+        items: "=reduceItems",
+        selected: "=reduceSelected",
+        insensitive: "=reduceInsensitive",
+        lang: "=reduceLang"
+    },
+    replace: true,
     template: `\
 <div uib-dropdown auto-close="outsideClick" class="reduce-attr-select" on-toggle="toggled(open)">
       <div uib-dropdown-toggle class="reduce-dropdown-button inline_block ui-state-default">
-    <div class="reduce-dropdown-button-text">
-      <span>{{ "reduce_text" | loc:lang }}:</span>
-      <span>
-        {{keyItems[selected[0]].label | loc:lang}}
-      </span>
-      <span ng-if="selected.length > 1">
-        (+{{ numberAttributes - 1 }})
-      </span>
-      <span class="caret"></span>
-    </div>
-  </div>
-  <div class="reduce-dropdown-menu " uib-dropdown-menu>
-    <ul>
-      <li ng-click="toggleSelected('word', $event)" ng-class="keyItems['word'].selected ? 'selected':''" class="attribute">
-        <input type="checkbox" class="reduce-check" ng-checked="keyItems['word'].selected">
-        <span class="reduce-label">{{keyItems['word'].label | loc:lang }}</span>
-        <span ng-class="keyItems['word'].insensitive ? 'selected':''"
-              class="insensitive-toggle"
-              ng-click="toggleWordInsensitive($event)"><b>Aa</b></span>
-      </li>
-      <b ng-if="hasWordAttrs">{{'word_attr' | loc:lang}}</b>
-      <li ng-repeat="item in items | filter:{ group: 'word_attr', label: '!word' }"
-          ng-click="toggleSelected(item.value, $event)"
-          ng-class="item.selected ? 'selected':''" class="attribute">
-        <input type="checkbox" class="reduce-check" ng-checked="item.selected">
-        <span class="reduce-label">{{item.label | loc:lang }}</span>
-      </li>
-      <b ng-if="hasStructAttrs">{{'sentence_attr' | loc:lang}}</b>
-      <li ng-repeat="item in items | filter:{ group: 'sentence_attr' }"
-          ng-click="toggleSelected(item.value, $event)"
-          ng-class="item.selected ? 'selected':''" class="attribute">
-        <input type="checkbox" class="reduce-check" ng-checked="item.selected">
-        <span class="reduce-label">{{item.label | loc:lang }}</span>
-      </li>
-    </ul>
-  </div>
+        <div class="reduce-dropdown-button-text">
+          <span>{{ "reduce_text" | loc:lang }}:</span>
+          <span>
+            {{keyItems[selected[0]].label | loc:lang}}
+          </span>
+          <span ng-if="selected.length > 1">
+            (+{{ numberAttributes - 1 }})
+          </span>
+          <span class="caret"></span>
+        </div>
+      </div>
+      <div class="reduce-dropdown-menu " uib-dropdown-menu>
+        <ul>
+          <li ng-click="toggleSelected('word', $event)" ng-class="keyItems['word'].selected ? 'selected':''" class="attribute">
+            <input type="checkbox" class="reduce-check" ng-checked="keyItems['word'].selected">
+            <span class="reduce-label">{{keyItems['word'].label | loc:lang }}</span>
+            <span ng-class="keyItems['word'].insensitive ? 'selected':''"
+                  class="insensitive-toggle"
+                  ng-click="toggleWordInsensitive($event)"><b>Aa</b></span>
+          </li>
+          <b ng-if="hasWordAttrs">{{'word_attr' | loc:lang}}</b>
+          <li ng-repeat="item in items | filter:{ group: 'word_attr' }"
+              ng-click="toggleSelected(item.value, $event)"
+              ng-class="item.selected ? 'selected':''" class="attribute">
+            <input type="checkbox" class="reduce-check" ng-checked="item.selected">
+            <span class="reduce-label">{{item.label | loc:lang }}</span>
+          </li>
+          <b ng-if="hasStructAttrs">{{'sentence_attr' | loc:lang}}</b>
+          <li ng-repeat="item in items | filter:{ group: 'sentence_attr' }"
+              ng-click="toggleSelected(item.value, $event)"
+              ng-class="item.selected ? 'selected':''" class="attribute">
+            <input type="checkbox" class="reduce-check" ng-checked="item.selected">
+            <span class="reduce-label">{{item.label | loc:lang }}</span>
+          </li>
+        </ul>
+      </div>
 </div>`,
-    
+
     link(scope, element, attribute) {
-        scope.$watchCollection('items', function() {
+        scope.$watchCollection("items", function() {
             if (scope.items) {
                 let item
                 scope.keyItems = {}
-            	for (item of scope.items) {
+                for (item of scope.items) {
                     scope.keyItems[item.value] = item
                 }
 
@@ -1004,58 +973,57 @@ korpApp.directive("reduceSelect", $timeout => ({
                 }
                 return updateSelected(scope)
             }
-	})
-    
-            var updateSelected = function(scope) {
-                scope.selected = _.map((_.filter(scope.keyItems, (item, key) => item.selected)), "value")
-                scope.numberAttributes = scope.selected.length
-            }
-    
-            scope.toggleSelected = function(value, event) {
-                const isLinux = window.navigator.userAgent.indexOf("Linux") !== -1
-                const item = scope.keyItems[value]
-    
-                if ((!isLinux && event.altKey) || (isLinux && event.ctrlKey)) {
-                    _.map(_.values(scope.keyItems), item => item.selected = false)
-                    item.selected = true
-                } else {
-                    item.selected = !item.selected
-                    if (value === "word" && !item.selected) {
-                        item.insensitive = false
-                        scope.insensitive = []
-                    }
-                }
-    
-                updateSelected(scope)
-    
-                if (event) {
-                    return event.stopPropagation()
-                }
-            }
-    
-            scope.toggleWordInsensitive = function(event) {
-                event.stopPropagation()
-                scope.keyItems["word"].insensitive = !scope.keyItems["word"].insensitive
-                if (scope.keyItems["word"].insensitive) {
-                    scope.insensitive = ["word"]
-                } else {
+        })
+
+        var updateSelected = function(scope) {
+            scope.selected = _.map(_.filter(scope.keyItems, (item, key) => item.selected), "value")
+            scope.numberAttributes = scope.selected.length
+        }
+
+        scope.toggleSelected = function(value, event) {
+            const isLinux = window.navigator.userAgent.indexOf("Linux") !== -1
+            const item = scope.keyItems[value]
+
+            if ((!isLinux && event.altKey) || (isLinux && event.ctrlKey)) {
+                _.map(_.values(scope.keyItems), item => (item.selected = false))
+                item.selected = true
+            } else {
+                item.selected = !item.selected
+                if (value === "word" && !item.selected) {
+                    item.insensitive = false
                     scope.insensitive = []
                 }
-    
-                if (!scope.keyItems["word"].selected) {
-                    return scope.toggleSelected("word")
-                }
             }
-    
-            scope.toggled = function(open) {
-                // if no element is selected when closing popop, select word
-                if (!open && scope.numberAttributes === 0) {
-                    return $timeout(() => scope.toggleSelected("word"), 0)
-                }
+
+            updateSelected(scope)
+
+            if (event) {
+                return event.stopPropagation()
             }
         }
-	})
-)
+
+        scope.toggleWordInsensitive = function(event) {
+            event.stopPropagation()
+            scope.keyItems["word"].insensitive = !scope.keyItems["word"].insensitive
+            if (scope.keyItems["word"].insensitive) {
+                scope.insensitive = ["word"]
+            } else {
+                scope.insensitive = []
+            }
+
+            if (!scope.keyItems["word"].selected) {
+                return scope.toggleSelected("word")
+            }
+        }
+
+        scope.toggled = function(open) {
+            // if no element is selected when closing popop, select word
+            if (!open && scope.numberAttributes === 0) {
+                return $timeout(() => scope.toggleSelected("word"), 0)
+            }
+        }
+    }
+}))
 
 angular.module("template/datepicker/day.html", []).run($templateCache =>
     $templateCache.put(
@@ -1145,30 +1113,30 @@ angular.module("template/timepicker/timepicker.html", []).run($templateCache =>
         "template/timepicker/timepicker.html",
         `\
 <table>
- <tbody>
-     <tr class="text-center">
-         <td><a ng-click="incrementHours()" class="btn btn-link"><span class="fa fa-chevron-up"></span></a></td>
-         <td>&nbsp;</td>
-         <td><a ng-click="incrementMinutes()" class="btn btn-link"><span class="fa fa-chevron-up"></span></a></td>
-         <td ng-show="showMeridian"></td>
-     </tr>
-     <tr>
-         <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidHours}">
-             <input type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center" ng-mousewheel="incrementHours()" ng-readonly="readonlyInput" maxlength="2">
-         </td>
-         <td>:</td>
-         <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidMinutes}">
-             <input type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
-         </td>
-         <td ng-show="showMeridian"><button type="button" class="btn btn-default text-center" ng-click="toggleMeridian()">{{meridian}}</button></td>
-     </tr>
-     <tr class="text-center">
-         <td><a ng-click="decrementHours()" class="btn btn-link"><span class="fa fa-chevron-down"></span></a></td>
-         <td>&nbsp;</td>
-         <td><a ng-click="decrementMinutes()" class="btn btn-link"><span class="fa fa-chevron-down"></span></a></td>
-         <td ng-show="showMeridian"></td>
-     </tr>
- </tbody>
+   <tbody>
+       <tr class="text-center">
+           <td><a ng-click="incrementHours()" class="btn btn-link"><span class="fa fa-chevron-up"></span></a></td>
+           <td>&nbsp;</td>
+           <td><a ng-click="incrementMinutes()" class="btn btn-link"><span class="fa fa-chevron-up"></span></a></td>
+           <td ng-show="showMeridian"></td>
+       </tr>
+       <tr>
+           <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidHours}">
+               <input type="text" ng-model="hours" ng-change="updateHours()" class="form-control text-center" ng-mousewheel="incrementHours()" ng-readonly="readonlyInput" maxlength="2">
+           </td>
+           <td>:</td>
+           <td style="width:50px;" class="form-group" ng-class="{'has-error': invalidMinutes}">
+               <input type="text" ng-model="minutes" ng-change="updateMinutes()" class="form-control text-center" ng-readonly="readonlyInput" maxlength="2">
+           </td>
+           <td ng-show="showMeridian"><button type="button" class="btn btn-default text-center" ng-click="toggleMeridian()">{{meridian}}</button></td>
+       </tr>
+       <tr class="text-center">
+           <td><a ng-click="decrementHours()" class="btn btn-link"><span class="fa fa-chevron-down"></span></a></td>
+           <td>&nbsp;</td>
+           <td><a ng-click="decrementMinutes()" class="btn btn-link"><span class="fa fa-chevron-down"></span></a></td>
+           <td ng-show="showMeridian"></td>
+       </tr>
+   </tbody>
 </table>\
 `
     )
