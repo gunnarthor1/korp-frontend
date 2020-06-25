@@ -11,10 +11,7 @@ Documentation:
 - Sparv - The pipeline used to tag and otherwise process raw Swedish-language corpus data is documented [here](https://spraakbanken.gu.se/eng/research/infrastructure/korp/distribution/corpuspipeline)
 
 # Breaking changes
-- In order to benefit from superior tooling Korp migrated away from Coffeescript
- and now uses plain Javascript instead. This has been done semi-automatically
- using [decaffeinate](https://decaffeinate-project.org). You should replace 
- any Coffeescript code in your fork with the equivalent Javascript. 
+- In order to benefit from superior tooling Korp migrated away from coffeescript and now uses plain javascript instead. This has been done semi-automatically using [decaffeinate](https://decaffeinate-project.org). You should replace any coffeescript code in your fork with the equivalent javascript. 
 
 
 # Getting started
@@ -60,6 +57,24 @@ About the current loaders in in `webpack.config.js`:
 - `css` and `scss` are added to the bundle. `url`s will be loaded and replaced by webpack.
 
 In addition to this, some specific files will simply be copied as is, for example Korp mode-files.
+
+# run_config.json
+
+To use your own versions of the configuration-files without creating them in this project, 
+use a `run_config.json` file in the root of the project with the following content:
+
+```
+{
+    "configDir": "../path/to/my/configuration/folder"
+}
+```
+
+In this folder, use the same layout as in Korp and add the following files:
+
+- `config.js`
+- `modes/*mode.js`
+- `modes/common.js`
+- `translations/*.json`
 
 ## webpack and configuration
 

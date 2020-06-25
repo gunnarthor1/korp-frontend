@@ -50,6 +50,7 @@ korpApp.factory("extendedComponents", function() {
                 function(data) {
                     $scope.loading = false
                     const localizer = localize($scope)
+                    // console.log("getStructValues data", data)
 
                     const dataset = _.map(_.uniq(data), function(item) {
                         if (item === "") {
@@ -126,40 +127,61 @@ korpApp.factory("extendedComponents", function() {
         },
 
         defaultTemplate: _.template(`\
-            <input ng-model='input' class='arg_value' escaper 
-                    ng-model-options='{debounce : {default : 300, blur : 0}, updateOn: "default blur"}'
-            <%= maybe_placeholder %>>
-            <span ng-class='{sensitive : case == "sensitive", insensitive : case == "insensitive"}'
-                  class='val_mod' popper> Aa </span>
-            <ul class='mod_menu popper_menu dropdown-menu'>
-                    <li><a ng-click='makeSensitive()'>{{'case_sensitive' | loc:lang}}</a></li>
-                    <li><a ng-click='makeInsensitive()'>{{'case_insensitive' | loc:lang}}</a></li>
-            </ul>
-        `),
-        defaultController: [
-            "$scope",
-            function($scope) {
-                if ($scope.orObj.flags && $scope.orObj.flags.c) {
-                    $scope.case = "insensitive"
+<input ng-model='input' class='arg_value arg_input' escaper ng-model-options='{debounce : {default : 300, blur : 0}, updateOn: "default blur"}'
+<%= maybe_placeholder %>>
+<div class="opt_container">
+        <span class='val_mod'
+            title="{{ title | loc:lang}}"
+            ng-click='toggleSensitive()'
+            ng-class='{sensitive : case == "sensitive", insensitive : case == "insensitive"}'
+            ng-if="orObj.op!='*=' && orObj.op!='!*='">
+                Aa
+        </span>
+<div>\
+`
+        ),
+        defaultController: ["$scope", function($scope) {
+            if ($scope.orObj.flags != null ? $scope.orObj.flags.c : undefined) {
+                $scope.case = "insensitive"
+                $scope.title = "case_insensitive"
+            } else {
+                $scope.case = "sensitive"
+                $scope.title = "case_sensitive"
+            }
+            $scope.makeSensitive = function() {
+                $scope.case = "sensitive"
+                $scope.title = "case_sensitive"
+                return ($scope.orObj.flags != null ? delete $scope.orObj.flags["c"] : undefined)
+            }
+            $scope.makeInsensitive = function() {
+                const flags = ($scope.orObj.flags || {})
+                flags["c"] = true
+                $scope.orObj.flags = flags
+
+                $scope.case = "insensitive"
+                return $scope.title = "case_insensitive"
+            }
+            $scope.toggleSensitive = function() {
+                if ($scope.case === "sensitive") {
+                    return $scope.makeInsensitive()
                 } else {
-                    $scope.case = "sensitive"
-                }
-
-                $scope.makeSensitive = function() {
-                    $scope.case = "sensitive"
-                    if ($scope.orObj.flags) {
-                        delete $scope.orObj.flags["c"]
-                    }
-                }
-
-                $scope.makeInsensitive = function() {
-                    const flags = $scope.orObj.flags || {}
-                    flags["c"] = true
-                    $scope.orObj.flags = flags
-
-                    $scope.case = "insensitive"
+                    return $scope.makeSensitive()
                 }
             }
+            $scope.makeInsensitive() // Default is case insensitive
+            $scope.$watch("orObj.op", function() {
+                if (['*=', '!*='].includes($scope.orObj.op)) {
+                    return $scope.makeSensitive()
+                } else {
+                    return $scope.makeInsensitive()
+                }
+            })
+            return $scope.updateValue = function() {
+                $scope.orObj.op = '*='
+                $scope.orObj.val = '.*'
+                return $scope.input = $scope.orObj.val
+            }
+        }
         ]
     }
 })

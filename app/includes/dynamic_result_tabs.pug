@@ -45,7 +45,7 @@ uib-tab(ng-repeat='data in graphTabs', graph-ctrl)
       a.export.btn.btn-default.btn-sm {{'statstable_export' | loc:lang}}
 uib-tab(ng-repeat='promise in compareTabs', compare-ctrl)
   uib-tab-heading.compare_tab(ng-class='{loading : loading}')
-    | {{'compare_vb' | loc:lang}}
+    | {{'comparison' | loc:lang}}
     span(tab-spinner, ng-click='closeTab($index, $event)')
   .compare_result(ng-class='{loading : loading}')
     .error_msg(ng-if="error")

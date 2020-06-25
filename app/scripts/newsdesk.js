@@ -38,9 +38,9 @@ angular
             if (!s.shouldUseThis) {
                 return
             }
-
+    
             s.onPopoverClick = event => event.stopPropagation()
-
+    
             s.newsitems = []
             function initData() {
                 let d
@@ -71,15 +71,15 @@ angular
 
                         safeApply(s, () => (s.numNewNews = n))
                     },
-
+    
                     error(e) {
                         console.log("error, couldn't fetch news", e.message)
                     }
                 })
             }
-
+    
             s.currentLang = $location.search().lang || "sv"
-
+    
             s.numNewNews = 0
             initData()
 
@@ -94,17 +94,17 @@ angular
                 event.preventDefault()
                 event.stopPropagation()
             }
-
+    
             const popover = $(".newsdesk-popover")
             s.isPopoverVisible = false
-
+    
             const handleEscape = function(event) {
                 if (event.which === 27) {
                     s.popHide()
                     return false
                 }
             }
-
+    
             s.popShow = function() {
                 s.isPopoverVisible = true
 

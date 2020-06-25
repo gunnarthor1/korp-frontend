@@ -435,9 +435,8 @@ view.KWICResults = class KWICResults extends BaseResults {
             preferredContext = settings.defaultOverviewContext
             avoidContext = settings.defaultReadingContext
         }
-
         const context = settings.corpusListing.getContextQueryString(preferredContext, avoidContext)
-
+        preferredContext = locationSearch().context
         if (!isPaging) {
             this.proxy.queryData = null
         }
@@ -1158,7 +1157,8 @@ view.StatsResults = class StatsResults extends BaseResults {
 
         c.log("StatsResults makeRequest", cqp)
 
-        if (currentMode === "parallel") {
+        // if (currentMode === "parallel") {
+        if (currentMode.match(/parallel/)) {
             cqp = cqp.replace(/\:LINKED_CORPUS.*/, "")
         }
 
@@ -1873,8 +1873,9 @@ view.GraphResults = class GraphResults extends BaseResults {
                     field: timestamp,
                     formatter(row, cell, value, columnDef, dataContext) {
                         const loc = {
-                            sv: "sv-SE",
-                            en: "gb-EN"
+                            is : "is-IS",
+                            sv : "sv-SE",
+                            en : "gb-EN"
                         }[$("body").scope().lang]
                         const fmt = function(valTup) {
                             if (typeof valTup[0] === "undefined") {
@@ -2215,10 +2216,10 @@ view.GraphResults = class GraphResults extends BaseResults {
                 }
 
                 const xAxis = new Rickshaw.Graph.Axis.Time({
-                    graph
+                    graph,
+                    timeUnit: time.unit("decade"), // TODO: bring back decade
+                    timeFixture: new Rickshaw.Fixtures.Time()
                 })
-                // timeUnit: time.unit("month") # TODO: bring back decade
-                // timeFixture: new Rickshaw.Fixtures.Time()
 
                 this.preview = new Rickshaw.Graph.RangeSlider.Preview({
                     graph,

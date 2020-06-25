@@ -6,7 +6,7 @@ korpApp.controller("VideoCtrl", function($scope, $uibModal) {
 
     $scope.open = function() {
         let modalInstance
-        modalInstance = $uibModal.open({
+        return (modalInstance = $uibModal.open({
             animation: false,
             templateUrl: require("../markup/sidebar_video.html"),
             controller: "VideoInstanceCtrl",
@@ -29,7 +29,7 @@ korpApp.controller("VideoCtrl", function($scope, $uibModal) {
                     return $scope.sentence
                 }
             }
-        })
+        }))
     }
 
     $scope.startTime = 0
@@ -96,7 +96,7 @@ korpApp.controller("VideoInstanceCtrl", function(
 
         video.addEventListener("durationchange", function() {
             video.currentTime = startTime
-            video.play()
+            return video.play()
         })
 
         video.addEventListener("timeupdate", () => {

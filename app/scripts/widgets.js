@@ -3,7 +3,7 @@ let widget = require("components-jqueryui/ui/widget")
 const Sidebar = {
     _init() {},
 
-    updateContent(sentenceData, wordData, corpus, tokens, inReadingMode) {
+    updateContent(sentenceData, wordData, corpus, tokens) {
         this.element.html('<div id="selected_sentence" /><div id="selected_word" />')
         // TODO: this is pretty broken
         const corpusObj = settings.corpora[corpus] || settings.corpusListing.get(corpus)
@@ -25,23 +25,6 @@ const Sidebar = {
                     )
                     .prependTo(corpusInfo)
             }
-        }
-
-        if (!inReadingMode && corpusObj.readingMode) {
-            $("<div class='openReadingMode'/>")
-                .html(`<span class="link" rel="localize[read_in_korp]"></span>`)
-                .click(function() {
-                    const aScope = angular
-                        .element(document.getElementById("results-wrapper"))
-                        .scope()
-                    safeApply(aScope.$root, () =>
-                        aScope.$root.textTabs.push({
-                            corpus: corpus,
-                            sentenceId: sentenceData.sentence_id
-                        })
-                    )
-                })
-                .prependTo(corpusInfo)
         }
 
         const customData = { pos: [], struct: [] }
@@ -94,9 +77,6 @@ const Sidebar = {
     },
 
     renderGraph(tokens) {
-        if (!tokens || tokens.length == 0) {
-            return
-        }
         $("<span class='link show_deptree'></button>")
             .localeKey("show_deptree")
             .click(function() {
@@ -213,17 +193,13 @@ const Sidebar = {
         const posItems = []
         for (let key in corpus_attrs) {
             const attrs = corpus_attrs[key]
-            try {
-                const output = (
-                    this.renderItem(key, "not_used", attrs, wordData, sentenceData, tokens) || $()
-                ).get(0)
-                if (attrs.customType === "struct") {
-                    structItems.push([key, output])
-                } else if (attrs.customType === "pos") {
-                    posItems.push([key, output])
-                }
-            } catch (e) {
-                c.log("failed to render custom attribute", e)
+            const output = (
+                this.renderItem(key, "not_used", attrs, wordData, sentenceData, tokens) || $()
+            ).get(0)
+            if (attrs.customType === "struct") {
+                structItems.push([key, output])
+            } else if (attrs.customType === "pos") {
+                posItems.push([key, output])
             }
         }
         return [posItems, structItems]
@@ -232,7 +208,7 @@ const Sidebar = {
     renderItem(key, value, attrs, wordData, sentenceData, tokens) {
         let lis, output, pattern, ul, valueArray
         let val, inner, cqpVal, li, address
-        if (attrs.label) {
+        if ((attrs.label && value) && (value !== "|") && (value !== "")) {
             output = $(`<p><span rel='localize[${attrs.label}]'></span>: </p>`)
         } else {
             output = $("<p></p>")
@@ -453,10 +429,8 @@ const Sidebar = {
             )
         } else {
             if (attrs.translationKey) {
-                if (window.loc_data["en"][attrs.translationKey + value]) {
-                    return output.append(
-                        `<span rel='localize[${attrs.translationKey}${value}]'></span>`
-                    )
+                if (loc_data["is-is"][attrs.translationKey + attrs.dataset[value]]) {
+                    return output.append(`<span rel='localize[${attrs.translationKey}${attrs.dataset[value]}]'></span>`)
                 } else {
                     return output.append(`<span>${value}</span>`)
                 }

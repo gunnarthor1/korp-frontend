@@ -1,8 +1,6 @@
 /** @format */
-
 import jStorage from "../lib/jstorage"
-
-window.korpApp = angular.module("korpApp", [
+window.korpApp = angular.module('korpApp', [
     "ui.bootstrap.typeahead",
     "uib/template/typeahead/typeahead-popup.html",
     "uib/template/typeahead/typeahead-match.html",
@@ -25,8 +23,6 @@ window.korpApp = angular.module("korpApp", [
     "ui.bootstrap.timepicker",
     "uib/template/timepicker/timepicker.html",
     "ui.bootstrap.buttons",
-    "ui.bootstrap.popover",
-    "uib/template/popover/popover.html",
     "angularSpinner",
     "ui.sortable",
     "newsdesk",
@@ -54,7 +50,7 @@ korpApp.config([
 ])
 
 korpApp.run(function($rootScope, $location, utils, searches, tmhDynamicLocale, $timeout, $q) {
-    let loginNeededFor
+    let corpus, loginNeededFor
     const s = $rootScope
     s._settings = settings
     window.lang = s.lang = $location.search().lang || settings.defaultLanguage
@@ -88,7 +84,6 @@ korpApp.run(function($rootScope, $location, utils, searches, tmhDynamicLocale, $
     $rootScope.compareTabs = []
     $rootScope.graphTabs = []
     $rootScope.mapTabs = []
-    $rootScope.textTabs = []
     let isInit = true
 
     if ($location.search().corpus) {
@@ -183,6 +178,8 @@ korpApp.run(function($rootScope, $location, utils, searches, tmhDynamicLocale, $
 
 korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
     const s = $scope
+    // SB: saves the current mode to use inf header.pug to write currently selected mode
+    s.currMode = currentMode
 
     s.logoClick = function() {
         window.location = $scope.getUrl(currentMode)
@@ -193,9 +190,13 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
         s.show_modal = "about"
     }
 
+    s.citeClick = () => s.show_modal = 'about'
+
+    s.contactClick = () => s.show_modal = 'contact'
+
     s.showLogin = () => {
-        s.show_modal = "login"
-    }
+		s.show_modal = "login"
+	}
 
     s.logout = function() {
         let corpus
@@ -229,13 +230,16 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
     }
 
     const N_VISIBLE = settings.visibleModes
+    // SB: the number of versions of RMH
+    const N_VISIBLE_RMH = settings.visibleModesRMH
 
     s.modes = _.filter(settings.modeConfig)
     if (!isLab) {
         s.modes = _.filter(settings.modeConfig, item => item.labOnly !== true)
     }
 
-    s.visible = s.modes.slice(0, N_VISIBLE)
+    s.visible_rmh = s.modes.slice(0, N_VISIBLE_RMH)
+    s.visible = s.modes.slice(N_VISIBLE_RMH, N_VISIBLE)
     s.menu = s.modes.slice(N_VISIBLE)
 
     const i = _.map(s.menu, "mode").indexOf(currentMode)
@@ -287,7 +291,11 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
     }
 
     var showModal = function(key) {
-        const tmpl = { about: require("../markup/about.html"), login: "login_modal" }[key]
+        const tmpl = {
+          about: require('../markup/about.html'),
+          login: 'login_modal',
+          contact: require('../markup/contact.html')
+        }[key]
         const params = {
             templateUrl: tmpl,
             scope: s,

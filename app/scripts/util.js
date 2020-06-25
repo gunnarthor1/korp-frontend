@@ -380,14 +380,14 @@ window.CorpusListing = class CorpusListing {
     }
 
     getAttributeGroups(lang) {
-        const words = this.getWordGroup(false)
-        const attrs = this.getWordAttributeGroups(lang, "union")
-        const sentAttrs = this.getStructAttributeGroups(lang, "union")
-        return words.concat(attrs, sentAttrs)
+        // words = @getWordGroup false // TODO: Skoða betur seinna, gæti brotið eitthvað const words = this.getWordGroup(false)
+        const attrs = this.getWordAttributeGroups(lang, 'union')
+        const sentAttrs = this.getStructAttributeGroups(lang, 'union')
+        return attrs.concat(sentAttrs) // return words.concat(attrs, sentAttrs)
     }
 
     getStatsAttributeGroups(lang) {
-        const words = this.getWordGroup(true)
+        // words = @getWordGroup true // const words = this.getWordGroup(true)
 
         const wordOp = settings.reduceWordAttributeSelector || "union"
         const attrs = this.getWordAttributeGroups(lang, wordOp)
@@ -395,7 +395,7 @@ window.CorpusListing = class CorpusListing {
         const structOp = settings.reduceStructAttributeSelector || "union"
         const sentAttrs = this.getStructAttributeGroups(lang, structOp)
 
-        return words.concat(attrs, sentAttrs)
+        return attrs.concat(sentAttrs) // return words.concat(attrs, sentAttrs)
     }
 }
 
@@ -702,7 +702,7 @@ util.getLocaleString = (key, lang) => util.getLocaleStringUndefined(key, lang) |
 
 util.getLocaleStringUndefined = function(key, lang) {
     if (!lang) {
-        lang = window.lang || settings.defaultLanguage || "sv"
+        lang = window.lang || settings.defaultLanguage || "is-is"
     }
     try {
         return window.loc_data[lang][key]
@@ -911,6 +911,10 @@ util.loadCorporaFolderRecursive = function(first_level, folder) {
         // Add all corpora which have not been added to a corpus
         for (let val in settings.corpora) {
             let cont = false
+            // continue if it is a duplicate corpus (due to parallel corpora)
+            if (settings.corpora[val].hide) {
+                continue
+            }
             for (let usedid in added_corpora_ids) {
                 if (added_corpora_ids[usedid] === val || settings.corpora[val].hide) {
                     cont = true
@@ -998,6 +1002,12 @@ util.loadCorpora = function() {
                     )}: <b>${util.prettyNumbers(settings.corpora[baseLang].info.Sentences)}
 </b> (${util.getLocaleString(settings.corpora[baseLang].lang)})<br/>\
 `
+					baseLangParagraphHTML = `${util.getLocaleString(
+						"corpselector_numberofparagraphs"
+					)}: <b>${util.prettyNumbers(settings.corpora[baseLang].info.Paragraphs)}
+</b> (${util.getLocaleString(settings.corpora[baseLang].lang)})<br/>\
+`
+
                 } else {
                     lang = ""
                     baseLangTokenHTML = ""
@@ -1013,7 +1023,10 @@ util.loadCorpora = function() {
                 if (numSentences) {
                     sentenceString = util.prettyNumbers(numSentences.toString())
                 }
-
+				let paragraphString = "-"
+                if (numParagraphs) {
+                    paragraphString = util.prettyNumbers(numParagraphs.toString())
+                }
                 let output = `\
                     <b>
                         <img class="popup_icon" src="${korpIconImg}" />
@@ -1025,7 +1038,10 @@ util.loadCorpora = function() {
                     <b>${util.prettyNumbers(numTokens)}</b>${lang}
                     <br/>${baseLangSentenceHTML}
                     ${util.getLocaleString("corpselector_numberofsentences")}:
-                    <b>${sentenceString}</b>${lang}
+					<b>${sentenceString}</b>${lang}
+					<br/>${baseLangParagraphHTML}
+                    ${util.getLocaleString("corpselector_numberofparagraphs")}:
+                    <b>${paragraphString}</b>${lang}
                     <br/>
                     ${util.getLocaleString("corpselector_lastupdate")}:
                     <b>${lastUpdate}</b>
@@ -1055,13 +1071,22 @@ util.loadCorpora = function() {
                 $(corporaID).each(function(key, oneID) {
                     totalTokens += parseInt(settings.corpora[oneID]["info"]["Size"])
                     const oneCorpusSentences = settings.corpora[oneID]["info"]["Sentences"]
+                    const oneCorpusParagraphs = settings.corpora[oneID]["info"]["Paragraphs"]
                     if (oneCorpusSentences) {
                         totalSentences += parseInt(oneCorpusSentences)
                     } else {
                         missingSentenceData = true
+					}
+					if (oneCorpusParagraphs) {
+                        totalParagraphs += parseInt(oneCorpusParagraphs)
+                    } else {
+                        missingParagraphData = true
                     }
                 })
-
+				let totalParagraphsString = util.prettyNumbers(totalParagraphs.toString())
+				if (missingParagraphData) {
+					totalParagraphsString += "+"
+				}
                 let totalSentencesString = util.prettyNumbers(totalSentences.toString())
                 if (missingSentenceData) {
                     totalSentencesString += "+"

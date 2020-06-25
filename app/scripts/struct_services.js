@@ -283,18 +283,23 @@ korpApp.factory("globalFilterService", function($rootScope, $location, $q, struc
                 }
             } else {
                 dataObj.showDirective = true
-                dataObj.defaultFilters = newDefaultFilters
-                dataObj.optionalFilters = newOptionalFilters
-                dataObj.attributes = _.extend({}, defAttributes, possAttributes)
+                if (
+                    !_.isEqual(newDefaultFilters, dataObj.defaultFilters) &&
+                    _.isEqual(newOptionalFilters, dataObj.optionalFilters)
+                ) {
+                    dataObj.defaultFilters = newDefaultFilters
+                    dataObj.optionalFilters = newOptionalFilters
+                    dataObj.attributes = _.extend({}, defAttributes, possAttributes)
 
-                dataObj.selectedFilters = newDefaultFilters.slice()
+                    dataObj.selectedFilters = newDefaultFilters.slice()
 
-                initFilters()
+                    initFilters()
 
-                setFromLocation($location.search().global_filter)
-                getData()
-                updateLocation()
-                callDirectives()
+                    setFromLocation($location.search().global_filter)
+                    getData()
+                    updateLocation()
+                    callDirectives()
+                }
             }
         }
         $rootScope.globalFilterDef.resolve()

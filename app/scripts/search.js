@@ -15,7 +15,7 @@ view.updateSearchHistory = function(value, href) {
         ).join("&")
     }
 
-    $("#search_history").empty()
+    $("#search-history").empty()
     const searches = jStorage.get("searches") || []
     const searchLocations = $.map(searches, item => filterParam(item.location))
     if (value != null && !searchLocations.includes(filterParam(href))) {
@@ -36,11 +36,11 @@ view.updateSearchHistory = function(value, href) {
         return output
     })
     const placeholder = $("<option>")
-        .localeKey("search_history")
+        .localeKey("search-history")
         .get(0)
-    const clear = $("<option class='clear'>").localeKey("search_history_clear")
+    const clear = $("<option class='clear'>").localeKey("search-history-clear")
 
-    $("#search_history")
+    $("#search-history")
         .html(opts)
         .prepend(clear)
         .prepend(placeholder)

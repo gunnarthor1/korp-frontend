@@ -4,7 +4,7 @@ const pieChartImg = require("../img/stats2.png")
 const createStatisticsService = function() {
     const createColumns = function(corpora, reduceVals, reduceValLabels) {
         const loc = {
-            sv: "sv-SE",
+            is: "is-IS",
             en: "gb-EN"
         }[$("body").scope().lang]
 

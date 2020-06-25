@@ -137,6 +137,7 @@ body {
   margin: 0;
   min-height: 100%;
   overflow-x: hidden;
+  background-color: inherit;
 }
 
 ul,
@@ -436,9 +437,10 @@ textarea::placeholder {
   }
 
   > div {
-    display: inline-block;
+    display: inline-flex;
     margin-right: 10px;
     vertical-align: middle;
+    align-items: center;
   }
 }
 
@@ -2130,11 +2132,11 @@ label[for=lemgram_select]::before {
   }
 }
 
-.extended .search-submit {
+.extended .search_submit {
   margin-left: 30px;
 }
 
-.search-submit {
+.search_submit {
   display: inline-flex;
   height: 50px;
   margin-right: 5px;

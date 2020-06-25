@@ -214,10 +214,7 @@ model.KWICProxy = class KWICProxy extends BaseProxy {
                     this.url +
                     "?" +
                     _.toPairs(data)
-                        .map(function([key, val]) {
-                            val = _.replace(val, "&", "%26")
-                            return key + "=" + val
-                        })
+                        .map(pair => pair.join("="))
                         .join("&")
             },
 
@@ -297,7 +294,6 @@ model.StatsProxy = class StatsProxy extends BaseProxy {
             }
         }
         const parameters = {
-            command: "count",
             group_by: groupBy.join(","),
             group_by_struct: groupByStruct.join(","),
             cqp: this.expandCQP(cqp),
@@ -529,7 +525,7 @@ model.TimeProxy = class TimeProxy extends BaseProxy {
 
         xhr.done((data, status, xhr) => {
             c.log("timespan done", data)
-            if (data.ERROR) {
+            if (_.isEmpty(data.combined) || data.ERROR) {
                 c.error("timespan error", data.ERROR)
                 dfd.reject(data.ERROR)
                 return
