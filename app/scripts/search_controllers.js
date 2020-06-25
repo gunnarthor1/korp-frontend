@@ -105,6 +105,29 @@ window.SearchCtrl = [
             },
             true
         )
+        const setupContext = function() {
+            $scope.getContextFormat = function(val) {
+                if (settings.contextValues[val] == $scope.context){
+                    return $filter("loc")("context", $scope.lang) + ": " + val + " " + $filter("loc")("words", $scope.lang)
+                } else {
+                    return val
+                }
+            }
+            $scope.contextValues = settings.contextValues
+            $scope.context = $location.search().context || settings.contextDefault
+
+            $scope.$watch (
+                () => $location.search().context,
+                (val) => ($scope.context = val || settings.contextDefault)
+            )
+            return $scope.$watch ("context", function(val) {
+                if (val == settings.contextDefault) {
+                    $location.search("context", null)
+                } else {
+                    $location.search("context", val)
+                }
+            })
+        }
 
         const setupHitsPerPage = function() {
             $scope.getHppFormat = function(val) {
@@ -168,6 +191,7 @@ window.SearchCtrl = [
             })
         }
 
+        setupContext()
         setupHitsPerPage()
         setupKwicSort()
     }

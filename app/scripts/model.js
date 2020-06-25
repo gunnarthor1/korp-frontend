@@ -1,5 +1,6 @@
 /** @format */
 "use strict"
+import jStorage from "../lib/jstorage"
 window.model = {}
 
 model.normalizeStatsData = function(data) {
@@ -293,7 +294,6 @@ model.StatsProxy = class StatsProxy extends BaseProxy {
             }
         }
         const parameters = {
-            command: "count",
             group_by: groupBy.join(","),
             group_by_struct: groupByStruct.join(","),
             cqp: this.expandCQP(cqp),
@@ -490,7 +490,7 @@ model.AuthenticationProxy = class AuthenticationProxy {
                     auth
                 }
                 if (saveLogin) {
-                    $.jStorage.set("creds", self.loginObj)
+                    jStorage.set("creds", self.loginObj)
                 }
                 return dfd.resolve(data)
             })

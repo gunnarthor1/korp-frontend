@@ -5,12 +5,17 @@ const risamh_logo = require("../img/risamh_logo.svg")
 const mim_logo = require("../img/mim_logo.svg")
 const fornrit_logo = require("../img/fornrit_logo.svg")
 const otb_logo = require("../img/ohlogo_hvitt_m.png")
+const deparam = require("jquery-deparam")
 
+// import $ from "jquery"
+// window.jQuery = $
+// window.$ = $
+import jStorage from "../lib/jstorage"
 
 window.authenticationProxy = new model.AuthenticationProxy()
 window.timeProxy = new model.TimeProxy()
 
-const creds = $.jStorage.get("creds")
+const creds = jStorage.get("creds")
 if (creds) {
     authenticationProxy.loginObj = creds
 }
@@ -35,12 +40,11 @@ $.ajaxPrefilter("json", function(options, orig, jqXHR) {
 
 const deferred_domReady = $.Deferred(function(dfd) {
     $(function() {
-        let { mode } = $.deparam.querystring()
+        let { mode } = deparam(window.location.search.slice(1))
         // fix til að mode birtist í url        
         if (!mode) {
             mode = "rmh2018"
-            const newURL = $.param.querystring($.param.querystring(), { mode })
-            window.location.href = newURL
+            window.location.search = `?mode=${mode}`
         }
         return $.getScript(`modes/${mode}_mode.js`)
             .done(() => dfd.resolve())
@@ -102,39 +106,39 @@ $.when(loc_dfd, deferred_domReady).then(
             $("body").addClass("lab")
         }
 
-    $("body").addClass(`mode-${currentMode}`)
-    const mainLogoFig = document.getElementById("main_logo").firstChild
-    switch (currentMode) {
-        case "mim":
-            mainLogoFig.firstChild.src = mim_logo
-            break
-            // mainLogoFig.childNodes[1].setAttribute("rel", "localize[mim_logo]")
-        case "fornrit":
-            mainLogoFig.firstChild.src = fornrit_logo
-            break
-            // mainLogoFig.childNodes[1].setAttribute("rel", "localize[fornrit_logo]")
-        case "otb":
-            mainLogoFig.firstChild.src = otb_logo
-            break
-            // mainLogoFig.childNodes[1].setAttribute("rel", "localize[otb_logo]")
-        case "parallel":
-            mainLogoFig.firstChild.src = risamh_logo
-            break
-            // mainLogoFig.childNodes[1].setAttribute("rel", "localize[samhlida_logo]")
-        default:
-            mainLogoFig.firstChild.src = risamh_logo
-    }
-            // mainLogoFig.childNodes[1].setAttribute("rel", "localize[rmh_logo]")
-    util.browserWarn()
+    	$("body").addClass(`mode-${window.currentMode}`)
+    	const mainLogoFig = document.getElementById("main_logo").firstElementChild
+    	switch (currentMode) {
+    	    case "mim":
+    	        mainLogoFig.firstChild.src = mim_logo
+    	        break
+    	        // mainLogoFig.childNodes[1].setAttribute("rel", "localize[mim_logo]")
+    	    case "fornrit":
+    	        mainLogoFig.firstChild.src = fornrit_logo
+    	        break
+    	        // mainLogoFig.childNodes[1].setAttribute("rel", "localize[fornrit_logo]")
+    	    case "otb":
+    	        mainLogoFig.firstChild.src = otb_logo
+    	        break
+    	        // mainLogoFig.childNodes[1].setAttribute("rel", "localize[otb_logo]")
+    	    case "parallel":
+    	        mainLogoFig.firstChild.src = risamh_logo
+    	        break
+    	        // mainLogoFig.childNodes[1].setAttribute("rel", "localize[samhlida_logo]")
+    	    default:
+    	        mainLogoFig.firstChild.src = risamh_logo
+    	}
+    	        // mainLogoFig.childNodes[1].setAttribute("rel", "localize[rmh_logo]")
+    	util.browserWarn()
 
-        $("#search_history").change(function(event) {
+        $("#search-history").change(function(event) {
             c.log("select", $(this).find(":selected"))
             const target = $(this).find(":selected")
             if (_.includes(target.val(), "http://")) {
                 location.href = target.val()
             } else if (target.is(".clear")) {
                 c.log("empty searches")
-                $.jStorage.set("searches", [])
+                jStorage.set("searches", [])
                 view.updateSearchHistory()
             }
         })
@@ -179,8 +183,8 @@ $.when(loc_dfd, deferred_domReady).then(
             },
             // TODO: this does nothing?
             selected: settings.defaultLanguage
-	    })
-	    $("#sidebar").sidebar()
+	})
+	$("#sidebar").sidebar()
 	
         setTimeout(() => window.onHashChange(null, true), 0)
         $("body").animate({ opacity: 1 }, function() {
@@ -263,7 +267,12 @@ window.initTimeGraph = function(def) {
 				$("#time_graph").html("<i>Time graph is unavailable for this corpus</i>")
 		})
 		.done(function(...args) {
-            let dataByCorpus, rest
+            let [dataByCorpus, all_timestruct, rest] = args[0]
+
+            if (all_timestruct.length == 0) {
+                return
+            }
+
             for (let corpus in dataByCorpus) {
                 let struct = dataByCorpus[corpus]
                 if (corpus !== "time") {

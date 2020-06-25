@@ -1,4 +1,5 @@
 /** @format */
+import jStorage from "../lib/jstorage"
 window.korpApp = angular.module('korpApp', [
     "ui.bootstrap.typeahead",
     "uib/template/typeahead/typeahead-popup.html",
@@ -200,7 +201,7 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
     s.logout = function() {
         let corpus
         authenticationProxy.loginObj = {}
-        $.jStorage.deleteKey("creds")
+        jStorage.deleteKey("creds")
 
         // TODO figure out another way to do this
         for (let corpusObj of settings.corpusListing.corpora) {
@@ -311,7 +312,7 @@ korpApp.controller("headerCtrl", function($scope, $location, $uibModal, utils) {
     s.clickX = () => closeModals()
 
     s.loggedIn = false
-    const creds = $.jStorage.get("creds")
+    const creds = jStorage.get("creds")
     if (creds) {
         util.setLogin()
         s.loggedIn = true

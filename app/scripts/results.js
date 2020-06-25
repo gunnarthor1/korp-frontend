@@ -9,7 +9,7 @@ class BaseResults {
 
         this.$result.add(this.$tab).addClass("not_loading")
 
-        this.injector = $("body").injector()
+        this.injector = angular.injector(["ng"])
 
         const def = this.injector.get("$q").defer()
         this.firstResultDef = def
@@ -1157,7 +1157,8 @@ view.StatsResults = class StatsResults extends BaseResults {
 
         c.log("StatsResults makeRequest", cqp)
 
-        if (currentMode === "parallel") {
+        // if (currentMode === "parallel") {
+        if (currentMode.match(/parallel/)) {
             cqp = cqp.replace(/\:LINKED_CORPUS.*/, "")
         }
 
