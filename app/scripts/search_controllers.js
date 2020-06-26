@@ -407,7 +407,7 @@ korpApp.controller("SimpleCtrl", function(
         }
     }
 
-    utils.setupHash(s, [{ key: "prefix" }, { key: "suffix" }, { key: "isCaseInsensitive" }]) // , { key : "searchBy" }
+    utils.setupHash(s, [{ key: "prefix" }, { key: "suffix" }, { key: "isCaseInsensitive" }, { key: "searchBy" }]) // , { key : "searchBy" }
 })
 
 korpApp.controller("ExtendedSearch", function(

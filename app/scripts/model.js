@@ -297,6 +297,7 @@ model.StatsProxy = class StatsProxy extends BaseProxy {
             }
         }
         const parameters = {
+	    command: "count",
             group_by: groupBy.join(","),
             group_by_struct: groupByStruct.join(","),
             cqp: this.expandCQP(cqp),
