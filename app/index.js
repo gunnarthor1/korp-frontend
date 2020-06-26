@@ -15,6 +15,7 @@ require("geokorp/dist/styles/geokorp.css")
 require("components-jqueryui/themes/smoothness/jquery-ui.min.css")
 require("./styles/bootstrap4-custom.scss")
 require("./styles/styles.scss")
+require("./styles/textreader.css")
 
 window._ = require("lodash")
 
@@ -32,12 +33,14 @@ require("angular-ui-bootstrap/src/pagination")
 require("angular-ui-bootstrap/src/datepicker")
 require("angular-ui-bootstrap/src/timepicker")
 require("angular-ui-bootstrap/src/buttons")
+require("angular-ui-bootstrap/src/popover")
 
 require("angular-spinner")
 require("angular-ui-sortable/src/sortable")
 
 require("jreject")
 require("jquerylocalize")
+require("jqueryhoverintent")
 require("./lib/jquery.format.js")
 
 let deparam = require("jquery-deparam")
@@ -91,7 +94,6 @@ _.map(commonSettings, function(v, k) {
   window[k] = v
 })
 
-
 require("./config/statistics_config.js")
 require("./scripts/statistics.js")
 require("./scripts/cqp_parser/CQPParser.js")
@@ -109,6 +111,7 @@ require("./scripts/search_controllers.js")
 require("./scripts/kwic_download.js")
 require("./scripts/result_controllers.js")
 require("./scripts/map_controllers.js")
+require("./scripts/text_reader_controller.js")
 require("./scripts/video_controllers.js")
 require("./scripts/services.js")
 require("./scripts/extended.js")
@@ -116,5 +119,9 @@ require("./scripts/struct_services.js")
 require("./scripts/directives.js")
 require("./scripts/filter_directives.js")
 require("./scripts/newsdesk.js")
+
+function requireAll(r) { r.keys().forEach(r) } 
+requireAll(require.context('customcss', true, /\.css$/))
+requireAll(require.context('customscripts', true, /\.js$/))
 
 require("./index.pug")

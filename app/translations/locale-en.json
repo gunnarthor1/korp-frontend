@@ -134,7 +134,6 @@
     "map_rel_occurrences": "Relative occurrences",
     "map_num_results": "Locations",
 
-
     "word_is": "word is",
     "word_is_not": "word is not",
     "word_beginswith": "word begins with",
@@ -241,7 +240,6 @@
     "material_warn": "The selected corpora lack time data.",
     "graph_material": "No available time data",
     "graph_material_tooltip": "The selected corpora lack time data for the shadowed periods.",
-
 
     "word_insensitive": "word (case insensitive)",
     "sentence_attr": "Text attributes",
@@ -395,5 +393,15 @@
 
     "results_by_corpus": "Results by corpus",
     "get-user-guide": "View user guide (only in Icelandic)",
-    "reference-corpora": "How to reference the corpora"
+    "reference-corpora": "How to reference the corpora",
+    "stats_not_in_order_warn": "Statistics is currently not supported when \"in order\" is disabled.",
+
+    "read_in_strix": "Read this text in Strix",
+    "read_in_korp": "Read this text in Korp",
+    "add_token": "Add token",
+
+    "in_order_chk": "in order",
+    "prefix_chk": "initial part",
+    "suffix_chk": "final part",
+    "text_tab_header": "Reading mode"
 }

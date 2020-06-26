@@ -1512,6 +1512,10 @@ table {
   #selected_sentence > h4:last-child {
     display: none;
   }
+
+  #selected_word > h4:last-child {
+    display : none;
+  }
 }
 
 .external_link {
