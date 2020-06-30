@@ -41,9 +41,9 @@ $.ajaxPrefilter("json", function(options, orig, jqXHR) {
 const deferred_domReady = $.Deferred(function(dfd) {
     $(function() {
         let { mode } = deparam(window.location.search.slice(1))
-        // fix til að mode birtist í url        
+        // fix til að mode birtist í url
         if (!mode) {
-            mode = "rmh2018"
+            mode = "rmh2019"
             window.location.search = `?mode=${mode}`
         }
         return $.getScript(`modes/${mode}_mode.js`)
@@ -185,7 +185,7 @@ $.when(loc_dfd, deferred_domReady).then(
             selected: settings.defaultLanguage
 	})
 	$("#sidebar").sidebar()
-	
+
         setTimeout(() => window.onHashChange(null, true), 0)
         $("body").animate({ opacity: 1 }, function() {
             $(this).css("opacity", "")
