@@ -77,7 +77,8 @@ module.exports = {
                 test: /\.pug$/i,
                 exclude: [
                     // does not work
-                    path.resolve(__dirname, "app/index.pug")
+                    path.resolve(__dirname, "app/index.pug"),
+		    path.resolve(__dirname, "app/user_guide.pug")
                 ],
                 use: [
                     { loader: "file-loader" },
@@ -114,6 +115,25 @@ module.exports = {
                     }
                 ]
             },
+			{
+				test: /user_guide.pug$/,
+	 		    use: [
+			    	{ loader: "file-loader?name=user_guide.html" },
+				    {
+			            loader: "extract-loader",
+			            options: { publicPath: "" }
+		          	},
+		            {
+			            loader: "html-loader",
+			            options: {
+							attrs: ['img:src','link:href']
+			            }
+		          	},
+		            {
+			            loader: "pug-html-loader"
+					}
+		   		]
+	        },
             {
                 test: /\.html$/,
                 exclude: [path.resolve(korpConfigDir, "./views/")],
@@ -251,7 +271,8 @@ module.exports = {
     ],
     entry: {
         bundle: "./app/index.js",
-        worker: "./app/scripts/statistics_worker.ts"
+        worker: "./app/scripts/statistics_worker.ts",
+	user_guide: './app/user_guide.js'
     },
     output: {
         filename: "[name].js",
